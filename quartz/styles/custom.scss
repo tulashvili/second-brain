@@ -145,15 +145,15 @@ h1, h2, h3 {
 //    tertiaryS
 //    ======================== */
 
-// a {
-//   color: var(--tertiary-color);
-//   background: none;
-//   transition: 0.15s ease;
-// }
+a {
+  color: var(--tertiary-color);
+  background: none;
+  transition: 0.15s ease;
+}
 
-// a:hover {
-//   color: #a6c1ff;
-// }
+a:hover {
+  color: #a6c1ff;
+}
 
 // /* ========================
 //    CODE
@@ -288,41 +288,6 @@ h1, h2, h3 {
 
   filter: blur(40px);
 }
-
-// /* ========================
-//    BACKtertiaryS
-//    ======================== */
-
-// .backtertiarys {
-//   margin-top: 3rem;
-//   padding-top: 1.2rem;
-//   border-top: 1px solid var(--lightgray);
-// }
-
-// .backtertiarys h2 {
-//   font-size: 0.95rem;
-//   font-weight: 500;
-//   opacity: 0.6;
-//   margin-bottom: 0.5rem;
-// }
-
-// .backtertiarys a {
-//   display: block;
-//   padding: 10px 12px;
-//   margin-bottom: 10px;
-
-//   border: 1px solid var(--lightgray);
-//   border-radius: 8px;
-//   background: var(--lightgray);
-
-//   text-decoration: none;
-//   transition: 0.15s ease;
-// }
-
-// .backtertiarys a:hover {
-//   border-color: var(--secondary);
-//   transform: translateY(-1px);
-// }
 
 // /* ========================
 //    TAGS
