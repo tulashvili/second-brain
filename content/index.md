@@ -1,82 +1,66 @@
 ---
 title: Добро пожаловать в мой второй мозг
+date: 2025-02-01T13:09
+updated: 2026-04-02T17:53:20+03:00
+tags:
+  - public
 ---
- 
 Здесь я собираю знания, идеи и практический опыт — как систему, а не как блог.
+Мой Second Brain разбит на области знаний.
 
----
-## Map of Content
-
-Мой Second Brain разбит на области знаний.  
 Каждая карточка — это входная точка в тему.
+
+Начни с любой темы из представленных ниже, а затем переходи по ссылкам внутри заметок. Используй **обратные ссылки** для исследования связей
 
 <div class="card-grid">
 
-<a class="card" href="/programming">
-  <div class="card-title">💻 Programming</div>
+%% <a class="card" href="/programming">
+  <div class="card-title">💻 Программирование</div>
   <div class="card-desc">
     Go, Python, backend, архитектура систем
   </div>
-</a>
+</a> %%
 
-<a class="card" href="/infrastructure">
-  <div class="card-title">🖧 Infrastructure</div>
+<a class="card" href="/Инфраструктура">
+  <div class="card-title">🤖 Инфраструктура</div>
   <div class="card-desc">
     Linux, networking, DevOps, серверы
   </div>
 </a>
 
-<a class="card" href="/security">
-  <div class="card-title">🔐 Security</div>
+%% <a class="card" href="/security">
+  <div class="card-title">🔐 Безопасность</div>
   <div class="card-desc">
     Hardening, threat model, infra security
   </div>
-</a>
+</a> %%
 
-<a class="card" href="/data">
+%% <a class="card" href="/data">
   <div class="card-title">📊 Data</div>
   <div class="card-desc">
     Data engineering, аналитика, пайплайны
   </div>
-</a>
+</a> %%
 
-<a class="card" href="/tools">
+%% <a class="card" href="/tools">
   <div class="card-title">🛠 Tools</div>
   <div class="card-desc">
     CLI, automation, полезные утилиты
   </div>
-</a>
+</a> %%
 
-<a class="card" href="/second-brain">
+%% <a class="card" href="/second-brain">
   <div class="card-title">🧠 Second Brain</div>
   <div class="card-desc">
     Zettelkasten, Obsidian, знания и мышление
   </div>
-</a>
+</a> %%
 
-<a class="card" href="/writing">
+%% <a class="card" href="/writing">
   <div class="card-title">✍️ Writing</div>
   <div class="card-desc">
     Мысли, заметки, формулировка идей
   </div>
-</a>
+</a> %%
 
 </div>
-
----
-
-## About This Second Brain
-
-Этот проект — не блог.  
-Это система:
-
-- 🧠 **Connected** — заметки связаны между собой  
-- 🌱 **Evolving** — постоянно обновляется  
-- 🔗 **Contextual** — каждая идея встроена в контекст  
-- ⚙️  **Practical** — много реального опыта  
-
-## Как использовать
-
-- Начни с любой темы из **Map of Content**  
-- Переходи по ссылкам внутри заметок  
-- Используй **backlinks** для исследования связей  

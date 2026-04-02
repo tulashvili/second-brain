@@ -8,14 +8,14 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Quartz 4",
+    pageTitle: "Second Brain",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
     analytics: {
       provider: "plausible",
     },
-    locale: "en-US",
+    locale: "ru-RU",
     baseUrl: "quartz.jzhao.xyz",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
@@ -29,25 +29,30 @@ const config: QuartzConfig = {
       },
       colors: {
         lightMode: {
-          light: "#faf8f8",
-          lightgray: "#e5e5e5",
-          gray: "#b8b8b8",
-          darkgray: "#4e4e4e",
-          dark: "#2b2b2b",
-          secondary: "#284b63",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#fff23688",
+          light: "#f7f7fb",
+          lightgray: "#161f33",
+          gray: "#9ca3af",
+          darkgray: "#374151",
+          dark: "#111827",
+
+          secondary: "#3b82f6",
+          tertiary: "#6366f1",
+
+          highlight: "rgba(59, 130, 246, 0.1)",
+          textHighlight: "#fde68a",
         },
+
         darkMode: {
-          light: "#161618",
-          lightgray: "#393639",
+          light: "#1a1b26",
+          lightgray: "#2a2d3e",
           gray: "#646464",
           darkgray: "#d4d4d4",
           dark: "#ebebec",
-          secondary: "#7b97aa",
+
+          secondary: "#7aa2f7",
           tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
+
+          highlight: "rgba(122, 162, 247, 0.15)",
           textHighlight: "#b3aa0288",
         },
       },
