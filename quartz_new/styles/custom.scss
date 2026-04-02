@@ -1,0 +1,434 @@
+@use "./base.scss";
+
+/* ========================
+   DIGITAL GARDEN DARK THEME
+   ======================== */
+
+:root {
+  --content-width: 820px;
+
+  --bg-main: #1a1b26;
+  --bg-subtle: #222330;
+
+  --text-primary: #eaeaf0;
+  --text-secondary: #b0b3c1;
+
+  --accent: #ff7575;
+  --link-color: #7aa2f7;
+
+  --border-subtle: #2a2d3e;
+
+  --radius: 10px;
+}
+
+/* ========================
+   GLOBAL
+   ======================== */
+
+body {
+  background: radial-gradient(
+    circle at top,
+    #1f2130 0%,
+    var(--bg-main) 40%
+  );
+  color: var(--text-primary);
+  line-height: 1.75;
+  font-size: 18px;
+}
+
+/* ========================
+   LAYOUT
+   ======================== */
+
+main {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 56px 24px;
+}
+
+main > * + * {
+  margin-top: 1.4rem;
+}
+
+/* ========================
+   HEADER (APP STYLE)
+   ======================== */
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  padding: 14px 24px;
+  margin: 0 auto 32px auto;
+  max-width: 1100px;
+
+  border-bottom: 1px solid var(--border-subtle);
+
+  background: rgba(26, 27, 38, 0.6);
+  backdrop-filter: blur(8px);
+
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+/* внутренний flex */
+header > div {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* logo */
+.logo {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+/* search */
+header input[type="search"] {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+
+  padding: 6px 12px;
+  font-size: 0.9rem;
+
+  max-width: 260px;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* right links */
+.header-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.header-links a {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: 0.15s ease;
+}
+
+.header-links a:hover {
+  color: var(--text-primary);
+}
+
+/* ========================
+   TYPOGRAPHY
+   ======================== */
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.6rem;
+}
+
+h2 {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+h1, h2, h3 {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+p, li {
+  color: var(--text-secondary);
+}
+
+strong {
+  color: var(--text-primary);
+}
+
+/* ========================
+   LINKS
+   ======================== */
+
+a {
+  color: var(--link-color);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  background: none;
+  transition: 0.15s ease;
+}
+
+a:hover {
+  color: #a6c1ff;
+}
+
+/* ========================
+   CODE
+   ======================== */
+
+code {
+  background: #2a2c3d;
+  color: #eaeaf0;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+pre {
+  background: #151621;
+  color: #eaeaf0;
+  padding: 16px;
+  border-radius: var(--radius);
+  overflow-x: auto;
+}
+
+/* ========================
+   CARD GRID
+   ======================== */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 28px;
+  margin-top: 2.5rem;
+}
+
+/* ========================
+   CARD
+   ======================== */
+
+.card {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* 👈 центр по вертикали */
+  align-items: center;       /* 👈 центр по горизонтали */
+  text-align: center;        /* 👈 текст по центру */
+
+  height: 200px;
+  padding: 28px;
+
+  border-radius: 24px;
+  overflow: hidden;
+
+  background:
+    radial-gradient(circle at 80% 20%, rgba(255, 120, 120, 0.15), transparent 40%),
+    linear-gradient(160deg, #262837 0%, #1f2130 100%);
+
+  border: 1px solid rgba(255,255,255,0.05);
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.45),
+    inset 0 1px 0 rgba(255,255,255,0.04);
+
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+.card:hover {
+  transform: translateY(-6px) scale(1.01);
+
+  box-shadow:
+    0 30px 80px rgba(0,0,0,0.6),
+    0 0 40px rgba(255, 117, 117, 0.12);
+
+  border-color: rgba(255, 117, 117, 0.25);
+}
+/* ========================
+   CARD TITLE
+   ======================== */
+
+.card-title {
+  font-size: 1.4rem;      /* было ~1.2 */
+  font-weight: 600;
+  letter-spacing: -0.015em;
+
+  color: #ffffff;
+
+  margin-bottom: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+/* ========================
+   CARD DESCRIPTION
+   ======================== */
+.card-desc {
+  font-size: 1.05rem;     /* было ~0.95 */
+  line-height: 1.6;
+
+  color: rgba(255,255,255,0.65);
+
+  max-width: 34ch;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  height: 40%;
+
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.4),
+    transparent
+  );
+}
+.card::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  right: -40%;
+
+  width: 300px;
+  height: 300px;
+
+  background: radial-gradient(
+    circle,
+    rgba(255, 117, 117, 0.25),
+    transparent 60%
+  );
+
+  filter: blur(40px);
+}
+
+/* ========================
+   BACKLINKS
+   ======================== */
+
+.backlinks {
+  margin-top: 3rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.backlinks h2 {
+  font-size: 0.95rem;
+  font-weight: 500;
+  opacity: 0.6;
+  margin-bottom: 0.5rem;
+}
+
+.backlinks a {
+  display: block;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  background: var(--bg-subtle);
+
+  text-decoration: none;
+  transition: 0.15s ease;
+}
+
+.backlinks a:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+/* ========================
+   TAGS
+   ======================== */
+
+.tag {
+  background: var(--bg-subtle);
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* ========================
+   SEARCH
+   ======================== */
+
+input[type="search"] {
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 6px 10px;
+  background: var(--bg-main);
+  color: var(--text-primary);
+}
+
+/* ========================
+   RECENT NOTES LAYOUT
+   ======================== */
+
+.recent-notes h3 {
+  font-size: 1.6rem;      /* как у твоих секций */
+  font-weight: 600;
+  color: var(--accent);
+
+  margin-bottom: 1.5rem;
+}
+.recent-li {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  align-items: center;
+  gap: 16px;
+}
+
+/* дата */
+.recent-li .meta {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.45);
+  white-space: nowrap;
+}
+
+/* убираем дефолтные отступы h3 */
+.recent-li .desc h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+/* ссылка */
+.recent-li .desc a {
+  text-decoration: none;
+}
+
+/* теги */
+.recent-li .tags {
+  grid-column: 2;
+  margin-top: 4px;
+}
+/* ========================
+   MISC
+   ======================== */
+
+::selection {
+  background: rgba(122, 162, 247, 0.3);
+}
+
+.content-meta {
+  opacity: 0.5;
+  font-size: 0.8rem;
+}
+
+.note-draft {
+  opacity: 0.7;
+}
+
+.note-evergreen {
+  border-left: 3px solid #22c55e;
+  padding-left: 10px;
+}
+
+/* ========================
+   DARK MODE FALLBACK
+   ======================== */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-main: #1a1b26;
+    --bg-subtle: #222330;
+  }
+}
