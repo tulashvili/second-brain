@@ -7,7 +7,7 @@ export const sharedPageComponents: SharedLayout = {
   header: [],
   afterBody: [
     Component.RecentNotes({ showTags: false }),
-    Component.DesktopOnly(Component.Graph()),
+    // Component.DesktopOnly(Component.Graph()),
   ],
   footer: Component.Footer({
     links: {
@@ -20,10 +20,10 @@ export const sharedPageComponents: SharedLayout = {
 // components for pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
-    Component.ConditionalRender({
-      component: Component.Breadcrumbs(),
-      condition: (page) => page.fileData.slug !== "index",
-    }),
+    // Component.ConditionalRender({
+    //   component: Component.Breadcrumbs(),
+    //   condition: (page) => page.fileData.slug !== "index",
+    // }),
     Component.ConditionalRender({
       component: Component.ArticleTitle(),
       condition: (page) => page.fileData.slug !== "index",
@@ -47,10 +47,10 @@ export const defaultContentPageLayout: PageLayout = {
         // { Component: Component.ReaderMode() },
       ],
     }),
-    Component.ConditionalRender({
-      component: Component.DesktopOnly(Component.Explorer()),
-      condition: (page) => page.fileData.slug !== "index",
-    }),
+    // Component.ConditionalRender({
+    //   component: Component.DesktopOnly(Component.Explorer()),
+    //   condition: (page) => page.fileData.slug !== "index",
+    // }),
     
   ],
   right: [
@@ -74,7 +74,7 @@ export const defaultListPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
       ],
     }),
-    Component.Explorer(),
+    // Component.Explorer(),
   ],
   right: [],
 }
