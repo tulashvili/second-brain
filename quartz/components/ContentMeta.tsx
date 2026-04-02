@@ -15,7 +15,7 @@ interface ContentMetaOptions {
 }
 
 const defaultOptions: ContentMetaOptions = {
-  showReadingTime: true,
+  showReadingTime: false,
   showComma: true,
 }
 
@@ -25,14 +25,36 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
 
   function ContentMetadata({ cfg, fileData, displayClass }: QuartzComponentProps) {
     const text = fileData.text
+    const t = i18n(cfg.locale)
 
     if (text) {
       const segments: (string | JSX.Element)[] = []
 
+      // if (fileData.dates) {
+      //   segments.push(<Date date={getDate(cfg, fileData)!} locale={cfg.locale} />)
+      // }
       if (fileData.dates) {
-        segments.push(<Date date={getDate(cfg, fileData)!} locale={cfg.locale} />)
-      }
+        const created = fileData.dates.created
+        const updated = fileData.dates.modified
 
+        if (created) {
+          segments.push(
+            <span>
+              {t.components.contentMeta.created}{" "}
+              <Date date={created} locale={cfg.locale} />
+            </span>
+          )
+        }
+
+        if (updated && (!created || updated.getTime() !== created.getTime())) {
+          segments.push(
+            <span>
+              {t.components.contentMeta.updated}{" "}
+              <Date date={updated} locale={cfg.locale} />
+            </span>
+          )
+        }
+      }
       // Display reading time if enabled
       if (options.showReadingTime) {
         const { minutes, words: _words } = readingTime(text)

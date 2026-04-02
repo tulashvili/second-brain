@@ -59,6 +59,8 @@ export default {
     },
     contentMeta: {
       readingTime: ({ minutes }) => `время чтения ~${minutes} мин.`,
+      created: "Создано",
+      updated: "Обновлено",
     },
   },
   pages: {
