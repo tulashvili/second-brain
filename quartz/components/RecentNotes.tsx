@@ -35,52 +35,70 @@ export default ((userOpts?: Partial<Options>) => {
     const opts = { ...defaultOptions(cfg), ...userOpts }
     const pages = allFiles.filter(opts.filter).sort(opts.sort)
     const remaining = Math.max(0, pages.length - opts.limit)
+
     return (
       <div class={classNames(displayClass, "recent-notes")}>
         <h3>{opts.title ?? i18n(cfg.locale).components.recentNotes.title}</h3>
+
         <ul class="recent-ul">
           {pages.slice(0, opts.limit).map((page) => {
-            const title = page.frontmatter?.title ?? i18n(cfg.locale).propertyDefaults.title
+            const title =
+              page.frontmatter?.title ??
+              i18n(cfg.locale).propertyDefaults.title
+
             const tags = page.frontmatter?.tags ?? []
 
             return (
               <li class="recent-li">
-                <div class="section">
-                  <div class="desc">
-                    <h3>
-                      <a href={resolveRelative(fileData.slug!, page.slug!)} class="internal">
-                        {title}
-                      </a>
-                    </h3>
-                  </div>
-                  {page.dates && (
-                    <p class="meta">
-                      <Date date={getDate(cfg, page)!} locale={cfg.locale} />
-                    </p>
-                  )}
-                  {opts.showTags && (
-                    <ul class="tags">
-                      {tags.map((tag) => (
-                        <li>
-                          <a
-                            class="internal tag-link"
-                            href={resolveRelative(fileData.slug!, `tags/${tag}` as FullSlug)}
-                          >
-                            {tag}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
+
+                {/* DATE */}
+                {page.dates && (
+                  <time class="meta">
+                    <Date date={getDate(cfg, page)!} locale={cfg.locale} />
+                  </time>
+                )}
+
+                {/* TITLE (ВАЖНО: h3 + internal) */}
+                <div class="desc">
+                  <h3>
+                    <a
+                      href={resolveRelative(fileData.slug!, page.slug!)}
+                      class="internal"
+                    >
+                      {title}
+                    </a>
+                  </h3>
                 </div>
+
+                {/* TAGS */}
+                {opts.showTags && tags.length > 0 && (
+                  <ul class="tags">
+                    {tags.map((tag) => (
+                      <li>
+                        <a
+                          class="internal tag-link"
+                          href={resolveRelative(
+                            fileData.slug!,
+                            `tags/${tag}` as FullSlug
+                          )}
+                        >
+                          {tag}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </li>
             )
           })}
         </ul>
+
         {opts.linkToMore && remaining > 0 && (
           <p>
             <a href={resolveRelative(fileData.slug!, opts.linkToMore)}>
-              {i18n(cfg.locale).components.recentNotes.seeRemainingMore({ remaining })}
+              {i18n(cfg.locale).components.recentNotes.seeRemainingMore({
+                remaining,
+              })}
             </a>
           </p>
         )}
