@@ -3,13 +3,21 @@ import { QuartzComponent, QuartzComponentProps } from "./types"
 import HeaderConstructor from "./Header"
 import BodyConstructor from "./Body"
 import { JSResourceToScriptElement, StaticResources } from "../util/resources"
-import { FullSlug, RelativeURL, joinSegments, normalizeHastElement } from "../util/path"
+import {
+  FullSlug,
+  RelativeURL,
+  joinSegments,
+  normalizeHastElement,
+  resolveRelative,
+  simplifySlug,
+} from "../util/path"
 import { clone } from "../util/clone"
 import { visit } from "unist-util-visit"
 import { Root, Element, ElementContent } from "hast"
 import { GlobalConfiguration } from "../cfg"
 import { i18n } from "../i18n"
 import { styleText } from "util"
+
 
 interface RenderComponents {
   head: QuartzComponent
@@ -212,6 +220,42 @@ function renderTranscludes(
   })
 }
 
+function markBrokenLinks(
+  root: Root,
+  allFiles: QuartzComponentProps["allFiles"],
+  currentSlug: FullSlug
+) {
+  const existingSlugs = new Set(
+    allFiles.map(f => simplifySlug(f.slug!).toLowerCase())
+  )
+
+  visit(root, "element", (node: Element) => {
+    if (node.tagName !== "a") return
+
+    const href = node.properties?.href as string | undefined
+    const className = node.properties?.className as string[] | undefined
+
+    if (!href || !className?.includes("internal")) return
+
+    const dataSlug = node.properties?.["data-slug"] as string | undefined
+
+    if (!dataSlug) return
+    const normalized = simplifySlug(
+      dataSlug as unknown as FullSlug
+    ).toLowerCase()
+
+    if (!existingSlugs.has(normalized)) {
+      // ⚠️ не трогаем сложные блоки (карточки и т.п.)
+      if (node.children?.some(child => child.type === "element")) return
+
+      node.tagName = "span"
+      node.properties = {
+        className: ["broken-link"],
+      }
+    }
+  })
+}
+
 export function renderPage(
   cfg: GlobalConfiguration,
   slug: FullSlug,
@@ -224,6 +268,8 @@ export function renderPage(
   const root = clone(componentData.tree) as Root
   const visited = new Set<FullSlug>([slug])
   renderTranscludes(root, cfg, slug, componentData, visited)
+
+  markBrokenLinks(root, componentData.allFiles, slug)
 
   // set componentData.tree to the edited html that has transclusions rendered
   componentData.tree = root

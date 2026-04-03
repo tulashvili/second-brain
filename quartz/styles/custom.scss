@@ -132,7 +132,14 @@ h1, h2, h3 {
   font-weight: 600;
 }
 
-
+.broken-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-style: dashed;
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.7;
+}
 // p, li {
 //   color: var(--gray);
 // }
