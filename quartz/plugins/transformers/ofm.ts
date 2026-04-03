@@ -216,7 +216,7 @@ export const ObsidianFlavoredMarkdown: QuartzTransformerPlugin<Partial<Options>>
         return (tree: Root, file) => {
           const replacements: [RegExp, string | ReplaceFunction][] = []
           const base = pathToRoot(file.data.slug!)
-
+          const HIDDEN_TAGS = ["public"]
           if (opts.wikilinks) {
             replacements.push([
               wikilinkRegex,
@@ -337,12 +337,17 @@ export const ObsidianFlavoredMarkdown: QuartzTransformerPlugin<Partial<Options>>
             replacements.push([
               tagRegex,
               (_value: string, tag: string) => {
-                // Check if the tag only includes numbers and slashes
                 if (/^[\/\d]+$/.test(tag)) {
                   return false
                 }
 
                 tag = slugTag(tag)
+
+                // 🚫 фильтр скрытых тегов
+                if (HIDDEN_TAGS.includes(tag)) {
+                  return false // не создаем ссылку и не добавляем тег
+                }
+
                 if (file.data.frontmatter) {
                   const noteTags = file.data.frontmatter.tags ?? []
                   file.data.frontmatter.tags = [...new Set([...noteTags, tag])]
@@ -388,6 +393,11 @@ export const ObsidianFlavoredMarkdown: QuartzTransformerPlugin<Partial<Options>>
                 }
               }
             })
+          }
+          if (file.data.frontmatter?.tags) {
+            file.data.frontmatter.tags = file.data.frontmatter.tags.filter(
+              (tag: string) => tag !== "public"
+            )
           }
           mdastFindReplace(tree, replacements)
         }
