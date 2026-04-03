@@ -21,7 +21,9 @@ const defaultOptions = (cfg: GlobalConfiguration): Options => ({
   limit: 3,
   linkToMore: false,
   showTags: true,
-  filter: () => true,
+  // filter: () => true,
+  // hidden file with hidden:true from recent notes
+  filter: (f) => f.frontmatter?.hidden !== true,
   sort: byDateAndAlphabetical(cfg),
 })
 
