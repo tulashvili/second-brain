@@ -6,7 +6,10 @@ export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
   afterBody: [
-    Component.RecentNotes({ showTags: false }),
+    Component.RecentNotes({ 
+      limit: 10,
+      showTags: false,
+    }),
     // Component.DesktopOnly(Component.Graph()),
   ],
   footer: Component.Footer({
