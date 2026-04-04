@@ -12,4 +12,7 @@ save:
 deploy:
 	rsync -avz --delete \
 	-e "ssh -i $(SSH_KEY)" \
-	$(SRC) $(SERVER):$(DEPLOY_PATH)
+	$(SRC) $(DEPLOY_USER)@$(DEPLOY_SERVER):$(DEPLOY_PATH)
+
+	ssh $(ROOT_USER)@$(DEPLOY_SERVER) "sudo nginx -t"
+	ssh $(ROOT_USER)@$(DEPLOY_SERVER) "sudo systemctl reload nginx"
