@@ -10,4 +10,6 @@ save:
 	npx quartz sync --no-pull 
 
 deploy:
-	rsync -avz --delete $(SRC) $(SERVER):$(DEPLOY_PATH)
+	rsync -avz --delete \
+	-e "ssh -i $(SSH_KEY)" \
+	$(SRC) $(SERVER):$(DEPLOY_PATH)
