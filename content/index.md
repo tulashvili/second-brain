@@ -1,7 +1,7 @@
 ---
-title: Добро пожаловать в мой второй мозг
+title:
 date: 2025-02-01T13:09
-updated: 2026-04-03T22:15:55+03:00
+updated: 2026-04-04T08:56:07+03:00
 tags:
   - public
 hidden: true
@@ -21,6 +21,20 @@ hidden: true
     Go, Python, backend, архитектура систем
   </div>
 </a> %%
+
+<a class="card" href="/Психология">
+  <div class="card-title">🧠 Психология</div>
+  <div class="card-desc">
+    Как работает мозг и почему мы принимаем именно такие решения
+  </div>
+</a>
+
+<a class="card" href="/Карьера">
+  <div class="card-title"> 📈 Карьера</div>
+  <div class="card-desc">
+    Карьерные инсайты, рассуждения и история моего роста внутри IT
+  </div>
+</a>
 
 <a class="card" href="/Инфраструктура">
   <div class="card-title">🤖 Инфраструктура</div>
