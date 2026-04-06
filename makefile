@@ -4,7 +4,7 @@ include .env
 export
 
 dev_build:
-	npx quartz build --serve
+	$(PY_ENV)/python3 $(LOCAL_SYNC_DIR) && npx quartz build --serve
 
 save:
 	npx quartz sync --no-pull 

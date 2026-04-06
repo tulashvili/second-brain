@@ -5,14 +5,14 @@ tags:
   - tutorials
   - public
 date: 2025-01-16
-updated: 2026-04-04T23:20:15+03:00
+updated: 2026-04-06T15:11:30+03:00
 url:
   - https://www.baeldung.com/nginx-forward-proxy
   - https://www.digitalocean.com/community/tutorials/how-to-set-up-password-authentication-with-nginx-on-ubuntu-20-04
 ---
 ## [[Nginx]]
 
-### Настройка Proxy
+### Настройка [[Proxy]]
 
 В `/etc/nginx.nginx.conf` или `/etc/nginx/sites-enabled/<name>` добавляем следующий конфиг:
 
