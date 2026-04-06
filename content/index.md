@@ -1,7 +1,7 @@
 ---
-title:
+title: Second Brain
 date: 2025-02-01T13:09
-updated: 2026-04-04T08:56:07+03:00
+updated: 2026-04-05T13:57:25+03:00
 tags:
   - public
 hidden: true
@@ -50,12 +50,12 @@ hidden: true
   </div>
 </a>
 
-%% <a class="card" href="/data">
-  <div class="card-title">📊 Data</div>
+<a class="card" href="/Фильмы,-сериалы,-аниме-и-видеоигры">
+  <div class="card-title">🎦 Фильмы, сериалы, аниме и видеоигры</div>
   <div class="card-desc">
-    Data engineering, аналитика, пайплайны
+    Ревью на просмотренные фильмы, сериалы, аниме и игры, которые впечатлили
   </div>
-</a> %%
+</a>
 
 %% <a class="card" href="/tools">
   <div class="card-title">🛠 Tools</div>

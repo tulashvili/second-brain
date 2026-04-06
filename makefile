@@ -1,16 +1,16 @@
-.PHONY: build deploy save
+.PHONY: dev_build deploy save
 
 include .env
 export
 
-build:
+dev_build:
 	npx quartz build --serve
 
 save:
 	npx quartz sync --no-pull 
 
 deploy:
-	python3 $(LOCAL_SYNC_DIR) && npx quartz build
+	$(PY_ENV)/python3 $(LOCAL_SYNC_DIR) && npx quartz build
 
 	rsync -avz --delete \
 	-e "ssh -i $(SSH_KEY)" \
