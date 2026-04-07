@@ -24,6 +24,8 @@ import Comments from "./Comments"
 import Flex from "./Flex"
 import ConditionalRender from "./ConditionalRender"
 import Sources from "./Sources"
+import AllNotes from "./AllNotes"
+import NavAllNotes from "./NavAllNotes"
 
 export {
   ArticleTitle,
@@ -52,4 +54,6 @@ export {
   Flex,
   ConditionalRender,
   Sources,
+  AllNotes,
+  NavAllNotes
 }

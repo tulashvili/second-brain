@@ -29,8 +29,14 @@ export const defaultContentPageLayout: PageLayout = {
     //   condition: (page) => page.fileData.slug !== "index",
     // }),
     Component.ConditionalRender({
+      component: Component.AllNotes(),
+      condition: (page) => page.fileData.slug === "notes",
+  }),
+    Component.ConditionalRender({
       component: Component.ArticleTitle(),
-      condition: (page) => page.fileData.slug !== "index",
+      condition: (page) => 
+        page.fileData.slug !== "index" &&
+        page.fileData.slug !== "notes",
     }),
     Component.ConditionalRender({
       component: Component.TagList(),
@@ -51,6 +57,7 @@ export const defaultContentPageLayout: PageLayout = {
           Component: Component.Search(),
           grow: true,
         },
+        { Component: Component.NavAllNotes() },
         // { Component: Component.Darkmode() },
         // { Component: Component.ReaderMode() },
       ],
@@ -69,7 +76,7 @@ export const defaultContentPageLayout: PageLayout = {
 
 // components for pages that display lists of pages  (e.g. tags or folders)
 export const defaultListPageLayout: PageLayout = {
-  beforeBody: [/*, Component.ArticleTitle(),*/ Component.ContentMeta()],
+  beforeBody: [/*, Component.ArticleTitle(),*/ Component.ContentMeta(),],
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
