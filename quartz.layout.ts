@@ -16,8 +16,8 @@ export const sharedPageComponents: SharedLayout = {
           Component: Component.Search(),
         },
         {
-          Component: Component.NavAllNotes(),
-        }
+          Component: Component.Darkmode(),
+        },
       ],
     }),
   ],
