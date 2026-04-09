@@ -4,7 +4,23 @@ import * as Component from "./quartz/components"
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
-  header: [],
+  header: [
+    // Component.Navigation(),
+    // Component.Navigation(),
+    Component.Flex({
+      components: [
+        {
+          Component: Component.Navigation(),
+        },
+        {
+          Component: Component.Search(),
+        },
+        {
+          Component: Component.Darkmode(),
+        },
+      ],
+    }),
+  ],
   afterBody: [
     Component.Sources(),
     Component.RecentNotes({ 
@@ -48,26 +64,26 @@ export const defaultContentPageLayout: PageLayout = {
     }),
     
   ],
-  left: [
-    Component.PageTitle(),
-    Component.MobileOnly(Component.Spacer()),
-    Component.Flex({
-      components: [
-        {
-          Component: Component.Search(),
-          grow: true,
-        },
-        { Component: Component.NavAllNotes() },
+  left: [],
+  //   Component.PageTitle(),
+  //   Component.MobileOnly(Component.Spacer()),
+  //   Component.Flex({
+  //     components: [
+  //       {
+  //         Component: Component.Search(),
+  //         grow: true,
+  //       },
+        // { Component: Component.NavAllNotes() },
         // { Component: Component.Darkmode() },
         // { Component: Component.ReaderMode() },
-      ],
-    }),
+    //   ],
+    // }),
     // Component.ConditionalRender({
     //   component: Component.DesktopOnly(Component.Explorer()),
     //   condition: (page) => page.fileData.slug !== "index",
     // }),
     
-  ],
+  // ],
   right: [
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
@@ -77,19 +93,19 @@ export const defaultContentPageLayout: PageLayout = {
 // components for pages that display lists of pages  (e.g. tags or folders)
 export const defaultListPageLayout: PageLayout = {
   beforeBody: [/*, Component.ArticleTitle(),*/ Component.ContentMeta(),],
-  left: [
-    Component.PageTitle(),
-    Component.MobileOnly(Component.Spacer()),
-    Component.Flex({
-      components: [
-        {
-          Component: Component.Search(),
-          grow: true,
-        },
-        { Component: Component.Darkmode() },
-      ],
-    }),
-    // Component.Explorer(),
-  ],
+  left: [],
+  //   Component.PageTitle(),
+  //   Component.MobileOnly(Component.Spacer()),
+  //   Component.Flex({
+  //     components: [
+  //       {
+  //         Component: Component.Search(),
+  //         grow: true,
+  //       },
+  //       { Component: Component.Darkmode() },
+  //     ],
+  //   }),
+  //   // Component.Explorer(),
+  // ],
   right: [],
 }

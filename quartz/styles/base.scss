@@ -274,7 +274,11 @@ a {
 
     & .page-header {
       grid-area: grid-header;
-      margin: $topSpacing 0 0 0;
+      // margin: $topSpacing 0 0 0;
+      margin: $topSpacing auto 0 auto;
+      max-width: 1200px;
+      width: 100%;
+      padding: 0 32px;
       @media all and ($mobile) {
         margin-top: 0;
         padding: 0;
