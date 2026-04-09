@@ -23,7 +23,7 @@ const Navigation: QuartzComponent = (props: QuartzComponentProps) => {
           </a>
 
           <ul class="navigation-list">
-            <li><a href="/notes">🧠 Все заметки</a></li>
+            <li><a href="/brain/notes">🧠 Все заметки</a></li>
             <li><a href="/blog">✏️ Блог</a></li>
             <li><a href="/about">👤 Обо мне</a></li>
           </ul>
