@@ -26,6 +26,7 @@ import ConditionalRender from "./ConditionalRender"
 import Sources from "./Sources"
 import AllNotes from "./AllNotes"
 import NavAllNotes from "./NavAllNotes"
+import Navigation from "./Navigation"
 
 export {
   ArticleTitle,
@@ -55,5 +56,6 @@ export {
   ConditionalRender,
   Sources,
   AllNotes,
-  NavAllNotes
+  NavAllNotes,
+  Navigation,
 }
