@@ -1,82 +1,29 @@
 ---
-title: Second Brain
+slug: index
+title: Home
 date: 2025-02-01T13:09
-updated: 2026-04-07T20:41:57+03:00
+updated: 2026-04-26T21:05:00+03:00
 tags:
   - public
-hidden: true
 comment: Не переименовывать!!!
 ---
-Здесь я собираю знания, идеи и практический опыт — как систему, а не как блог.
-Мой Second Brain разбит на области знаний.
 
-Каждая карточка — это входная точка в тему.
-
-Начни с любой темы из представленных ниже, а затем переходи по ссылкам внутри заметок. Используй **обратные ссылки** для исследования связей
-
-<div class="card-grid">
-
-%% <a class="card" href="/programming">
-  <div class="card-title">💻 Программирование</div>
-  <div class="card-desc">
-    Go, Python, backend, архитектура систем
+<div class="home-hero">
+  <div class="hero-avatar-wrap">
+    <img class="hero-avatar" src="./assets/avatar-placeholder.svg" alt="avatar" />
   </div>
-</a> %%
 
-<a class="card" href="/Психология">
-  <div class="card-title">🧠 Психология</div>
-  <div class="card-desc">
-    Как работает мозг и почему мы принимаем именно такие решения
+  <h1>Омар Тулашвили</h1>
+  <p class="hero-role">Linux-администратор</p>
+
+  <p class="hero-text">
+    Личный сайт для навигации по моему контенту: второй мозг, блог, проекты и страница обо мне.
+  </p>
+
+  <div class="home-actions minimal">
+    <a class="chip-link" href="/brain">🧠 Второй мозг</a>
+    <a class="chip-link" href="/blog">✏️ Блог</a>
+    <a class="chip-link" href="/about">👤 Обо мне</a>
+    <a class="chip-link" href="/projects">🧪 Projects</a>
   </div>
-</a>
-
-<a class="card" href="/Карьера">
-  <div class="card-title"> 📈 Карьера</div>
-  <div class="card-desc">
-    Карьерные инсайты, рассуждения и история моего роста внутри IT
-  </div>
-</a>
-
-<a class="card" href="/Инфраструктура">
-  <div class="card-title">🤖 Инфраструктура</div>
-  <div class="card-desc">
-    Linux, networking, DevOps, серверы
-  </div>
-</a>
-
-<a class="card" href="/Информационная-безопасность">
-  <div class="card-title">🔐 Информационная безопасность</div>
-  <div class="card-desc">
-    Hardening, threat model, infra security
-  </div>
-</a>
-
-<a class="card" href="/Фильмы,-сериалы,-аниме-и-видеоигры">
-  <div class="card-title">🎦 Фильмы, сериалы, аниме и видеоигры</div>
-  <div class="card-desc">
-    Ревью на просмотренные фильмы, сериалы, аниме и игры, которые впечатлили
-  </div>
-</a>
-
-%% <a class="card" href="/tools">
-  <div class="card-title">🛠 Tools</div>
-  <div class="card-desc">
-    CLI, automation, полезные утилиты
-  </div>
-</a> %%
-
-%% <a class="card" href="/second-brain">
-  <div class="card-title">🧠 Second Brain</div>
-  <div class="card-desc">
-    Zettelkasten, Obsidian, знания и мышление
-  </div>
-</a> %%
-
-%% <a class="card" href="/writing">
-  <div class="card-title">✍️ Writing</div>
-  <div class="card-desc">
-    Мысли, заметки, формулировка идей
-  </div>
-</a> %%
-
 </div>

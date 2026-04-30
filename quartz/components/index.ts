@@ -27,6 +27,7 @@ import Sources from "./Sources"
 import AllNotes from "./AllNotes"
 import NavAllNotes from "./NavAllNotes"
 import Navigation from "./Navigation"
+import AreaBacklinkNotes from "./AreaBacklinkNotes"
 
 export {
   ArticleTitle,
@@ -58,4 +59,5 @@ export {
   AllNotes,
   NavAllNotes,
   Navigation,
+  AreaBacklinkNotes,
 }

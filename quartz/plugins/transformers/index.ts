@@ -1,4 +1,5 @@
 export { FrontMatter } from "./frontmatter"
+export { AsciiSlug } from "./asciiSlug"
 export { GitHubFlavoredMarkdown } from "./gfm"
 export { Citations } from "./citations"
 export { CreatedModifiedDate } from "./lastmod"
