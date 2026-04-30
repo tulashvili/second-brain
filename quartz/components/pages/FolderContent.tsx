@@ -1,7 +1,7 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "../types"
 
 import style from "../styles/listPage.scss"
-import { PageList, SortFn } from "../PageList"
+import { PageList, SortFn, byDateAndAlphabetical } from "../PageList"
 import { Root } from "hast"
 import { htmlToJsx } from "../../util/jsx"
 import { i18n } from "../../i18n"
@@ -9,11 +9,9 @@ import { QuartzPluginData } from "../../plugins/vfile"
 import { ComponentChildren } from "preact"
 import { concatenateResources } from "../../util/resources"
 import { trieFromAllFiles } from "../../util/ctx"
+import { resolveRelative, simplifySlug } from "../../util/path"
 
 interface FolderContentOptions {
-  /**
-   * Whether to display number of folders
-   */
   showFolderCount: boolean
   showSubfolders: boolean
   sort?: SortFn
@@ -22,6 +20,23 @@ interface FolderContentOptions {
 const defaultOptions: FolderContentOptions = {
   showFolderCount: true,
   showSubfolders: true,
+}
+
+const normalizeSlugRef = (input: string) => simplifySlug(input).replace(/^\/+/, "")
+const normalizeText = (input: string) =>
+  input
+    .toLowerCase()
+    .replace(/\[\[|\]\]/g, "")
+    .replace(/^brain\//, "")
+    .replace(/[-_]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+
+const linkPointsToArea = (rawLink: string, areaTarget: string) => {
+  const normalizedLink = normalizeSlugRef(rawLink)
+  const normalizedArea = normalizeSlugRef(areaTarget)
+  const areaWithoutBrainPrefix = normalizedArea.replace(/^brain\//, "")
+  return normalizedLink === normalizedArea || normalizedLink === areaWithoutBrainPrefix
 }
 
 export default ((opts?: Partial<FolderContentOptions>) => {
@@ -39,18 +54,15 @@ export default ((opts?: Partial<FolderContentOptions>) => {
     const allPagesInFolder: QuartzPluginData[] =
       folder.children
         .map((node) => {
-          // regular file, proceed
           if (node.data) {
             return node.data
           }
 
           if (node.isFolder && options.showSubfolders) {
-            // folders that dont have data need synthetic files
             const getMostRecentDates = (): QuartzPluginData["dates"] => {
               let maybeDates: QuartzPluginData["dates"] | undefined = undefined
               for (const child of node.children) {
                 if (child.data?.dates) {
-                  // compare all dates and assign to maybeDates if its more recent or its not set
                   if (!maybeDates) {
                     maybeDates = { ...child.data.dates }
                   } else {
@@ -88,19 +100,47 @@ export default ((opts?: Partial<FolderContentOptions>) => {
           }
         })
         .filter((page) => page !== undefined) ?? []
+
     const cssClasses: string[] = fileData.frontmatter?.cssclasses ?? []
     const classes = cssClasses.join(" ")
-    const listProps = {
-      ...props,
-      sort: options.sort,
-      allFiles: allPagesInFolder,
-    }
 
     const content = (
       (tree as Root).children.length === 0
         ? fileData.description
         : htmlToJsx(fileData.filePath!, tree)
     ) as ComponentChildren
+
+    const isBrainFolder = fileData.slug === "brain"
+
+    if (isBrainFolder) {
+      const areaPages = allFiles
+        .filter((f) => {
+          const tags = f.frontmatter?.tags ?? []
+          return f.slug?.startsWith("brain/") && tags.some((tag) => tag.toLowerCase() === "area")
+        })
+        .sort(byDateAndAlphabetical(cfg))
+
+      return (
+        <div class="popover-hint">
+          <article class={classes}>{content}</article>
+          <div class="brain-grid-auto">
+            {areaPages.map((area) => {
+              return (
+                <a class="brain-card internal" href={resolveRelative(fileData.slug!, area.slug!)}>
+                  <h3>{area.frontmatter?.title ?? area.slug}</h3>
+                </a>
+              )
+            })}
+          </div>
+        </div>
+      )
+    }
+
+    const listProps = {
+      ...props,
+      sort: options.sort,
+      allFiles: allPagesInFolder,
+    }
 
     return (
       <div class="popover-hint">

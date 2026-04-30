@@ -16,44 +16,44 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "ru-RU",
-    baseUrl: "https://bitsnbeing.com/brain",
+    baseUrl: "bitsnbeing.com",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Schibsted Grotesk",
-        body: "Source Sans Pro",
+        header: "Poppins",
+        body: "Source Sans 3",
         code: "IBM Plex Mono",
       },
       colors: {
         lightMode: {
-          light: "#f7f7fb",
-          lightgray: "#161f33",
-          gray: "#9ca3af",
-          darkgray: "#374151",
-          dark: "#111827",
+          light: "#f7f4ec",
+          lightgray: "#e0d9c5",
+          gray: "#6f6a5f",
+          darkgray: "#2f3138",
+          dark: "#191a1f",
 
-          secondary: "#3b82f6",
-          tertiary: "#6366f1",
+          secondary: "#2e7a48",
+          tertiary: "#2967af",
 
-          highlight: "rgba(59, 130, 246, 0.1)",
-          textHighlight: "#fde68a",
+          highlight: "rgba(46, 122, 72, 0.14)",
+          textHighlight: "#e4efd5",
         },
 
         darkMode: {
-          light: "#1a1b26",
-          lightgray: "#2a2d3e",
-          gray: "#646464",
-          darkgray: "#d4d4d4",
-          dark: "#ebebec",
+          light: "#191c22",
+          lightgray: "#2b313b",
+          gray: "#a8aeb9",
+          darkgray: "#eceae2",
+          dark: "#f9f7ef",
 
-          secondary: "#7aa2f7",
-          tertiary: "#84a59d",
+          secondary: "#8bc3a0",
+          tertiary: "#7fb8ff",
 
-          highlight: "rgba(122, 162, 247, 0.15)",
-          textHighlight: "#b3aa0288",
+          highlight: "rgba(139, 195, 160, 0.18)",
+          textHighlight: "#60773a88",
         },
       },
     },
@@ -61,6 +61,7 @@ const config: QuartzConfig = {
   plugins: {
     transformers: [
       Plugin.FrontMatter(),
+      Plugin.AsciiSlug(),
       Plugin.CreatedModifiedDate({
         priority: ["frontmatter", "git", "filesystem"],
       }),
@@ -75,6 +76,7 @@ const config: QuartzConfig = {
       Plugin.GitHubFlavoredMarkdown(),
       Plugin.TableOfContents(),
       Plugin.CrawlLinks({ markdownLinkResolution: "shortest" }),
+      Plugin.SemanticDownLinks(),
       Plugin.Description(),
       Plugin.Latex({ renderEngine: "katex" }),
     ],
@@ -83,6 +85,7 @@ const config: QuartzConfig = {
       Plugin.AliasRedirects(),
       Plugin.ComponentResources(),
       Plugin.ContentPage(),
+      Plugin.PublishBlogPages(),
       Plugin.FolderPage(),
       Plugin.TagPage(),
       Plugin.ContentIndex({

@@ -7,7 +7,11 @@ import { classNames } from "../util/lang"
 
 const Darkmode: QuartzComponent = ({ displayClass, cfg }: QuartzComponentProps) => {
   return (
-    <button class={classNames(displayClass, "darkmode")}>
+    <button
+      class={classNames(displayClass, "darkmode")}
+      title="Режим темы: система / светлый / тёмный"
+      aria-label="Переключить режим темы"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -37,6 +41,15 @@ const Darkmode: QuartzComponent = ({ displayClass, cfg }: QuartzComponentProps) 
       >
         <title>{i18n(cfg.locale).components.themeToggle.lightMode}</title>
         <path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path>
+      </svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="systemIcon"
+        viewBox="0 0 24 24"
+        aria-label="Системная тема"
+      >
+        <title>Системная тема</title>
+        <path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-4v2h2a1 1 0 1 1 0 2H8a1 1 0 1 1 0-2h2v-2H6a2 2 0 0 1-2-2V5Zm2 0v9h12V5H6Z"></path>
       </svg>
     </button>
   )

@@ -1,13 +1,15 @@
 ---
-type:
-state:
-area:
-pattern:
-url:
-updated: 2026-04-07T20:41:40+03:00
+slug: notes
+title: Notes
+updated: 2026-04-26T20:30:00+03:00
 tags:
   - public
-date: 2026-04-07T19:59:12+03:00
-hidden: true
+date: 2026-04-26T20:30:00+03:00
 comment: Не переименовывать!!!
 ---
+
+# Notes
+
+Полный архив заметок и материалов из моего second brain.
+
+Если предпочитаешь более кураторский формат, перейди в [[blog|Blog]].

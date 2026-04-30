@@ -18,7 +18,6 @@ import { GlobalConfiguration } from "../cfg"
 import { i18n } from "../i18n"
 import { styleText } from "util"
 
-
 interface RenderComponents {
   head: QuartzComponent
   header: QuartzComponent[]
@@ -223,11 +222,9 @@ function renderTranscludes(
 function markBrokenLinks(
   root: Root,
   allFiles: QuartzComponentProps["allFiles"],
-  currentSlug: FullSlug
+  currentSlug: FullSlug,
 ) {
-  const existingSlugs = new Set(
-    allFiles.map(f => simplifySlug(f.slug!).toLowerCase())
-  )
+  const existingSlugs = new Set(allFiles.map((f) => simplifySlug(f.slug!).toLowerCase()))
 
   visit(root, "element", (node: Element) => {
     if (node.tagName !== "a") return
@@ -240,13 +237,11 @@ function markBrokenLinks(
     const dataSlug = node.properties?.["data-slug"] as string | undefined
 
     if (!dataSlug) return
-    const normalized = simplifySlug(
-      dataSlug as unknown as FullSlug
-    ).toLowerCase()
+    const normalized = simplifySlug(dataSlug as unknown as FullSlug).toLowerCase()
 
     if (!existingSlugs.has(normalized)) {
       // ⚠️ не трогаем сложные блоки (карточки и т.п.)
-      if (node.children?.some(child => child.type === "element")) return
+      if (node.children?.some((child) => child.type === "element")) return
 
       node.tagName = "span"
       node.properties = {
@@ -305,55 +300,64 @@ export function renderPage(
 
   const lang = componentData.fileData.frontmatter?.lang ?? cfg.locale?.split("-")[0] ?? "en"
   const direction = i18n(cfg.locale).direction ?? "ltr"
+  const tags = componentData.fileData.frontmatter?.tags ?? []
+  const isAreaPage = tags.some((tag) => tag.toLowerCase() === "area")
+  const isBrainNotePage = slug.startsWith("brain/")
+  const disablePopovers = slug === "blog" || tags.some((tag) => tag.toLowerCase() === "publish")
   const doc = (
-  <html lang={lang} dir={direction}>
-    <Head {...componentData} />
+    <html lang={lang} dir={direction}>
+      <Head {...componentData} />
 
-    <body data-slug={slug}>
-      <div id="quartz-root" class="page">
-        <Body {...componentData}>
-          {LeftComponent}
+      <body
+        data-slug={slug}
+        data-disable-popovers={disablePopovers ? "true" : "false"}
+        data-is-area={isAreaPage ? "true" : "false"}
+        data-is-brain-note={isBrainNotePage ? "true" : "false"}
+      >
+        <div id="quartz-root" class="page">
+          <Body {...componentData}>
+            {LeftComponent}
 
-          {/* 🔥 FULL-WIDTH HEADER */}
-        <div style="page-header">
-          {header.map((HeaderComponent) => (
-            <HeaderComponent {...componentData} />
-          ))}
-        </div>
+            {/* 🔥 FULL-WIDTH HEADER */}
+            <div class="page-header">
+              {header.map((HeaderComponent) => (
+                <HeaderComponent {...componentData} />
+              ))}
+            </div>
 
-          {/* 🔒 ОГРАНИЧЕННЫЙ КОНТЕНТ */}
-          <div class="center">
-            {/* <div class="page-header"> */}
-            <div class="popover-hint">
+            {/* 🔒 ОГРАНИЧЕННЫЙ КОНТЕНТ */}
+            <div class="center">
+              {/* <div class="page-header"> */}
+              <div class="popover-hint">
                 {beforeBody.map((BodyComponent) => (
                   <BodyComponent {...componentData} />
                 ))}
               </div>
-            {/* </div> */}
+              {/* </div> */}
 
-            <Content {...componentData} />
+              <Content {...componentData} />
 
-            <hr />
+              <hr />
 
-            <div class="page-footer">
-              {afterBody.map((BodyComponent) => (
-                <BodyComponent {...componentData} />
-              ))}
+              <div class="page-footer">
+                {afterBody.map((BodyComponent) => (
+                  <BodyComponent {...componentData} />
+                ))}
+              </div>
             </div>
-          </div>
 
-          {RightComponent}
+            {RightComponent}
 
-          <Footer {...componentData} />
-        </Body>
-      </div>
-    </body>
+            <Footer {...componentData} />
+          </Body>
+        </div>
+      </body>
 
-    {pageResources.js
-      .filter((resource) => resource.loadTime === "afterDOMReady")
-      .map((res) => JSResourceToScriptElement(res, true))}
-  </html>
-)
+      {pageResources.js
+        .filter((resource) => resource.loadTime === "afterDOMReady")
+        .map((res) => JSResourceToScriptElement(res, true))}
+    </html>
+  )
 
   return "<!DOCTYPE html>\n" + render(doc)
 }

@@ -121,6 +121,10 @@ function clearActivePopover() {
 }
 
 document.addEventListener("nav", () => {
+  if (document.body.dataset.disablePopovers === "true") {
+    return
+  }
+
   const links = [...document.querySelectorAll("a.internal")] as HTMLAnchorElement[]
   for (const link of links) {
     link.addEventListener("mouseenter", mouseEnterHandler)

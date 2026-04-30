@@ -68,7 +68,15 @@ export const PageList: QuartzComponent = ({ cfg, fileData, allFiles, limit, sort
     <ul class="section-ul">
       {list.map((page) => {
         const title = page.frontmatter?.title
-        const tags = page.frontmatter?.tags ?? []
+        const tags = (page.frontmatter?.tags ?? []).filter((tag) => tag.toLowerCase() !== "publish")
+        const isBlogPage = fileData.slug === "blog"
+        const hasPublishTag = (page.frontmatter?.tags ?? []).some(
+          (tag) => tag.toLowerCase() === "publish",
+        )
+        const href =
+          isBlogPage && hasPublishTag && page.slug?.startsWith("brain/")
+            ? resolveRelative(fileData.slug!, `blog/${page.slug.slice("brain/".length)}` as FullSlug)
+            : resolveRelative(fileData.slug!, page.slug!)
 
         return (
           <li class="section-li">
@@ -78,7 +86,7 @@ export const PageList: QuartzComponent = ({ cfg, fileData, allFiles, limit, sort
               </p>
               <div class="desc">
                 <h3>
-                  <a href={resolveRelative(fileData.slug!, page.slug!)} class="internal">
+                  <a href={href} class="internal">
                     {title}
                   </a>
                 </h3>

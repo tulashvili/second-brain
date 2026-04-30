@@ -1,83 +1,136 @@
-/* 🔥 HEADER (Flex контейнер Quartz) */
-header {
+@use "../../styles/variables.scss" as *;
+
+.top-navigation {
   width: 100%;
+  padding: 1rem 0 0;
 }
 
-/* 🔥 Navigation как один из flex-элементов */
-.navigation {
-  width: 100%;
-  position: sticky;
+.top-navigation.is-fixed {
+  position: fixed;
   top: 0;
-  z-index: 1000;
-
-  background: transparent;
+  left: 0;
+  right: 0;
 }
 
-/* 🔥 контейнер */
-.navigation .container {
-  max-width: 1100px;
+.top-navigation-inner {
+  max-width: 1160px;
   margin: 0 auto;
-  padding: 12px 20px;
-
+  padding: 0.8rem 1.1rem;
+  border: 1px solid var(--site-border);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--panel-bg) 90%, #ffffff 10%);
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 1rem;
+  box-shadow: var(--shadow-soft);
 }
 
-/* 🔹 ЛЕВАЯ ЧАСТЬ */
-.nav-left {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-/* 🔹 ПРАВАЯ ЧАСТЬ */
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-
-  margin-left: auto;
-}
-
-/* 🔥 фикс search */
-.nav-right .search {
-  display: block !important;
-}
-
-/* 🔹 ЛОГО */
-.navigation-title {
-  font-size: 36px;
-  font-weight: 600;
-  letter-spacing: -0.5px;
-  color: var(--secondary);
-
+.site-brand {
+  font-family: var(--headerFont);
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--dark);
   text-decoration: none;
-  line-height: 1;
+  white-space: nowrap;
 }
 
-/* 🔹 МЕНЮ */
-.navigation-list {
-  display: flex;
-  gap: 20px;
-
-  list-style: none;
-  margin: 0;
+.top-navigation-list {
+  margin: 0 0 0 auto;
   padding: 0;
-}
-
-.navigation-list li {
   list-style: none;
+  display: flex;
+  gap: 0.35rem;
+  align-items: center;
 }
 
-/* 🔹 ССЫЛКИ */
-.navigation-list a {
+.top-navigation-list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.72rem;
+  border-radius: 999px;
+  font-size: 0.98rem;
+  color: var(--darkgray);
+  font-weight: 700;
   text-decoration: none;
-  color: inherit;
-  opacity: 0.8;
-  transition: opacity 0.2s ease;
 }
 
-.navigation-list a:hover {
-  opacity: 1;
+.top-navigation-list a:hover {
+  background: color-mix(in srgb, var(--lightgray) 62%, white 38%);
+}
+
+.top-navigation-list a.active {
+  color: var(--secondary);
+  background: color-mix(in srgb, var(--secondary) 15%, var(--light) 85%);
+}
+
+.nav-separator {
+  color: var(--gray);
+  padding: 0 0.2rem;
+}
+
+.top-navigation-theme {
+  margin-left: 0.15rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-shrink: 0;
+}
+
+.top-navigation-theme .search {
+  max-width: none;
+  width: auto;
+}
+
+.top-navigation-theme .search > .search-button {
+  width: auto;
+  padding-right: 0.75rem;
+}
+
+.top-navigation-theme .darkmode {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--site-border);
+  border-radius: 9px;
+  background: var(--panel-bg);
+}
+
+.top-navigation-theme .darkmode svg {
+  left: 6px;
+  top: 6px;
+}
+
+@media all and ($mobile) {
+  .top-navigation {
+    padding-top: 0.65rem;
+  }
+
+  .top-navigation-inner {
+    padding: 0.65rem 0.7rem;
+    border-radius: 14px;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+  }
+
+  .site-brand {
+    font-size: 1.08rem;
+  }
+
+  .top-navigation-list {
+    margin-left: 0;
+    order: 3;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .top-navigation-list a {
+    font-size: 0.88rem;
+    padding: 0.42rem 0.6rem;
+  }
+
+  .top-navigation-theme {
+    margin-left: auto;
+  }
 }
