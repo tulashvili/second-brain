@@ -68,6 +68,10 @@ export const defaultContentPageLayout: PageLayout = {
   ],
   afterBody: [
     Component.ConditionalRender({
+      component: Component.SemanticGraph(),
+      condition: (page) => page.fileData.slug === "graph" || page.fileData.slug === "semantic_graph",
+    }),
+    Component.ConditionalRender({
       component: Component.AllNotes(),
       condition: (page) => page.fileData.slug === "blog",
     }),

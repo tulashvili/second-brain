@@ -34,6 +34,25 @@ a.internal.tag-link {
   padding: 0 1rem;
 }
 
+.page > #quartz-body > .page-header {
+  margin-top: 0 !important;
+  max-width: 1160px;
+  padding: 0 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.page > #quartz-body > .page-header:has(.top-navigation.is-fixed) {
+  padding-top: 5.6rem;
+}
+
+@media all and (max-width: 800px) {
+  .page > #quartz-body > .page-header:has(.top-navigation.is-fixed) {
+    padding-top: 7.2rem;
+  }
+}
+
 .page > #quartz-body {
   grid-template-columns: minmax(0, 1fr) !important;
   grid-template-areas:
@@ -78,7 +97,7 @@ body[data-is-brain-note="true"][data-is-area="false"] .page > #quartz-body > .si
   max-width: 940px;
   width: 100%;
   margin: 0 auto;
-  padding: 1rem 0 3rem;
+  padding: 0.4rem 0 3rem;
 }
 
 article {

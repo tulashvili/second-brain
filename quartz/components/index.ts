@@ -28,6 +28,7 @@ import AllNotes from "./AllNotes"
 import NavAllNotes from "./NavAllNotes"
 import Navigation from "./Navigation"
 import AreaBacklinkNotes from "./AreaBacklinkNotes"
+import SemanticGraph from "./SemanticGraph"
 
 export {
   ArticleTitle,
@@ -60,4 +61,5 @@ export {
   NavAllNotes,
   Navigation,
   AreaBacklinkNotes,
+  SemanticGraph,
 }

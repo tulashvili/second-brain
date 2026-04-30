@@ -1,0 +1,39 @@
+.semantic-graph {
+  margin-top: 1rem;
+}
+
+.semantic-intro {
+  color: var(--gray);
+  margin: 0 0 1rem;
+}
+
+.semantic-tree,
+.semantic-tree ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.semantic-tree li {
+  margin: 0.35rem 0;
+}
+
+.semantic-tree summary {
+  cursor: pointer;
+}
+
+.semantic-tree a {
+  text-decoration: none;
+  color: var(--darkgray);
+}
+
+.semantic-tree a:hover {
+  color: var(--secondary);
+  text-decoration: underline;
+}
+
+.semantic-count,
+.semantic-cycle {
+  color: var(--gray);
+  font-size: 0.9rem;
+}

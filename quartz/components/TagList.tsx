@@ -3,8 +3,8 @@ import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } fro
 import { classNames } from "../util/lang"
 
 const TagList: QuartzComponent = ({ fileData, displayClass }: QuartzComponentProps) => {
-  const tags = fileData.frontmatter?.tags
-  if (tags && tags.length > 0) {
+  const tags = (fileData.frontmatter?.tags ?? []).filter((tag) => tag.toLowerCase() !== "publish")
+  if (tags.length > 0) {
     return (
       <ul class={classNames(displayClass, "tags")}>
         {tags.map((tag) => {

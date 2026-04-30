@@ -7,6 +7,7 @@ tags:
   - public
 cssclasses:
   - blog-page
+enableToc: false
 ---
 
 # Второй мозг

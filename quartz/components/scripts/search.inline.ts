@@ -16,6 +16,13 @@ interface Item {
 type SearchType = "basic" | "tags"
 let searchType: SearchType = "basic"
 let currentSearchTerm: string = ""
+const canonicalSearchSlug = (slug: FullSlug, tags: string[]): FullSlug => {
+  const isPublish = tags.some((tag) => tag.toLowerCase() === "publish")
+  if (isPublish && slug.startsWith("brain/")) {
+    return `blog/${slug.slice("brain/".length)}` as FullSlug
+  }
+  return slug
+}
 const encoder = (str: string): string[] => {
   const tokens: string[] = []
   let bufferStart = -1
@@ -308,13 +315,17 @@ async function setupSearch(searchElement: Element, currentSlug: FullSlug, data: 
   }
 
   const formatForDisplay = (term: string, id: number) => {
-    const slug = idDataMap[id]
+    const sourceSlug = idDataMap[id]
+    const slug = canonicalSearchSlug(sourceSlug, data[sourceSlug].tags ?? [])
     return {
       id,
       slug,
-      title: searchType === "tags" ? data[slug].title : highlight(term, data[slug].title ?? ""),
-      content: highlight(term, data[slug].content ?? "", true),
-      tags: highlightTags(term.substring(1), data[slug].tags),
+      title:
+        searchType === "tags"
+          ? data[sourceSlug].title
+          : highlight(term, data[sourceSlug].title ?? ""),
+      content: highlight(term, data[sourceSlug].content ?? "", true),
+      tags: highlightTags(term.substring(1), data[sourceSlug].tags),
     }
   }
 

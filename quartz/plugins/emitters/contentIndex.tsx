@@ -39,6 +39,16 @@ const defaultOptions: Options = {
   includeEmptyFiles: true,
 }
 
+const hasPublishTag = (tags?: string[]) =>
+  Boolean(tags?.some((tag) => tag.toLowerCase() === "publish"))
+
+const canonicalSlugForIndex = (slug: FullSlug, tags?: string[]): FullSlug => {
+  if (hasPublishTag(tags) && slug.startsWith("brain/")) {
+    return `blog/${slug.slice("brain/".length)}` as FullSlug
+  }
+  return slug
+}
+
 function generateSiteMap(cfg: GlobalConfiguration, idx: ContentIndexMap): string {
   const base = cfg.baseUrl ?? ""
   const createURLEntry = (slug: SimpleSlug, content: ContentDetails): string => `<url>
@@ -100,11 +110,13 @@ export const ContentIndex: QuartzEmitterPlugin<Partial<Options>> = (opts) => {
       const cfg = ctx.cfg.configuration
       const linkIndex: ContentIndexMap = new Map()
       for (const [tree, file] of content) {
-        const slug = file.data.slug!
+        const sourceSlug = file.data.slug!
         // hidden file with hidden:true from search index
         if (file.data.frontmatter?.hidden === true) {
           continue
         }
+        const tags = file.data.frontmatter?.tags as string[] | undefined
+        const slug = canonicalSlugForIndex(sourceSlug, tags)
         const date = getDate(ctx.cfg.configuration, file.data) ?? new Date()
         if (opts?.includeEmptyFiles || (file.data.text && file.data.text !== "")) {
           linkIndex.set(slug, {
@@ -112,7 +124,7 @@ export const ContentIndex: QuartzEmitterPlugin<Partial<Options>> = (opts) => {
             filePath: file.data.relativePath!,
             title: file.data.frontmatter?.title!,
             links: file.data.links ?? [],
-            tags: file.data.frontmatter?.tags ?? [],
+            tags: tags ?? [],
             content: file.data.text ?? "",
             richContent: opts?.rssFullHtml
               ? escapeHTML(toHtml(tree as Root, { allowDangerousHtml: true }))

@@ -1,18 +1,24 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
+import { concatenateResources } from "../util/resources"
 
 import style from "./styles/navmenu.scss"
 import Darkmode from "./Darkmode"
+import Search from "./Search"
+
+const DarkmodeComponent = Darkmode()
+const SearchComponent = Search({ enablePreview: true })
 
 const Navigation: QuartzComponent = (props: QuartzComponentProps) => {
+  // Quick toggle: set to false to return to default sticky behavior.
+  const pinToViewport = false
   const slug = props.fileData.slug ?? ""
-  const DarkmodeComponent = Darkmode()
   const isBrainActive =
     slug === "brain" ||
     slug === "notes" ||
     (!["index", "blog", "about", "projects"].includes(slug) && !slug.startsWith("tags/"))
 
   return (
-    <nav class="top-navigation">
+    <nav class={`top-navigation ${pinToViewport ? "is-fixed" : ""}`}>
       <div class="top-navigation-inner">
         <a href="/" class="site-brand">
           BITSNBEING
@@ -45,6 +51,7 @@ const Navigation: QuartzComponent = (props: QuartzComponentProps) => {
         </ul>
 
         <div class="top-navigation-theme">
+          <SearchComponent {...props} />
           <DarkmodeComponent {...props} />
         </div>
       </div>
@@ -52,6 +59,8 @@ const Navigation: QuartzComponent = (props: QuartzComponentProps) => {
   )
 }
 
-Navigation.css = style
+Navigation.css = concatenateResources(style, DarkmodeComponent.css, SearchComponent.css)
+Navigation.beforeDOMLoaded = concatenateResources(DarkmodeComponent.beforeDOMLoaded)
+Navigation.afterDOMLoaded = concatenateResources(SearchComponent.afterDOMLoaded)
 
 export default (() => Navigation) satisfies QuartzComponentConstructor
