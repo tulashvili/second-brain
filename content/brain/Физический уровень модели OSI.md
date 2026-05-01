@@ -1,5 +1,4 @@
 ---
-slug: brain/fizicheskiy-uroven-modeli-osi
 date: 2024-01-06T00:18
 updated: 2026-04-05T14:04:46+03:00
 tags:

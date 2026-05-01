@@ -1,5 +1,4 @@
 ---
-slug: brain/mafia-definitive-edition
 title:
 tags:
   - public

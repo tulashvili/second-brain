@@ -2,10 +2,11 @@
 slug: index
 title: Home
 date: 2025-02-01T13:09
-updated: 2026-04-26T21:05:00+03:00
+updated: 2026-05-01T09:26:22+03:00
 tags:
   - public
 comment: Не переименовывать!!!
+page: true
 ---
 
 <div class="home-hero">

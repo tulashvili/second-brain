@@ -1,5 +1,4 @@
 ---
-slug: brain/attack-shark-x11
 title: Недорогая китайская мышка, которая реально зашла - Attack shark x11
 tags:
   - public

@@ -12,10 +12,18 @@ const Navigation: QuartzComponent = (props: QuartzComponentProps) => {
   // Quick toggle: set to false to return to default sticky behavior.
   const pinToViewport = false
   const slug = props.fileData.slug ?? ""
+  const isBlogActive = slug === "blog" || slug.startsWith("blog/")
   const isBrainActive =
     slug === "brain" ||
     slug === "notes" ||
-    (!["index", "blog", "about", "projects"].includes(slug) && !slug.startsWith("tags/"))
+    (![
+      "index",
+      "blog",
+      "about",
+      "projects",
+    ].includes(slug) &&
+      !slug.startsWith("tags/") &&
+      !slug.startsWith("blog/"))
 
   return (
     <nav class={`top-navigation ${pinToViewport ? "is-fixed" : ""}`}>
@@ -26,7 +34,7 @@ const Navigation: QuartzComponent = (props: QuartzComponentProps) => {
 
         <ul class="top-navigation-list">
           <li>
-            <a class={slug === "blog" ? "active" : ""} href="/blog">
+            <a class={isBlogActive ? "active" : ""} href="/blog">
               ✏️ Блог
             </a>
           </li>

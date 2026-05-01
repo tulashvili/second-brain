@@ -1,5 +1,4 @@
 ---
-slug: brain/slow-attack
 type:
 state:
 area:

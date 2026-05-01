@@ -1,5 +1,4 @@
 ---
-slug: brain/tsepochka-dostavki-logov-s-ispolzovaniem-elastic-stack
 type:
 state:
 area:

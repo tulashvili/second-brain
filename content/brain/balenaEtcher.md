@@ -1,5 +1,4 @@
 ---
-slug: brain/balenaetcher
 type:
 state:
 area:
