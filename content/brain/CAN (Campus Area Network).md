@@ -1,5 +1,4 @@
 ---
-slug: brain/can-campus-area-network
 type:
 state:
 area:

@@ -23,6 +23,20 @@ a.internal {
   line-height: inherit;
 }
 
+article a.internal.broken {
+  color: color-mix(in srgb, var(--gray) 88%, var(--darkgray) 12%) !important;
+  opacity: 1 !important;
+  text-decoration-line: underline !important;
+  text-decoration-style: dotted !important;
+  text-decoration-thickness: 0.11em !important;
+  text-underline-offset: 0.14em !important;
+  text-decoration-color: color-mix(in srgb, var(--gray) 92%, var(--lightgray) 8%) !important;
+}
+
+article a.internal.broken:hover {
+  color: var(--gray) !important;
+}
+
 a.internal.tag-link {
   background: color-mix(in srgb, var(--secondary) 12%, transparent);
   padding: 0.08rem 0.42rem;

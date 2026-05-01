@@ -42,6 +42,7 @@ export const CrawlLinks: QuartzTransformerPlugin<Partial<Options>> = (userOpts) 
           return (tree: Root, file) => {
             const curSlug = simplifySlug(file.data.slug!)
             const outgoing: Set<SimpleSlug> = new Set()
+            const allSimpleSlugs = new Set(ctx.allSlugs.map((slug) => simplifySlug(slug)))
 
             const transformOptions: TransformOptions = {
               strategy: opts.markdownLinkResolution,
@@ -123,6 +124,17 @@ export const CrawlLinks: QuartzTransformerPlugin<Partial<Options>> = (userOpts) 
                   const simple = simplifySlug(full)
                   outgoing.add(simple)
                   node.properties["data-slug"] = full
+
+                  // Mark unresolved internal links after link resolution.
+                  // This avoids false positives with `shortest` wikilink resolution.
+                  if (!allSimpleSlugs.has(simple)) {
+                    const classNames = (node.properties.className ?? []) as string[]
+                    if (!classNames.includes("broken")) {
+                      classNames.push("broken")
+                    }
+                    node.properties.className = classNames
+                    delete node.properties.href
+                  }
                 }
 
                 // rewrite link internals if prettylinks is on

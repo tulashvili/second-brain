@@ -29,6 +29,8 @@ interface RenderComponents {
   footer: QuartzComponent
 }
 
+const normalizeTag = (value: unknown) => String(value ?? "").toLowerCase().replace(/^#/, "").trim()
+
 const headerRegex = new RegExp(/h[1-6]/)
 export function pageResources(
   baseDir: FullSlug | RelativeURL,
@@ -300,10 +302,11 @@ export function renderPage(
 
   const lang = componentData.fileData.frontmatter?.lang ?? cfg.locale?.split("-")[0] ?? "en"
   const direction = i18n(cfg.locale).direction ?? "ltr"
-  const tags = componentData.fileData.frontmatter?.tags ?? []
-  const isAreaPage = tags.some((tag) => tag.toLowerCase() === "area")
+  const rawTags = componentData.fileData.frontmatter?.tags
+  const tags = Array.isArray(rawTags) ? rawTags : typeof rawTags === "string" ? [rawTags] : []
+  const isAreaPage = tags.some((tag) => normalizeTag(tag) === "area")
   const isBrainNotePage = slug.startsWith("brain/")
-  const disablePopovers = slug === "blog" || tags.some((tag) => tag.toLowerCase() === "publish")
+  const disablePopovers = slug === "blog" || tags.some((tag) => normalizeTag(tag) === "publish")
   const doc = (
     <html lang={lang} dir={direction}>
       <Head {...componentData} />

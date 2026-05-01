@@ -2,11 +2,12 @@
 slug: blog
 title: Блог
 date: 2026-04-26T20:30:00+03:00
-updated: 2026-04-26T22:00:00+03:00
+updated: 2026-05-01T09:26:02+03:00
 tags:
   - public
 cssclasses:
   - blog-page
+page: true
 ---
 
 # Блог

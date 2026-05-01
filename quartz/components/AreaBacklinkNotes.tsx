@@ -2,6 +2,7 @@ import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } fro
 import { Date, getDate } from "./Date"
 import { resolveRelative, simplifySlug } from "../util/path"
 import { byDateAndAlphabetical } from "./PageList"
+const normalizeTag = (value: unknown) => String(value ?? "").toLowerCase().replace(/^#/, "").trim()
 
 const normalizeSlugRef = (input: string) => simplifySlug(input).replace(/^\/+/, "")
 const normalizeText = (input: string) =>
@@ -45,8 +46,9 @@ const frontmatterAreaPointsToArea = (frontmatterArea: unknown, areaTitle: string
 
 const AreaBacklinkNotes: QuartzComponent = ({ allFiles, fileData, cfg }: QuartzComponentProps) => {
   const slug = fileData.slug
-  const tags = fileData.frontmatter?.tags ?? []
-  const isArea = tags.some((tag) => tag.toLowerCase() === "area")
+  const rawTags = fileData.frontmatter?.tags
+  const tags = Array.isArray(rawTags) ? rawTags : typeof rawTags === "string" ? [rawTags] : []
+  const isArea = tags.some((tag) => normalizeTag(tag) === "area")
 
   if (!slug || !slug.startsWith("brain/") || !isArea) {
     return null
@@ -58,8 +60,13 @@ const AreaBacklinkNotes: QuartzComponent = ({ allFiles, fileData, cfg }: QuartzC
     .filter((f) => {
       const hidden = f.frontmatter?.hidden === true || f.frontmatter?.hidden === "true"
       if (hidden || !f.slug?.startsWith("brain/") || f.slug === slug) return false
-      const fileTags = f.frontmatter?.tags ?? []
-      if (fileTags.some((tag) => tag.toLowerCase() === "area")) return false
+      const rawFileTags = f.frontmatter?.tags
+      const fileTags = Array.isArray(rawFileTags)
+        ? rawFileTags
+        : typeof rawFileTags === "string"
+          ? [rawFileTags]
+          : []
+      if (fileTags.some((tag) => normalizeTag(tag) === "area")) return false
       const hasWikiLinkBacklink = Boolean(f.links?.some((link) => linkPointsToArea(link, target)))
       const hasFrontmatterAreaBacklink = frontmatterAreaPointsToArea(
         (f.frontmatter as Record<string, unknown> | undefined)?.area,

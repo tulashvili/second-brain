@@ -22,6 +22,17 @@ const defaultOptions: FolderContentOptions = {
   showSubfolders: true,
 }
 
+const normalizeTag = (value: unknown) => String(value ?? "").toLowerCase().replace(/^#/, "").trim()
+const isAreaPageByFrontmatter = (frontmatter: QuartzPluginData["frontmatter"] | undefined) => {
+  const rawTags = frontmatter?.tags
+  const tags = Array.isArray(rawTags) ? rawTags : typeof rawTags === "string" ? [rawTags] : []
+  const hasAreaTag = tags.some((tag) => normalizeTag(tag) === "area")
+  const rawArea = (frontmatter as Record<string, unknown> | undefined)?.area
+  const areaValues = Array.isArray(rawArea) ? rawArea : typeof rawArea === "string" ? [rawArea] : []
+  const hasAreaField = areaValues.some((value) => normalizeTag(value) === "area")
+  return hasAreaTag || hasAreaField
+}
+
 const normalizeSlugRef = (input: string) => simplifySlug(input).replace(/^\/+/, "")
 const normalizeText = (input: string) =>
   input
@@ -115,8 +126,7 @@ export default ((opts?: Partial<FolderContentOptions>) => {
     if (isBrainFolder) {
       const areaPages = allFiles
         .filter((f) => {
-          const tags = f.frontmatter?.tags ?? []
-          return f.slug?.startsWith("brain/") && tags.some((tag) => tag.toLowerCase() === "area")
+          return f.slug?.startsWith("brain/") && isAreaPageByFrontmatter(f.frontmatter)
         })
         .sort(byDateAndAlphabetical(cfg))
 

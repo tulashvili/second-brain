@@ -1,5 +1,4 @@
 ---
-slug: brain/minio-client
 type:
 state:
 area:

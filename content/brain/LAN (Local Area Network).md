@@ -1,5 +1,4 @@
 ---
-slug: brain/lan-local-area-network
 date: 2024-01-06T00:20
 updated: 2026-04-05T13:48:40+03:00
 tags:

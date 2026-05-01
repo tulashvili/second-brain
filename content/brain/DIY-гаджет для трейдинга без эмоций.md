@@ -1,5 +1,4 @@
 ---
-slug: brain/diy-gadzhet-dlya-treydinga-bez-emotsiy
 title:
 tags:
   - inspiration

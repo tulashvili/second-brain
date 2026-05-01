@@ -1,5 +1,4 @@
 ---
-slug: brain/swaks-prostoy-klient-dlya-otpravki-pisem-s-servera
 title:
 tags:
   - mail

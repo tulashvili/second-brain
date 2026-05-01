@@ -1,5 +1,4 @@
 ---
-slug: brain/auth-log
 type:
 state:
 area:

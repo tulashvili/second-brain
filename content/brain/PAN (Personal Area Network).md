@@ -1,5 +1,4 @@
 ---
-slug: brain/pan-personal-area-network
 type:
 state:
 area:

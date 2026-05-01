@@ -1,5 +1,4 @@
 ---
-slug: brain/multikonteynernoe-prilozhenie-v-docker-docker-network
 title:
 tags:
   - docker

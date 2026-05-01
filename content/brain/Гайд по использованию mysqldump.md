@@ -1,5 +1,4 @@
 ---
-slug: brain/gayd-po-ispolzovaniyu-mysqldump
 title: Гайд по использованию mysqldump
 tags:
   - mysql
