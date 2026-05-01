@@ -136,7 +136,10 @@ export default ((opts?: Partial<FolderContentOptions>) => {
           <div class="brain-grid-auto">
             {areaPages.map((area) => {
               return (
-                <a class="brain-card internal" href={resolveRelative(fileData.slug!, area.slug!)}>
+                <a
+                  class="brain-card internal"
+                  href={resolveRelative(simplifySlug(fileData.slug!), area.slug!)}
+                >
                   <h3>{area.frontmatter?.title ?? area.slug}</h3>
                 </a>
               )
