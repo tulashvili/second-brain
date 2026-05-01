@@ -9,7 +9,7 @@ import { QuartzPluginData } from "../../plugins/vfile"
 import { ComponentChildren } from "preact"
 import { concatenateResources } from "../../util/resources"
 import { trieFromAllFiles } from "../../util/ctx"
-import { resolveRelative, simplifySlug } from "../../util/path"
+import { simplifySlug } from "../../util/path"
 
 interface FolderContentOptions {
   showFolderCount: boolean
@@ -136,10 +136,7 @@ export default ((opts?: Partial<FolderContentOptions>) => {
           <div class="brain-grid-auto">
             {areaPages.map((area) => {
               return (
-                <a
-                  class="brain-card internal"
-                  href={resolveRelative(simplifySlug(fileData.slug!), area.slug!)}
-                >
+                <a class="brain-card internal" href={`/${area.slug!}`}>
                   <h3>{area.frontmatter?.title ?? area.slug}</h3>
                 </a>
               )
