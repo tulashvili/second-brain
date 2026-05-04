@@ -7,8 +7,5 @@ tags:
   - public
 enableToc: false
 page: true
+hidden: true
 ---
-
-# Все заметки
-
-Полный список всех заметок в Second Brain.

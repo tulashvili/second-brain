@@ -2,10 +2,11 @@
 slug: about
 title: Обо мне
 date: 2026-04-26T20:30:00+03:00
-updated: 2026-05-04T22:20:17+03:00
+updated: 2026-05-04T22:53:59+03:00
 tags:
   - public
 page: true
+hidden: true
 ---
 ## Контакты
 

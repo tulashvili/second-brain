@@ -1,25 +1,16 @@
 ---
 slug: index
-title: Home
+title: Домашняя страница
 date: 2025-02-01T13:09
-updated: 2026-05-04T20:59:34+03:00
+updated: 2026-05-04T22:53:27+03:00
 tags:
   - public
 comment: Не переименовывать!!!
 page: true
+hidden: true
 ---
+Сходу мне трудно объяснить человеку, который впервые встретил определение "второго мозга", что это такое.
 
-<div class="home-hero">
-  <div class="hero-avatar-wrap">
-    <img class="hero-avatar" src="./assets/avatar.jpg" alt="avatar" />
-  </div>
+Думаю, что это база знаний, где каждая заметка должна быть связана с другой. 
 
-  <h1>Омар Тулашвили</h1>
-  <p class="hero-role">InfoSec Engineer</p>
-
-  <div class="home-actions minimal">
-    <a class="chip-link" href="/brain">🧠 Второй мозг</a>
-    <a class="chip-link" href="/about">👤 Обо мне</a>
-    <a class="chip-link" href="/projects">🧪 Projects</a>
-  </div>
-</div>
+Так образуется тот самый 🧠, который помогает находить новые взаимосвязи между твоими знаниями, тем самым расширяя их.
