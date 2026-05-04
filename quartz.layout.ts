@@ -1,7 +1,7 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 
-const landingSlugs = new Set(["index", "brain", "notes", "blog", "about", "projects"])
+const landingSlugs = new Set(["index", "brain", "notes", "about", "projects"])
 const normalizeTag = (value: unknown) => String(value ?? "").toLowerCase().replace(/^#/, "").trim()
 
 type LayoutPage = { fileData: { slug?: string } }
@@ -74,10 +74,6 @@ export const defaultContentPageLayout: PageLayout = {
     Component.ConditionalRender({
       component: Component.SemanticGraph(),
       condition: (page) => page.fileData.slug === "graph" || page.fileData.slug === "semantic_graph",
-    }),
-    Component.ConditionalRender({
-      component: Component.AllNotes(),
-      condition: (page) => page.fileData.slug === "blog",
     }),
     Component.AreaBacklinkNotes(),
     Component.ConditionalRender({
