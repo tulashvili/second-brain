@@ -1,13 +1,14 @@
 ---
-type:
-state:
-area:
-pattern:
-url:
-updated: 2026-04-07T20:41:40+03:00
+slug: notes
+title: Все заметки
+date: 2026-05-04T23:10:00+03:00
+updated: 2026-05-04T23:10:00+03:00
 tags:
   - public
-date: 2026-04-07T19:59:12+03:00
-hidden: true
-comment: Не переименовывать!!!
+enableToc: false
+page: true
 ---
+
+# Все заметки
+
+Полный список всех заметок в Second Brain.

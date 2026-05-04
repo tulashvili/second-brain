@@ -14,7 +14,6 @@ const AllNotes: QuartzComponent = (props: QuartzComponentProps) => {
     if (hidden) return false
 
     if (f.slug === "index") return false
-    if (f.slug === "notes") return false
 
     return true
   })

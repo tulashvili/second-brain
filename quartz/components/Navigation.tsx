@@ -1,18 +1,11 @@
 import {
   QuartzComponent,
   QuartzComponentConstructor,
-  QuartzComponentProps,
 } from "./types"
 
 import style from "./styles/navmenu.scss"
 
-import Search from "./Search"
-import NavAllNotes from "./NavAllNotes"
-
-const Navigation: QuartzComponent = (props: QuartzComponentProps) => {
-  const SearchComponent = Search()
-  const NavAllNotesComponent = NavAllNotes()
-
+const Navigation: QuartzComponent = () => {
   return (
     <nav class="navigation">
       <section class="container">
@@ -23,8 +16,7 @@ const Navigation: QuartzComponent = (props: QuartzComponentProps) => {
           </a>
 
           <ul class="navigation-list">
-            <li><a href="/brain/notes">🧠 Все заметки</a></li>
-            <li><a href="/blog">✏️ Блог</a></li>
+            <li><a href="/notes">🧠 Все заметки</a></li>
             <li><a href="/about">👤 Обо мне</a></li>
           </ul>
         </div>

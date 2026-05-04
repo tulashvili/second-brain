@@ -21,6 +21,9 @@ body {
   background-color: var(--light);
   font-family: var(--bodyFont);
   color: var(--darkgray);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 .text-highlight {
@@ -518,7 +521,28 @@ code {
 tbody,
 li,
 p {
-  line-height: 1.6rem;
+  line-height: 1.85;
+}
+
+p,
+li {
+  font-size: clamp(1rem, 0.96rem + 0.18vw, 1.08rem);
+}
+
+.page .center article {
+  max-width: 78ch;
+  margin: 0 auto;
+}
+
+@media all and ($mobile) {
+  .page .center article {
+    max-width: 100%;
+  }
+
+  p,
+  li {
+    line-height: 1.8;
+  }
 }
 
 .table-container {

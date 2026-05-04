@@ -127,9 +127,13 @@
 //    ======================== */
 
 
-h1, h2, h3 {
-  color: var(--secondary);
-  font-weight: 600;
+h1,
+h2,
+h3 {
+  color: var(--dark);
+  font-weight: 650;
+  line-height: 1.25;
+  text-wrap: balance;
 }
 
 .broken-link {
@@ -153,13 +157,15 @@ h1, h2, h3 {
 //    ======================== */
 
 a {
-  color: var(--tertiary-color);
+  color: var(--secondary);
   background: none;
   transition: 0.15s ease;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
 }
 
 a:hover {
-  color: #a6c1ff;
+  color: var(--tertiary);
 }
 
 // /* ========================

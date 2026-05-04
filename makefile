@@ -1,6 +1,6 @@
 .PHONY: dev_build deploy save
 
-include ../.env
+include .env
 export
 
 dev_build:
