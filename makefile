@@ -6,9 +6,6 @@ export
 dev_build:
 	$(PY_ENV)/python3 $(SYNC_BRAIN_NOTES) && npx quartz build --serve
 
-deploy_changes:
-	rsync -avz --delete /Users/omartulashvili/Documents/1-Projects/second_brain/ /opt/mysite/second_brain/
-
 save:
 	npx quartz sync --no-pull
 
