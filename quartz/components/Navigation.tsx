@@ -9,13 +9,17 @@ const DarkmodeComponent = Darkmode()
 const SearchComponent = Search({ enablePreview: true })
 
 const Navigation: QuartzComponent = (props: QuartzComponentProps) => {
-  // Quick toggle: set to false to return to default sticky behavior.
   const pinToViewport = false
   const slug = props.fileData.slug ?? ""
   const isBrainActive =
     slug === "brain" ||
     slug === "notes" ||
-    (!["index", "blog", "about", "projects"].includes(slug) && !slug.startsWith("tags/"))
+    (![
+      "index",
+      "about",
+      "projects",
+    ].includes(slug) &&
+      !slug.startsWith("tags/"))
 
   return (
     <nav class={`top-navigation ${pinToViewport ? "is-fixed" : ""}`}>
@@ -26,17 +30,9 @@ const Navigation: QuartzComponent = (props: QuartzComponentProps) => {
 
         <ul class="top-navigation-list">
           <li>
-            <a class={slug === "blog" ? "active" : ""} href="/blog">
-              ✏️ Блог
-            </a>
-          </li>
-          <li>
             <a class={isBrainActive ? "active" : ""} href="/brain">
               🧠 Второй мозг
             </a>
-          </li>
-          <li class="nav-separator" aria-hidden="true">
-            |
           </li>
           <li>
             <a class={slug === "about" ? "active" : ""} href="/about">

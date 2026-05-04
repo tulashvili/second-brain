@@ -1,5 +1,4 @@
 ---
-slug: brain/proxmox
 type:
 state:
 area:

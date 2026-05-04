@@ -1,5 +1,4 @@
 ---
-slug: brain/nastroyka-forward-proxy-v-nginx-c-basic-auth
 title:
 draft: false
 tags:

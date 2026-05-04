@@ -1,5 +1,4 @@
 ---
-slug: brain/nginx-worker-process
 type:
 state:
 area:

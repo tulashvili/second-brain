@@ -1,5 +1,4 @@
 ---
-slug: brain/osi
 date: 2024-01-06T00:20
 updated: 2026-04-05T14:11:37+03:00
 tags:

@@ -17,7 +17,7 @@ const config: QuartzConfig = {
     },
     locale: "ru-RU",
     baseUrl: "bitsnbeing.com",
-    ignorePatterns: ["private", "templates", ".obsidian"],
+    ignorePatterns: ["private", "templates", ".obsidian", "blog.md"],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
@@ -72,7 +72,9 @@ const config: QuartzConfig = {
         },
         keepBackground: false,
       }),
-      Plugin.ObsidianFlavoredMarkdown({ enableInHtmlEmbed: false }),
+      Plugin.ObsidianFlavoredMarkdown({
+        enableInHtmlEmbed: false,
+      }),
       Plugin.GitHubFlavoredMarkdown(),
       Plugin.TableOfContents(),
       Plugin.CrawlLinks({ markdownLinkResolution: "shortest" }),
@@ -85,7 +87,6 @@ const config: QuartzConfig = {
       Plugin.AliasRedirects(),
       Plugin.ComponentResources(),
       Plugin.ContentPage(),
-      Plugin.PublishBlogPages(),
       Plugin.FolderPage(),
       Plugin.TagPage(),
       Plugin.ContentIndex({

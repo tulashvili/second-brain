@@ -1,5 +1,4 @@
 ---
-slug: brain/razvertyvanie-elastic-stack
 type:
 state:
 area:

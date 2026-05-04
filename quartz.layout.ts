@@ -1,7 +1,8 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 
-const landingSlugs = new Set(["index", "brain", "notes", "blog", "about", "projects"])
+const landingSlugs = new Set(["index", "brain", "notes", "about", "projects"])
+const normalizeTag = (value: unknown) => String(value ?? "").toLowerCase().replace(/^#/, "").trim()
 
 type LayoutPage = { fileData: { slug?: string } }
 
@@ -10,8 +11,11 @@ const isLandingPage = (page: LayoutPage) => {
   return landingSlugs.has(slug)
 }
 
-const hasAreaTag = (page: any) =>
-  Boolean(page.fileData.frontmatter?.tags?.some((tag: string) => tag.toLowerCase() === "area"))
+const hasAreaTag = (page: any) => {
+  const rawTags = page.fileData.frontmatter?.tags
+  const tags = Array.isArray(rawTags) ? rawTags : typeof rawTags === "string" ? [rawTags] : []
+  return tags.some((tag: string) => normalizeTag(tag) === "area")
+}
 
 const isBrainNotePage = (page: LayoutPage) => Boolean(page.fileData.slug?.startsWith("brain/"))
 
@@ -71,13 +75,13 @@ export const defaultContentPageLayout: PageLayout = {
       component: Component.SemanticGraph(),
       condition: (page) => page.fileData.slug === "graph" || page.fileData.slug === "semantic_graph",
     }),
-    Component.ConditionalRender({
-      component: Component.AllNotes(),
-      condition: (page) => page.fileData.slug === "blog",
-    }),
     Component.AreaBacklinkNotes(),
     Component.ConditionalRender({
-      component: Component.Backlinks(),
+      component: Component.Sources(),
+      condition: (page) => isBrainNotePage(page),
+    }),
+    Component.ConditionalRender({
+      component: Component.Backlinks({ hideWhenEmpty: false }),
       condition: (page) => isBrainNotePage(page) && !hasAreaTag(page),
     }),
   ],

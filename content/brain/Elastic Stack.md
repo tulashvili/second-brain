@@ -1,12 +1,11 @@
 ---
-slug: brain/elastic-stack
 type:
 state:
 area:
   - "[[Инфраструктура]]"
 pattern:
 url:
-updated: 2026-04-16T18:48:12+03:00
+updated: 2026-04-23T15:15:22+03:00
 tags:
   - public
   - monitoring
