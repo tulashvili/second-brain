@@ -10,5 +10,8 @@ private/
 .replit
 replit.nix
 .quartz/
+quartz.lock.json
 quartz/cli/tui/dist/
+plugins/*/dist/
+.superpowers/
 .turbo/

@@ -1,0 +1,66 @@
+{
+  "name": "@security-maybeso/semantic-navigation",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./components": {
+      "types": "./dist/components.d.ts",
+      "import": "./dist/components.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@quartz-community/types": "^1.0.0",
+    "@security-maybeso/ascii-slug": "file:../ascii-slug",
+    "preact": "^10.28.2"
+  },
+  "devDependencies": {
+    "preact-render-to-string": "^6.6.5",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.2",
+    "vitest": "^5.0.3"
+  },
+  "overrides": {
+    "esbuild": "0.27.2"
+  },
+  "engines": {
+    "node": ">=22",
+    "npm": ">=10.9.2"
+  },
+  "quartz": {
+    "name": "semantic-navigation",
+    "displayName": "Semantic Navigation",
+    "category": [
+      "transformer",
+      "component"
+    ],
+    "version": "1.0.0",
+    "quartzVersion": ">=5.0.0",
+    "dependencies": [
+      "./plugins/ascii-slug"
+    ],
+    "defaultOrder": 55,
+    "defaultEnabled": true,
+    "defaultOptions": {},
+    "optionSchema": {},
+    "components": {
+      "SemanticNavigation": {
+        "displayName": "Semantic Navigation",
+        "defaultPosition": "afterBody",
+        "defaultPriority": 20
+      }
+    }
+  }
+}

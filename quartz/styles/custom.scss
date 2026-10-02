@@ -1,3 +1,53 @@
 @use "./variables.scss" as *;
 
-// put your custom CSS here!
+.page-header > header {
+  align-items: center;
+  border-bottom: 1px solid var(--lightgray);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  margin: 1.25rem 0 2rem;
+  padding-bottom: 1rem;
+}
+
+.page-header > header > h1,
+.page-header > header > h2 {
+  margin: 0;
+  min-width: max-content;
+}
+
+.flat-tag-content,
+.flat-tag-content li,
+.flat-tag-content a {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.page-header > header > .flex-component {
+  align-items: center;
+  margin-left: auto;
+  min-width: 0;
+}
+
+.page-header > header a:focus-visible,
+.page-header > header button:focus-visible {
+  outline: 2px solid var(--secondary);
+  outline-offset: 0.25rem;
+}
+
+@media all and ($mobile) {
+  .page-header > header {
+    align-items: center;
+    margin-top: 0.75rem;
+  }
+
+  .page-header > header > .flex-component {
+    flex-wrap: wrap !important;
+    justify-content: flex-start;
+    margin-left: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+}
