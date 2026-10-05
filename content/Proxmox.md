@@ -60,3 +60,4 @@ Proxmox - это "менеджер виртуальных серверов". О�
 	3) `apt update` -> `apt list --upgradable` -> `apt upgrade`
 4) 
 
+
