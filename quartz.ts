@@ -1,7 +1,8 @@
-import { loadQuartzConfig } from "./quartz/plugins/loader/config-loader"
+import { loadQuartzConfig, loadQuartzLayout } from "./quartz/plugins/loader/config-loader"
 import { isPublishedArticle } from "./plugins/semantic-navigation/src/model"
 
 const config = await loadQuartzConfig()
 export default config
 
 export { isPublishedArticle }
+export const layout = await loadQuartzLayout()
