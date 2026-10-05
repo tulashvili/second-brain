@@ -4,12 +4,13 @@ import type {
   QuartzComponentProps,
 } from "@quartz-community/types"
 import { buildSemanticTree, type SemanticFile, type SemanticNode } from "./tree"
+import { isVisibleContentPage, type KnowledgeFile } from "./model"
 import styles from "./semantic-navigation.scss"
 
 export const SemanticGraph: QuartzComponentConstructor = () => {
   const renderNode = (node: SemanticNode) => (
     <li>
-      <a class="internal" href={`/${node.slug}`}>
+      <a class="internal" href={node.slug === "index" ? "/" : `/${node.slug}`}>
         {node.title}
       </a>
       {node.cycle ? <span class="semantic-cycle"> (cycle)</span> : null}
@@ -18,27 +19,12 @@ export const SemanticGraph: QuartzComponentConstructor = () => {
   )
 
   const Component: QuartzComponent = ({ fileData, allFiles }: QuartzComponentProps) => {
-    if (!["", "index", "/"].includes(String(fileData.slug ?? ""))) return null
-    const visible = (allFiles as Array<Record<string, unknown>>).filter((file) => {
-      const frontmatter = file.frontmatter as Record<string, unknown> | undefined
-      return (
-        file.unlisted !== true && frontmatter?.hidden !== true && frontmatter?.hidden !== "true"
-      )
-    })
-    const referenced = new Set(
-      visible.flatMap((file) => [
-        ...((file.semanticDownLinks as string[] | undefined) ?? []),
-        ...((file.semanticUpLinks as string[] | undefined) ?? []),
-      ]),
-    )
+    if (String(fileData.slug ?? "") !== "index") return null
+    const visible = (allFiles as KnowledgeFile[]).filter(isVisibleContentPage)
     const semanticFiles = visible
       .filter((file) => {
         const slug = String(file.slug ?? "")
-        return (
-          ((file.semanticDownLinks as string[] | undefined)?.length ?? 0) > 0 ||
-          ((file.semanticUpLinks as string[] | undefined)?.length ?? 0) > 0 ||
-          referenced.has(slug)
-        )
+        return slug === "index" || ((file.semanticUpLinks as string[] | undefined)?.length ?? 0) > 0
       })
       .map((file) => ({
         slug: String(file.slug),
@@ -49,10 +35,12 @@ export const SemanticGraph: QuartzComponentConstructor = () => {
     if (semanticFiles.length === 0) return null
 
     const tree = buildSemanticTree(semanticFiles)
+    const root = tree.roots.find((node) => node.slug === "index")
+    if (!root) return null
     return (
       <section class="semantic-graph" aria-labelledby="semantic-graph-title">
         <h2 id="semantic-graph-title">Структура знаний</h2>
-        <ul class="semantic-tree">{tree.roots.map(renderNode)}</ul>
+        <ul class="semantic-tree">{renderNode(root)}</ul>
       </section>
     )
   }

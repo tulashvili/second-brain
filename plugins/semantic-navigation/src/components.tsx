@@ -5,18 +5,21 @@ import type {
 } from "@quartz-community/types"
 import type { ComponentChildren } from "preact"
 import { SemanticGraph } from "./SemanticGraph"
-import { AreaBacklinkNotes } from "./AreaBacklinkNotes"
+import { MocChildren } from "./MocChildren"
+import { SemanticParents } from "./SemanticParents"
 import styles from "./semantic-navigation.scss"
 
-export { SemanticGraph, AreaBacklinkNotes }
+export { SemanticGraph, MocChildren, SemanticParents }
 
 export const SemanticNavigation: QuartzComponentConstructor = () => {
   const Graph = SemanticGraph()
-  const AreaNotes = AreaBacklinkNotes()
+  const Parents = SemanticParents()
+  const Children = MocChildren()
   const Component: QuartzComponent = (props: QuartzComponentProps) => (
     <>
+      {Parents(props) as ComponentChildren}
+      {Children(props) as ComponentChildren}
       {Graph(props) as ComponentChildren}
-      {AreaNotes(props) as ComponentChildren}
     </>
   )
   Component.css = styles

@@ -42,9 +42,11 @@ test("uses the approved site identity and horizontal header", async () => {
     "@quartz-community/explorer",
     "@quartz-community/reader-mode",
     "@quartz-community/alias-redirects",
+    "@quartz-community/breadcrumbs",
   ]) {
     assert.equal(plugin(source)?.enabled, false, `${source} must be disabled`)
   }
+  assert.equal(plugin("./plugins/semantic-navigation")?.enabled, true)
 })
 
 test("matches the maybeso.me palette without changing Second Brain typography", async () => {
