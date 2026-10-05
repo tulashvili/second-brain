@@ -108,12 +108,17 @@ const expectedArticleParents: Record<string, string[]> = {
 }
 
 const sorted = (values: readonly string[]): string[] =>
-  [...values].sort((left, right) => left.localeCompare(right))
+  values.map((value) => value.normalize("NFC")).sort((left, right) => left.localeCompare(right))
+
+const normalizedRecord = <T>(record: Record<string, T>): Record<string, T> =>
+  Object.fromEntries(Object.entries(record).map(([key, value]) => [key.normalize("NFC"), value]))
 
 test("knowledge structure matches the approved security-first MOC hierarchy", async () => {
   const pages = await loadPages()
   const articles = pages.filter(isPublishedArticle)
   const mocs = pages.filter(isMocPage)
+  const articleParents = normalizedRecord(expectedArticleParents)
+  const mocParents = normalizedRecord(expectedMocParents)
 
   assert.equal(articles.length, 33)
   assert.equal(mocs.length, 14)
@@ -131,15 +136,16 @@ test("knowledge structure matches the approved security-first MOC hierarchy", as
   )
 
   for (const article of articles) {
-    const name = article.fileName.replace(/\.md$/, "")
-    assert.deepEqual(sorted(article.rawParents), sorted(expectedArticleParents[name]), name)
+    const name = article.fileName.replace(/\.md$/, "").normalize("NFC")
+    assert.deepEqual(sorted(article.rawParents), sorted(articleParents[name]), name)
     assert.equal(Object.hasOwn(article.frontmatter ?? {}, "area"), false, `${name} retains area`)
     assert.equal(Object.hasOwn(article.frontmatter ?? {}, "down"), false, `${name} stores down`)
   }
 
   for (const moc of mocs) {
-    const name = moc.fileName === "index.md" ? "index" : moc.fileName.replace(/\.md$/, "")
-    assert.deepEqual(sorted(moc.rawParents), sorted(expectedMocParents[name]), name)
+    const name =
+      moc.fileName === "index.md" ? "index" : moc.fileName.replace(/\.md$/, "").normalize("NFC")
+    assert.deepEqual(sorted(moc.rawParents), sorted(mocParents[name]), name)
     assert.deepEqual(moc.frontmatter?.tags, ["public", "area"], `${name} tags`)
     assert.match(moc.markdown, /## Ключевые темы/)
   }

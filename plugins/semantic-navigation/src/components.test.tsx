@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest"
 import { MocChildren } from "./MocChildren"
 import { SemanticGraph } from "./SemanticGraph"
 import { SemanticParents } from "./SemanticParents"
+import { SemanticNavigation } from "./components"
 
 const renderComponent = (
   constructor: typeof SemanticGraph,
@@ -105,5 +106,18 @@ describe("SemanticGraph", () => {
     const html = renderComponent(SemanticGraph, root, files)
     expect(html).toContain("semantic-cycle")
     expect(html.length).toBeLessThan(4000)
+  })
+})
+
+describe("SemanticNavigation", () => {
+  it("keeps the article-only recent block on the root MOC", () => {
+    const root = moc("index", "Информационная безопасность")
+    const html = renderComponent(SemanticNavigation, root, [
+      root,
+      moc("network", "Сетевая безопасность", ["index"]),
+      { slug: "proxy", frontmatter: { title: "Proxy" }, semanticUpLinks: ["network"] },
+    ])
+    expect(html).toContain('class="recent-notes"')
+    expect(html).toContain('href="./proxy"')
   })
 })
