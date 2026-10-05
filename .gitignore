@@ -1,6 +1,7 @@
 .DS_Store
 .gitignore
 node_modules
+.worktrees/
 public
 prof
 tsconfig.tsbuildinfo
