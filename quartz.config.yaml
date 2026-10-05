@@ -118,7 +118,7 @@ plugins:
     enabled: true
     options:
       enableSiteMap: true
-      enableRSS: true
+      enableRSS: false
       rssLimit: 100
   - source: "@quartz-community/favicon"
     enabled: true
@@ -195,7 +195,7 @@ plugins:
       priority: 35
       group: toolbar
   - source: "@quartz-community/breadcrumbs"
-    enabled: true
+    enabled: false
     layout:
       position: beforeBody
       priority: 5
@@ -294,6 +294,11 @@ plugins:
     layout:
       position: afterBody
       priority: 20
+  - source: ./plugins/article-rss
+    enabled: true
+    options:
+      limit: 100
+    order: 60
 layout:
   groups:
     toolbar:

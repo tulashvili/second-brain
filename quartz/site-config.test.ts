@@ -42,9 +42,11 @@ test("uses the approved site identity and horizontal header", async () => {
     "@quartz-community/explorer",
     "@quartz-community/reader-mode",
     "@quartz-community/alias-redirects",
+    "@quartz-community/breadcrumbs",
   ]) {
     assert.equal(plugin(source)?.enabled, false, `${source} must be disabled`)
   }
+  assert.equal(plugin("./plugins/semantic-navigation")?.enabled, true)
 })
 
 test("matches the maybeso.me palette without changing Second Brain typography", async () => {
@@ -95,4 +97,5 @@ test("keeps the compact header and long tag titles inside mobile viewport", asyn
   assert.match(css, /\.page-header\s*>\s*header\s*\{[\s\S]*display:\s*flex/)
   assert.match(css, /justify-content:\s*flex-start/)
   assert.match(css, /\.flat-tag-content[\s\S]*overflow-wrap:\s*anywhere/)
+  assert.match(css, /#quartz-body[\s\S]*grid-template-columns:\s*minmax\(0,\s*1fr\)/)
 })

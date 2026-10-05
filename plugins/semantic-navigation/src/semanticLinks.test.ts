@@ -14,7 +14,7 @@ describe("extractSemanticTargets", () => {
 })
 
 describe("SemanticLinks", () => {
-  it("resolves frontmatter and inline up/down into flat existing links", () => {
+  it("normalizes up targets, retains missing targets for validation, and ignores down hierarchy", () => {
     const ctx = {
       allSlugs: ["tekuschaya", "roditel", "rebenok"] as FullSlug[],
     } as BuildCtx
@@ -27,14 +27,14 @@ describe("SemanticLinks", () => {
     const file: { data: Record<string, unknown>; value: string } = {
       data: {
         slug: "tekuschaya",
-        frontmatter: { up: "[[Родитель|верх]]", down: ["[[Ребенок]]", "[[Missing]]"] },
+        frontmatter: { up: ["[[Родитель|верх]]", "[[Missing]]"], down: "[[Ребенок]]" },
         links: ["ordinary"],
       },
       value: "down :: [[Ребенок|child]]\nup :: [[Родитель]]",
     }
     transform({}, file)
-    expect(file.data.semanticUpLinks).toEqual(["roditel"])
-    expect(file.data.semanticDownLinks).toEqual(["rebenok"])
-    expect(file.data.links).toEqual(["ordinary", "rebenok", "roditel"])
+    expect(file.data.semanticUpLinks).toEqual(["roditel", "missing"])
+    expect(file.data.semanticDownLinks).toBeUndefined()
+    expect(file.data.links).toEqual(["ordinary", "roditel"])
   })
 })

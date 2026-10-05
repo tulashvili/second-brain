@@ -9,7 +9,7 @@ const articleExclusions = new Set(["index.md", "about.md", "projects.md"])
 const mediaExtensions = /\.(?:avif|gif|jpe?g|png|svg|webp|mp3|mp4|wav|webm)$/i
 
 export const isArticleFrontmatter = (data: Record<string, unknown>): boolean =>
-  data.page !== true && data.flatTag == null
+  data.page !== true && data.flatTag == null && data.moc !== true
 
 const frontmatter = (markdown: string): Record<string, unknown> => {
   const match = markdown.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/)
@@ -18,11 +18,20 @@ const frontmatter = (markdown: string): Record<string, unknown> => {
 
 const rootArticles = async () => {
   const entries = await readdir(contentDirectory, { withFileTypes: true })
-  return entries
+  const markdown = entries
     .filter(
       (entry) => entry.isFile() && entry.name.endsWith(".md") && !articleExclusions.has(entry.name),
     )
     .map((entry) => entry.name)
+  const classified = await Promise.all(
+    markdown.map(async (file) => ({
+      file,
+      data: frontmatter(await readFile(path.join(contentDirectory, file), "utf8")),
+    })),
+  )
+  return classified
+    .filter(({ data }) => isArticleFrontmatter(data))
+    .map(({ file }) => file)
     .sort((a, b) => a.localeCompare(b))
 }
 

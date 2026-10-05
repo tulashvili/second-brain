@@ -1,5 +1,8 @@
+export * from "./model"
 export * from "./semanticLinks"
 export * from "./tree"
 export { SemanticGraph } from "./SemanticGraph"
 export { AreaBacklinkNotes } from "./AreaBacklinkNotes"
+export { MocChildren } from "./MocChildren"
+export { SemanticParents } from "./SemanticParents"
 export { SemanticNavigation } from "./components"

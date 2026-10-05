@@ -3,6 +3,9 @@ title:
 tags:
   - docker
   - public
+up:
+  - "[[Инфраструктура и платформы]]"
+  - "[[Лаборатории и практические руководства]]"
 dg-publish: false
 dg-note-icon:
 date: 2025-10-26T11:18

@@ -1,6 +1,27 @@
 .semantic-graph,
-.area-backlink-notes {
+.moc-children {
   margin-top: 1.5rem;
+}
+
+.semantic-parents {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.75rem;
+  margin: 0.75rem 0 1rem;
+}
+
+.semantic-parents-label {
+  color: var(--gray);
+}
+
+.semantic-parents ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .semantic-tree,
@@ -18,7 +39,7 @@
   font-size: 0.9rem;
 }
 
-.area-backlink-notes ul {
+.moc-children ul {
   display: grid;
   gap: 0.4rem;
 }

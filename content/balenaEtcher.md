@@ -1,13 +1,14 @@
 ---
 type:
 state:
-area:
-  - "[[Tech Stack]]"
 pattern:
 url:
 updated: 2026-04-15T13:26:20+03:00
 tags:
   - public
+up:
+  - "[[Инструменты и технологии]]"
+  - "[[Лаборатории и практические руководства]]"
 check_before_public:
 date: 2026-04-15T12:08:43+03:00
 ---

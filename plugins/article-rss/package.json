@@ -1,0 +1,51 @@
+{
+  "name": "@security-maybeso/article-rss",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@quartz-community/types": "^1.0.0",
+    "@quartz-community/utils": "^1.0.1",
+    "@security-maybeso/semantic-navigation": "file:../semantic-navigation"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.2",
+    "vitest": "^5.0.3"
+  },
+  "overrides": {
+    "esbuild": "0.27.2"
+  },
+  "engines": {
+    "node": ">=22",
+    "npm": ">=10.9.2"
+  },
+  "quartz": {
+    "name": "article-rss",
+    "displayName": "Article RSS",
+    "category": "emitter",
+    "version": "1.0.0",
+    "quartzVersion": ">=5.0.0",
+    "dependencies": [
+      "./plugins/semantic-navigation"
+    ],
+    "defaultOrder": 60,
+    "defaultEnabled": true,
+    "defaultOptions": {},
+    "optionSchema": {}
+  }
+}

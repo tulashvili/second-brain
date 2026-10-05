@@ -5,19 +5,55 @@ import os from "node:os"
 import path from "node:path"
 import test from "node:test"
 import { promisify } from "node:util"
+import YAML from "yaml"
 import { toAsciiSlug } from "../plugins/ascii-slug/src/slug"
 
 const execFileAsync = promisify(execFile)
 const contentDir = path.join(process.cwd(), "content")
 const articleExclusions = new Set(["index.md", "about.md", "projects.md"])
 
-const articleSlugs = async (): Promise<string[]> =>
-  (await readdir(contentDir, { withFileTypes: true }))
-    .filter(
-      (entry) => entry.isFile() && entry.name.endsWith(".md") && !articleExclusions.has(entry.name),
-    )
-    .map((entry) => toAsciiSlug(entry.name.replace(/\.md$/, "")))
-    .sort()
+const frontmatter = (markdown: string): Record<string, unknown> => {
+  const match = markdown.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/)
+  return match ? (YAML.parse(match[1]) ?? {}) : {}
+}
+
+const knowledgeSlugs = async (): Promise<{ articles: string[]; mocs: string[] }> => {
+  const entries = (await readdir(contentDir, { withFileTypes: true })).filter(
+    (entry) => entry.isFile() && entry.name.endsWith(".md"),
+  )
+  const files = await Promise.all(
+    entries.map(async (entry) => ({
+      name: entry.name,
+      slug: toAsciiSlug(entry.name.replace(/\.md$/, "")),
+      data: frontmatter(await readFile(path.join(contentDir, entry.name), "utf8")),
+    })),
+  )
+  return {
+    articles: files
+      .filter(
+        ({ name, data }) =>
+          !articleExclusions.has(name) &&
+          data.moc !== true &&
+          data.page !== true &&
+          data.flatTag == null,
+      )
+      .map(({ slug }) => slug)
+      .sort(),
+    mocs: files
+      .filter(({ data }) => data.moc === true)
+      .map(({ slug }) => slug)
+      .sort(),
+  }
+}
+
+const routeFor = (slug: string): string => (slug === "index" ? "" : slug)
+
+const section = (html: string, className: string): string => {
+  const start = html.indexOf(`class="${className}`)
+  assert.notEqual(start, -1, `missing ${className} section`)
+  const nextSection = html.indexOf("<section", start + 1)
+  return html.slice(start, nextSection === -1 ? html.length : nextSection)
+}
 
 const exists = async (candidate: string): Promise<boolean> =>
   access(candidate).then(
@@ -62,8 +98,9 @@ test(
         env: { ...process.env, PATH: `/opt/homebrew/bin:${process.env.PATH ?? ""}` },
       })
 
-      const articles = await articleSlugs()
+      const { articles, mocs } = await knowledgeSlugs()
       assert.equal(articles.length, 33)
+      assert.equal(mocs.length, 14)
       const rootPage = await readFile(path.join(output, "index.html"), "utf8")
       assert.match(rootPage, /property="og:url" content="https:\/\/security\.maybeso\.me\/"/)
       assert.match(rootPage, /rel="canonical" href="https:\/\/security\.maybeso\.me\/"/)
@@ -74,6 +111,10 @@ test(
       const notFoundPage = await readFile(path.join(output, "404.html"), "utf8")
       assert.doesNotMatch(notFoundPage, /rel="canonical"/)
       for (const slug of articles) await readFile(path.join(output, `${slug}.html`), "utf8")
+      for (const slug of mocs) {
+        const route = routeFor(slug)
+        await readFile(path.join(output, route ? `${route}.html` : "index.html"), "utf8")
+      }
 
       const attackTypes = await readFile(
         path.join(output, "tipy-atak-na-informatsionnye-sistemy.html"),
@@ -110,7 +151,7 @@ test(
         false,
       )
 
-      for (const slug of articles.slice(0, 3)) {
+      for (const slug of articles) {
         const page = await readFile(path.join(output, `${slug}.html`), "utf8")
         assert.match(page, new RegExp(`https://security\\.maybeso\\.me/${slug}`))
         assert.match(
@@ -118,18 +159,72 @@ test(
           new RegExp(`rel="canonical" href="https://security\\.maybeso\\.me/${slug}"`),
         )
       }
+      for (const slug of mocs) {
+        const route = routeFor(slug)
+        const page = await readFile(
+          path.join(output, route ? `${route}.html` : "index.html"),
+          "utf8",
+        )
+        assert.match(
+          page,
+          new RegExp(`rel="canonical" href="https://security\\.maybeso\\.me/${route}"`),
+        )
+      }
 
       const searchIndex = JSON.parse(
         await readFile(path.join(output, "static", "contentIndex.json"), "utf8"),
       )
       for (const slug of articles) assert.ok(searchIndex[slug], `search index misses ${slug}`)
+      for (const slug of mocs) assert.ok(searchIndex[slug], `search index misses MOC ${slug}`)
       for (const tag of tags) assert.ok(searchIndex[tag], `search index misses ${tag}`)
       const sitemap = await readFile(path.join(output, "sitemap.xml"), "utf8")
       const rss = await readFile(path.join(output, "index.xml"), "utf8")
+      const rssLinks = [...rss.matchAll(/<item>[\s\S]*?<link>([^<]+)<\/link>[\s\S]*?<\/item>/g)]
+        .map((match) => match[1])
+        .sort()
+      assert.deepEqual(
+        rssLinks,
+        articles.map((slug) => `https://security.maybeso.me/${slug}`).sort(),
+      )
       for (const slug of articles) {
         assert.match(sitemap, new RegExp(`https://security\\.maybeso\\.me/${slug}`))
         assert.match(rss, new RegExp(`https://security\\.maybeso\\.me/${slug}`))
       }
+      for (const slug of mocs) {
+        const route = routeFor(slug)
+        assert.match(sitemap, new RegExp(`https://security\\.maybeso\\.me/${route}`))
+        assert.doesNotMatch(rss, new RegExp(`https://security\\.maybeso\\.me/${route}(?:<|\")`))
+      }
+
+      const manifest = JSON.parse(
+        await readFile(path.join(output, "static", "knowledgeStructure.json"), "utf8"),
+      )
+      assert.deepEqual(manifest.articleSlugs, articles)
+      assert.deepEqual(manifest.mocSlugs, mocs)
+
+      const recentArticles = section(rootPage, "recent-notes")
+      for (const slug of mocs.filter((slug) => slug !== "index")) {
+        assert.doesNotMatch(recentArticles, new RegExp(`href="(?:\\./|/)?${slug}"`))
+      }
+
+      const proxy = await readFile(path.join(output, "proxy.html"), "utf8")
+      const proxyParents = section(proxy, "semantic-parents")
+      assert.match(proxyParents, /aria-label="Родительские разделы"/)
+      assert.match(proxyParents, /href="\/setevaya-bezopasnost"/)
+
+      const practical = await readFile(
+        path.join(output, "nastroyka-forward-proxy-v-nginx-c-basic-auth.html"),
+        "utf8",
+      )
+      const practicalParents = section(practical, "semantic-parents")
+      assert.match(practicalParents, /href="\/bezopasnost-prilozheniy-i-veb-servisov"/)
+      assert.match(practicalParents, /href="\/laboratorii-i-prakticheskie-rukovodstva"/)
+
+      const networkMoc = await readFile(path.join(output, "setevaya-bezopasnost.html"), "utf8")
+      const networkChildren = section(networkMoc, "moc-children")
+      assert.match(networkChildren, /href="\/proxy"/)
+      assert.match(networkChildren, /href="\/cdn"/)
+      assert.match(networkChildren, /href="\/seti-i-protokoly"/)
     } finally {
       await rm(temporaryRoot, { recursive: true, force: true })
     }

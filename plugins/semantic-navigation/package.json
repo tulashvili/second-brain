@@ -21,6 +21,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@quartz-community/recent-notes": "^1.0.0",
     "@quartz-community/types": "^1.0.0",
     "@security-maybeso/ascii-slug": "file:../ascii-slug",
     "preact": "^10.28.2"

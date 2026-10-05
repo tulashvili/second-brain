@@ -5,6 +5,8 @@ tags:
   - diy
   - public
   - programming
+up:
+  - "[[Программирование и автоматизация]]"
 date: 2025-02-02
 updated: 2026-04-04T23:21:25+03:00
 dg-publish: false

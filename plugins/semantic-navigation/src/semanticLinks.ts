@@ -33,23 +33,15 @@ export const SemanticLinks = (): QuartzTransformerPluginInstance => ({
           ].map((match) => match[1])
           return extractSemanticTargets(values)
         }
-        const resolve = (targets: string[]): string[] => [
-          ...new Set(
-            targets
-              .map((target) => toAsciiSlug(target))
-              .filter((slug) => ctx.allSlugs.includes(slug as FullSlug)),
-          ),
+        const normalize = (targets: string[]): string[] => [
+          ...new Set(targets.map((target) => toAsciiSlug(target)).filter(Boolean)),
         ]
 
-        const down = resolve([
-          ...extractSemanticTargets(frontmatter?.down),
-          ...inlineTargets("down"),
-        ])
-        const up = resolve([...extractSemanticTargets(frontmatter?.up), ...inlineTargets("up")])
-        file.data.semanticDownLinks = down
+        const up = normalize([...extractSemanticTargets(frontmatter?.up), ...inlineTargets("up")])
         file.data.semanticUpLinks = up
+        const resolvedUp = up.filter((slug) => ctx.allSlugs.includes(slug as FullSlug))
         file.data.links = [
-          ...new Set([...((file.data.links as string[] | undefined) ?? []), ...down, ...up]),
+          ...new Set([...((file.data.links as string[] | undefined) ?? []), ...resolvedUp]),
         ]
       },
     ]

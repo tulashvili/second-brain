@@ -1,6 +1,8 @@
-export type SemanticFile = {
+import { buildKnowledgeGraph, type KnowledgeFile } from "./model"
+
+export type SemanticFile = KnowledgeFile & {
   slug: string
-  frontmatter?: { title?: string }
+  frontmatter?: Record<string, unknown> & { title?: string }
   semanticDownLinks?: string[]
   semanticUpLinks?: string[]
 }
@@ -15,26 +17,13 @@ export type SemanticNode = {
 export type SemanticTree = { roots: SemanticNode[] }
 
 export const buildSemanticTree = (files: readonly SemanticFile[]): SemanticTree => {
-  const bySlug = new Map(files.map((file) => [file.slug, file]))
-  const children = new Map<string, Set<string>>()
+  const graph = buildKnowledgeGraph(files)
+  const bySlug = new Map(
+    [...graph.files.entries()].map(([slug, file]) => [slug, file as SemanticFile]),
+  )
+  const children = graph.children
   const inDegree = new Map<string, number>()
-  for (const slug of bySlug.keys()) {
-    children.set(slug, new Set())
-    inDegree.set(slug, 0)
-  }
-
-  const addEdge = (parent: string, child: string) => {
-    if (!bySlug.has(parent) || !bySlug.has(child)) return
-    const adjacent = children.get(parent)!
-    if (adjacent.has(child)) return
-    adjacent.add(child)
-    inDegree.set(child, (inDegree.get(child) ?? 0) + 1)
-  }
-
-  for (const file of files) {
-    for (const child of file.semanticDownLinks ?? []) addEdge(file.slug, child)
-    for (const parent of file.semanticUpLinks ?? []) addEdge(parent, file.slug)
-  }
+  for (const slug of bySlug.keys()) inDegree.set(slug, graph.parents.get(slug)?.size ?? 0)
 
   const globallyVisited = new Set<string>()
   const visit = (slug: string, path: ReadonlySet<string>): SemanticNode => {

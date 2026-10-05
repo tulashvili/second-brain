@@ -6,5 +6,5 @@ export default defineConfig({
   sourcemap: true,
   clean: true,
   loader: { ".scss": "text" },
-  external: ["@quartz-community/types", "preact"],
+  external: ["@quartz-community/recent-notes", "@quartz-community/types", "preact"],
 })
