@@ -5,23 +5,12 @@ import type {
   QuartzPluginData,
 } from "@quartz-community/types"
 import { RecentNotes } from "@quartz-community/recent-notes"
+import { isPublishedArticle } from "./plugins/semantic-navigation/src/model"
 
 const config = await loadQuartzConfig()
 export default config
 
-export const isPublishedArticle = (file: QuartzPluginData): boolean => {
-  const data = file as QuartzPluginData & Record<string, unknown>
-  const frontmatter = data.frontmatter as Record<string, unknown> | undefined
-  const slug = String(data.slug ?? "")
-  return (
-    slug.length > 0 &&
-    !["index", "about", "projects", "404"].includes(slug) &&
-    typeof frontmatter?.flatTag !== "string" &&
-    data.unlisted !== true &&
-    frontmatter?.hidden !== true &&
-    frontmatter?.hidden !== "true"
-  )
-}
+export { isPublishedArticle }
 
 const RecentArticles = RecentNotes({
   title: "Обновления заметок",
@@ -30,7 +19,7 @@ const RecentArticles = RecentNotes({
   showTags: false,
   hideTagPages: true,
   hideFolderPages: true,
-  filter: isPublishedArticle,
+  filter: (file: QuartzPluginData) => isPublishedArticle(file),
 })
 
 const RootRecentArticles: QuartzComponent = (props: QuartzComponentProps) =>

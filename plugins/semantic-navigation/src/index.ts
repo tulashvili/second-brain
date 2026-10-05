@@ -1,3 +1,4 @@
+export * from "./model"
 export * from "./semanticLinks"
 export * from "./tree"
 export { SemanticGraph } from "./SemanticGraph"
