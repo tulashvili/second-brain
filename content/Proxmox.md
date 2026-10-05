@@ -1,12 +1,13 @@
 ---
 type:
 state:
-area:
 pattern:
 url:
 updated: 2026-04-20T20:04:26+03:00
 tags:
   - public
+up:
+  - "[[Инфраструктура и платформы]]"
 check_before_public: false
 date: 2026-04-15T13:16:55+03:00
 ---
@@ -58,5 +59,4 @@ Proxmox - это "менеджер виртуальных серверов". О�
 	2) Создал `pve-no-subscription.list` с `deb http://download.proxmox.com/debian/pve trixie pve-no-subscription`
 	3) `apt update` -> `apt list --upgradable` -> `apt upgrade`
 4) 
-
 

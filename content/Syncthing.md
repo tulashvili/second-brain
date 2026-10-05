@@ -1,13 +1,14 @@
 ---
 title:
 type:
-area:
 pattern:
 url:
 updated: 2026-04-24T13:24:54+03:00
 tags:
   - self_hosted
   - public
+up:
+  - "[[Инфраструктура и платформы]]"
 check_before_public:
 date: 2026-04-22T08:10:27+03:00
 ---
@@ -87,7 +88,6 @@ Webview version: 147.0.7727.55
     `*.tmp`
 - **Игнорировать папку `MyFolder`, но включить папку `MyFolder/important`:**
     `MyFolder !MyFolder/important`
-
 
 
 

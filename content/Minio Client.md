@@ -1,14 +1,15 @@
 ---
 type:
 state:
-area:
-  - "[[Инфраструктура]]"
 pattern:
   - "[[S3 хранилище данных]]"
 url:
 updated: 2026-04-09T12:47:08+03:00
 tags:
   - public
+up:
+  - "[[Хранение данных]]"
+  - "[[Лаборатории и практические руководства]]"
 date: 2026-04-08T14:58:58+03:00
 check_before_public: false
 ---
@@ -58,7 +59,6 @@ mc-minio cp test.txt prod-minio/infosec/
 mc-minio ls prod-minio/infosec/
 [2026-04-08 15:19:22 MSK]     5B STANDARD test.txt
 ```
-
 
 
 

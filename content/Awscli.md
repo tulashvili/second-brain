@@ -2,12 +2,13 @@
 title: Настройка awscli для передачи файлов в s3-хранилище
 tags:
   - public
+up:
+  - "[[Хранение данных]]"
+  - "[[Лаборатории и практические руководства]]"
 dg-publish: false
 dg-note-icon:
 date: 2025-05-01T13:08
 updated: 2026-04-08T14:56:14+03:00
-area:
-  - "[[Инфраструктура]]"
 pattern:
   - "[[S3 хранилище данных]]"
 ---
@@ -62,6 +63,5 @@ aws s3 ls
 ```sh
 aws s3 sync Downloads/ s3://<bucket_name>/
 ```
-
 
 
