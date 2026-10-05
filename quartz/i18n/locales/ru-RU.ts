@@ -42,7 +42,7 @@ export default {
       title: "Вид графа",
     },
     recentNotes: {
-      title: "Обновления заметок",
+      title: "Недавние заметки",
       seeRemainingMore: ({ remaining }) =>
         `Посмотреть оставш${getForm(remaining, "уюся", "иеся", "иеся")} ${remaining} →`,
     },
@@ -59,13 +59,11 @@ export default {
     },
     contentMeta: {
       readingTime: ({ minutes }) => `время чтения ~${minutes} мин.`,
-      created: "Создано",
-      updated: "Обновлено",
     },
   },
   pages: {
     rss: {
-      recentNotes: "Обновления заметок",
+      recentNotes: "Недавние заметки",
       lastFewNotes: ({ count }) =>
         `Последн${getForm(count, "яя", "ие", "ие")} ${count} замет${getForm(count, "ка", "ки", "ок")}`,
     },

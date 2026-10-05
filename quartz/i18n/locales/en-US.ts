@@ -58,8 +58,6 @@ export default {
     },
     contentMeta: {
       readingTime: ({ minutes }) => `${minutes} min read`,
-      created: "Created",
-      updated: "Updated",
     },
   },
   pages: {

@@ -1,0 +1,24 @@
+.semantic-graph,
+.area-backlink-notes {
+  margin-top: 1.5rem;
+}
+
+.semantic-tree,
+.semantic-tree ul {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.semantic-tree li {
+  margin: 0.35rem 0;
+}
+
+.semantic-cycle {
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+
+.area-backlink-notes ul {
+  display: grid;
+  gap: 0.4rem;
+}
