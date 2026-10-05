@@ -179,6 +179,13 @@ test(
       for (const tag of tags) assert.ok(searchIndex[tag], `search index misses ${tag}`)
       const sitemap = await readFile(path.join(output, "sitemap.xml"), "utf8")
       const rss = await readFile(path.join(output, "index.xml"), "utf8")
+      const rssLinks = [...rss.matchAll(/<item>[\s\S]*?<link>([^<]+)<\/link>[\s\S]*?<\/item>/g)]
+        .map((match) => match[1])
+        .sort()
+      assert.deepEqual(
+        rssLinks,
+        articles.map((slug) => `https://security.maybeso.me/${slug}`).sort(),
+      )
       for (const slug of articles) {
         assert.match(sitemap, new RegExp(`https://security\\.maybeso\\.me/${slug}`))
         assert.match(rss, new RegExp(`https://security\\.maybeso\\.me/${slug}`))

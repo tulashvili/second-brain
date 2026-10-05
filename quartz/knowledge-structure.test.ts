@@ -25,6 +25,13 @@ const parseFrontmatter = (markdown: string): Record<string, unknown> => {
   return match ? (YAML.parse(match[1]) ?? {}) : {}
 }
 
+const inlineSemanticTargets = (markdown: string, direction: "up" | "down"): string[] =>
+  extractSemanticTargets(
+    [...markdown.matchAll(new RegExp(`^\\s*${direction}\\s*::\\s*(.+)$`, "gim"))].map(
+      (match) => match[1],
+    ),
+  )
+
 const loadPages = async (): Promise<ContentPage[]> => {
   const names = (await readdir(contentDir))
     .filter((name) => name.endsWith(".md"))
@@ -33,7 +40,12 @@ const loadPages = async (): Promise<ContentPage[]> => {
     names.map(async (fileName) => {
       const markdown = await readFile(path.join(contentDir, fileName), "utf8")
       const frontmatter = parseFrontmatter(markdown)
-      const rawParents = extractSemanticTargets(frontmatter.up)
+      const rawParents = [
+        ...new Set([
+          ...extractSemanticTargets(frontmatter.up),
+          ...inlineSemanticTargets(markdown, "up"),
+        ]),
+      ]
       const baseName = fileName.replace(/\.md$/, "")
       return {
         fileName,
@@ -140,6 +152,11 @@ test("knowledge structure matches the approved security-first MOC hierarchy", as
     assert.deepEqual(sorted(article.rawParents), sorted(articleParents[name]), name)
     assert.equal(Object.hasOwn(article.frontmatter ?? {}, "area"), false, `${name} retains area`)
     assert.equal(Object.hasOwn(article.frontmatter ?? {}, "down"), false, `${name} stores down`)
+    assert.deepEqual(
+      inlineSemanticTargets(article.markdown, "down"),
+      [],
+      `${name} stores inline down`,
+    )
   }
 
   for (const moc of mocs) {
@@ -147,6 +164,7 @@ test("knowledge structure matches the approved security-first MOC hierarchy", as
       moc.fileName === "index.md" ? "index" : moc.fileName.replace(/\.md$/, "").normalize("NFC")
     assert.deepEqual(sorted(moc.rawParents), sorted(mocParents[name]), name)
     assert.deepEqual(moc.frontmatter?.tags, ["public", "area"], `${name} tags`)
+    assert.deepEqual(inlineSemanticTargets(moc.markdown, "down"), [], `${name} stores inline down`)
     assert.match(moc.markdown, /## Ключевые темы/)
   }
 

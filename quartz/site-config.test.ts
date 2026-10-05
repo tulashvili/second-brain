@@ -97,4 +97,5 @@ test("keeps the compact header and long tag titles inside mobile viewport", asyn
   assert.match(css, /\.page-header\s*>\s*header\s*\{[\s\S]*display:\s*flex/)
   assert.match(css, /justify-content:\s*flex-start/)
   assert.match(css, /\.flat-tag-content[\s\S]*overflow-wrap:\s*anywhere/)
+  assert.match(css, /#quartz-body[\s\S]*grid-template-columns:\s*minmax\(0,\s*1fr\)/)
 })

@@ -38,6 +38,12 @@
 }
 
 @media all and ($mobile) {
+  #quartz-body {
+    box-sizing: border-box;
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+  }
+
   .page-header > header {
     align-items: center;
     margin-top: 0.75rem;
