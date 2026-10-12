@@ -4,6 +4,34 @@
   font-size: 1.125rem;
   line-height: 1.333;
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 1.2;
+  }
+
+  h1 {
+    font-size: 1.8em;
+  }
+  h2 {
+    font-size: 1.6em;
+  }
+  h3 {
+    font-size: 1.4em;
+  }
+  h4 {
+    font-size: 1.2em;
+  }
+  h5 {
+    font-size: 1.1em;
+  }
+  h6 {
+    font-size: 1em;
+  }
+
   p,
   li {
     line-height: 1.333;
@@ -13,10 +41,25 @@
     font-size: 1.25rem;
     line-height: 1.4;
 
+    h1 {
+      font-size: 2em;
+    }
+
     p,
     li {
       line-height: 1.4;
     }
+  }
+}
+
+.page .center .article-title {
+  font-size: 2rem;
+  hyphens: auto;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+
+  @media (min-width: 32em) {
+    font-size: 2.5rem;
   }
 }
 
