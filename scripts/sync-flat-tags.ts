@@ -39,27 +39,39 @@ const areasFrom = (frontmatter: Record<string, unknown>): string[] => {
 const yamlScalar = (value: string): string =>
   /^[\p{L}\p{N} _-]+$/u.test(value) ? value : JSON.stringify(value)
 
+const findMarkdownFiles = async (directory: string): Promise<string[]> => {
+  const entries = await readdir(directory, { withFileTypes: true })
+  const nested = await Promise.all(
+    entries.map(async (entry) => {
+      if (entry.name.startsWith(".") || entry.name === "_flat-tags" || entry.name === "assets") {
+        return []
+      }
+      const absolutePath = path.join(directory, entry.name)
+      if (entry.isDirectory()) return findMarkdownFiles(absolutePath)
+      return entry.isFile() && entry.name.endsWith(".md") ? [absolutePath] : []
+    }),
+  )
+  return nested.flat().sort((left, right) => left.localeCompare(right))
+}
+
 export const syncFlatTagPages = async (
   contentDir: string,
   reserved: readonly string[],
 ): Promise<string[]> => {
   const absoluteContentDir = path.resolve(contentDir)
-  const entries = await readdir(absoluteContentDir, { withFileTypes: true })
-  const markdownFiles = entries
-    .filter((entry) => entry.isFile() && entry.name.endsWith(".md"))
-    .map((entry) => entry.name)
-    .sort((left, right) => left.localeCompare(right))
+  const markdownFiles = await findMarkdownFiles(absoluteContentDir)
 
   const articles: ArticleRoute[] = []
   const displayTags = new Map<string, string>()
   const rawTags = new Set<string>()
   const areaSlugs = new Set<string>()
 
-  for (const fileName of markdownFiles) {
-    const markdown = await readFile(path.join(absoluteContentDir, fileName), "utf8")
+  for (const absolutePath of markdownFiles) {
+    const source = path.relative(absoluteContentDir, absolutePath)
+    const markdown = await readFile(absolutePath, "utf8")
     const data = parseFrontmatter(markdown)
-    const slug = fileName.replace(/\.md$/, "")
-    articles.push({ slug, source: fileName })
+    const slug = path.basename(absolutePath, ".md")
+    articles.push({ slug, source })
 
     for (const tag of tagsFrom(data)) {
       rawTags.add(tag)

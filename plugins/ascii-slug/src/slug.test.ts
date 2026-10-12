@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest"
 import type { BuildCtx, FullSlug } from "@quartz-community/types"
 import { AsciiSlug } from "./index"
-import { toAsciiSlug, transliterateSegment } from "./slug"
+import { toAsciiSlug, toFlatAsciiSlug, transliterateSegment } from "./slug"
 
 describe("transliterateSegment", () => {
   it("normalizes Latin text to lowercase kebab case", () => {
@@ -33,24 +33,46 @@ describe("toAsciiSlug", () => {
   })
 })
 
+describe("toFlatAsciiSlug", () => {
+  it("keeps nested source folders out of public content routes", () => {
+    expect(toFlatAsciiSlug("2-level-knowledge/Сетевая безопасность")).toBe("setevaya-bezopasnost")
+    expect(toFlatAsciiSlug("4-level-knowledge/OSI")).toBe("osi")
+  })
+})
+
 describe("AsciiSlug link normalization", () => {
+  it("rejects distinct nested source paths that collapse to the same route", () => {
+    const ctx = {
+      allSlugs: ["2-level-knowledge/Proxy", "4-level-knowledge/Proxy"] as FullSlug[],
+      allFiles: ["2-level-knowledge/Proxy.md", "4-level-knowledge/Proxy.md"],
+    } as BuildCtx
+
+    expect(() => AsciiSlug().markdownPlugins?.(ctx)).toThrow(/duplicate flat slug.*proxy/i)
+  })
+
   it("updates the shared route manifest when normalizing a page slug", () => {
-    const ctx = { allSlugs: ["r.u.d.y-(r-u-dead-yet)"] as FullSlug[] } as BuildCtx
+    const ctx = {
+      allSlugs: [
+        "4-level-knowledge/r.u.d.y-(r-u-dead-yet)",
+        "assets/pasted-image.png",
+      ] as FullSlug[],
+      allFiles: ["4-level-knowledge/r.u.d.y-(r-u-dead-yet).md", "assets/pasted-image.png"],
+    } as BuildCtx
     const plugin = AsciiSlug().markdownPlugins?.(ctx)?.[0] as () => (
       tree: unknown,
       file: { data: Record<string, unknown> },
     ) => void
-    const file = { data: { slug: "r.u.d.y-(r-u-dead-yet)" } }
+    const file = { data: { slug: "4-level-knowledge/r.u.d.y-(r-u-dead-yet)" } }
 
     plugin()({}, file)
 
     expect(file.data.slug).toBe("r-u-d-y-r-u-dead-yet")
-    expect(ctx.allSlugs).toEqual(["r-u-d-y-r-u-dead-yet"])
+    expect(ctx.allSlugs).toEqual(["r-u-d-y-r-u-dead-yet", "assets/pasted-image.png"])
   })
 
   it("maps CrawlLinks destinations onto canonical routes and disables missing targets", () => {
     const ctx = {
-      allSlugs: ["index", "r-u-d-y-r-u-dead-yet", "infrastruktura"] as FullSlug[],
+      allSlugs: ["index", "proxy", "r-u-d-y-r-u-dead-yet", "infrastruktura"] as FullSlug[],
     } as BuildCtx
     const plugin = AsciiSlug().htmlPlugins?.(ctx)?.[0] as () => (
       tree: Record<string, unknown>,
@@ -60,6 +82,12 @@ describe("AsciiSlug link normalization", () => {
     const tree = {
       type: "root",
       children: [
+        {
+          type: "element",
+          tagName: "a",
+          properties: { href: "../4-level-knowledge/Proxy.md" },
+          children: [{ type: "text", value: "Proxy" }],
+        },
         {
           type: "element",
           tagName: "a",
@@ -88,7 +116,8 @@ describe("AsciiSlug link normalization", () => {
 
     transform(tree, file)
 
-    const [rudy, area, missing] = tree.children as Array<Record<string, any>>
+    const [qualified, rudy, area, missing] = tree.children as Array<Record<string, any>>
+    expect(qualified.properties.href).toBe("./proxy")
     expect(rudy.properties.href).toBe("./r-u-d-y-r-u-dead-yet")
     expect(area.properties.href).toBe("./infrastruktura")
     expect(missing.tagName).toBe("span")

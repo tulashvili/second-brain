@@ -1,23 +1,37 @@
 import type { FullSlug, QuartzTransformerPluginInstance } from "@quartz-community/types"
 import { resolveRelative } from "@quartz-community/utils/path"
 
-import { toAsciiSlug } from "./slug"
+import { toFlatAsciiSlug } from "./slug"
 
-export { toAsciiSlug, transliterateSegment } from "./slug"
+export { toAsciiSlug, toFlatAsciiSlug, transliterateSegment } from "./slug"
+
+const flattenRouteManifest = (slugs: FullSlug[], files: readonly string[]): FullSlug[] => {
+  const sourceByRoute = new Map<string, string>()
+  return slugs.map((slug, index) => {
+    const source = String(slug)
+    const route = files[index]?.toLowerCase().endsWith(".md") ? toFlatAsciiSlug(source) : source
+    const previous = sourceByRoute.get(route)
+    if (previous != null && previous !== source) {
+      throw new Error(`Duplicate flat slug "${route}" from "${previous}" and "${source}"`)
+    }
+    sourceByRoute.set(route, source)
+    return route as FullSlug
+  })
+}
 
 export const AsciiSlug = (): QuartzTransformerPluginInstance => ({
   name: "AsciiSlug",
   markdownPlugins(ctx) {
+    const normalizedManifest = flattenRouteManifest(ctx.allSlugs, ctx.allFiles)
+    ctx.allSlugs.splice(0, ctx.allSlugs.length, ...normalizedManifest)
     return [
       () => (_tree: unknown, file: { data: Record<string, unknown> }) => {
         const rawSlug = String(file.data.slug ?? "")
         if (rawSlug.length === 0) return
 
-        const normalized = toAsciiSlug(rawSlug)
+        const normalized = toFlatAsciiSlug(rawSlug)
         if (normalized.length > 0) {
           file.data.slug = normalized
-          const index = ctx.allSlugs.findIndex((slug) => String(slug) === rawSlug)
-          if (index >= 0) ctx.allSlugs[index] = normalized as FullSlug
         }
       },
     ]
@@ -43,7 +57,7 @@ export const AsciiSlug = (): QuartzTransformerPluginInstance => ({
               const decoded = decodeURIComponent(rawPath)
                 .replace(/^\.?\//, "")
                 .replace(/\.md$/i, "")
-              const target = toAsciiSlug(decoded)
+              const target = toFlatAsciiSlug(decoded)
               if (target && existing.has(target)) {
                 properties.href = `${resolveRelative(
                   String(file.data.slug ?? "index") as FullSlug,

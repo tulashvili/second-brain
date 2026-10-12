@@ -24,3 +24,23 @@ test("flat route sync creates descriptors for tags and linked areas", async () =
     await rm(temporaryRoot, { recursive: true, force: true })
   }
 })
+
+test("flat route sync discovers tags in nested knowledge levels", async () => {
+  const temporaryRoot = await mkdtemp(path.join(os.tmpdir(), "quartz-nested-flat-routes-"))
+  const content = path.join(temporaryRoot, "content")
+  try {
+    const atomicNotes = path.join(content, "4-level-knowledge")
+    await mkdir(atomicNotes, { recursive: true })
+    await writeFile(
+      path.join(atomicNotes, "Idea.md"),
+      `---\ntags: [inspiration]\n---\nNested note\n`,
+    )
+
+    const slugs = await syncFlatTagPages(content, ["404", "CNAME", "static"])
+
+    assert.deepEqual(slugs, ["inspiration"])
+    await readFile(path.join(content, "_flat-tags", "inspiration.md"), "utf8")
+  } finally {
+    await rm(temporaryRoot, { recursive: true, force: true })
+  }
+})

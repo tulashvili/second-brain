@@ -6,7 +6,7 @@ import path from "node:path"
 import test from "node:test"
 import { promisify } from "node:util"
 import YAML from "yaml"
-import { toAsciiSlug } from "../plugins/ascii-slug/src/slug"
+import { toFlatAsciiSlug } from "../plugins/ascii-slug/src/slug"
 
 const execFileAsync = promisify(execFile)
 const contentDir = path.join(process.cwd(), "content")
@@ -17,15 +17,28 @@ const frontmatter = (markdown: string): Record<string, unknown> => {
   return match ? (YAML.parse(match[1]) ?? {}) : {}
 }
 
-const knowledgeSlugs = async (): Promise<{ articles: string[]; mocs: string[] }> => {
-  const entries = (await readdir(contentDir, { withFileTypes: true })).filter(
-    (entry) => entry.isFile() && entry.name.endsWith(".md"),
+const markdownFiles = async (directory: string): Promise<string[]> => {
+  const entries = await readdir(directory, { withFileTypes: true })
+  const nested = await Promise.all(
+    entries.map(async (entry) => {
+      if (entry.name.startsWith(".") || entry.name === "_flat-tags" || entry.name === "assets") {
+        return []
+      }
+      const absolutePath = path.join(directory, entry.name)
+      if (entry.isDirectory()) return markdownFiles(absolutePath)
+      return entry.isFile() && entry.name.endsWith(".md") ? [absolutePath] : []
+    }),
   )
+  return nested.flat().sort((left, right) => left.localeCompare(right))
+}
+
+const knowledgeSlugs = async (): Promise<{ articles: string[]; mocs: string[] }> => {
+  const entries = await markdownFiles(contentDir)
   const files = await Promise.all(
-    entries.map(async (entry) => ({
-      name: entry.name,
-      slug: toAsciiSlug(entry.name.replace(/\.md$/, "")),
-      data: frontmatter(await readFile(path.join(contentDir, entry.name), "utf8")),
+    entries.map(async (absolutePath) => ({
+      name: path.basename(absolutePath),
+      slug: toFlatAsciiSlug(path.basename(absolutePath, ".md")),
+      data: frontmatter(await readFile(absolutePath, "utf8")),
     })),
   )
   return {
@@ -99,8 +112,8 @@ test(
       })
 
       const { articles, mocs } = await knowledgeSlugs()
-      assert.equal(articles.length, 33)
-      assert.equal(mocs.length, 14)
+      assert.equal(articles.length, 38)
+      assert.equal(mocs.length, 16)
       const rootPage = await readFile(path.join(output, "index.html"), "utf8")
       assert.match(rootPage, /property="og:url" content="https:\/\/security\.maybeso\.me\/"/)
       assert.match(rootPage, /rel="canonical" href="https:\/\/security\.maybeso\.me\/"/)
@@ -124,6 +137,20 @@ test(
         attackTypes,
         /<a[^>]+href="\.\/r-u-d-y-r-u-dead-yet"[^>]*>R\.U\.D\.Y \(R-U-Dead-Yet\)<\/a>/,
       )
+
+      const processes = await readFile(path.join(output, "protsessy-v-linux.html"), "utf8")
+      assert.doesNotMatch(processes, /class="[^"]*broken-link[^"]*"/)
+      const processImages = [...processes.matchAll(/\bsrc=["']([^"']+\.png)["']/gi)].map(
+        (match) => match[1],
+      )
+      assert.equal(processImages.length, 8)
+      for (const source of processImages) {
+        const pathname = decodeURIComponent(
+          new URL(source, "https://security.maybeso.me/protsessy-v-linux").pathname,
+        )
+        assert.match(pathname, /^\/assets\/pasted-image-2026101222\d{4}\.png$/)
+        assert.equal(await exists(path.join(output, pathname.replace(/^\/+/, ""))), true)
+      }
 
       const tagDescriptors = await readdir(path.join(contentDir, "_flat-tags"))
       const tags = tagDescriptors.map((file) => file.replace(/\.md$/, "")).sort()
@@ -218,7 +245,7 @@ test(
       )
       const practicalParents = section(practical, "semantic-parents")
       assert.match(practicalParents, /href="\/bezopasnost-prilozheniy-i-veb-servisov"/)
-      assert.match(practicalParents, /href="\/laboratorii-i-prakticheskie-rukovodstva"/)
+      assert.match(practicalParents, /href="\/laby-i-prakticheskie-rukovodstva"/)
 
       const networkMoc = await readFile(path.join(output, "setevaya-bezopasnost.html"), "utf8")
       const networkChildren = section(networkMoc, "moc-children")

@@ -55,3 +55,8 @@ export const toAsciiSlug = (slug: string): string =>
     .map((segment) => transliterateSegment(segment))
     .filter((segment) => segment.length > 0)
     .join("/")
+
+export const toFlatAsciiSlug = (slug: string): string => {
+  const segments = slug.split("/").filter((segment) => segment.length > 0)
+  return transliterateSegment(segments.at(-1) ?? "")
+}

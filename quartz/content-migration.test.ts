@@ -16,17 +16,14 @@ const frontmatter = (markdown: string): Record<string, unknown> => {
   return match ? (YAML.parse(match[1]) ?? {}) : {}
 }
 
-const rootArticles = async () => {
-  const entries = await readdir(contentDirectory, { withFileTypes: true })
-  const markdown = entries
-    .filter(
-      (entry) => entry.isFile() && entry.name.endsWith(".md") && !articleExclusions.has(entry.name),
-    )
-    .map((entry) => entry.name)
+const publishedArticles = async () => {
+  const markdown = (await markdownFiles(contentDirectory)).filter(
+    (file) => !articleExclusions.has(path.basename(file)),
+  )
   const classified = await Promise.all(
-    markdown.map(async (file) => ({
-      file,
-      data: frontmatter(await readFile(path.join(contentDirectory, file), "utf8")),
+    markdown.map(async (absolutePath) => ({
+      file: path.relative(contentDirectory, absolutePath),
+      data: frontmatter(await readFile(absolutePath, "utf8")),
     })),
   )
   return classified
@@ -56,9 +53,9 @@ const markdownFiles = async (directory: string): Promise<string[]> => {
   return nested.flat()
 }
 
-test("imports exactly the curated 33 articles", async () => {
-  const articles = await rootArticles()
-  assert.equal(articles.length, 33)
+test("imports exactly the curated 38 articles", async () => {
+  const articles = await publishedArticles()
+  assert.equal(articles.length, 38)
 
   for (const article of articles) {
     const data = frontmatter(await readFile(path.join(contentDirectory, article), "utf8"))
@@ -76,7 +73,7 @@ test("keeps excluded categories out", async () => {
     "sports",
   ])
 
-  for (const article of await rootArticles()) {
+  for (const article of await publishedArticles()) {
     const data = frontmatter(await readFile(path.join(contentDirectory, article), "utf8"))
     const metadata = [
       ...normalizedValues(data.area),
