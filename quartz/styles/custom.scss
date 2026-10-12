@@ -1,5 +1,25 @@
 @use "./variables.scss" as *;
 
+.page .center > article .markdown-preview-view {
+  font-size: 1.125rem;
+  line-height: 1.333;
+
+  p,
+  li {
+    line-height: 1.333;
+  }
+
+  @media (min-width: 32em) {
+    font-size: 1.25rem;
+    line-height: 1.4;
+
+    p,
+    li {
+      line-height: 1.4;
+    }
+  }
+}
+
 .page-header > header {
   align-items: center;
   border-bottom: 1px solid var(--lightgray);
