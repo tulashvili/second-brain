@@ -22,10 +22,14 @@ test("published baseline captures every original Russian note and its stable URL
     counts: { article: number; moc: number; page: number }
     pages: BaselinePage[]
   }
-  const committedFiles = execFileSync(
-    "git",
-    ["ls-tree", "-r", "--name-only", "-z", baseline.sourceCommit, "content"],
-  )
+  const committedFiles = execFileSync("git", [
+    "ls-tree",
+    "-r",
+    "--name-only",
+    "-z",
+    baseline.sourceCommit,
+    "content",
+  ])
     .toString("utf8")
     .split("\0")
     .filter((source) => source.endsWith(".md") && !source.includes("/_flat-tags/"))
@@ -43,10 +47,7 @@ test("published baseline captures every original Russian note and its stable URL
 
   for (const page of baseline.pages) {
     assert.equal(page.slug, toFlatAsciiSlug(path.basename(page.source, ".md")))
-    assert.equal(
-      page.url,
-      `https://security.maybeso.me/${page.slug === "index" ? "" : page.slug}`,
-    )
+    assert.equal(page.url, `https://security.maybeso.me/${page.slug === "index" ? "" : page.slug}`)
     assert.ok(page.kind === "article" || page.kind === "moc")
   }
   assert.ok(baseline.pages.some((page) => page.url.endsWith("/ssl-upstream-injection")))
