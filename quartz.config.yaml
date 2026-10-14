@@ -276,6 +276,13 @@ plugins:
     layout:
       position: beforeBody
       priority: 30
+  - source: ./plugins/language-selector
+    enabled: true
+    options: {}
+    layout:
+      position: header
+      priority: 45
+      group: header-actions
   - source: ./plugins/blog-link
     enabled: true
     options: {}

@@ -1,0 +1,29 @@
+.language-selector {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 0.15rem;
+  padding: 0.15rem;
+  border: 1px solid var(--lightgray);
+  border-radius: 0.4rem;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.language-selector a {
+  padding: 0.25rem 0.4rem;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  color: var(--darkgray);
+}
+
+.language-selector a[aria-current="true"] {
+  background: var(--highlight);
+  color: var(--dark);
+  font-weight: 700;
+}
+
+.language-selector a:focus-visible {
+  outline: 2px solid var(--secondary);
+  outline-offset: 2px;
+}

@@ -1,0 +1,326 @@
+{
+  "linux": {
+    "ruPath": "content/ru/1-level-knowledge/Linux.md",
+    "enPath": "content/en/1-level-knowledge/linux.md",
+    "ruUrl": "https://security.maybeso.me/linux",
+    "enUrl": "https://security.maybeso.me/en/linux"
+  },
+  "osnovy-informatsionnoy-bezopasnosti": {
+    "ruPath": "content/ru/1-level-knowledge/Основы информационной безопасности.md",
+    "enPath": "content/en/1-level-knowledge/information-security-fundamentals.md",
+    "ruUrl": "https://security.maybeso.me/osnovy-informatsionnoy-bezopasnosti",
+    "enUrl": "https://security.maybeso.me/en/information-security-fundamentals"
+  },
+  "ataki-i-ugrozy": {
+    "ruPath": "content/ru/2-level-knowledge/Атаки и угрозы.md",
+    "enPath": "content/en/2-level-knowledge/attacks-and-threats.md",
+    "ruUrl": "https://security.maybeso.me/ataki-i-ugrozy",
+    "enUrl": "https://security.maybeso.me/en/attacks-and-threats"
+  },
+  "bezopasnost-infrastruktury": {
+    "ruPath": "content/ru/2-level-knowledge/Безопасность инфраструктуры.md",
+    "enPath": "content/en/2-level-knowledge/infrastructure-security.md",
+    "ruUrl": "https://security.maybeso.me/bezopasnost-infrastruktury",
+    "enUrl": "https://security.maybeso.me/en/infrastructure-security"
+  },
+  "bezopasnost-prilozheniy-i-veb-servisov": {
+    "ruPath": "content/ru/2-level-knowledge/Безопасность приложений и веб-сервисов.md",
+    "enPath": "content/en/2-level-knowledge/application-and-web-service-security.md",
+    "ruUrl": "https://security.maybeso.me/bezopasnost-prilozheniy-i-veb-servisov",
+    "enUrl": "https://security.maybeso.me/en/application-and-web-service-security"
+  },
+  "laby-i-prakticheskie-rukovodstva": {
+    "ruPath": "content/ru/2-level-knowledge/Лабы и практические руководства.md",
+    "enPath": "content/en/2-level-knowledge/labs-and-practical-guides.md",
+    "ruUrl": "https://security.maybeso.me/laby-i-prakticheskie-rukovodstva",
+    "enUrl": "https://security.maybeso.me/en/labs-and-practical-guides"
+  },
+  "obnaruzhenie-logirovanie-i-monitoring": {
+    "ruPath": "content/ru/2-level-knowledge/Обнаружение, логирование и мониторинг.md",
+    "enPath": "content/en/2-level-knowledge/detection-logging-and-monitoring.md",
+    "ruUrl": "https://security.maybeso.me/obnaruzhenie-logirovanie-i-monitoring",
+    "enUrl": "https://security.maybeso.me/en/detection-logging-and-monitoring"
+  },
+  "operatsionnaya-bezopasnost-i-instrumenty": {
+    "ruPath": "content/ru/2-level-knowledge/Операционная безопасность и инструменты.md",
+    "enPath": "content/en/2-level-knowledge/security-operations-and-tools.md",
+    "ruUrl": "https://security.maybeso.me/operatsionnaya-bezopasnost-i-instrumenty",
+    "enUrl": "https://security.maybeso.me/en/security-operations-and-tools"
+  },
+  "setevaya-bezopasnost": {
+    "ruPath": "content/ru/2-level-knowledge/Сетевая безопасность.md",
+    "enPath": "content/en/2-level-knowledge/network-security.md",
+    "ruUrl": "https://security.maybeso.me/setevaya-bezopasnost",
+    "enUrl": "https://security.maybeso.me/en/network-security"
+  },
+  "avtorizatsiya-i-autentifikatsiya": {
+    "ruPath": "content/ru/3-level-knowledge/Авторизация и аутентификация.md",
+    "enPath": "content/en/3-level-knowledge/authorization-and-authentication.md",
+    "ruUrl": "https://security.maybeso.me/avtorizatsiya-i-autentifikatsiya",
+    "enUrl": "https://security.maybeso.me/en/authorization-and-authentication"
+  },
+  "instrumenty-i-tehnologii": {
+    "ruPath": "content/ru/3-level-knowledge/Инструменты и технологии.md",
+    "enPath": "content/en/3-level-knowledge/tools-and-technologies.md",
+    "ruUrl": "https://security.maybeso.me/instrumenty-i-tehnologii",
+    "enUrl": "https://security.maybeso.me/en/tools-and-technologies"
+  },
+  "infrastruktura-i-platformy": {
+    "ruPath": "content/ru/3-level-knowledge/Инфраструктура и платформы.md",
+    "enPath": "content/en/3-level-knowledge/infrastructure-and-platforms.md",
+    "ruUrl": "https://security.maybeso.me/infrastruktura-i-platformy",
+    "enUrl": "https://security.maybeso.me/en/infrastructure-and-platforms"
+  },
+  "programmirovanie-i-avtomatizatsiya": {
+    "ruPath": "content/ru/3-level-knowledge/Программирование и автоматизация.md",
+    "enPath": "content/en/3-level-knowledge/programming-and-automation.md",
+    "ruUrl": "https://security.maybeso.me/programmirovanie-i-avtomatizatsiya",
+    "enUrl": "https://security.maybeso.me/en/programming-and-automation"
+  },
+  "seti-i-protokoly": {
+    "ruPath": "content/ru/3-level-knowledge/Сети и протоколы.md",
+    "enPath": "content/en/3-level-knowledge/networks-and-protocols.md",
+    "ruUrl": "https://security.maybeso.me/seti-i-protokoly",
+    "enUrl": "https://security.maybeso.me/en/networks-and-protocols"
+  },
+  "hranenie-dannyh": {
+    "ruPath": "content/ru/3-level-knowledge/Хранение данных.md",
+    "enPath": "content/en/3-level-knowledge/data-storage.md",
+    "ruUrl": "https://security.maybeso.me/hranenie-dannyh",
+    "enUrl": "https://security.maybeso.me/en/data-storage"
+  },
+  "auth-log": {
+    "ruPath": "content/ru/4-level-knowledge/Auth.log.md",
+    "enPath": "content/en/4-level-knowledge/auth-log.md",
+    "ruUrl": "https://security.maybeso.me/auth-log",
+    "enUrl": "https://security.maybeso.me/en/auth-log"
+  },
+  "awscli": {
+    "ruPath": "content/ru/4-level-knowledge/Awscli.md",
+    "enPath": "content/en/4-level-knowledge/aws-cli.md",
+    "ruUrl": "https://security.maybeso.me/awscli",
+    "enUrl": "https://security.maybeso.me/en/aws-cli"
+  },
+  "can-campus-area-network": {
+    "ruPath": "content/ru/4-level-knowledge/CAN (Campus Area Network).md",
+    "enPath": "content/en/4-level-knowledge/campus-area-network.md",
+    "ruUrl": "https://security.maybeso.me/can-campus-area-network",
+    "enUrl": "https://security.maybeso.me/en/campus-area-network"
+  },
+  "cdn": {
+    "ruPath": "content/ru/4-level-knowledge/CDN.md",
+    "enPath": "content/en/4-level-knowledge/cdn.md",
+    "ruUrl": "https://security.maybeso.me/cdn",
+    "enUrl": "https://security.maybeso.me/en/cdn"
+  },
+  "diy-gadzhet-dlya-treydinga-bez-emotsiy": {
+    "ruPath": "content/ru/4-level-knowledge/DIY-гаджет для трейдинга без эмоций.md",
+    "enPath": "content/en/4-level-knowledge/emotion-free-trading-gadget.md",
+    "ruUrl": "https://security.maybeso.me/diy-gadzhet-dlya-treydinga-bez-emotsiy",
+    "enUrl": "https://security.maybeso.me/en/emotion-free-trading-gadget"
+  },
+  "elastic-stack": {
+    "ruPath": "content/ru/4-level-knowledge/Elastic Stack.md",
+    "enPath": "content/en/4-level-knowledge/elastic-stack.md",
+    "ruUrl": "https://security.maybeso.me/elastic-stack",
+    "enUrl": "https://security.maybeso.me/en/elastic-stack"
+  },
+  "gitlab-runner": {
+    "ruPath": "content/ru/4-level-knowledge/Gitlab Runner.md",
+    "enPath": "content/en/4-level-knowledge/gitlab-runner.md",
+    "ruUrl": "https://security.maybeso.me/gitlab-runner",
+    "enUrl": "https://security.maybeso.me/en/gitlab-runner"
+  },
+  "gitlab": {
+    "ruPath": "content/ru/4-level-knowledge/Gitlab.md",
+    "enPath": "content/en/4-level-knowledge/gitlab.md",
+    "ruUrl": "https://security.maybeso.me/gitlab",
+    "enUrl": "https://security.maybeso.me/en/gitlab"
+  },
+  "hsts-http-strict-transport-security": {
+    "ruPath": "content/ru/4-level-knowledge/HSTS (HTTP Strict Transport Security).md",
+    "enPath": "content/en/4-level-knowledge/http-strict-transport-security.md",
+    "ruUrl": "https://security.maybeso.me/hsts-http-strict-transport-security",
+    "enUrl": "https://security.maybeso.me/en/http-strict-transport-security"
+  },
+  "hardening-usilenie-bezopasnosti": {
+    "ruPath": "content/ru/4-level-knowledge/Hardening (усиление безопасности).md",
+    "enPath": "content/en/4-level-knowledge/security-hardening.md",
+    "ruUrl": "https://security.maybeso.me/hardening-usilenie-bezopasnosti",
+    "enUrl": "https://security.maybeso.me/en/security-hardening"
+  },
+  "lan-local-area-network": {
+    "ruPath": "content/ru/4-level-knowledge/LAN (Local Area Network).md",
+    "enPath": "content/en/4-level-knowledge/local-area-network.md",
+    "ruUrl": "https://security.maybeso.me/lan-local-area-network",
+    "enUrl": "https://security.maybeso.me/en/local-area-network"
+  },
+  "minio-client": {
+    "ruPath": "content/ru/4-level-knowledge/Minio Client.md",
+    "enPath": "content/en/4-level-knowledge/minio-client.md",
+    "ruUrl": "https://security.maybeso.me/minio-client",
+    "enUrl": "https://security.maybeso.me/en/minio-client"
+  },
+  "osi": {
+    "ruPath": "content/ru/4-level-knowledge/OSI.md",
+    "enPath": "content/en/4-level-knowledge/osi-model.md",
+    "ruUrl": "https://security.maybeso.me/osi",
+    "enUrl": "https://security.maybeso.me/en/osi-model"
+  },
+  "out-of-memory-oom": {
+    "ruPath": "content/ru/4-level-knowledge/Out of memory (OOM).md",
+    "enPath": "content/en/4-level-knowledge/out-of-memory.md",
+    "ruUrl": "https://security.maybeso.me/out-of-memory-oom",
+    "enUrl": "https://security.maybeso.me/en/out-of-memory"
+  },
+  "pan-personal-area-network": {
+    "ruPath": "content/ru/4-level-knowledge/PAN (Personal Area Network).md",
+    "enPath": "content/en/4-level-knowledge/personal-area-network.md",
+    "ruUrl": "https://security.maybeso.me/pan-personal-area-network",
+    "enUrl": "https://security.maybeso.me/en/personal-area-network"
+  },
+  "proxmox": {
+    "ruPath": "content/ru/4-level-knowledge/Proxmox.md",
+    "enPath": "content/en/4-level-knowledge/proxmox.md",
+    "ruUrl": "https://security.maybeso.me/proxmox",
+    "enUrl": "https://security.maybeso.me/en/proxmox"
+  },
+  "proxy": {
+    "ruPath": "content/ru/4-level-knowledge/Proxy.md",
+    "enPath": "content/en/4-level-knowledge/proxy.md",
+    "ruUrl": "https://security.maybeso.me/proxy",
+    "enUrl": "https://security.maybeso.me/en/proxy"
+  },
+  "r-u-d-y-r-u-dead-yet": {
+    "ruPath": "content/ru/4-level-knowledge/R.U.D.Y (R-U-Dead-Yet).md",
+    "enPath": "content/en/4-level-knowledge/rudy-r-u-dead-yet.md",
+    "ruUrl": "https://security.maybeso.me/r-u-d-y-r-u-dead-yet",
+    "enUrl": "https://security.maybeso.me/en/rudy-r-u-dead-yet"
+  },
+  "spof": {
+    "ruPath": "content/ru/4-level-knowledge/SPOF.md",
+    "enPath": "content/en/4-level-knowledge/single-point-of-failure.md",
+    "ruUrl": "https://security.maybeso.me/spof",
+    "enUrl": "https://security.maybeso.me/en/single-point-of-failure"
+  },
+  "ssl-upstream-injection": {
+    "ruPath": "content/ru/4-level-knowledge/SSL Upstream Injection.md",
+    "enPath": "content/en/4-level-knowledge/ssl-upstream-injection.md",
+    "ruUrl": "https://security.maybeso.me/ssl-upstream-injection",
+    "enUrl": "https://security.maybeso.me/en/ssl-upstream-injection"
+  },
+  "slow-attack": {
+    "ruPath": "content/ru/4-level-knowledge/Slow Attack.md",
+    "enPath": "content/en/4-level-knowledge/slow-attack.md",
+    "ruUrl": "https://security.maybeso.me/slow-attack",
+    "enUrl": "https://security.maybeso.me/en/slow-attack"
+  },
+  "swaks-prostoy-klient-dlya-otpravki-pisem-s-servera": {
+    "ruPath": "content/ru/4-level-knowledge/Swaks. Простой клиент для отправки писем с сервера.md",
+    "enPath": "content/en/4-level-knowledge/swaks-email-testing-tool.md",
+    "ruUrl": "https://security.maybeso.me/swaks-prostoy-klient-dlya-otpravki-pisem-s-servera",
+    "enUrl": "https://security.maybeso.me/en/swaks-email-testing-tool"
+  },
+  "syncthing": {
+    "ruPath": "content/ru/4-level-knowledge/Syncthing.md",
+    "enPath": "content/en/4-level-knowledge/syncthing.md",
+    "ruUrl": "https://security.maybeso.me/syncthing",
+    "enUrl": "https://security.maybeso.me/en/syncthing"
+  },
+  "balenaetcher": {
+    "ruPath": "content/ru/4-level-knowledge/balenaEtcher.md",
+    "enPath": "content/en/4-level-knowledge/balenaetcher.md",
+    "ruUrl": "https://security.maybeso.me/balenaetcher",
+    "enUrl": "https://security.maybeso.me/en/balenaetcher"
+  },
+  "nginx-worker-process": {
+    "ruPath": "content/ru/4-level-knowledge/nginx_worker_process.md",
+    "enPath": "content/en/4-level-knowledge/nginx-worker-process.md",
+    "ruUrl": "https://security.maybeso.me/nginx-worker-process",
+    "enUrl": "https://security.maybeso.me/en/nginx-worker-process"
+  },
+  "gayd-po-ispolzovaniyu-mysqldump": {
+    "ruPath": "content/ru/4-level-knowledge/Гайд по использованию mysqldump.md",
+    "enPath": "content/en/4-level-knowledge/mysqldump-guide.md",
+    "ruUrl": "https://security.maybeso.me/gayd-po-ispolzovaniyu-mysqldump",
+    "enUrl": "https://security.maybeso.me/en/mysqldump-guide"
+  },
+  "kommutator-vs-marshrutizator": {
+    "ruPath": "content/ru/4-level-knowledge/Коммутатор vs Маршрутизатор.md",
+    "enPath": "content/en/4-level-knowledge/switch-vs-router.md",
+    "ruUrl": "https://security.maybeso.me/kommutator-vs-marshrutizator",
+    "enUrl": "https://security.maybeso.me/en/switch-vs-router"
+  },
+  "kommutator": {
+    "ruPath": "content/ru/4-level-knowledge/Коммутатор.md",
+    "enPath": "content/en/4-level-knowledge/network-switch.md",
+    "ruUrl": "https://security.maybeso.me/kommutator",
+    "enUrl": "https://security.maybeso.me/en/network-switch"
+  },
+  "kompyuternye-seti": {
+    "ruPath": "content/ru/4-level-knowledge/Компьютерные сети.md",
+    "enPath": "content/en/4-level-knowledge/computer-networks.md",
+    "ruUrl": "https://security.maybeso.me/kompyuternye-seti",
+    "enUrl": "https://security.maybeso.me/en/computer-networks"
+  },
+  "log-kollektor": {
+    "ruPath": "content/ru/4-level-knowledge/Лог коллектор.md",
+    "enPath": "content/en/4-level-knowledge/log-collector.md",
+    "ruUrl": "https://security.maybeso.me/log-kollektor",
+    "enUrl": "https://security.maybeso.me/en/log-collector"
+  },
+  "marshrutizator": {
+    "ruPath": "content/ru/4-level-knowledge/Маршрутизатор.md",
+    "enPath": "content/en/4-level-knowledge/router.md",
+    "ruUrl": "https://security.maybeso.me/marshrutizator",
+    "enUrl": "https://security.maybeso.me/en/router"
+  },
+  "multikonteynernoe-prilozhenie-v-docker-docker-network": {
+    "ruPath": "content/ru/4-level-knowledge/Мультиконтейнерное приложение в Docker (docker network).md",
+    "enPath": "content/en/4-level-knowledge/multi-container-docker-application.md",
+    "ruUrl": "https://security.maybeso.me/multikonteynernoe-prilozhenie-v-docker-docker-network",
+    "enUrl": "https://security.maybeso.me/en/multi-container-docker-application"
+  },
+  "nastroyka-forward-proxy-v-nginx-c-basic-auth": {
+    "ruPath": "content/ru/4-level-knowledge/Настройка forward proxy в Nginx c basic auth.md",
+    "enPath": "content/en/4-level-knowledge/nginx-forward-proxy-with-basic-auth.md",
+    "ruUrl": "https://security.maybeso.me/nastroyka-forward-proxy-v-nginx-c-basic-auth",
+    "enUrl": "https://security.maybeso.me/en/nginx-forward-proxy-with-basic-auth"
+  },
+  "protsessy-v-linux": {
+    "ruPath": "content/ru/4-level-knowledge/Процессы в Linux.md",
+    "enPath": "content/en/4-level-knowledge/linux-processes.md",
+    "ruUrl": "https://security.maybeso.me/protsessy-v-linux",
+    "enUrl": "https://security.maybeso.me/en/linux-processes"
+  },
+  "razvertyvanie-elastic-stack": {
+    "ruPath": "content/ru/4-level-knowledge/Развертывание Elastic Stack.md",
+    "enPath": "content/en/4-level-knowledge/deploying-elastic-stack.md",
+    "ruUrl": "https://security.maybeso.me/razvertyvanie-elastic-stack",
+    "enUrl": "https://security.maybeso.me/en/deploying-elastic-stack"
+  },
+  "tipy-atak-na-informatsionnye-sistemy": {
+    "ruPath": "content/ru/4-level-knowledge/Типы атак на информационные системы.md",
+    "enPath": "content/en/4-level-knowledge/types-of-attacks-on-information-systems.md",
+    "ruUrl": "https://security.maybeso.me/tipy-atak-na-informatsionnye-sistemy",
+    "enUrl": "https://security.maybeso.me/en/types-of-attacks-on-information-systems"
+  },
+  "fizicheskiy-uroven-modeli-osi": {
+    "ruPath": "content/ru/4-level-knowledge/Физический уровень модели OSI.md",
+    "enPath": "content/en/4-level-knowledge/osi-physical-layer.md",
+    "ruUrl": "https://security.maybeso.me/fizicheskiy-uroven-modeli-osi",
+    "enUrl": "https://security.maybeso.me/en/osi-physical-layer"
+  },
+  "tsepochka-dostavki-logov-s-ispolzovaniem-elastic-stack": {
+    "ruPath": "content/ru/4-level-knowledge/Цепочка доставки логов с использованием Elastic Stack.md",
+    "enPath": "content/en/4-level-knowledge/elastic-stack-log-delivery-pipeline.md",
+    "ruUrl": "https://security.maybeso.me/tsepochka-dostavki-logov-s-ispolzovaniem-elastic-stack",
+    "enUrl": "https://security.maybeso.me/en/elastic-stack-log-delivery-pipeline"
+  },
+  "index": {
+    "ruPath": "content/ru/index.md",
+    "enPath": "content/en/index.md",
+    "ruUrl": "https://security.maybeso.me/",
+    "enUrl": "https://security.maybeso.me/en/"
+  }
+}

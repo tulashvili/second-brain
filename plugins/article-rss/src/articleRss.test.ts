@@ -61,6 +61,16 @@ describe("renderArticleRss", () => {
     expect(xml).toContain("]]&gt;")
   })
 
+  it("uses English feed metadata and /en/ article links", () => {
+    const xml = renderArticleRss([file("proxy", "Proxy")], {
+      baseUrl: "security.maybeso.me/en",
+      pageTitle: "SECURITY",
+    })
+    expect(xml).toContain("https://security.maybeso.me/en/proxy")
+    expect(xml).toContain("Latest notes on SECURITY")
+    expect(xml).not.toContain("Последние заметки")
+  })
+
   it("renders a valid empty feed", () => {
     const xml = renderArticleRss([], {
       baseUrl: "security.maybeso.me",

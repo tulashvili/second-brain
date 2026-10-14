@@ -9,7 +9,7 @@ import YAML from "yaml"
 import { toFlatAsciiSlug } from "../plugins/ascii-slug/src/slug"
 
 const execFileAsync = promisify(execFile)
-const contentDir = path.join(process.cwd(), "content")
+const contentDir = path.join(process.cwd(), "content", "ru")
 const articleExclusions = new Set(["index.md", "about.md", "projects.md"])
 
 const frontmatter = (markdown: string): Record<string, unknown> => {
@@ -79,7 +79,12 @@ const assertInternalHrefsResolve = async (output: string, fileName: string): Pro
   const sourcePath = fileName === "index.html" ? "/" : `/${fileName.replace(/\.html$/, "")}`
   for (const match of html.matchAll(/\bhref=["']([^"']+)["']/gi)) {
     const href = match[1]
-    if (href.startsWith("#") || /^(?:data|mailto|tel|javascript):/i.test(href)) continue
+    if (
+      href.startsWith("#") ||
+      href.startsWith("/__language?") ||
+      /^(?:data|mailto|tel|javascript):/i.test(href)
+    )
+      continue
     const destination = new URL(href, `https://security.maybeso.me${sourcePath}`)
     if (destination.origin !== "https://security.maybeso.me") continue
     const pathname = decodeURIComponent(destination.pathname)
@@ -106,7 +111,7 @@ test(
     const temporaryRoot = await mkdtemp(path.join(os.tmpdir(), "quartz-v5-site-"))
     const output = path.join(temporaryRoot, "public")
     try {
-      await execFileAsync("npx", ["quartz", "build", "--output", output], {
+      await execFileAsync("npx", ["tsx", "scripts/build-localized-site.ts", "--output", output], {
         cwd: process.cwd(),
         env: { ...process.env, PATH: `/opt/homebrew/bin:${process.env.PATH ?? ""}` },
       })
@@ -115,8 +120,8 @@ test(
       assert.equal(articles.length, 38)
       assert.equal(mocs.length, 16)
       const rootPage = await readFile(path.join(output, "index.html"), "utf8")
-      assert.match(rootPage, /property="og:url" content="https:\/\/security\.maybeso\.me\/"/)
-      assert.match(rootPage, /rel="canonical" href="https:\/\/security\.maybeso\.me\/"/)
+      assert.match(rootPage, /property="og:url" content="https:\/\/security\.maybeso\.me\/ru\/"/)
+      assert.match(rootPage, /rel="canonical" href="https:\/\/security\.maybeso\.me\/ru\/"/)
       assert.doesNotMatch(
         rootPage,
         /property="(?:og|twitter):url" content="https:\/\/security\.maybeso\.me\/index"/,
@@ -194,7 +199,7 @@ test(
         )
         assert.match(
           page,
-          new RegExp(`rel="canonical" href="https://security\\.maybeso\\.me/${route}"`),
+          new RegExp(`rel="canonical" href="https://security\\.maybeso\\.me/${route || "ru/"}"`),
         )
       }
 

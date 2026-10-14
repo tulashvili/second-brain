@@ -9,8 +9,9 @@ const renderComponent = (
   constructor: typeof SemanticGraph,
   fileData: Record<string, unknown>,
   allFiles: Record<string, unknown>[],
+  locale = "ru-RU",
 ) => {
-  const output = constructor()({ fileData, allFiles, cfg: {} } as never)
+  const output = constructor()({ fileData, allFiles, cfg: { locale } } as never)
   return output == null ? "" : render(output as Parameters<typeof render>[0])
 }
 
@@ -51,6 +52,17 @@ describe("SemanticParents", () => {
     expect(html.match(/href="\/labs"/g)).toHaveLength(1)
     expect(html).not.toContain("missing")
     expect(html).not.toContain("Plain")
+  })
+
+  it("keeps English links and labels under /en/", () => {
+    const html = renderComponent(
+      SemanticParents,
+      { slug: "proxy", frontmatter: {}, semanticUpLinks: ["network"] },
+      files,
+      "en-US",
+    )
+    expect(html).toContain('aria-label="Parent sections"')
+    expect(html).toContain('href="/en/network"')
   })
 
   it("renders nothing for the root or a page without parents", () => {

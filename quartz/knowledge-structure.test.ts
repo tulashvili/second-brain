@@ -19,7 +19,7 @@ type ContentPage = KnowledgeFile & {
   rawParents: string[]
 }
 
-const contentDir = path.join(process.cwd(), "content")
+const contentDir = path.join(process.cwd(), "content", "ru")
 
 const parseFrontmatter = (markdown: string): Record<string, unknown> => {
   const match = markdown.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/)

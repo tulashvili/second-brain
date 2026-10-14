@@ -1,4 +1,7 @@
 import { PageFrame, PageFrameProps } from "./types"
+import HeaderConstructor from "../Header"
+
+const Header = HeaderConstructor()
 
 /**
  * Minimal page frame — no sidebars, no header/footer chrome. Only the
@@ -10,9 +13,16 @@ import { PageFrame, PageFrameProps } from "./types"
  */
 export const MinimalFrame: PageFrame = {
   name: "minimal",
-  render({ componentData, pageBody: Content, footer }: PageFrameProps) {
+  render({ componentData, header, pageBody: Content, footer }: PageFrameProps) {
     return (
       <>
+        <div class="minimal-header">
+          <Header {...componentData}>
+            {header.map((HeaderComponent) => (
+              <HeaderComponent {...componentData} />
+            ))}
+          </Header>
+        </div>
         <div class="center minimal">
           <Content {...componentData} />
         </div>

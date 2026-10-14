@@ -4,7 +4,7 @@ import path from "node:path"
 import test from "node:test"
 import YAML from "yaml"
 
-const contentDirectory = path.join(process.cwd(), "content")
+const contentDirectory = path.join(process.cwd(), "content", "ru")
 const articleExclusions = new Set(["index.md", "about.md", "projects.md"])
 const mediaExtensions = /\.(?:avif|gif|jpe?g|png|svg|webp|mp3|mp4|wav|webm)$/i
 

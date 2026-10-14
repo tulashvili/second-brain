@@ -8,7 +8,7 @@ import { parseSource } from "./parseSource"
 import styles from "./sources.scss"
 
 export const Sources: QuartzComponentConstructor = () => {
-  const Component: QuartzComponent = ({ fileData, allFiles }: QuartzComponentProps) => {
+  const Component: QuartzComponent = ({ fileData, allFiles, cfg }: QuartzComponentProps) => {
     const frontmatter = fileData.frontmatter as Record<string, unknown> | undefined
     const slug = String(fileData.slug ?? "")
     if (
@@ -34,7 +34,15 @@ export const Sources: QuartzComponentConstructor = () => {
     })
     return (
       <section class="sources" aria-labelledby="sources-title">
-        <h3 id="sources-title">{sources.length > 1 ? "Источники" : "Источник"}</h3>
+        <h3 id="sources-title">
+          {cfg?.locale === "en-US"
+            ? sources.length > 1
+              ? "Sources"
+              : "Source"
+            : sources.length > 1
+              ? "Источники"
+              : "Источник"}
+        </h3>
         <ul>
           {sources.map((source) => (
             <li>

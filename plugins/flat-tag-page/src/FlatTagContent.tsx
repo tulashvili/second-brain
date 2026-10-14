@@ -15,7 +15,7 @@ const values = (value: unknown): string[] =>
   (Array.isArray(value) ? value : value == null ? [] : [value]).map(String)
 
 export const FlatTagContent: QuartzComponentConstructor = () => {
-  const Component: QuartzComponent = ({ fileData, allFiles }: QuartzComponentProps) => {
+  const Component: QuartzComponent = ({ fileData, allFiles, cfg }: QuartzComponentProps) => {
     const tag = (fileData as PageData).frontmatter?.flatTag
     if (typeof tag !== "string") {
       throw new Error(
@@ -46,12 +46,19 @@ export const FlatTagContent: QuartzComponentConstructor = () => {
     return (
       <div class="popover-hint flat-tag-content">
         <p>
-          {isArea ? "Заметки в области" : `Заметки с тегом #${tag}`}: {pages.length}
+          {cfg.locale === "en-US"
+            ? isArea
+              ? "Notes in this area"
+              : `Notes tagged #${tag}`
+            : isArea
+              ? "Заметки в области"
+              : `Заметки с тегом #${tag}`}
+          : {pages.length}
         </p>
         <ul class="section-ul">
           {pages.map((page) => (
             <li class="section-li">
-              <a class="internal" href={`/${page.slug}`}>
+              <a class="internal" href={`${cfg.locale === "en-US" ? "/en" : ""}/${page.slug}`}>
                 {String(page.frontmatter?.title ?? page.slug)}
               </a>
             </li>

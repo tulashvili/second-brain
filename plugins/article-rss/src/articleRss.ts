@@ -73,7 +73,7 @@ export const renderArticleRss = (
   <channel>
     <title>${escapeXml(options.pageTitle)}</title>
     <link>${origin}</link>
-    <description>Последние заметки на ${escapeXml(options.pageTitle)}</description>
+    <description>${options.baseUrl.replace(/\/+$/, "").endsWith("/en") ? "Latest notes on" : "Последние заметки на"} ${escapeXml(options.pageTitle)}</description>
     <generator>Quartz -- quartz.jzhao.xyz</generator>
     ${items}
   </channel>

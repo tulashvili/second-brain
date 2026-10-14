@@ -4,6 +4,10 @@ import { CSSResourceToStyleElement, JSResourceToScriptElement } from "../util/re
 import { googleFontHref, googleFontSubsetHref } from "../util/theme"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import { unescapeHTML } from "../util/escape"
+import routePairs from "../../localization/route-pairs.json"
+
+type TranslationPair = { ruUrl: string; enUrl: string }
+const translations = routePairs as Record<string, TranslationPair>
 
 export default (() => {
   const Head: QuartzComponent = ({
@@ -32,6 +36,9 @@ export default (() => {
       fileData.slug === "404"
         ? url.toString()
         : joinSegments(url.toString(), simplifySlug(fileData.slug!))
+    const translationKey = fileData.frontmatter?.translationKey
+    const translation =
+      typeof translationKey === "string" ? translations[translationKey] : undefined
 
     const usesCustomOgImage = ctx.cfg.plugins.emitters.some((e) => e.name === "CustomOgImages")
     const ogImageDefaultPath = `https://${cfg.baseUrl}/static/og-image.png`
@@ -91,6 +98,20 @@ export default (() => {
                 <link rel="canonical" href={socialUrl} />
                 <meta property="og:url" content={socialUrl}></meta>
                 <meta property="twitter:url" content={socialUrl}></meta>
+                {translation && (
+                  <>
+                    <link
+                      rel="alternate"
+                      hrefLang="ru"
+                      href={
+                        translationKey === "index"
+                          ? "https://security.maybeso.me/ru/"
+                          : translation.ruUrl
+                      }
+                    />
+                    <link rel="alternate" hrefLang="en" href={translation.enUrl} />
+                  </>
+                )}
               </>
             )}
           </>

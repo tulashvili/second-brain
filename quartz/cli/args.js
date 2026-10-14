@@ -76,6 +76,10 @@ export const SyncArgv = {
 
 export const BuildArgv = {
   ...CommonArgv,
+  config: {
+    string: true,
+    describe: "configuration file for this build (default: quartz.config.yaml)",
+  },
   output: {
     string: true,
     alias: ["o"],

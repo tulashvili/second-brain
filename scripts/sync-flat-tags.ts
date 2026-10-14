@@ -112,12 +112,15 @@ export const syncFlatTagPages = async (
 
 const runCli = async (): Promise<void> => {
   const contentIndex = process.argv.indexOf("--content")
-  const requested = contentIndex >= 0 ? process.argv[contentIndex + 1] : "content"
+  const requested = contentIndex >= 0 ? process.argv[contentIndex + 1] : "content/ru"
   if (!requested) throw new Error("--content requires a path")
 
   const contentDir = path.resolve(requested)
-  if (path.basename(contentDir) !== "content") {
-    throw new Error(`Refusing to write outside a directory named content: ${contentDir}`)
+  if (
+    !["ru", "en"].includes(path.basename(contentDir)) ||
+    path.dirname(contentDir) !== path.resolve("content")
+  ) {
+    throw new Error(`Refusing to write outside content/ru or content/en: ${contentDir}`)
   }
 
   const slugs = await syncFlatTagPages(contentDir, [

@@ -5,11 +5,10 @@ import type {
 } from "@quartz-community/types"
 import { isMocPage, type KnowledgeFile } from "./model"
 import styles from "./semantic-navigation.scss"
-
-const hrefFor = (slug: string): string => (slug === "index" ? "/" : `/${slug}`)
+import { localizedHref } from "./localizedHref"
 
 export const SemanticParents: QuartzComponentConstructor = () => {
-  const Component: QuartzComponent = ({ fileData, allFiles }: QuartzComponentProps) => {
+  const Component: QuartzComponent = ({ fileData, allFiles, cfg }: QuartzComponentProps) => {
     const current = fileData as KnowledgeFile
     if (current.slug === "index") return null
 
@@ -29,12 +28,17 @@ export const SemanticParents: QuartzComponentConstructor = () => {
     if (parents.length === 0) return null
 
     return (
-      <nav class="semantic-parents" aria-label="Родительские разделы">
-        <span class="semantic-parents-label">Раздел:</span>
+      <nav
+        class="semantic-parents"
+        aria-label={cfg.locale === "en-US" ? "Parent sections" : "Родительские разделы"}
+      >
+        <span class="semantic-parents-label">
+          {cfg.locale === "en-US" ? "Section:" : "Раздел:"}
+        </span>
         <ul>
           {parents.map((parent) => (
             <li>
-              <a class="internal" href={hrefFor(String(parent.slug))}>
+              <a class="internal" href={localizedHref(String(parent.slug), cfg.locale)}>
                 {String(parent.frontmatter?.title ?? parent.slug)}
               </a>
             </li>

@@ -321,6 +321,15 @@ See the [documentation](https://quartz.jzhao.xyz) for how to get started.
  * @param {*} argv arguments for `build`
  */
 export async function handleBuild(argv) {
+  if (argv.config) {
+    const configPath = path.resolve(argv.config)
+    if (!fs.existsSync(configPath)) {
+      console.error(`Quartz configuration file not found: ${configPath}`)
+      process.exitCode = 1
+      return
+    }
+    process.env.QUARTZ_CONFIG_PATH = configPath
+  }
   if (argv.concurrency !== undefined && argv.concurrency < 1) {
     console.error("Concurrency must be at least 1")
     process.exit(1)

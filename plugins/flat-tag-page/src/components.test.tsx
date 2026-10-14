@@ -5,11 +5,15 @@ import { FlatTagContent } from "./FlatTagContent"
 import { FlatTagList } from "./FlatTagList"
 import { FlatTagPage, FlatTagRoutes } from "./index"
 
-const props = (fileData: Record<string, unknown>, allFiles: Record<string, unknown>[] = []) =>
+const props = (
+  fileData: Record<string, unknown>,
+  allFiles: Record<string, unknown>[] = [],
+  locale = "ru-RU",
+) =>
   ({
     fileData,
     allFiles,
-    cfg: {},
+    cfg: { locale },
     children: null,
     tree: {},
     ctx: {},
@@ -25,6 +29,16 @@ describe("FlatTagList", () => {
     expect(html).not.toContain(">#monitoring</a>")
     expect(html).not.toContain("/tags/")
   })
+})
+
+it("places English tag links under /en/", () => {
+  const html = render(
+    FlatTagList()(props({ frontmatter: { tags: ["monitoring"] } }, [], "en-US")) as Parameters<
+      typeof render
+    >[0],
+  )
+  expect(html).toContain('href="/en/monitoring"')
+  expect(html).toContain('aria-label="Tags"')
 })
 
 describe("FlatTagContent", () => {

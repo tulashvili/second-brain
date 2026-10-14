@@ -17,8 +17,17 @@ export const SemanticNavigation: QuartzComponentConstructor = () => {
   const Graph = SemanticGraph()
   const Parents = SemanticParents()
   const Children = MocChildren()
-  const RecentArticles = RecentNotes({
+  const RecentArticlesRu = RecentNotes({
     title: "Обновления заметок",
+    limit: 10,
+    linkToMore: false,
+    showTags: false,
+    hideTagPages: true,
+    hideFolderPages: true,
+    filter: isPublishedArticle,
+  })
+  const RecentArticlesEn = RecentNotes({
+    title: "Recent notes",
     limit: 10,
     linkToMore: false,
     showTags: false,
@@ -30,10 +39,13 @@ export const SemanticNavigation: QuartzComponentConstructor = () => {
     <>
       {Parents(props) as ComponentChildren}
       {Children(props) as ComponentChildren}
-      {props.fileData.slug === "index" && (RecentArticles(props) as ComponentChildren)}
+      {props.fileData.slug === "index" &&
+        ((props.cfg.locale === "en-US"
+          ? RecentArticlesEn(props)
+          : RecentArticlesRu(props)) as ComponentChildren)}
       {Graph(props) as ComponentChildren}
     </>
   )
-  Component.css = `${styles}\n${RecentArticles.css ?? ""}`
+  Component.css = `${styles}\n${RecentArticlesRu.css ?? ""}`
   return Component
 }

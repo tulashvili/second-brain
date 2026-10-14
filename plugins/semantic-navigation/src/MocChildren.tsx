@@ -5,11 +5,10 @@ import type {
 } from "@quartz-community/types"
 import { buildKnowledgeGraph, isMocPage, type KnowledgeFile } from "./model"
 import styles from "./semantic-navigation.scss"
-
-const hrefFor = (slug: string): string => (slug === "index" ? "/" : `/${slug}`)
+import { localizedHref } from "./localizedHref"
 
 export const MocChildren: QuartzComponentConstructor = () => {
-  const Component: QuartzComponent = ({ fileData, allFiles }: QuartzComponentProps) => {
+  const Component: QuartzComponent = ({ fileData, allFiles, cfg }: QuartzComponentProps) => {
     const current = fileData as KnowledgeFile
     const slug = String(current.slug ?? "")
     if (!slug || !isMocPage(current)) return null
@@ -28,11 +27,13 @@ export const MocChildren: QuartzComponentConstructor = () => {
     const headingId = `moc-children-${slug}`
     return (
       <section class="moc-children" aria-labelledby={headingId}>
-        <h2 id={headingId}>Все заметки раздела</h2>
+        <h2 id={headingId}>
+          {cfg.locale === "en-US" ? "All notes in this section" : "Все заметки раздела"}
+        </h2>
         <ul>
           {children.map((child) => (
             <li>
-              <a class="internal" href={hrefFor(String(child.slug))}>
+              <a class="internal" href={localizedHref(String(child.slug), cfg.locale)}>
                 {String(child.frontmatter?.title ?? child.slug)}
               </a>
             </li>
