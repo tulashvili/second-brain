@@ -1,4 +1,5 @@
 ---
+version: "0.1"
 created: 2024-05-24T19:07
 updated: 2026-04-23T17:38:08+03:00
 title:

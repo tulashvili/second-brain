@@ -7,6 +7,7 @@ import test from "node:test"
 import { promisify } from "node:util"
 import YAML from "yaml"
 import { toFlatAsciiSlug } from "../plugins/ascii-slug/src/slug"
+import { isPublishableVersion } from "../plugins/version-publish/src/index"
 
 const execFileAsync = promisify(execFile)
 const contentDir = path.join(process.cwd(), "content")
@@ -48,12 +49,13 @@ const knowledgeSlugs = async (): Promise<{ articles: string[]; mocs: string[] }>
           !articleExclusions.has(name) &&
           data.moc !== true &&
           data.page !== true &&
-          data.flatTag == null,
+          data.flatTag == null &&
+          isPublishableVersion(data.version),
       )
       .map(({ slug }) => slug)
       .sort(),
     mocs: files
-      .filter(({ data }) => data.moc === true)
+      .filter(({ data }) => data.moc === true && isPublishableVersion(data.version))
       .map(({ slug }) => slug)
       .sort(),
   }
@@ -112,8 +114,8 @@ test(
       })
 
       const { articles, mocs } = await knowledgeSlugs()
-      assert.equal(articles.length, 38)
-      assert.equal(mocs.length, 16)
+      assert.equal(articles.length, 27)
+      assert.equal(mocs.length, 20)
       const rootPage = await readFile(path.join(output, "index.html"), "utf8")
       assert.match(rootPage, /property="og:url" content="https:\/\/security\.maybeso\.me\/"/)
       assert.match(rootPage, /rel="canonical" href="https:\/\/security\.maybeso\.me\/"/)
@@ -128,15 +130,10 @@ test(
         const route = routeFor(slug)
         await readFile(path.join(output, route ? `${route}.html` : "index.html"), "utf8")
       }
+      await readFile(path.join(output, "hardening-usilenie-bezopasnosti.html"), "utf8")
 
-      const attackTypes = await readFile(
-        path.join(output, "tipy-atak-na-informatsionnye-sistemy.html"),
-        "utf8",
-      )
-      assert.match(
-        attackTypes,
-        /<a[^>]+href="\.\/r-u-d-y-r-u-dead-yet"[^>]*>R\.U\.D\.Y \(R-U-Dead-Yet\)<\/a>/,
-      )
+      await assert.rejects(access(path.join(output, "tipy-atak-na-informatsionnye-sistemy.html")))
+      await assert.rejects(access(path.join(output, "ssh.html")))
 
       const processes = await readFile(path.join(output, "protsessy-v-linux.html"), "utf8")
       assert.doesNotMatch(processes, /class="[^"]*broken-link[^"]*"/)
@@ -169,6 +166,10 @@ test(
       const html = await Promise.all(
         htmlFiles.map((file) => readFile(path.join(output, file), "utf8")),
       )
+      for (const slug of [...articles, ...mocs]) {
+        const page = await readFile(path.join(output, `${slug}.html`), "utf8")
+        assert.doesNotMatch(page, /class="[^"]*broken-link[^"]*"/, `${slug} has a broken link`)
+      }
       assert.equal(
         html.some((page) => /http-equiv=["']refresh/i.test(page)),
         false,
@@ -234,10 +235,14 @@ test(
         assert.doesNotMatch(recentArticles, new RegExp(`href="(?:\\./|/)?${slug}"`))
       }
 
-      const proxy = await readFile(path.join(output, "proxy.html"), "utf8")
-      const proxyParents = section(proxy, "semantic-parents")
-      assert.match(proxyParents, /aria-label="Родительские разделы"/)
-      assert.match(proxyParents, /href="\/setevaya-bezopasnost"/)
+      const hsts = await readFile(
+        path.join(output, "hsts-http-strict-transport-security.html"),
+        "utf8",
+      )
+      const hstsParents = section(hsts, "semantic-parents")
+      assert.match(hstsParents, /aria-label="Родительские разделы"/)
+      assert.match(hstsParents, /href="\/setevaya-bezopasnost"/)
+      assert.match(hsts, /Версия заметки: 0\.1/)
 
       const practical = await readFile(
         path.join(output, "nastroyka-forward-proxy-v-nginx-c-basic-auth.html"),
@@ -249,9 +254,13 @@ test(
 
       const networkMoc = await readFile(path.join(output, "setevaya-bezopasnost.html"), "utf8")
       const networkChildren = section(networkMoc, "moc-children")
-      assert.match(networkChildren, /href="\/proxy"/)
-      assert.match(networkChildren, /href="\/cdn"/)
+      assert.match(networkChildren, /href="\/hsts-http-strict-transport-security"/)
+      assert.match(networkChildren, /href="\/ssl-upstream-injection"/)
       assert.match(networkChildren, /href="\/seti-i-protokoly"/)
+      for (const slug of ["rabota-kompyutera-s-informatsiey", "obschiy-vid-programmy-v-pascal"]) {
+        const page = await readFile(path.join(output, `${slug}.html`), "utf8")
+        assert.doesNotMatch(page, /class="[^"]*broken-link[^"]*"/)
+      }
     } finally {
       await rm(temporaryRoot, { recursive: true, force: true })
     }

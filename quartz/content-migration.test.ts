@@ -3,13 +3,17 @@ import { access, readdir, readFile } from "node:fs/promises"
 import path from "node:path"
 import test from "node:test"
 import YAML from "yaml"
+import { isPublishableVersion } from "../plugins/version-publish/src/index"
 
 const contentDirectory = path.join(process.cwd(), "content")
 const articleExclusions = new Set(["index.md", "about.md", "projects.md"])
 const mediaExtensions = /\.(?:avif|gif|jpe?g|png|svg|webp|mp3|mp4|wav|webm)$/i
 
 export const isArticleFrontmatter = (data: Record<string, unknown>): boolean =>
-  data.page !== true && data.flatTag == null && data.moc !== true
+  data.page !== true &&
+  data.flatTag == null &&
+  data.moc !== true &&
+  isPublishableVersion(data.version)
 
 const frontmatter = (markdown: string): Record<string, unknown> => {
   const match = markdown.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/)
@@ -53,9 +57,9 @@ const markdownFiles = async (directory: string): Promise<string[]> => {
   return nested.flat()
 }
 
-test("imports exactly the curated 38 articles", async () => {
+test("publishes only the 27 versioned articles ready for readers", async () => {
   const articles = await publishedArticles()
-  assert.equal(articles.length, 38)
+  assert.equal(articles.length, 27)
 
   for (const article of articles) {
     const data = frontmatter(await readFile(path.join(contentDirectory, article), "utf8"))

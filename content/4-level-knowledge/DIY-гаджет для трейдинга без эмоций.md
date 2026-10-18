@@ -1,11 +1,12 @@
 ---
+version: "0.05"
 title:
 tags:
   - inspiration
   - diy
   - programming
 up:
-  - "[[Программирование и автоматизация]]"
+  - "[[Автоматизация]]"
 date: 2025-02-02
 updated: 2026-04-04T23:21:25+03:00
 dg-publish: false

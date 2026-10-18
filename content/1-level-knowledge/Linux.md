@@ -1,11 +1,12 @@
 ---
+version: "0.1"
 title: Linux
 moc: true
 tags:
   - area
 up:
   - "[[index|Информационная безопасность]]"
-modified: 2026-10-12T20:11:17+03:00
+modified: 2026-10-17T17:26:15+03:00
 created: 2026-10-12T20:11:00+03:00
 ---
 

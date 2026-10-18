@@ -1,4 +1,5 @@
 ---
+version: "0.05"
 title: Гайд по использованию mysqldump
 tags:
   - mysql

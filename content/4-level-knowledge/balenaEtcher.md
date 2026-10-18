@@ -1,4 +1,5 @@
 ---
+version: "0.05"
 type:
 state:
 pattern:

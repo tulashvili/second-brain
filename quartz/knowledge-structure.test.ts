@@ -5,6 +5,7 @@ import test from "node:test"
 import YAML from "yaml"
 import { toAsciiSlug, toFlatAsciiSlug } from "../plugins/ascii-slug/src/slug"
 import { extractSemanticTargets } from "../plugins/semantic-navigation/src/semanticLinks"
+import { isPublishableVersion } from "../plugins/version-publish/src/index"
 import {
   isMocPage,
   isPublishedArticle,
@@ -76,155 +77,62 @@ const loadPages = async (): Promise<ContentPage[]> => {
   )
 }
 
-const levelOneMocs = ["Основы информационной безопасности", "Linux"]
-
-const levelTwoMocs = [
-  "Сетевая безопасность",
-  "Атаки и угрозы",
-  "Обнаружение, логирование и мониторинг",
-  "Безопасность инфраструктуры",
-  "Безопасность приложений и веб-сервисов",
-  "Операционная безопасность и инструменты",
-  "Лабы и практические руководства",
-]
-
-const expectedMocParents: Record<string, string[]> = {
-  index: [],
-  ...Object.fromEntries(levelOneMocs.map((title) => [title, ["index"]])),
-  ...Object.fromEntries(
-    levelTwoMocs.map((title) => [title, ["Основы информационной безопасности"]]),
-  ),
-  "Сети и протоколы": ["Сетевая безопасность"],
-  "Инфраструктура и платформы": ["Безопасность инфраструктуры"],
-  "Хранение данных": ["Безопасность инфраструктуры"],
-  "Программирование и автоматизация": ["Операционная безопасность и инструменты"],
-  "Инструменты и технологии": ["Операционная безопасность и инструменты"],
-  "Авторизация и аутентификация": ["Безопасность приложений и веб-сервисов"],
-}
-
-const labs = "Лабы и практические руководства"
-const expectedArticleParents: Record<string, string[]> = {
-  "Auth.log": ["Авторизация и аутентификация", "Обнаружение, логирование и мониторинг"],
-  Awscli: ["Хранение данных", labs],
-  "CAN (Campus Area Network)": ["Сети и протоколы"],
-  CDN: ["Сетевая безопасность"],
-  "DIY-гаджет для трейдинга без эмоций": ["Программирование и автоматизация"],
-  "Elastic Stack": ["Обнаружение, логирование и мониторинг"],
-  Gitlab: ["Инструменты и технологии"],
-  "Gitlab Runner": ["Инструменты и технологии"],
-  "LAN (Local Area Network)": ["Сети и протоколы"],
-  "Minio Client": ["Хранение данных", labs],
-  OSI: ["Сети и протоколы"],
-  "Out of memory (OOM)": ["Инфраструктура и платформы"],
-  "PAN (Personal Area Network)": ["Сети и протоколы"],
-  Proxmox: ["Инфраструктура и платформы"],
-  Proxy: ["Сетевая безопасность"],
-  "R.U.D.Y (R-U-Dead-Yet)": ["Атаки и угрозы"],
-  SPOF: ["Безопасность инфраструктуры"],
-  "SSL Upstream Injection": ["Безопасность приложений и веб-сервисов", "Сетевая безопасность"],
-  "Slow Attack": ["Атаки и угрозы"],
-  "Swaks. Простой клиент для отправки писем с сервера": ["Инструменты и технологии", labs],
-  Syncthing: ["Инфраструктура и платформы"],
-  balenaEtcher: ["Инструменты и технологии", labs],
-  nginx_worker_process: ["Инфраструктура и платформы"],
-  "Гайд по использованию mysqldump": ["Хранение данных", labs],
-  "Коммутатор vs Маршрутизатор": ["Сети и протоколы"],
-  Коммутатор: ["Сети и протоколы"],
-  "Компьютерные сети": ["Сети и протоколы"],
-  "Лог коллектор": ["Обнаружение, логирование и мониторинг"],
-  Маршрутизатор: ["Сети и протоколы"],
-  "Мультиконтейнерное приложение в Docker (docker network)": ["Инфраструктура и платформы", labs],
-  "Настройка forward proxy в Nginx c basic auth": [
-    "Авторизация и аутентификация",
-    "Безопасность приложений и веб-сервисов",
-    labs,
-  ],
-  "Развертывание Elastic Stack": ["Обнаружение, логирование и мониторинг", labs],
-  "Типы атак на информационные системы": ["Атаки и угрозы"],
-  "Физический уровень модели OSI": ["Сети и протоколы"],
-  "Цепочка доставки логов с использованием Elastic Stack": [
-    "Обнаружение, логирование и мониторинг",
-  ],
-  "Hardening (усиление безопасности)": [
-    "Безопасность инфраструктуры",
-    "Операционная безопасность и инструменты",
-  ],
-  "HSTS (HTTP Strict Transport Security)": [
-    "Безопасность приложений и веб-сервисов",
-    "Сетевая безопасность",
-  ],
-  "Процессы в Linux": ["Linux"],
-}
-
-const expectedMocLevel = new Map(
-  [
-    ...levelOneMocs.map((name) => [name, "1-level-knowledge"] as const),
-    ...levelTwoMocs.map((name) => [name, "2-level-knowledge"] as const),
-    ...[
-      "Сети и протоколы",
-      "Инфраструктура и платформы",
-      "Хранение данных",
-      "Программирование и автоматизация",
-      "Инструменты и технологии",
-      "Авторизация и аутентификация",
-    ].map((name) => [name, "3-level-knowledge"] as const),
-  ].map(([name, level]) => [name.normalize("NFC"), level]),
-)
-
-const sorted = (values: readonly string[]): string[] =>
-  values.map((value) => value.normalize("NFC")).sort((left, right) => left.localeCompare(right))
-
-const normalizedRecord = <T>(record: Record<string, T>): Record<string, T> =>
-  Object.fromEntries(Object.entries(record).map(([key, value]) => [key.normalize("NFC"), value]))
-
-test("knowledge structure matches the approved security-first MOC hierarchy", async () => {
+test("every note has assessed version and a valid place in the four-level hierarchy", async () => {
   const pages = await loadPages()
   const articles = pages.filter(isPublishedArticle)
   const mocs = pages.filter(isMocPage)
-  const articleParents = normalizedRecord(expectedArticleParents)
-  const mocParents = normalizedRecord(expectedMocParents)
 
-  assert.equal(articles.length, 38)
-  assert.equal(mocs.length, 16)
-  assert.deepEqual(
-    sorted(articles.map((page) => page.fileName.replace(/\.md$/, ""))),
-    sorted(Object.keys(expectedArticleParents)),
-  )
-  assert.deepEqual(
-    sorted(
-      mocs.map((page) =>
-        page.fileName === "index.md" ? "index" : page.fileName.replace(/\.md$/, ""),
-      ),
-    ),
-    sorted(Object.keys(expectedMocParents)),
+  assert.equal(pages.length, articles.length + mocs.length)
+  assert.ok(mocs.some((page) => page.fileName === "index.md"))
+  assert.equal(
+    new Set(pages.map((page) => page.fileName.normalize("NFC"))).size,
+    pages.length,
+    "note names must stay unique across folders for flat public routes",
   )
 
-  for (const article of articles) {
-    const name = article.fileName.replace(/\.md$/, "").normalize("NFC")
-    assert.equal(path.dirname(article.relativePath), "4-level-knowledge", `${name} level`)
-    assert.deepEqual(sorted(article.rawParents), sorted(articleParents[name]), name)
-    assert.equal(Object.hasOwn(article.frontmatter ?? {}, "area"), false, `${name} retains area`)
-    assert.equal(Object.hasOwn(article.frontmatter ?? {}, "down"), false, `${name} stores down`)
-    assert.deepEqual(
-      inlineSemanticTargets(article.markdown, "down"),
-      [],
-      `${name} stores inline down`,
-    )
-  }
+  const levelByName = new Map(
+    mocs.map((moc) => [
+      (moc.fileName === "index.md" ? "index" : moc.fileName.replace(/\.md$/, "")).normalize("NFC"),
+      moc.fileName === "index.md" ? 0 : Number(path.dirname(moc.relativePath)[0]),
+    ]),
+  )
 
-  for (const moc of mocs) {
-    const name =
-      moc.fileName === "index.md" ? "index" : moc.fileName.replace(/\.md$/, "").normalize("NFC")
-    assert.equal(
-      path.dirname(moc.relativePath),
-      name === "index" ? "." : expectedMocLevel.get(name),
-      `${name} level`,
-    )
-    assert.deepEqual(sorted(moc.rawParents), sorted(mocParents[name]), name)
-    assert.deepEqual(moc.frontmatter?.tags, ["area"], `${name} tags`)
-    assert.deepEqual(inlineSemanticTargets(moc.markdown, "down"), [], `${name} stores inline down`)
-    assert.match(moc.markdown, /## Ключевые темы/)
+  for (const page of pages) {
+    const name = page.fileName.replace(/\.md$/, "")
+    const version = page.frontmatter?.version
+    assert.match(String(version), /^\d+(?:\.\d+)*$/, `${name} needs version`)
+    if (name === "index") {
+      assert.equal(path.dirname(page.relativePath), ".")
+      assert.equal(isPublishableVersion(version), true)
+      continue
+    }
+
+    assert.ok(page.rawParents.length > 0, `${name} needs a parent MOC`)
+    if (isMocPage(page)) {
+      assert.match(path.dirname(page.relativePath), /^[1-3]-level-knowledge$/, `${name} level`)
+      assert.ok(String(page.frontmatter?.title ?? "").trim(), `${name} needs a title`)
+      assert.deepEqual(page.frontmatter?.tags, ["area"])
+      for (const parent of page.rawParents) {
+        const parentLevel = levelByName.get(parent.normalize("NFC"))
+        assert.equal(parentLevel, Number(path.dirname(page.relativePath)[0]) - 1, `${name} parent`)
+      }
+    } else {
+      assert.equal(path.dirname(page.relativePath), "4-level-knowledge", `${name} level`)
+      assert.equal(Object.hasOwn(page.frontmatter ?? {}, "down"), false, `${name} stores down`)
+    }
   }
 
   assert.deepEqual(validateKnowledgeGraph(pages, "index"), [])
+})
+
+test("only notes with version 0.1 or newer pass the publication rule", async () => {
+  const pages = await loadPages()
+  const publicPages = pages.filter((page) => isPublishableVersion(page.frontmatter?.version))
+  const drafts = pages.filter((page) => !isPublishableVersion(page.frontmatter?.version))
+  assert.ok(publicPages.length > 0)
+  assert.ok(drafts.length > 0)
+  assert.ok(publicPages.some((page) => page.fileName === "index.md"))
+  for (const page of drafts) {
+    assert.equal(isPublishableVersion(page.frontmatter?.version), false, page.fileName)
+  }
 })

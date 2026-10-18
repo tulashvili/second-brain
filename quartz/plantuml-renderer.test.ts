@@ -21,6 +21,7 @@ test("turns fenced PlantUML into a locally renderable diagram container", async 
       [
         "---",
         "title: Diagram",
+        'version: "0.1"',
         "---",
         "",
         "```plantuml",

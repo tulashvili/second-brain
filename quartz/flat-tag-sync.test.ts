@@ -20,9 +20,12 @@ test("syncs deterministic descriptors and deletes stale generated files only", a
   await withContent(async (contentDir) => {
     await writeFile(
       path.join(contentDir, "a.md"),
-      "---\ntitle: A\ntags: [Z Tag, Мониторинг]\n---\n",
+      '---\ntitle: A\nversion: "0.1"\ntags: [Z Tag, Мониторинг]\n---\n',
     )
-    await writeFile(path.join(contentDir, "b.md"), "---\ntitle: B\ntags: [alpha]\n---\n")
+    await writeFile(
+      path.join(contentDir, "b.md"),
+      '---\ntitle: B\nversion: "0.1"\ntags: [alpha]\n---\n',
+    )
     await writeFile(path.join(contentDir, "keep.txt"), "keep")
     await mkdir(path.join(contentDir, "_flat-tags"))
     await writeFile(path.join(contentDir, "_flat-tags", "stale.md"), "stale")
@@ -47,11 +50,25 @@ test("handles an empty tag set", async () => {
   })
 })
 
+test("does not generate public tag pages from draft-only notes", async () => {
+  await withContent(async (contentDir) => {
+    await writeFile(
+      path.join(contentDir, "draft.md"),
+      '---\nversion: "0.05"\ntags: [private-topic]\n---\n',
+    )
+    await writeFile(
+      path.join(contentDir, "ready.md"),
+      '---\nversion: "0.1"\ntags: [public-topic]\n---\n',
+    )
+    assert.deepEqual(await syncFlatTagPages(contentDir, []), ["public-topic"])
+  })
+})
+
 test("refuses to write descriptors when validation fails", async () => {
   await withContent(async (contentDir) => {
     await writeFile(
       path.join(contentDir, "monitoring.md"),
-      "---\ntitle: Monitoring\ntags: [monitoring]\n---\n",
+      '---\ntitle: Monitoring\nversion: "0.1"\ntags: [monitoring]\n---\n',
     )
     await assert.rejects(syncFlatTagPages(contentDir, []), /monitoring\.md.*tag:monitoring/is)
     await assert.rejects(access(path.join(contentDir, "_flat-tags")))

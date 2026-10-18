@@ -8,6 +8,7 @@ import {
   validateRouteClaims,
   type ArticleRoute,
 } from "../plugins/flat-tag-page/src/routes"
+import { isPublishableVersion } from "../plugins/version-publish/src/index"
 
 const parseFrontmatter = (markdown: string): Record<string, unknown> => {
   const match = markdown.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/)
@@ -71,6 +72,7 @@ export const syncFlatTagPages = async (
     const markdown = await readFile(absolutePath, "utf8")
     const data = parseFrontmatter(markdown)
     const slug = path.basename(absolutePath, ".md")
+    if (!isPublishableVersion(data.version)) continue
     articles.push({ slug, source })
 
     for (const tag of tagsFrom(data)) {

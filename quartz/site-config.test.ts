@@ -47,6 +47,11 @@ test("uses the approved site identity and horizontal header", async () => {
     assert.equal(plugin(source)?.enabled, false, `${source} must be disabled`)
   }
   assert.equal(plugin("./plugins/semantic-navigation")?.enabled, true)
+  assert.equal(plugin("./plugins/version-publish")?.enabled, true)
+  assert.deepEqual(plugin("./plugins/version-publish")?.layout, {
+    position: "beforeBody",
+    priority: 25,
+  })
 })
 
 test("matches the maybeso.me palette without changing Second Brain typography", async () => {
