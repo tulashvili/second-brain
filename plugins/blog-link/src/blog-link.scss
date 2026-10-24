@@ -1,3 +1,9 @@
+.site-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .blog-link {
   color: var(--dark);
   font-family: var(--headerFont);

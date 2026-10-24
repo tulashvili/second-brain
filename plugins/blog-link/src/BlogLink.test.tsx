@@ -9,6 +9,8 @@ describe("BlogLink", () => {
     )
     expect(html).toContain('href="https://maybeso.me/en/"')
     expect(html).toContain('aria-label="Main blog"')
+    expect(html).toContain('href="https://omar-t.com/en/"')
+    expect(html).toContain(">About me<")
   })
 
   it("renders the main blog in the current tab", () => {
@@ -19,5 +21,8 @@ describe("BlogLink", () => {
     expect(html).toContain('href="https://maybeso.me"')
     expect(html).not.toContain("target=")
     expect(html).toContain('aria-label="Основной блог"')
+    expect(html).toContain('href="https://omar-t.com/"')
+    expect(html).toContain(">Обо мне<")
+    expect(html).toContain('class="site-links"')
   })
 })
