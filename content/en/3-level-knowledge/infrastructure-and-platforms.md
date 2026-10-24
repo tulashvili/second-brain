@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: infrastruktura-i-platformy
 title: Infrastructure and Platforms
 moc: true

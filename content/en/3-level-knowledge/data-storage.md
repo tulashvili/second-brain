@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: hranenie-dannyh
 title: Data Storage
 moc: true

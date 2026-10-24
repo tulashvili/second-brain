@@ -70,6 +70,7 @@ export const syncFlatTagPages = async (
     const source = path.relative(absoluteContentDir, absolutePath)
     const markdown = await readFile(absolutePath, "utf8")
     const data = parseFrontmatter(markdown)
+    if (data.draft !== false) continue
     const slug = path.basename(absolutePath, ".md")
     articles.push({ slug, source })
 
@@ -103,7 +104,7 @@ export const syncFlatTagPages = async (
     slugs.map(async (slug) => {
       const title = displayTags.get(slug)!
       const area = areaSlugs.has(slug) ? "flatArea: true\n" : ""
-      const descriptor = `---\nflatTag: ${slug}\n${area}title: ${yamlScalar(title)}\ngenerated: true\n---\n`
+      const descriptor = `---\ndraft: false\nflatTag: ${slug}\n${area}title: ${yamlScalar(title)}\ngenerated: true\n---\n`
       await writeFile(path.join(descriptorDir, `${slug}.md`), descriptor)
     }),
   )

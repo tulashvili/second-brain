@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: spof
 type: null
 state: null

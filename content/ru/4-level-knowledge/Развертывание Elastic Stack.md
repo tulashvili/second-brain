@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: razvertyvanie-elastic-stack
 type:
 state:

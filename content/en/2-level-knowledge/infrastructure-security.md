@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: bezopasnost-infrastruktury
 title: Infrastructure Security
 moc: true

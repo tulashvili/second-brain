@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: swaks-prostoy-klient-dlya-otpravki-pisem-s-servera
 title: 'Swaks: A Tool for Sending Test Email'
 tags:

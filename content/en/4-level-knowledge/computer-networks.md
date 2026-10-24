@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: kompyuternye-seti
 type: null
 state: null

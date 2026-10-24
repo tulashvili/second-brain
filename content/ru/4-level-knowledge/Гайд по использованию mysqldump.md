@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: gayd-po-ispolzovaniyu-mysqldump
 title: Гайд по использованию mysqldump
 tags:

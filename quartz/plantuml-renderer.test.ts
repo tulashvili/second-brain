@@ -20,6 +20,7 @@ test("turns fenced PlantUML into a locally renderable diagram container", async 
       notePath,
       [
         "---",
+        "draft: false",
         "title: Diagram",
         "---",
         "",

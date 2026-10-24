@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: seti-i-protokoly
 title: Networks and Protocols
 moc: true

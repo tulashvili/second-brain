@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: minio-client
 type: null
 state: null

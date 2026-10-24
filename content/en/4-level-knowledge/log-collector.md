@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: log-kollektor
 type: null
 state: null

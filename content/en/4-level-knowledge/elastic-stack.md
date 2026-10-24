@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: elastic-stack
 type: null
 state: null

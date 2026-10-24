@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: multikonteynernoe-prilozhenie-v-docker-docker-network
 title: A Multi-Container Docker Application
 tags:

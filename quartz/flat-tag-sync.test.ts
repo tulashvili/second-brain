@@ -20,9 +20,12 @@ test("syncs deterministic descriptors and deletes stale generated files only", a
   await withContent(async (contentDir) => {
     await writeFile(
       path.join(contentDir, "a.md"),
-      "---\ntitle: A\ntags: [Z Tag, Мониторинг]\n---\n",
+      "---\ndraft: false\ntitle: A\ntags: [Z Tag, Мониторинг]\n---\n",
     )
-    await writeFile(path.join(contentDir, "b.md"), "---\ntitle: B\ntags: [alpha]\n---\n")
+    await writeFile(
+      path.join(contentDir, "b.md"),
+      "---\ndraft: false\ntitle: B\ntags: [alpha]\n---\n",
+    )
     await writeFile(path.join(contentDir, "keep.txt"), "keep")
     await mkdir(path.join(contentDir, "_flat-tags"))
     await writeFile(path.join(contentDir, "_flat-tags", "stale.md"), "stale")
@@ -35,14 +38,17 @@ test("syncs deterministic descriptors and deletes stale generated files only", a
     const descriptor = await readFile(path.join(contentDir, "_flat-tags", "monitoring.md"), "utf8")
     assert.match(
       descriptor,
-      /^---\nflatTag: monitoring\ntitle: Мониторинг\ngenerated: true\n---\n$/,
+      /^---\ndraft: false\nflatTag: monitoring\ntitle: Мониторинг\ngenerated: true\n---\n$/,
     )
   })
 })
 
 test("handles an empty tag set", async () => {
   await withContent(async (contentDir) => {
-    await writeFile(path.join(contentDir, "index.md"), "---\ntitle: Home\npage: true\n---\n")
+    await writeFile(
+      path.join(contentDir, "index.md"),
+      "---\ndraft: false\ntitle: Home\npage: true\n---\n",
+    )
     assert.deepEqual(await syncFlatTagPages(contentDir, []), [])
   })
 })
@@ -51,9 +57,29 @@ test("refuses to write descriptors when validation fails", async () => {
   await withContent(async (contentDir) => {
     await writeFile(
       path.join(contentDir, "monitoring.md"),
-      "---\ntitle: Monitoring\ntags: [monitoring]\n---\n",
+      "---\ndraft: false\ntitle: Monitoring\ntags: [monitoring]\n---\n",
     )
     await assert.rejects(syncFlatTagPages(contentDir, []), /monitoring\.md.*tag:monitoring/is)
     await assert.rejects(access(path.join(contentDir, "_flat-tags")))
+  })
+})
+
+test("ignores tags that occur only in unpublished notes", async () => {
+  await withContent(async (contentDir) => {
+    await writeFile(
+      path.join(contentDir, "published.md"),
+      "---\ndraft: false\ntitle: Published\ntags: [public]\n---\n",
+    )
+    await writeFile(
+      path.join(contentDir, "draft.md"),
+      "---\ndraft: true\ntitle: Hidden\ntags: [private-only]\n---\n",
+    )
+    await writeFile(
+      path.join(contentDir, "missing.md"),
+      "---\ntitle: Hidden too\ntags: [missing-only]\n---\n",
+    )
+    assert.deepEqual(await syncFlatTagPages(contentDir, []), ["public"])
+    await assert.rejects(access(path.join(contentDir, "_flat-tags", "private-only.md")))
+    await assert.rejects(access(path.join(contentDir, "_flat-tags", "missing-only.md")))
   })
 })

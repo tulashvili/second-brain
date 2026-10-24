@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: linux
 title: Linux
 moc: true

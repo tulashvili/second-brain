@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: instrumenty-i-tehnologii
 title: Tools and Technologies
 moc: true

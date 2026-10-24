@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: osnovy-informatsionnoy-bezopasnosti
 title: Information Security Fundamentals
 moc: true

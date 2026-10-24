@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: pan-personal-area-network
 type:
 state:

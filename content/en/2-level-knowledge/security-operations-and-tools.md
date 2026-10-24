@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: operatsionnaya-bezopasnost-i-instrumenty
 title: Security Operations and Tools
 moc: true

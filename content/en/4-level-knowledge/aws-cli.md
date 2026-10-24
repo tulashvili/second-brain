@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: awscli
 title: AWS CLI
 tags: null

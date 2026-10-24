@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: avtorizatsiya-i-autentifikatsiya
 title: Authorization and Authentication
 moc: true

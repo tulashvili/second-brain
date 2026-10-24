@@ -6,7 +6,7 @@ import path from "node:path"
 import test from "node:test"
 
 const note = (key: string): string =>
-  `---\ntranslationKey: ${key}\ntitle: Example\n---\n\nExample text.\n`
+  `---\ntranslationKey: ${key}\ndraft: false\ntitle: Example\n---\n\nExample text.\n`
 
 const fixture = (english: Record<string, string>) => {
   const root = mkdtempSync(path.join(os.tmpdir(), "quartz-translations-"))

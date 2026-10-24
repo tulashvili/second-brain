@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: auth-log
 type: null
 state: null

@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: setevaya-bezopasnost
 title: Network Security
 moc: true

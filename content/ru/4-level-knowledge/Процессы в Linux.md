@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: protsessy-v-linux
 modified: 2026-10-12T22:57:06+03:00
 created: 2026-10-12T20:05:54+03:00

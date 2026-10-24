@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: ataki-i-ugrozy
 title: Attacks and Threats
 moc: true

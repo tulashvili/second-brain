@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: tsepochka-dostavki-logov-s-ispolzovaniem-elastic-stack
 type: null
 state: null

@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: bezopasnost-prilozheniy-i-veb-servisov
 title: Application and Web Service Security
 moc: true

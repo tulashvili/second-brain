@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: nginx-worker-process
 type: null
 state: null

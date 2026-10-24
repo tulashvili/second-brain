@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: cdn
 date: 2024-01-06T00:18
 updated: 2026-04-02 13:05:39+03:00

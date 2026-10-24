@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: index
 title: Information Security
 moc: true

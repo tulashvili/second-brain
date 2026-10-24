@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: awscli
 title: Настройка awscli для передачи файлов в s3-хранилище
 tags:

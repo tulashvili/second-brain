@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: diy-gadzhet-dlya-treydinga-bez-emotsiy
 title: A DIY Gadget for Emotion-Free Trading
 tags:

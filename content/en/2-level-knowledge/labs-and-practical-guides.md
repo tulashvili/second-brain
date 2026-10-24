@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: laby-i-prakticheskie-rukovodstva
 title: Labs and Practical Guides
 moc: true

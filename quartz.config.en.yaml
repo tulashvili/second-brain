@@ -111,7 +111,7 @@ plugins:
     options:
       theme: tokyo-night
       mode: both
-  - source: "@quartz-community/remove-draft"
+  - source: ./plugins/draft-publish
     enabled: true
   - source: "@quartz-community/explicit-publish"
     enabled: false

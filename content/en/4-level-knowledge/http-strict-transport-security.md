@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: hsts-http-strict-transport-security
 up:
 - '[[application-and-web-service-security]]'

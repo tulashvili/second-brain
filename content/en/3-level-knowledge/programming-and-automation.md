@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: programmirovanie-i-avtomatizatsiya
 title: Programming and Automation
 moc: true

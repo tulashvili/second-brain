@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: slow-attack
 type: null
 state: null

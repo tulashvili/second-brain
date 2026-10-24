@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: kommutator-vs-marshrutizator
 date: 2024-01-06T00:17
 updated: 2026-04-05 14:08:07+03:00

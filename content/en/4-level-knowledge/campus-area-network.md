@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: can-campus-area-network
 type: null
 state: null

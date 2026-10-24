@@ -4,6 +4,7 @@ import os from "node:os"
 import path from "node:path"
 import { promisify } from "node:util"
 import { syncFlatTagPages } from "./sync-flat-tags"
+import { filterUnpublishedNotes } from "./publish-policy"
 
 const execFileAsync = promisify(execFile)
 const projectRoot = process.cwd()
@@ -53,6 +54,9 @@ const main = async (): Promise<void> => {
     await cp(path.join(projectRoot, "content", "ru", "assets"), path.join(enContent, "assets"), {
       recursive: true,
     })
+
+    await filterUnpublishedNotes(ruContent)
+    await filterUnpublishedNotes(enContent)
 
     const reserved = ["404", "CNAME", "index.xml", "sitemap.xml", "static"]
     await syncFlatTagPages(ruContent, reserved)

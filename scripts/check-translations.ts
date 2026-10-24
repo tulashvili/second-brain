@@ -4,7 +4,7 @@ import YAML from "yaml"
 import { toFlatAsciiSlug } from "../plugins/ascii-slug/src/slug"
 
 type Locale = "ru" | "en"
-type Note = { key: string; source: string; slug: string; pending: boolean }
+type Note = { key: string; source: string; slug: string; pending: boolean; published: boolean }
 type BaselinePage = { source: string; slug: string; url: string }
 type RoutePair = { ruPath: string; enPath: string; ruUrl: string; enUrl: string }
 
@@ -28,12 +28,14 @@ function markdownFiles(directory: string): string[] {
   })
 }
 
-function readNote(file: string, locale: Locale): Note {
+function readNote(file: string, locale: Locale): Note | undefined {
   const source = readFileSync(file, "utf8")
   const match = source.match(/^---\r?\n([\s\S]*?)\r?\n---/)
-  if (!match) throw new Error(`missing frontmatter: ${file}`)
-  const metadata = YAML.parse(match[1]) as Record<string, unknown>
+  if (!match) return undefined
+  const metadata = (YAML.parse(match[1]) ?? {}) as Record<string, unknown>
+  const published = metadata.draft === false
   if (typeof metadata.translationKey !== "string" || !metadata.translationKey) {
+    if (!published) return undefined
     throw new Error(`missing translationKey: ${file}`)
   }
   const relative = path.relative(path.join(contentRoot, locale), file).split(path.sep).join("/")
@@ -42,6 +44,7 @@ function readNote(file: string, locale: Locale): Note {
     source: `content/${locale}/${relative}`.normalize("NFC"),
     slug: toFlatAsciiSlug(path.basename(file, ".md")),
     pending: metadata.translationPending === true,
+    published,
   }
 }
 
@@ -49,6 +52,7 @@ function localeNotes(locale: Locale): Map<string, Note> {
   const notes = new Map<string, Note>()
   for (const file of markdownFiles(path.join(contentRoot, locale))) {
     const note = readNote(file, locale)
+    if (!note) continue
     if (notes.has(note.key)) throw new Error(`duplicate translationKey ${note.key}: ${file}`)
     notes.set(note.key, note)
   }
@@ -72,6 +76,11 @@ function collectPairs(): Record<string, RoutePair> {
       throw new Error(`Russian source or slug changed for ${page.slug}`)
     }
     if (russian.pending || english.pending) throw new Error(`translation is pending: ${page.slug}`)
+    if (!russian.published || !english.published) {
+      throw new Error(
+        `baseline page is not publishable without draft:false in both locales: ${page.slug}`,
+      )
+    }
     if (englishSlugs.has(english.slug)) throw new Error(`duplicate English slug: ${english.slug}`)
     englishSlugs.add(english.slug)
     pairs[page.slug] = {
@@ -81,8 +90,15 @@ function collectPairs(): Record<string, RoutePair> {
       enUrl: `https://security.maybeso.me/en/${english.slug === "index" ? "" : english.slug}`,
     }
   }
-  if (ru.size !== baseline.pages.length || en.size !== baseline.pages.length) {
-    throw new Error("unpublished or unpaired authored content is present")
+  for (const [locale, notes] of [
+    ["ru", ru],
+    ["en", en],
+  ] as const) {
+    for (const [key, note] of notes) {
+      if (!Object.hasOwn(pairs, key) && note.published) {
+        throw new Error(`published ${locale} note has no baseline translation pair: ${key}`)
+      }
+    }
   }
   return pairs
 }

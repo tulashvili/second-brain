@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: syncthing
 title:
 type:

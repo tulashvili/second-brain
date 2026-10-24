@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: tipy-atak-na-informatsionnye-sistemy
 type: null
 state: null

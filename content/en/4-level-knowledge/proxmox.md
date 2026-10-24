@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: proxmox
 type: null
 state: null

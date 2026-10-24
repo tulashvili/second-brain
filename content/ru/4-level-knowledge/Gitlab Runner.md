@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: gitlab-runner
 tags:
 up:

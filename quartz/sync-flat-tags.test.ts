@@ -12,7 +12,7 @@ test("flat route sync creates descriptors for tags and linked areas", async () =
     await mkdir(content)
     await writeFile(
       path.join(content, "Elastic.md"),
-      `---\ntags: [monitoring]\narea: ["[[Инфраструктура]]"]\n---\n`,
+      `---\ndraft: false\ntags: [monitoring]\narea: ["[[Инфраструктура]]"]\n---\n`,
     )
     const slugs = await syncFlatTagPages(content, ["404", "CNAME", "static"])
     assert.deepEqual(slugs, ["infrastruktura", "monitoring"])
@@ -33,7 +33,7 @@ test("flat route sync discovers tags in nested knowledge levels", async () => {
     await mkdir(atomicNotes, { recursive: true })
     await writeFile(
       path.join(atomicNotes, "Idea.md"),
-      `---\ntags: [inspiration]\n---\nNested note\n`,
+      `---\ndraft: false\ntags: [inspiration]\n---\nNested note\n`,
     )
 
     const slugs = await syncFlatTagPages(content, ["404", "CNAME", "static"])

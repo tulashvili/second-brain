@@ -1,4 +1,5 @@
 ---
+draft: false
 translationKey: obnaruzhenie-logirovanie-i-monitoring
 title: Detection, Logging, and Monitoring
 moc: true
