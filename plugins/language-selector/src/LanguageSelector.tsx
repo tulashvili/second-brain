@@ -27,10 +27,20 @@ export const LanguageSelector: QuartzComponentConstructor = () => {
 
     return (
       <nav class="language-selector" aria-label={current === "ru" ? "Язык сайта" : "Site language"}>
-        <a href={hrefFor("ru")} lang="ru" aria-current={current === "ru" ? "true" : undefined}>
+        <a
+          href={hrefFor("ru")}
+          lang="ru"
+          aria-current={current === "ru" ? "true" : undefined}
+          data-router-ignore
+        >
           RU
         </a>
-        <a href={hrefFor("en")} lang="en" aria-current={current === "en" ? "true" : undefined}>
+        <a
+          href={hrefFor("en")}
+          lang="en"
+          aria-current={current === "en" ? "true" : undefined}
+          data-router-ignore
+        >
           EN
         </a>
       </nav>

@@ -23,6 +23,16 @@ describe("LanguageSelector", () => {
     expect(ru.match(/class="language-selector"/g)).toHaveLength(1)
   })
 
+  it("lets the browser follow both language endpoint redirects", () => {
+    const html = htmlFor("en-US", "index", "index")
+    const links = [...html.matchAll(/<a\b[^>]*href="\/__language\?[^>]*>/g)].map(([link]) => link)
+
+    expect(links).toHaveLength(2)
+    for (const link of links) {
+      expect(link).toContain("data-router-ignore")
+    }
+  })
+
   it("falls back to locale homes for generated and unknown pages", () => {
     const html = htmlFor("ru-RU", "unknown-generated-page")
     expect(html).toContain("next=%2Fen%2F")
