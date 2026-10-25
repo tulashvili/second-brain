@@ -15,6 +15,9 @@ date: 2026-04-16 18:45:06+03:00
 title: Deploying Elastic Stack
 ---
 
+> [!tldr] In brief
+> This note records two deployment failures: the Kibana account and the agent’s Elasticsearch address.
+
 I will not recount every step of the last two days; the path was too thorny. Instead, I want to record what worked, what failed, and what to check if I deploy [[elastic-stack|Elastic Stack]] again. This is from memory, so I hope I have not missed anything. 🫠
 
 I used Docker Compose to deploy the Elastic Stack components. I also enjoyed working with Docker much more than I expected. 🤔
@@ -92,3 +95,7 @@ ports:
 ```
 
 Then I changed the Fleet output in `Kibana → Fleet → Settings → Outputs` to `http://<elastic_ip>:9200`.
+
+## In summary
+
+Both problems were localized by observing the result and checking the effective configuration.

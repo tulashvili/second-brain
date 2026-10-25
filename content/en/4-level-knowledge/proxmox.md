@@ -14,7 +14,12 @@ date: 2026-04-15 13:16:55+03:00
 title: Proxmox
 ---
 
+> [!tldr] In brief
+> Proxmox lets one physical computer run several virtual machines with different operating systems.
+
 I had never worked with Proxmox in almost three years as a system administrator. To catch up, I installed it on the computer I bought for my homelab.
+
+## Proxmox and a conventional installation
 
 Proxmox is a virtualization platform: it lets you create and manage virtual machines with different operating systems on one physical machine.
 
@@ -63,3 +68,7 @@ By contrast, a conventional Ubuntu installation looks like this:
    1. Removed `ceph.sources` and `pve-enterprise.sources`.
    2. Created `pve-no-subscription.list` with `deb http://download.proxmox.com/debian/pve trixie pve-no-subscription`.
    3. Ran `apt update`, `apt list --upgradable`, then `apt upgrade`.
+
+## In summary
+
+The key steps in this installation were enabling virtualization, configuring access, and choosing a repository.

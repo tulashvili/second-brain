@@ -9,6 +9,9 @@ version: '1.0'
 title: Processes in Linux
 ---
 
+> [!tldr] In brief
+> A process is a running program instance; its PID helps identify and manage it.
+
 **A process in Linux is a running instance of a program.** One program can run in several processes, and a process can contain threads. The kernel manages processes.
 
 ![[Pasted image 20261012224650.png]]
@@ -84,8 +87,14 @@ ps -eo pid,ppid,stat,args
 
 The PPID is the PID of the process's current parent. It lets you see parent–child relationships. A parent's termination usually does not terminate its child: an orphaned process gets another parent, so its PPID changes. The current PPID does not always reveal which process originally started it.
 
+### Example: PID and PPID
+
 **An example:** Suppose you open a `bash` or `zsh` terminal. The shell gets PID **1234**. Then:
 
 1. You type `sleep 60` and press Enter.
 2. The shell creates a process for that command. The new `sleep` process gets its own PID, for example **5678**.
 3. Because the shell launched it, the new process initially has PPID **1234**.
+
+## In summary
+
+In practice, distinguish PID from PPID, process state, and the signal used to terminate it.

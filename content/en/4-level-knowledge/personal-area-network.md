@@ -12,6 +12,9 @@ up:
 title: Personal Area Network (PAN)
 ---
 
+> [!tldr] In brief
+> A PAN connects devices around a person, such as a phone, headphones, fitness band, or smart-home devices.
+
 A personal area network (PAN) is, roughly speaking, the network around one person. It can include Wi-Fi, IoT devices, and Bluetooth devices.
 
 ### Examples of PANs

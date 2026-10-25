@@ -7,7 +7,12 @@ up:
 title: HTTP Strict Transport Security (HSTS)
 ---
 
+> [!tldr] In brief
+> After a secure connection, HSTS makes the browser use HTTPS directly on later visits.
+
 Note version: **0.1, 9 October 2026**
+
+## Example: two entrances
 
 Imagine an office with two entrances.
 
@@ -25,4 +30,11 @@ HSTS helps with this problem. After visiting the protected entrance once, the br
 
 On the next visit, the browser does not even try to send an HTTP request. It uses HTTPS immediately.
 
-HSTS has a limitation: the browser usually learns about the policy only after the first successful HTTPS connection. HSTS Preload can protect that first visit, but it is a separate and much more consequential decision. Do not add `preload` just in case: if the domain's certificate expires, the site may become unavailable, and the setting cannot be undone quickly.
+## The first-visit limitation
+
+> [!warning]
+> HSTS has a limitation: the browser usually learns about the policy only after the first successful HTTPS connection. HSTS Preload can protect that first visit, but it is a separate and much more consequential decision. Do not add `preload` just in case: if the domain's certificate expires, the site may become unavailable, and the setting cannot be undone quickly.
+
+## In summary
+
+A redirect sends HTTP traffic to HTTPS; HSTS helps the browser avoid starting the next visit over HTTP.

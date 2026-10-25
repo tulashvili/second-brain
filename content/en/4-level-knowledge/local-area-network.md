@@ -9,6 +9,9 @@ up:
 title: Local Area Network (LAN)
 ---
 
+> [!tldr] In brief
+> A LAN connects devices in a small area, such as a home or an office.
+
 A local area network (LAN) usually covers a small area, such as a home, office, or organization. A home Wi-Fi network is one example.
 
 ### Examples of LANs in everyday life

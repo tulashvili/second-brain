@@ -13,6 +13,9 @@ up:
 title: Computer Networks
 ---
 
+> [!tldr] In brief
+> Before building a network, decide its shape and which devices it must connect.
+
 Before building a computer network, I want to identify a few things that have to be planned first.
 
 Start with the network's shape and the devices it needs to connect.

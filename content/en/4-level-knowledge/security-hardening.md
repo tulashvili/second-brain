@@ -10,10 +10,14 @@ up:
 title: Security Hardening
 ---
 
+> [!tldr] In brief
+> Hardening reduces the attack surface through system settings and verification of their actual effect.
+
 ## What it is
 
 Hardening is a set of methods and procedures for reducing the attack surface of a company's infrastructure. In other words, it means configuring systems to make both initial access and movement after a breach more difficult. Examples include disabling unnecessary services, closing unused ports, restricting administrative access, and retiring outdated protocols.
 
+> [!example]
 > If infrastructure is a cake, hackers are children trying to eat it while Grandma isn't looking. :)
 
 ## The process
@@ -22,6 +26,8 @@ To understand hardening, you first have to understand **the system and the proce
 
 - What is the system for?
 - What baseline configuration fits this product and version?
+
+### Example: GitLab Runner
 
 For example, when I hardened GitLab Runners at work, I used the official documentation and the Runner best practices.
 
@@ -42,6 +48,10 @@ You do not need to be a developer or an expert in every product. But you do need
 3. Encrypt data.
 4. Back up sensitive data regularly.
 5. Teach employees to recognize phishing and other malicious messages.
+
+## In summary
+
+Reducing the attack surface requires a suitable configuration, limited privileges, and verification against a working use case.
 
 ## Sources
 

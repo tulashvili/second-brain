@@ -8,15 +8,22 @@ up:
 title: SSL Upstream Injection
 ---
 
+> [!tldr] In brief
+> SSL Upstream Injection concerns the connection between an intermediary and an internal backend server.
+
 Note version: **0.1, 8 October 2026**
 
 SSL Upstream Injection is a vulnerability in which an attacker **injects malicious data or commands into network traffic** between an intermediary server, such as a proxy or load balancer, and the web application's backend server.
 
 In other words, the vulnerable connection is between Nginx and an internal backend, rather than between the user and the website.
 
+## How the request travels
+
 Why? When a visitor opens a site, the browser sends a request to Nginx, which forwards it to an internal backend service. Nginx is the intermediary between the visitor and the backend.
 
 The problem can arise when Nginx establishes a protected TLS connection to the backend. If an attacker can interfere with that internal traffic, under certain conditions they can replace the backend's response, which Nginx then passes to the user.
+
+## Connection diagram
 
 The diagram says it more clearly:
 
@@ -38,3 +45,7 @@ Attacker -[#red,dashed]-> Network : Replaces the backend response
 
 @enduml
 ```
+
+## In summary
+
+This attack depends on interference with internal traffic and replacement of a backend response.

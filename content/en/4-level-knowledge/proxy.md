@@ -9,9 +9,14 @@ up:
 title: Proxy
 ---
 
+> [!tldr] In brief
+> A proxy accepts client requests and contacts destination servers on their behalf.
+
 A proxy is a server positioned in front of a group of client computers. When those clients request websites or Internet services, the proxy intercepts the requests and contacts the destination servers on their behalf.
 
 ![[Pasted image 20230712095333.png]]
+
+## Examples of use
 
 A proxy can be used to:
 
