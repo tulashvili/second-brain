@@ -7,19 +7,27 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
+    },
+    "./components": {
+      "types": "./dist/components.d.ts",
+      "import": "./dist/components.js"
     }
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup",
+    "test": "tsx --test src/*.test.ts*",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@quartz-community/types": "^1.0.0"
+    "@quartz-community/types": "^1.0.0",
+    "preact": "^10.28.2"
   },
   "devDependencies": {
+    "preact-render-to-string": "^6.6.5",
     "tsup": "^8.5.0",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   },
   "engines": {
@@ -29,12 +37,22 @@
   "quartz": {
     "name": "draft-publish",
     "displayName": "Publish Explicit Non-Drafts",
-    "category": "filter",
+    "category": [
+      "filter",
+      "component"
+    ],
     "version": "1.0.0",
     "quartzVersion": ">=5.0.0",
     "dependencies": [],
     "defaultOrder": 50,
     "defaultEnabled": true,
-    "defaultOptions": {}
+    "defaultOptions": {},
+    "components": {
+      "NoteMetadata": {
+        "displayName": "Note Metadata",
+        "defaultPosition": "beforeBody",
+        "defaultPriority": 25
+      }
+    }
   }
 }

@@ -23,7 +23,7 @@
     "prepare:site": "npm run install-plugins",
     "build": "tsx scripts/build-localized-site.ts",
     "serve": "npm run build && python3 -m http.server 8080 --directory public",
-    "test:site": "npm run plugins:deps && npm run plugins:build && npm run prepare:site && npm test && npm --prefix plugins/ascii-slug test && npm --prefix plugins/flat-tag-page test && npm --prefix plugins/blog-link test && npm --prefix plugins/sources test && npm --prefix plugins/semantic-navigation test && npm --prefix plugins/article-rss test && npm --prefix plugins/plantuml-renderer test && npm --prefix plugins/language-selector test",
+    "test:site": "npm run plugins:deps && npm run plugins:build && npm run prepare:site && npm test && npm --prefix plugins/ascii-slug test && npm --prefix plugins/flat-tag-page test && npm --prefix plugins/blog-link test && npm --prefix plugins/sources test && npm --prefix plugins/semantic-navigation test && npm --prefix plugins/article-rss test && npm --prefix plugins/plantuml-renderer test && npm --prefix plugins/language-selector test && npm --prefix plugins/draft-publish test",
     "check:site": "npm run check && npm run test:site && npm run build",
     "profile": "0x -D prof ./quartz/bootstrap-cli.mjs build --concurrency=1",
     "install-plugins": "npx quartz plugin install --from-config --concurrency 1",

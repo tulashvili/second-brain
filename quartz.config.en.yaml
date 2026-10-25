@@ -113,6 +113,9 @@ plugins:
       mode: both
   - source: ./plugins/draft-publish
     enabled: true
+    layout:
+      position: beforeBody
+      priority: 25
   - source: "@quartz-community/explicit-publish"
     enabled: false
   - source: "@quartz-community/alias-redirects"

@@ -79,6 +79,10 @@ test(
       await readFile(path.join(output, "ssl-upstream-injection.html"), "utf8")
       await readFile(path.join(output, "en/information-security-fundamentals.html"), "utf8")
       const enProcesses = await readFile(path.join(output, "en/linux-processes.html"), "utf8")
+      assert.match(enProcesses, /Note version: 1\.0/)
+      assert.match(enProcesses, /Parent topic:/)
+      assert.match(enProcesses, /href="\/en\/linux"/)
+      assert.doesNotMatch(enProcesses, /class="semantic-parents"/)
       assert.match(
         enProcesses,
         /hreflang="ru" href="https:\/\/security\.maybeso\.me\/protsessy-v-linux"/,

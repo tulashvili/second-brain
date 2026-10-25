@@ -5,7 +5,9 @@
     "moduleResolution": "Bundler",
     "strict": true,
     "declaration": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
     "skipLibCheck": true
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
 }

@@ -122,6 +122,17 @@ describe("SemanticGraph", () => {
 })
 
 describe("SemanticNavigation", () => {
+  it("does not duplicate parent links below the article", () => {
+    const root = moc("index", "Root")
+    const network = moc("network", "Network", ["index"])
+    const html = renderComponent(
+      SemanticNavigation,
+      { slug: "proxy", frontmatter: { title: "Proxy" }, semanticUpLinks: ["network"] },
+      [root, network],
+    )
+    expect(html).not.toContain("semantic-parents")
+  })
+
   it("keeps the article-only recent block on the root MOC", () => {
     const root = moc("index", "Информационная безопасность")
     const html = renderComponent(SemanticNavigation, root, [

@@ -240,15 +240,16 @@ test(
       }
 
       const proxy = await readFile(path.join(output, "proxy.html"), "utf8")
-      const proxyParents = section(proxy, "semantic-parents")
-      assert.match(proxyParents, /aria-label="Родительские разделы"/)
+      const proxyParents = section(proxy, "note-parents")
+      assert.match(proxyParents, /Родительская тема:/)
       assert.match(proxyParents, /href="\/setevaya-bezopasnost"/)
+      assert.doesNotMatch(proxy, /class="semantic-parents"/)
 
       const practical = await readFile(
         path.join(output, "nastroyka-forward-proxy-v-nginx-c-basic-auth.html"),
         "utf8",
       )
-      const practicalParents = section(practical, "semantic-parents")
+      const practicalParents = section(practical, "note-parents")
       assert.match(practicalParents, /href="\/bezopasnost-prilozheniy-i-veb-servisov"/)
       assert.match(practicalParents, /href="\/laby-i-prakticheskie-rukovodstva"/)
 
