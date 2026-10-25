@@ -239,16 +239,18 @@ test(
         path.join(output, "hsts-http-strict-transport-security.html"),
         "utf8",
       )
-      const hstsParents = section(hsts, "semantic-parents")
-      assert.match(hstsParents, /aria-label="Родительские разделы"/)
+      const hstsParents = section(hsts, "note-parents")
+      assert.match(hstsParents, /aria-label="Родительские темы"/)
       assert.match(hstsParents, /href="\/setevaya-bezopasnost"/)
       assert.match(hsts, /Версия заметки: 0\.1/)
+      assert.ok(hsts.indexOf('class="note-version"') < hsts.indexOf('class="note-parents"'))
+      assert.doesNotMatch(hsts, /class="semantic-parents"/)
 
       const practical = await readFile(
         path.join(output, "nastroyka-forward-proxy-v-nginx-c-basic-auth.html"),
         "utf8",
       )
-      const practicalParents = section(practical, "semantic-parents")
+      const practicalParents = section(practical, "note-parents")
       assert.match(practicalParents, /href="\/bezopasnost-prilozheniy-i-veb-servisov"/)
       assert.match(practicalParents, /href="\/laby-i-prakticheskie-rukovodstva"/)
 

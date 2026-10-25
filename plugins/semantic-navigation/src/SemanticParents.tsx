@@ -30,7 +30,9 @@ export const SemanticParents: QuartzComponentConstructor = () => {
 
     return (
       <nav class="semantic-parents" aria-label="Родительские разделы">
-        <span class="semantic-parents-label">Раздел:</span>
+        <span class="semantic-parents-label">
+          {parents.length === 1 ? "Родительская тема:" : "Родительские темы:"}
+        </span>
         <ul>
           {parents.map((parent) => (
             <li>

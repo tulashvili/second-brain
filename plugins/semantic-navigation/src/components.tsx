@@ -15,7 +15,6 @@ export { SemanticGraph, MocChildren, SemanticParents }
 
 export const SemanticNavigation: QuartzComponentConstructor = () => {
   const Graph = SemanticGraph()
-  const Parents = SemanticParents()
   const Children = MocChildren()
   const RecentArticles = RecentNotes({
     title: "Обновления заметок",
@@ -28,7 +27,6 @@ export const SemanticNavigation: QuartzComponentConstructor = () => {
   })
   const Component: QuartzComponent = (props: QuartzComponentProps) => (
     <>
-      {Parents(props) as ComponentChildren}
       {Children(props) as ComponentChildren}
       {props.fileData.slug === "index" && (RecentArticles(props) as ComponentChildren)}
       {Graph(props) as ComponentChildren}

@@ -33,6 +33,7 @@ describe("SemanticParents", () => {
       files,
     )
     expect(html).toContain('aria-label="Родительские разделы"')
+    expect(html).toContain("Родительская тема:")
     expect(html).toContain('href="/network"')
     expect(html).toContain("Сетевая безопасность")
   })
@@ -110,6 +111,17 @@ describe("SemanticGraph", () => {
 })
 
 describe("SemanticNavigation", () => {
+  it("leaves the parent link to the separate header component", () => {
+    const root = moc("index", "Информационная безопасность")
+    const network = moc("network", "Сетевая безопасность", ["index"])
+    const html = renderComponent(
+      SemanticNavigation,
+      { slug: "proxy", frontmatter: { title: "Proxy" }, semanticUpLinks: ["network"] },
+      [root, network],
+    )
+    expect(html).not.toContain("semantic-parents")
+  })
+
   it("keeps the article-only recent block on the root MOC", () => {
     const root = moc("index", "Информационная безопасность")
     const html = renderComponent(SemanticNavigation, root, [
