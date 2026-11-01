@@ -9,9 +9,10 @@ updated: 2026-04-06 15:19:32+03:00
 date: 2026-04-06 13:33:05+03:00
 tags: null
 up:
-- '[[detection-logging-and-monitoring]]'
-- '[[authorization-and-authentication]]'
+- '[[logging-monitoring-and-threat-detection|Logging monitoring and threat detection]]'
+- '[[identity-and-access-management|Identity and access management]]'
 title: auth.log
+version: '0.1'
 ---
 
 The `auth.log` file records who tried to sign in to our server and when.

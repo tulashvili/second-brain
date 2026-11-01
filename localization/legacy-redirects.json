@@ -1,0 +1,14 @@
+{
+  "ru": {
+    "bezopasnost-infrastruktury": "bezopasnost-infrastruktury-i-platform",
+    "obnaruzhenie-logirovanie-i-monitoring": "logirovanie-monitoring-i-obnaruzhenie-ugroz",
+    "programmirovanie-i-avtomatizatsiya": "osnovy-programmirovaniya",
+    "avtorizatsiya-i-autentifikatsiya": "upravlenie-identifikatsiey-i-dostupom-uchetnye-zapisi-autentifikatsiya-avtorizatsiya-i-prava"
+  },
+  "en": {
+    "infrastructure-security": "infrastructure-and-platform-security",
+    "detection-logging-and-monitoring": "logging-monitoring-and-threat-detection",
+    "programming-and-automation": "programming-fundamentals",
+    "authorization-and-authentication": "identity-and-access-management"
+  }
+}

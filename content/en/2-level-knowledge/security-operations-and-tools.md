@@ -1,12 +1,13 @@
 ---
 draft: false
-translationKey: operatsionnaya-bezopasnost-i-instrumenty
 title: Security Operations and Tools
 moc: true
 tags:
 - area
 up:
-- '[[information-security-fundamentals]]'
+- '[[information-security-fundamentals|Information security fundamentals]]'
+version: '0.1'
+translationKey: operatsionnaya-bezopasnost-i-instrumenty
 ---
 
 Everyday tools, automation, and working practices that make operations reproducible and secure.
@@ -14,6 +15,5 @@ Everyday tools, automation, and working practices that make operations reproduci
 ## Key topics
 
 - [[tools-and-technologies|Tools and Technologies]]
-- [[programming-and-automation|Programming and Automation]]
 - [[security-hardening|Security Hardening]]
 - [[labs-and-practical-guides|Labs and Practical Guides]]

@@ -5,14 +5,15 @@ date: 2024-01-06T00:18
 updated: 2026-04-02 13:05:39+03:00
 tags: null
 up:
-- '[[network-security]]'
+- '[[network-security|Network security]]'
 title: Content Delivery Network (CDN)
+version: '0.05'
 ---
 
 > [!tldr] In brief
 > A CDN caches content near users and can protect the origin server from some attacks.
 
-A content delivery network (CDN) is a geographically distributed group of servers that cache content near end users. It speeds up delivery of static resources such as HTML, JavaScript, and CSS, and can help defend against DDoS attacks.
+A content delivery network (CDN) is a geographically distributed group of servers that cache content near end users. It speeds up delivery of static resources such as HTML, JavaScript, and CSS, and can help defend against [[ddos-attack|DDoS attacks]].
 
 ## How the request path changes
 
@@ -41,7 +42,7 @@ With a CDN:
 ## Limitation
 
 > [!note]
-> A CDN is not the primary home of business logic or data, although it can proxy APIs and run some logic at the edge.
+> A CDN is not the primary home of business logic or data, although it can proxy APIs and run some logic on [[Пограничный сервер CDN|edge servers]].
 
 ## Protecting the origin server
 

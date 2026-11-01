@@ -1,14 +1,15 @@
 ---
 draft: false
-translationKey: pan-personal-area-network
-type:
-state:
-pattern:
+version: '0.1'
+type: null
+state: null
+pattern: null
 date: 2026-03-18T16:34
-updated: 2026-04-05T13:50:36+03:00
-tags:
+updated: 2026-04-05 13:50:36+03:00
+tags: null
 up:
-  - "[[Сети и протоколы]]"
+- '[[Сети и протоколы|Сети и протоколы]]'
+translationKey: pan-personal-area-network
 ---
 
 > [!tldr] Коротко

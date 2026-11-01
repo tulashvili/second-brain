@@ -1,18 +1,18 @@
 ---
 draft: false
-translationKey: instrumenty-i-tehnologii
+version: '0.1'
 title: Tools and Technologies
 moc: true
 tags:
 - area
 up:
-- '[[security-operations-and-tools]]'
+- '[[security-operations-and-tools|Security operations and tools]]'
+translationKey: instrumenty-i-tehnologii
 ---
 
-Utilities and technologies for administration, diagnostics, and repeatable hands-on work.
+Utilities and technologies for administration, diagnostics, and reproducible practical tasks.
 
 ## Key topics
 
-- [[balenaetcher|balenaEtcher]]
-- [[swaks-email-testing-tool|Swaks: A Tool for Sending Test Email]]
-- [[programming-and-automation|Programming and Automation]]
+- [[swaks-email-testing-tool]]
+- [[gitlab-runner]]

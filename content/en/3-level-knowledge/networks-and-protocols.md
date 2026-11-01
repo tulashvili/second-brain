@@ -1,18 +1,23 @@
 ---
 draft: false
-translationKey: seti-i-protokoly
+version: '0.1'
 title: Networks and Protocols
 moc: true
 tags:
 - area
 up:
-- '[[network-security]]'
+- '[[network-security|Network security]]'
+translationKey: seti-i-protokoly
 ---
 
-The foundations of network security: models, network sizes, devices, and the path data takes between hosts.
+The foundation of network security: models, network scales, devices, and the path data takes between nodes.
 
 ## Key topics
 
-- [[computer-networks|Computer Networks]]
-- [[osi-model|OSI Model]]
-- [[switch-vs-router|Switch vs. Router]]
+- [[switch-vs-router]]
+- [[local-area-network]]
+- [[personal-area-network]]
+- [[campus-area-network]]
+- [[network-switch]]
+- [[router]]
+- [[osi-physical-layer]]

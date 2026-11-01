@@ -7,16 +7,17 @@ tags:
 - backup
 - clippings
 up:
-- '[[data-storage]]'
-- '[[labs-and-practical-guides]]'
+- '[[data-storage|Data storage]]'
+- '[[labs-and-practical-guides|Labs and practical guides]]'
 dg-publish: false
 date: 2025-03-13T13:44
 updated: 2026-04-04 23:16:23+03:00
 modified: 2026-10-12 20:04:28+03:00
 created: 2026-10-08 19:15:38+03:00
+version: '0.05'
 ---
 
-There is a useful [mysqldump guide](https://simplebackups.com/blog/the-complete-mysqldump-guide-with-examples/#backup-specific-mysql-databases-via-mysqldump). Here is my condensed version, with comments and additions.
+There is a good article about using [[mysqldump]] [here](https://simplebackups.com/blog/the-complete-mysqldump-guide-with-examples/#backup-specific-mysql-databases-via-mysqldump). Below is a condensed version with my comments and additions.
 
 ## Backups
 
@@ -71,32 +72,32 @@ mysqldump --no-data -u username -p database_name > database_structure.sql
 First transfer the dump to the target server:
 
 ```shell
-scp user@source-host:/home/user/dump.sql.gz user@target-host:/home/user/
+scp otulashvili@h1-project2-con:/home/otulashvili/dump_project2_local.sql.gz otulashvili@dev-project2-con:/home/otulashvili/
 ```
 
 Decompress the archive on the target server:
 
 ```shell
-gzip -d -k dump.sql.gz
+gzip -d -k dump_project2_local.sql.gz
 ```
 
 Because my dump did not create the databases, I created them manually before importing:
 
 ```shell
-sudo mysql --defaults-file=/etc/mysql/my.cnf -e "create database project2"
-sudo mysql --defaults-file=/etc/mysql/my.cnf -e "create database Ip2location"
+otulashvili@dev-project2-con [project2] :~ $ sudo mysql --defaults-file=/etc/mysql/my.cnf -e "create database project2"
+otulashvili@dev-project2-con [project2] :~ $ sudo mysql --defaults-file=/etc/mysql/my.cnf -e "create database Ip2location"
 ```
 
 Then I imported the dump:
 
 ```shell
-sudo mysql --defaults-file=/etc/mysql/my.cnf project2 < dump.sql
+sudo mysql --defaults-file=/etc/mysql/my.cnf project2 < dump_project2_local.sql
 ```
 
 `project2` is the target database. To check that the import worked, inspect the databases and tables:
 
 ```sql
-SHOW DATABASES;
+show databases;
 SHOW TABLES FROM project2;
 ```
 

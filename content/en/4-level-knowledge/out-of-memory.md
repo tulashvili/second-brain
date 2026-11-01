@@ -8,7 +8,8 @@ description: null
 draft: false
 tags: null
 up:
-- '[[infrastructure-and-platforms]]'
+- '[[infrastructure-and-platforms|Infrastructure and platforms]]'
+version: '0.1'
 ---
 
 > [!tldr] In brief

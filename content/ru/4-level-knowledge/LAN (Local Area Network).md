@@ -1,11 +1,12 @@
 ---
 draft: false
-translationKey: lan-local-area-network
+version: '0.1'
 date: 2024-01-06T00:20
-updated: 2026-04-05T13:48:40+03:00
-tags:
+updated: 2026-04-05 13:48:40+03:00
+tags: null
 up:
-  - "[[Сети и протоколы]]"
+- '[[Сети и протоколы|Сети и протоколы]]'
+translationKey: lan-local-area-network
 ---
 
 > [!tldr] Коротко

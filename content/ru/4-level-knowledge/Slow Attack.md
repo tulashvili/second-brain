@@ -1,35 +1,36 @@
 ---
 draft: false
-translationKey: slow-attack
-type:
-state:
+version: '0.05'
+type: null
+state: null
 pattern:
-  - "[[DoS-атака]]"
+- '[[DoS-атака]]'
 date: 2026-03-20T00:38
-updated: 2026-04-07T21:13:28+03:00
-tags:
+updated: 2026-04-07 21:13:28+03:00
+tags: null
 up:
-  - "[[Атаки и угрозы]]"
+- '[[Атаки и угрозы|Атаки и угрозы]]'
 url:
-  - "[[Мистер Робот]]"
+- '[[Мистер Робот]]'
+translationKey: slow-attack
 ---
 
 > [!tldr] Коротко
 > Slow Attack удерживает HTTP-соединения открытыми медленными запросами и расходует ресурсы сервера.
 
-Slow attack (или Low-and-slow) — это тип DoS-атаки на веб-серверы, при которой атакующий отправляет валидные HTTP-запросы очень медленно, удерживая соединения открытыми максимально долго. 
+Slow attack (или Low-and-slow) — это тип DoS-атаки на веб-серверы, при которой атакующий отправляет валидные HTTP-запросы очень медленно, удерживая соединения открытыми максимально долго.
 
 ## Что происходит с сервером
 
 Это исчерпывает пул подключений сервера, делая его недоступным для реальных пользователей
 - Убить сервер можно еще до nginx, забив все файловые дескрипторы
 	- лимит проверяется с помощью `ulimit -n`
-- Или сам nginx с помощью - [[nginx_worker_process]] и [[03 Resources/IT/Infra/Nginx/nginx worker_connections|nginx worker_connections]]
+- Или сам nginx с помощью - [[nginx_worker_process|nginx_worker_process]] и [[03 Resources/IT/Infra/Nginx/nginx worker_connections|nginx worker_connections]]
 
 ## Разновидности
 
 Это общая разновидность атак на уровне [[L7 Прикладной|L7]], есть разные подтипы данной атаки:
-- [[R.U.D.Y (R-U-Dead-Yet)]]
+- [[R.U.D.Y (R-U-Dead-Yet)|R.U.D.Y (R-U-Dead-Yet)]]
 
 ## Итого
 

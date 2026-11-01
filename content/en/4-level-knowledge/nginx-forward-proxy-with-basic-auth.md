@@ -5,14 +5,15 @@ draft: false
 tags:
 - tutorials
 up:
-- '[[application-and-web-service-security]]'
-- '[[labs-and-practical-guides]]'
-- '[[authorization-and-authentication]]'
+- '[[application-and-web-service-security|Application and web service security]]'
+- '[[labs-and-practical-guides|Labs and practical guides]]'
+- '[[identity-and-access-management|Identity and access management]]'
 date: 2025-01-16
 updated: 2026-04-06 15:11:30+03:00
 url:
 - https://www.baeldung.com/nginx-forward-proxy
 - https://www.digitalocean.com/community/tutorials/how-to-set-up-password-authentication-with-nginx-on-ubuntu-20-04
+version: '0.1'
 ---
 
 ## Nginx

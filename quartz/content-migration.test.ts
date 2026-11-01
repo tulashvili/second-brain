@@ -53,9 +53,9 @@ const markdownFiles = async (directory: string): Promise<string[]> => {
   return nested.flat()
 }
 
-test("imports exactly the curated 38 articles", async () => {
+test("imports exactly the curated 63 articles", async () => {
   const articles = await publishedArticles()
-  assert.equal(articles.length, 38)
+  assert.equal(articles.length, 63)
 
   for (const article of articles) {
     const data = frontmatter(await readFile(path.join(contentDirectory, article), "utf8"))

@@ -1,13 +1,13 @@
 ---
 draft: false
-translationKey: hardening-usilenie-bezopasnosti
-modified: 2026-10-12 20:01:11+03:00
+modified: 2026-10-22 18:11:58+03:00
 created: 2026-10-12 14:32:33+03:00
 version: '0.1'
 up:
-- '[[infrastructure-security]]'
-- '[[security-operations-and-tools]]'
+- '[[infrastructure-and-platform-security|Infrastructure and platform security]]'
+- '[[security-operations-and-tools|Security operations and tools]]'
 title: Security Hardening
+translationKey: hardening-usilenie-bezopasnosti
 ---
 
 > [!tldr] In brief
@@ -15,7 +15,7 @@ title: Security Hardening
 
 ## What it is
 
-Hardening is a set of methods and procedures for reducing the attack surface of a company's infrastructure. In other words, it means configuring systems to make both initial access and movement after a breach more difficult. Examples include disabling unnecessary services, closing unused ports, restricting administrative access, and retiring outdated protocols.
+Hardening is a set of methods and procedures for reducing the attack surface of a company's infrastructure. In other words, it means configuring systems to make both initial access and movement after a breach more difficult, while preserving the service's original functionality. Examples include disabling unnecessary services, closing unused ports, restricting administrative access, and retiring outdated protocols.
 
 > [!example]
 > If infrastructure is a cake, hackers are children trying to eat it while Grandma isn't looking. :)
@@ -43,7 +43,7 @@ You do not need to be a developer or an expert in every product. But you do need
 
 ## Make access harder before an attacker gets inside
 
-1. Use reliable authentication and authorization.
+1. Use reliable authentication and authorization — [[Нет идентификации — нет восстановления киберустойчивость начинается с управления идентификацией и доступом (IAM)|Identity and Access Management]].
 2. Keep software updated and remediate vulnerabilities promptly.
 3. Encrypt data.
 4. Back up sensitive data regularly.

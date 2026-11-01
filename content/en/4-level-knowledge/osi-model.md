@@ -5,8 +5,9 @@ date: 2024-01-06T00:20
 updated: 2026-04-05 14:11:37+03:00
 tags: null
 up:
-- '[[networks-and-protocols]]'
+- '[[networks-and-protocols|Networks and protocols]]'
 title: OSI Model
+version: '0.05'
 ---
 
 > [!tldr] In brief
@@ -22,13 +23,13 @@ At layer 7, information is represented as application data; at layer 1, it is re
 
 The seven OSI layers can be roughly grouped as follows:
 
-- **Media layers** (physical, data link, and network) carry information over cables or wireless links. Network devices such as switches and routers operate primarily here.
-- **Layer 4, transport**, connects the lower and upper layers.
-- **Host layers** (session, presentation, and application) operate on end-user devices such as computers and phones.
-
-Some modern devices, including web and network filters, work across several layers.
-
-See also [[osi-physical-layer|The Physical Layer of the OSI Model]].
+- **Media layers** (layers of the medium—[[osi-physical-layer|Physical layer]], [[L2 Канальный|L2 Data Link]], [[L3 Сетевой|L3 Network]])
+  - Carry information over cables or wireless networks
+  - Are used by network devices such as switches and routers
+  - Are implemented on network devices, although devices able to work at every layer have now begun to appear; web and network filters are examples
+- [[L4 Транспортный|L4 Transport]] is an intermediary between the groups of layers
+- **Host layers** (host layers—[[L5 Сеансовый|L5 Session]], [[L6 Представления|L6 Presentation]], [[L7 Прикладной|L7 Application]])
+  - Are used directly on devices such as desktop computers or mobile devices
 
 ## In summary
 

@@ -4,19 +4,20 @@ translationKey: minio-client
 type: null
 state: null
 pattern:
-- 'S3 storage'
+- '[[S3 хранилище данных|S3 storage]]'
 url: null
 updated: 2026-04-09 12:47:08+03:00
 tags: null
 up:
-- '[[data-storage]]'
-- '[[labs-and-practical-guides]]'
+- '[[data-storage|Data storage]]'
+- '[[labs-and-practical-guides|Labs and practical guides]]'
 date: 2026-04-08 14:58:58+03:00
 check_before_public: false
 title: MinIO Client
+version: '0.05'
 ---
 
-I have already written about configuring [[aws-cli|AWS CLI]] to work with S3 storage. Here I will use MinIO Client to connect to MinIO and upload a test file.
+I have already written about configuring [[aws-cli|AWS CLI]]—a client for working with [[S3 хранилище данных|S3 storage]]. To work with [[Minio|MinIO]], I will use MinIO Client. Here is how to configure it and upload a test file.
 
 ```shell
 curl -O https://dl.min.io/client/mc/release/linux-amd64/mc
@@ -24,7 +25,7 @@ chmod +x mc
 mv mc /usr/local/bin/mc-minio
 ```
 
-I give the executable a new name to avoid a conflict with Midnight Commander (`mc`).
+I give the executable a new name to avoid a conflict with [[Midnight Comander (mc)|Midnight Commander (`mc`)]].
 
 Set an alias for the server:
 

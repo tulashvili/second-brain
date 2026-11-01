@@ -1,11 +1,12 @@
 ---
 draft: false
-translationKey: cdn
+version: '0.05'
 date: 2024-01-06T00:18
-updated: 2026-04-02T13:05:39+03:00
-tags:
+updated: 2026-04-02 13:05:39+03:00
+tags: null
 up:
-  - "[[Сетевая безопасность]]"
+- '[[Сетевая безопасность|Сетевая безопасность]]'
+translationKey: cdn
 ---
 
 > [!tldr] Коротко

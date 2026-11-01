@@ -1,16 +1,17 @@
 ---
 draft: false
-translationKey: swaks-prostoy-klient-dlya-otpravki-pisem-s-servera
-title:
+version: '0.1'
+title: null
 tags:
-  - mail
-  - url
+- mail
+- url
 up:
-  - "[[Инструменты и технологии]]"
-  - "[[Лабы и практические руководства]]"
+- '[[Инструменты и технологии|Инструменты и технологии]]'
+- '[[Лабы и практические руководства|Лабы и практические руководства]]'
 dg-publish: false
 date: 2025-03-11T17:58
-updated: 2026-04-05T11:23:12+03:00
+updated: 2026-04-05 11:23:12+03:00
+translationKey: swaks-prostoy-klient-dlya-otpravki-pisem-s-servera
 ---
 Установка стандартная, из репозитория Ubuntu.
 
@@ -41,10 +42,10 @@ otulashvili@h3-<project> [<project>] :~ $ swaks --to my_email@gmail.com --from n
  -> Subject: test Tue, 11 Mar 2025 17:55:33 +0300
  -> Message-Id: <20250311175533.4171711@h3-<project>.dio>
  -> X-Mailer: swaks v20190914.0 jetmore.org/john/code/swaks/
- -> 
+ ->
  -> This is a test mailing
- -> 
- -> 
+ ->
+ ->
  -> .
 <-  250 OK id=1ts113-00HVFh-5V
  -> QUIT

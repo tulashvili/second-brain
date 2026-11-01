@@ -6,7 +6,8 @@ moc: true
 tags:
 - area
 up:
-- '[[information-security-fundamentals]]'
+- '[[information-security-fundamentals|Information security fundamentals]]'
+version: '0.1'
 ---
 
 Step-by-step experiments and guides that test the theory by configuring real services and tools.

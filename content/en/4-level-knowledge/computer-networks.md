@@ -9,8 +9,9 @@ updated: 2026-04-05 14:09:34+03:00
 tags:
 - topic
 up:
-- '[[networks-and-protocols]]'
+- '[[networks-and-protocols|Networks and protocols]]'
 title: Computer Networks
+version: '0.05'
 ---
 
 > [!tldr] In brief
@@ -27,8 +28,8 @@ This means designing, installing, configuring, and managing the network. Common 
 - [[local-area-network|LAN]]
 - [[campus-area-network|CAN]]
 - [[personal-area-network|PAN]]
-- Metropolitan area network (MAN)
-- Wide area network (WAN)
+- [[MAN (Metropolitan Area Network)]]
+- [[WAN (Wide Area Network)]]
 
 ## Network devices
 
@@ -36,9 +37,19 @@ Devices can be classified in several ways:
 
 - **By purpose**
   - End devices are used directly by people: computers, phones, printers, and similar devices.
-  - Network devices keep the network running: servers, [[router|routers]], [[network-switch|switches]], and others.
+  - Network devices keep the network running: servers, routers, switches, and others.
 - **By connection type:** wired or wireless.
 - **By [[osi-model|OSI model]] layer**
-  - Physical layer: cables, antennas, and interfaces; see [[osi-physical-layer|The Physical Layer of the OSI Model]].
-  - Data link layer: network adapters, switches, and bridges.
-  - Network layer: routers.
+  - [[osi-physical-layer|Physical layer]]
+    - Cables
+    - Antennas
+    - Interfaces
+    - And so on
+  - [[Канальный уровень модели OSI|Data link layer]]
+    - Network adapters
+    - [[network-switch|switches]]
+    - Bridges
+    - And so on
+  - [[Сетевой уровень модели OSI|Network layer]]
+    - [[маршрутизатор|routers]]
+-

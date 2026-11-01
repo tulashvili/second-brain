@@ -1,6 +1,5 @@
 ---
 draft: false
-translationKey: syncthing
 title: Syncthing
 type: null
 pattern: null
@@ -9,9 +8,11 @@ updated: 2026-04-24 13:24:54+03:00
 tags:
 - self_hosted
 up:
-- '[[infrastructure-and-platforms]]'
+- '[[infrastructure-and-platforms|Infrastructure and platforms]]'
 check_before_public: null
 date: 2026-04-22 08:10:27+03:00
+version: '0.1'
+translationKey: syncthing
 ---
 
 [Official website](https://syncthing.net/)
@@ -75,13 +76,14 @@ Webview version: 147.0.7727.55
 
 In Syncthing, open the settings for the synchronized folder:
 
-![[Pasted image 20260424130923.png|493]]
+![[assets/Pasted image 20260424130923.png|493]]
 
 Make the corresponding changes on the phone too.
 
-### Ignore-pattern examples
+### Examples
 
-- Ignore `MyFolder` at the folder root: `MyFolder`
-- Ignore `MyFolder` at any depth: `**/MyFolder`
-- Ignore files ending in `.tmp`: `*.tmp`
-- To exclude `MyFolder` but include `MyFolder/important`, use the appropriate ordered ignore patterns for those paths.
+- **Ignore the `MyFolder` folder:** `MyFolder`
+- **Ignore `MyFolder` at any level:** `**/MyFolder`
+- **Ignore all folders named `temp`:** `temp`
+- **Ignore all files with the `.tmp` extension:** `*.tmp`
+- **Ignore `MyFolder` but include `MyFolder/important`:** `MyFolder !MyFolder/important`

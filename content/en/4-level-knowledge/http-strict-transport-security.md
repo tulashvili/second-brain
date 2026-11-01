@@ -1,40 +1,41 @@
 ---
 draft: false
-translationKey: hsts-http-strict-transport-security
+version: '0.1'
 up:
-- '[[application-and-web-service-security]]'
-- '[[network-security]]'
-title: HTTP Strict Transport Security (HSTS)
+- '[[application-and-web-service-security|Application and web service security]]'
+- '[[network-security|Network security]]'
+modified: 2026-10-25 16:35:33+03:00
+created: 2026-10-09 12:51:28+03:00
+title: HSTS (HTTP Strict Transport Security)
+translationKey: hsts-http-strict-transport-security
 ---
 
 > [!tldr] In brief
-> After a secure connection, HSTS makes the browser use HTTPS directly on later visits.
-
-Note version: **0.1, 9 October 2026**
+> After the first secure connection, HSTS makes the browser go directly to the site over HTTPS.
 
 ## Example: two entrances
 
 Imagine an office with two entrances.
 
-The first is an ordinary entrance with no checks. That is HTTP.
+The first entrance is ordinary, with no checks. This is HTTP.
 
-The second is protected by a turnstile, a guard, and a pass. That is HTTPS.
+The second is protected, with a turnstile, guards, and a pass. This is HTTPS.
 
-A guard can put a sign on the ordinary entrance saying, “Please use the protected entrance.” On the web, an HTTP-to-HTTPS redirect plays a similar role.
+A guard can hang a sign at the ordinary entrance: “Please use the protected entrance.” On the web, an HTTP-to-HTTPS redirect plays this role.
 
-But if a visitor has already reached the unprotected entrance and opened the door, an attacker may meet them there and send them somewhere else.
+If a visitor has already approached the unprotected entrance and opened the door, an attacker may be able to meet them and send them somewhere other than where they intended to go.
 
-HSTS helps with this problem. After visiting the protected entrance once, the browser remembers:
+HSTS helps solve this problem: after visiting the protected entrance once, the browser remembers:
 
-> There is no ordinary entrance for this address. Always use the protected one.
+> For this address, the ordinary entrance does not exist. Always use the protected one.
 
 On the next visit, the browser does not even try to send an HTTP request. It uses HTTPS immediately.
 
-## The first-visit limitation
+## First-visit limitation
 
 > [!warning]
-> HSTS has a limitation: the browser usually learns about the policy only after the first successful HTTPS connection. HSTS Preload can protect that first visit, but it is a separate and much more consequential decision. Do not add `preload` just in case: if the domain's certificate expires, the site may become unavailable, and the setting cannot be undone quickly.
+> HSTS has a limitation: a browser usually learns about it only after the first successful HTTPS connection. HSTS Preload exists to protect that very first visit, but it is a separate and much more serious decision. You must not add `preload` “just in case,” because if the domain certificate expires, the site becomes unavailable and the setting cannot be quickly undone.
 
-## In summary
+## Summary
 
-A redirect sends HTTP traffic to HTTPS; HSTS helps the browser avoid starting the next visit over HTTP.
+A redirect leads from HTTP to HTTPS, while HSTS helps the browser avoid starting the next request with HTTP.

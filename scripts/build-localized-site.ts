@@ -1,5 +1,5 @@
 import { execFile } from "node:child_process"
-import { cp, mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises"
+import { access, cp, mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises"
 import os from "node:os"
 import path from "node:path"
 import { promisify } from "node:util"
@@ -38,6 +38,33 @@ const setRussianHomeCanonical = (html: string): string =>
       `<meta property="twitter:url" content="${canonicalRoot}"`,
       `<meta property="twitter:url" content="${canonicalRoot}ru/"`,
     )
+
+const writeLegacyRedirects = async (destination: string): Promise<void> => {
+  const redirects = JSON.parse(
+    await readFile(path.join(projectRoot, "localization", "legacy-redirects.json"), "utf8"),
+  ) as Record<string, Record<string, string>>
+  for (const [locale, routes] of Object.entries(redirects)) {
+    if (locale !== "ru" && locale !== "en") throw new Error(`Invalid redirect locale: ${locale}`)
+    const prefix = locale === "en" ? "en/" : ""
+    for (const [previous, target] of Object.entries(routes)) {
+      if (![previous, target].every((slug) => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug))) {
+        throw new Error(`Invalid legacy redirect: ${previous} -> ${target}`)
+      }
+      await access(path.join(destination, prefix, `${target}.html`))
+      const targetPath = `/${prefix}${target}`
+      const html = `<!DOCTYPE html>
+<html lang="${locale}"><head><meta charset="utf-8">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="${canonicalRoot}${prefix}${target}">
+<meta http-equiv="refresh" content="0; url=${targetPath}">
+<title>${locale === "ru" ? "Страница перемещена" : "Page moved"}</title></head>
+<body><a href="${targetPath}">${locale === "ru" ? "Перейти на страницу" : "Open the page"}</a></body></html>
+`
+      // Exclusive creation prevents an alias from replacing published content.
+      await writeFile(path.join(destination, prefix, `${previous}.html`), html, { flag: "wx" })
+    }
+  }
+}
 
 const main = async (): Promise<void> => {
   const temporary = await mkdtemp(path.join(os.tmpdir(), "quartz-bilingual-"))
@@ -78,6 +105,7 @@ const main = async (): Promise<void> => {
       path.join(output, "ru", "index.html"),
       russianHome.replace("<head>", '<head><base href="/">'),
     )
+    await writeLegacyRedirects(output)
     const sitemap = await readFile(path.join(output, "sitemap.xml"), "utf8")
     await writeFile(
       path.join(output, "sitemap.xml"),

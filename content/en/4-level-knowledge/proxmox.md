@@ -8,16 +8,17 @@ url: null
 updated: 2026-04-20 20:04:26+03:00
 tags: null
 up:
-- '[[infrastructure-and-platforms]]'
+- '[[infrastructure-and-platforms|Infrastructure and platforms]]'
 check_before_public: false
 date: 2026-04-15 13:16:55+03:00
 title: Proxmox
+version: '0.05'
 ---
 
 > [!tldr] In brief
 > Proxmox lets one physical computer run several virtual machines with different operating systems.
 
-I had never worked with Proxmox in almost three years as a system administrator. To catch up, I installed it on the computer I bought for my homelab.
+I had never worked with Proxmox in almost three years as a system administrator. To catch up, I installed it on the [[Мой первый homelab для экспериментов|computer I bought]] for my homelab.
 
 ## Proxmox and a conventional installation
 
@@ -47,14 +48,14 @@ By contrast, a conventional Ubuntu installation looks like this:
 
 1. I downloaded `proxmox.iso` from the [official site](https://www.proxmox.com/en/downloads) and wrote it to a USB drive with [[balenaetcher|balenaEtcher]].
 2. I enabled `Intel Virtualization Technology` in the BIOS before installing:
-   ![[Pasted image 20260415133210.png|584]]
+   ![[assets/Pasted image 20260415133210.png|584]]
 
    Without it, I got this installation error:
-   ![[Pasted image 20260415132924.png|589]]
+   ![[assets/Pasted image 20260415132924.png|589]]
 3. I chose *Install Proxmox VE (Graphical)*:
-   ![[11fde1d8ecf9fbb125152fd9c7808e8a82cc93ef399634fb4571601f39884666.jpeg|589]]
+   ![[assets/11fde1d8ecf9fbb125152fd9c7808e8a82cc93ef399634fb4571601f39884666.jpeg|589]]
 4. I followed the remaining installer prompts:
-   ![[Pasted image 20260415133540.png|585]]
+   ![[assets/Pasted image 20260415133540.png|585]]
 
 ## What I did first
 

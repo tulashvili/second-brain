@@ -11,6 +11,12 @@ import { toFlatAsciiSlug } from "../plugins/ascii-slug/src/slug"
 const execFileAsync = promisify(execFile)
 const contentDir = path.join(process.cwd(), "content", "ru")
 const articleExclusions = new Set(["index.md", "about.md", "projects.md"])
+const legacyRedirects = JSON.parse(
+  await readFile("localization/legacy-redirects.json", "utf8"),
+) as Record<"ru" | "en", Record<string, string>>
+const previousPublicRoutes = JSON.parse(
+  await readFile("docs/localization/previous-public-routes.json", "utf8"),
+) as Record<"ru" | "en", string[]>
 
 const frontmatter = (markdown: string): Record<string, unknown> => {
   const match = markdown.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/)
@@ -74,6 +80,13 @@ const exists = async (candidate: string): Promise<boolean> =>
     () => false,
   )
 
+const outputPathForRoute = (output: string, route: string): string => {
+  const pathname = new URL(route, "https://security.maybeso.me").pathname
+  const relative = pathname.replace(/^\/+|\/+$/g, "")
+  if (pathname.endsWith("/")) return path.join(output, relative, "index.html")
+  return path.join(output, `${relative}.html`)
+}
+
 const assertInternalHrefsResolve = async (output: string, fileName: string): Promise<void> => {
   const html = await readFile(path.join(output, fileName), "utf8")
   const sourcePath = fileName === "index.html" ? "/" : `/${fileName.replace(/\.html$/, "")}`
@@ -117,8 +130,8 @@ test(
       })
 
       const { articles, mocs } = await knowledgeSlugs()
-      assert.equal(articles.length, 38)
-      assert.equal(mocs.length, 16)
+      assert.equal(articles.length, 63)
+      assert.equal(mocs.length, 23)
       const rootPage = await readFile(path.join(output, "index.html"), "utf8")
       assert.match(rootPage, /property="og:url" content="https:\/\/security\.maybeso\.me\/ru\/"/)
       assert.match(rootPage, /rel="canonical" href="https:\/\/security\.maybeso\.me\/ru\/"/)
@@ -148,7 +161,7 @@ test(
       const processImages = [...processes.matchAll(/\bsrc=["']([^"']+\.png)["']/gi)].map(
         (match) => match[1],
       )
-      assert.equal(processImages.length, 8)
+      assert.equal(processImages.length, 7)
       for (const source of processImages) {
         const pathname = decodeURIComponent(
           new URL(source, "https://security.maybeso.me/protsessy-v-linux").pathname,
@@ -157,7 +170,7 @@ test(
         assert.equal(await exists(path.join(output, pathname.replace(/^\/+/, ""))), true)
       }
 
-      const tagDescriptors = await readdir(path.join(contentDir, "_flat-tags"))
+      const tagDescriptors = await readdir(path.join(contentDir, "_flat-tags")).catch(() => [])
       const tags = tagDescriptors.map((file) => file.replace(/\.md$/, "")).sort()
       for (const tag of tags) {
         const tagPage = await readFile(path.join(output, `${tag}.html`), "utf8")
@@ -171,15 +184,70 @@ test(
 
       const htmlFiles = (await readdir(output)).filter((file) => file.endsWith(".html"))
       for (const file of htmlFiles) await assertInternalHrefsResolve(output, file)
-      const html = await Promise.all(
-        htmlFiles.map((file) => readFile(path.join(output, file), "utf8")),
+      const englishHtmlFiles = (await readdir(path.join(output, "en"))).filter((file) =>
+        file.endsWith(".html"),
+      )
+      assert.equal(Object.keys(legacyRedirects.ru).length, 4)
+      assert.equal(Object.keys(legacyRedirects.en).length, 4)
+      const redirectPages = new Map<string, string>()
+      for (const [locale, redirects] of Object.entries(legacyRedirects) as [
+        "ru" | "en",
+        Record<string, string>,
+      ][]) {
+        for (const [legacySlug, targetSlug] of Object.entries(redirects)) {
+          const fileName = locale === "ru" ? `${legacySlug}.html` : `en/${legacySlug}.html`
+          const targetPath = locale === "ru" ? `/${targetSlug}` : `/en/${targetSlug}`
+          const targetUrl = `https://security.maybeso.me${targetPath}`
+          const page = await readFile(path.join(output, fileName), "utf8")
+          redirectPages.set(fileName, page)
+          assert.match(
+            page,
+            new RegExp(`http-equiv=["']refresh["'][^>]+url=${targetPath}`),
+            fileName,
+          )
+          assert.match(
+            page,
+            new RegExp(`rel=["']canonical["'] href=["']${targetUrl}["']`),
+            fileName,
+          )
+        }
+      }
+      assert.equal(previousPublicRoutes.ru.length, 68)
+      assert.equal(previousPublicRoutes.en.length, 68)
+      for (const [locale, routes] of Object.entries(previousPublicRoutes) as [
+        "ru" | "en",
+        string[],
+      ][]) {
+        for (const route of routes) {
+          assert.equal(
+            await exists(outputPathForRoute(output, route)),
+            true,
+            `${locale} previous public route is missing: ${route}`,
+          )
+        }
+      }
+      const allHtml = new Map<string, string>([
+        ...(await Promise.all(
+          htmlFiles.map(
+            async (file) => [file, await readFile(path.join(output, file), "utf8")] as const,
+          ),
+        )),
+        ...(await Promise.all(
+          englishHtmlFiles.map(
+            async (file) =>
+              [`en/${file}`, await readFile(path.join(output, "en", file), "utf8")] as const,
+          ),
+        )),
+      ])
+      assert.deepEqual(
+        [...allHtml]
+          .filter(([, page]) => /http-equiv=["']refresh/i.test(page))
+          .map(([file]) => file)
+          .sort(),
+        [...redirectPages.keys()].sort(),
       )
       assert.equal(
-        html.some((page) => /http-equiv=["']refresh/i.test(page)),
-        false,
-      )
-      assert.equal(
-        html.some((page) => /href=["'][^"']*\/(?:brain|tags)\//i.test(page)),
+        [...allHtml.values()].some((page) => /href=["'][^"']*\/(?:brain|tags)\//i.test(page)),
         false,
       )
 

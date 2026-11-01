@@ -1,19 +1,20 @@
 ---
 draft: false
-translationKey: gayd-po-ispolzovaniyu-mysqldump
+version: '0.05'
 title: Гайд по использованию mysqldump
 tags:
-  - mysql
-  - backup
-  - clippings
+- mysql
+- backup
+- clippings
 up:
-  - "[[Хранение данных]]"
-  - "[[Лабы и практические руководства]]"
+- '[[Хранение данных|Хранение данных]]'
+- '[[Лабы и практические руководства|Лабы и практические руководства]]'
 dg-publish: false
 date: 2025-03-13T13:44
-updated: 2026-04-04T23:16:23+03:00
-modified: 2026-10-12T20:04:28+03:00
-created: 2026-10-08T19:15:38+03:00
+updated: 2026-04-04 23:16:23+03:00
+modified: 2026-10-12 20:04:28+03:00
+created: 2026-10-08 19:15:38+03:00
+translationKey: gayd-po-ispolzovaniyu-mysqldump
 ---
 Хорошая статья написана на тему использования [[mysqldump]] [тут](https://simplebackups.com/blog/the-complete-mysqldump-guide-with-examples/#backup-specific-mysql-databases-via-mysqldump). Ниже представлена выжимка из нее с моими комментариями и дополнениями:
 ## Бэкап
@@ -21,7 +22,7 @@ created: 2026-10-08T19:15:38+03:00
 ```shell
 mysqldump -u username -p db_cooper mystery cash > file_name.sql
 ```
-- `mystery`и `cash` - таблицы 
+- `mystery`и `cash` - таблицы
 - `db_cooper` - база данных
 
 Для бэкапа одной таблицы будет использоваться идентичный синтаксис:

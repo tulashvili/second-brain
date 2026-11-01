@@ -4,25 +4,26 @@ translationKey: awscli
 title: AWS CLI
 tags: null
 up:
-- '[[data-storage]]'
-- '[[labs-and-practical-guides]]'
+- '[[data-storage|Data storage]]'
+- '[[labs-and-practical-guides|Labs and practical guides]]'
 dg-publish: false
 dg-note-icon: null
 date: 2025-05-01T13:08
 updated: 2026-04-08 14:56:14+03:00
 pattern:
-- 'S3 storage'
+- '[[S3 хранилище данных|S3 storage]]'
+version: '0.05'
 ---
 
 Suppose we have a server that stores many static files: `.png`, `.jpeg`, `.css`, and so on. We need to make those files available from several geographically dispersed locations.
 
-We can use S3 storage for this. To interact with it, we can use the plain `awscli` client, an S3-compatible server such as MinIO, or [[minio-client|MinIO Client]]. In the last case, we can store data directly on that server.
+We can use [[S3 хранилище данных|S3 storage]] for this. To interact with it, we can use the plain `awscli` client, an S3-compatible server such as [[Minio|MinIO]], or [[minio-client|MinIO Client]]. In the last case, we can store data directly on that server.
 
 Before connecting, obtain:
 
 - `access_key` (similar to a username)
 - `secret_key` (similar to a password)
-- `endpoint_url` (for an S3-compatible service such as MinIO or Ceph, rather than AWS S3)
+- `endpoint_url` (for an S3-compatible service such as [[MinIO]] or [[Ceph]], rather than AWS S3)
 
 Install `awscli`:
 

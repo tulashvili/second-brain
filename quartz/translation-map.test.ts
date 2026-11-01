@@ -28,8 +28,8 @@ test("each published Russian note has exactly one keyed English counterpart", ()
     string,
     { ruPath: string; enPath: string; ruUrl: string; enUrl: string }
   >
-  assert.equal(Object.keys(pairs).length, 54)
-  assert.equal(new Set(Object.values(pairs).map((pair) => pair.enUrl)).size, 54)
+  assert.equal(Object.keys(pairs).length, 86)
+  assert.equal(new Set(Object.values(pairs).map((pair) => pair.enUrl)).size, 86)
 
   for (const page of baseline.pages) {
     const pair = pairs[page.slug]

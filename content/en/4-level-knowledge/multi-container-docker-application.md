@@ -5,23 +5,20 @@ title: A Multi-Container Docker Application
 tags:
 - docker
 up:
-- '[[infrastructure-and-platforms]]'
-- '[[labs-and-practical-guides]]'
+- '[[infrastructure-and-platforms|Infrastructure and platforms]]'
+- '[[labs-and-practical-guides|Labs and practical guides]]'
 dg-publish: false
 dg-note-icon: null
 date: 2025-10-26T11:18
 updated: 2026-04-18 17:46:36+03:00
+version: '0.1'
 ---
 
 Each container should do one job and do it well. The frontend or backend will probably need to scale differently from the database, and separate containers can be versioned and updated independently.
 
 Containers communicate over a Docker network; you do not need to be a network engineer to connect them.
 
-1. Create a network:
-
-```sh
-docker network create todo-app
-```
+1. Create a network with `docker network create todo-app`.
 
 2. Start the database container:
 

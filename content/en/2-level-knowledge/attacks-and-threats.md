@@ -1,18 +1,18 @@
 ---
 draft: false
-translationKey: ataki-i-ugrozy
+version: '0.05'
 title: Attacks and Threats
 moc: true
 tags:
 - area
 up:
-- '[[information-security-fundamentals]]'
+- '[[information-security-fundamentals|Information security fundamentals]]'
+translationKey: ataki-i-ugrozy
 ---
 
-Attack models and techniques, their prerequisites, observable signs, and connections to defensive measures.
+Attack models and techniques, their prerequisites, observable signs, and their connection to defensive measures.
 
 ## Key topics
-
-- [[types-of-attacks-on-information-systems|Types of Attacks on Information Systems]]
-- [[slow-attack|Slow Attack]]
-- [[rudy-r-u-dead-yet|R.U.D.Y. (R-U-Dead-Yet)]]
+- [[types-of-attacks-on-information-systems]]
+- [[slow-attack]]
+- [[rudy-r-u-dead-yet]]

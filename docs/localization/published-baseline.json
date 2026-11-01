@@ -1,100 +1,27 @@
 {
-  "sourceCommit": "1bc7c6ca78654d89b4c9ea428b1bd02dcc559183",
-  "liveSitemapCount": 68,
+  "source": "Ignis API vault content",
+  "snapshot": "2026-11-01",
   "counts": {
-    "article": 38,
-    "moc": 16,
-    "page": 0
+    "article": 63,
+    "moc": 23
   },
   "pages": [
     {
-      "source": "content/1-level-knowledge/Linux.md",
-      "url": "https://security.maybeso.me/linux",
-      "slug": "linux",
-      "kind": "moc"
+      "source": "content/3-level-knowledge/Алгоритм.md",
+      "url": "https://security.maybeso.me/algoritm",
+      "slug": "algoritm",
+      "kind": "article"
     },
     {
-      "source": "content/1-level-knowledge/Основы информационной безопасности.md",
-      "url": "https://security.maybeso.me/osnovy-informatsionnoy-bezopasnosti",
-      "slug": "osnovy-informatsionnoy-bezopasnosti",
-      "kind": "moc"
+      "source": "content/Ассиметричное и симметр шифрование.md",
+      "url": "https://security.maybeso.me/assimetrichnoe-i-simmetr-shifrovanie",
+      "slug": "assimetrichnoe-i-simmetr-shifrovanie",
+      "kind": "article"
     },
     {
-      "source": "content/2-level-knowledge/Атаки и угрозы.md",
+      "source": "content/3-level-knowledge/Атаки и угрозы.md",
       "url": "https://security.maybeso.me/ataki-i-ugrozy",
       "slug": "ataki-i-ugrozy",
-      "kind": "moc"
-    },
-    {
-      "source": "content/2-level-knowledge/Безопасность инфраструктуры.md",
-      "url": "https://security.maybeso.me/bezopasnost-infrastruktury",
-      "slug": "bezopasnost-infrastruktury",
-      "kind": "moc"
-    },
-    {
-      "source": "content/2-level-knowledge/Безопасность приложений и веб-сервисов.md",
-      "url": "https://security.maybeso.me/bezopasnost-prilozheniy-i-veb-servisov",
-      "slug": "bezopasnost-prilozheniy-i-veb-servisov",
-      "kind": "moc"
-    },
-    {
-      "source": "content/2-level-knowledge/Лабы и практические руководства.md",
-      "url": "https://security.maybeso.me/laby-i-prakticheskie-rukovodstva",
-      "slug": "laby-i-prakticheskie-rukovodstva",
-      "kind": "moc"
-    },
-    {
-      "source": "content/2-level-knowledge/Обнаружение, логирование и мониторинг.md",
-      "url": "https://security.maybeso.me/obnaruzhenie-logirovanie-i-monitoring",
-      "slug": "obnaruzhenie-logirovanie-i-monitoring",
-      "kind": "moc"
-    },
-    {
-      "source": "content/2-level-knowledge/Операционная безопасность и инструменты.md",
-      "url": "https://security.maybeso.me/operatsionnaya-bezopasnost-i-instrumenty",
-      "slug": "operatsionnaya-bezopasnost-i-instrumenty",
-      "kind": "moc"
-    },
-    {
-      "source": "content/2-level-knowledge/Сетевая безопасность.md",
-      "url": "https://security.maybeso.me/setevaya-bezopasnost",
-      "slug": "setevaya-bezopasnost",
-      "kind": "moc"
-    },
-    {
-      "source": "content/3-level-knowledge/Авторизация и аутентификация.md",
-      "url": "https://security.maybeso.me/avtorizatsiya-i-autentifikatsiya",
-      "slug": "avtorizatsiya-i-autentifikatsiya",
-      "kind": "moc"
-    },
-    {
-      "source": "content/3-level-knowledge/Инструменты и технологии.md",
-      "url": "https://security.maybeso.me/instrumenty-i-tehnologii",
-      "slug": "instrumenty-i-tehnologii",
-      "kind": "moc"
-    },
-    {
-      "source": "content/3-level-knowledge/Инфраструктура и платформы.md",
-      "url": "https://security.maybeso.me/infrastruktura-i-platformy",
-      "slug": "infrastruktura-i-platformy",
-      "kind": "moc"
-    },
-    {
-      "source": "content/3-level-knowledge/Программирование и автоматизация.md",
-      "url": "https://security.maybeso.me/programmirovanie-i-avtomatizatsiya",
-      "slug": "programmirovanie-i-avtomatizatsiya",
-      "kind": "moc"
-    },
-    {
-      "source": "content/3-level-knowledge/Сети и протоколы.md",
-      "url": "https://security.maybeso.me/seti-i-protokoly",
-      "slug": "seti-i-protokoly",
-      "kind": "moc"
-    },
-    {
-      "source": "content/3-level-knowledge/Хранение данных.md",
-      "url": "https://security.maybeso.me/hranenie-dannyh",
-      "slug": "hranenie-dannyh",
       "kind": "moc"
     },
     {
@@ -104,10 +31,34 @@
       "kind": "article"
     },
     {
+      "source": "content/3-level-knowledge/Автоматизация.md",
+      "url": "https://security.maybeso.me/avtomatizatsiya",
+      "slug": "avtomatizatsiya",
+      "kind": "moc"
+    },
+    {
       "source": "content/4-level-knowledge/Awscli.md",
       "url": "https://security.maybeso.me/awscli",
       "slug": "awscli",
       "kind": "article"
+    },
+    {
+      "source": "content/4-level-knowledge/balenaEtcher.md",
+      "url": "https://security.maybeso.me/balenaetcher",
+      "slug": "balenaetcher",
+      "kind": "article"
+    },
+    {
+      "source": "content/2-level-knowledge/Безопасность инфраструктуры и платформ.md",
+      "url": "https://security.maybeso.me/bezopasnost-infrastruktury-i-platform",
+      "slug": "bezopasnost-infrastruktury-i-platform",
+      "kind": "moc"
+    },
+    {
+      "source": "content/2-level-knowledge/Безопасность приложений и веб-сервисов.md",
+      "url": "https://security.maybeso.me/bezopasnost-prilozheniy-i-veb-servisov",
+      "slug": "bezopasnost-prilozheniy-i-veb-servisov",
+      "kind": "moc"
     },
     {
       "source": "content/4-level-knowledge/CAN (Campus Area Network).md",
@@ -122,9 +73,33 @@
       "kind": "article"
     },
     {
+      "source": "content/DDoS-атака.md",
+      "url": "https://security.maybeso.me/ddos-ataka",
+      "slug": "ddos-ataka",
+      "kind": "article"
+    },
+    {
+      "source": "content/4-level-knowledge/Десятичная система счисления.md",
+      "url": "https://security.maybeso.me/desyatichnaya-sistema-schisleniya",
+      "slug": "desyatichnaya-sistema-schisleniya",
+      "kind": "article"
+    },
+    {
       "source": "content/4-level-knowledge/DIY-гаджет для трейдинга без эмоций.md",
       "url": "https://security.maybeso.me/diy-gadzhet-dlya-treydinga-bez-emotsiy",
       "slug": "diy-gadzhet-dlya-treydinga-bez-emotsiy",
+      "kind": "article"
+    },
+    {
+      "source": "content/4-level-knowledge/DKIM-селектор.md",
+      "url": "https://security.maybeso.me/dkim-selektor",
+      "slug": "dkim-selektor",
+      "kind": "article"
+    },
+    {
+      "source": "content/4-level-knowledge/Двоичная система счисления.md",
+      "url": "https://security.maybeso.me/dvoichnaya-sistema-schisleniya",
+      "slug": "dvoichnaya-sistema-schisleniya",
       "kind": "article"
     },
     {
@@ -134,9 +109,21 @@
       "kind": "article"
     },
     {
-      "source": "content/4-level-knowledge/Gitlab Runner.md",
-      "url": "https://security.maybeso.me/gitlab-runner",
-      "slug": "gitlab-runner",
+      "source": "content/4-level-knowledge/Электрический сигнал.md",
+      "url": "https://security.maybeso.me/elektricheskiy-signal",
+      "slug": "elektricheskiy-signal",
+      "kind": "article"
+    },
+    {
+      "source": "content/4-level-knowledge/Физический уровень модели OSI.md",
+      "url": "https://security.maybeso.me/fizicheskiy-uroven-modeli-osi",
+      "slug": "fizicheskiy-uroven-modeli-osi",
+      "kind": "article"
+    },
+    {
+      "source": "content/4-level-knowledge/Гайд по использованию mysqldump.md",
+      "url": "https://security.maybeso.me/gayd-po-ispolzovaniyu-mysqldump",
+      "slug": "gayd-po-ispolzovaniyu-mysqldump",
       "kind": "article"
     },
     {
@@ -146,9 +133,9 @@
       "kind": "article"
     },
     {
-      "source": "content/4-level-knowledge/HSTS (HTTP Strict Transport Security).md",
-      "url": "https://security.maybeso.me/hsts-http-strict-transport-security",
-      "slug": "hsts-http-strict-transport-security",
+      "source": "content/4-level-knowledge/Gitlab Runner.md",
+      "url": "https://security.maybeso.me/gitlab-runner",
+      "slug": "gitlab-runner",
       "kind": "article"
     },
     {
@@ -158,9 +145,111 @@
       "kind": "article"
     },
     {
+      "source": "content/3-level-knowledge/Хранение данных.md",
+      "url": "https://security.maybeso.me/hranenie-dannyh",
+      "slug": "hranenie-dannyh",
+      "kind": "moc"
+    },
+    {
+      "source": "content/4-level-knowledge/HSTS (HTTP Strict Transport Security).md",
+      "url": "https://security.maybeso.me/hsts-http-strict-transport-security",
+      "slug": "hsts-http-strict-transport-security",
+      "kind": "article"
+    },
+    {
+      "source": "content/index.md",
+      "url": "https://security.maybeso.me/",
+      "slug": "index",
+      "kind": "moc"
+    },
+    {
+      "source": "content/3-level-knowledge/Инфраструктура и платформы.md",
+      "url": "https://security.maybeso.me/infrastruktura-i-platformy",
+      "slug": "infrastruktura-i-platformy",
+      "kind": "moc"
+    },
+    {
+      "source": "content/3-level-knowledge/Инструменты и технологии.md",
+      "url": "https://security.maybeso.me/instrumenty-i-tehnologii",
+      "slug": "instrumenty-i-tehnologii",
+      "kind": "moc"
+    },
+    {
+      "source": "content/4-level-knowledge/Как звук компьютера становится числами.md",
+      "url": "https://security.maybeso.me/kak-zvuk-kompyutera-stanovitsya-chislami",
+      "slug": "kak-zvuk-kompyutera-stanovitsya-chislami",
+      "kind": "article"
+    },
+    {
+      "source": "content/4-level-knowledge/Коммутатор.md",
+      "url": "https://security.maybeso.me/kommutator",
+      "slug": "kommutator",
+      "kind": "article"
+    },
+    {
+      "source": "content/4-level-knowledge/Коммутатор vs Маршрутизатор.md",
+      "url": "https://security.maybeso.me/kommutator-vs-marshrutizator",
+      "slug": "kommutator-vs-marshrutizator",
+      "kind": "article"
+    },
+    {
+      "source": "content/4-level-knowledge/Компьютерные сети.md",
+      "url": "https://security.maybeso.me/kompyuternye-seti",
+      "slug": "kompyuternye-seti",
+      "kind": "article"
+    },
+    {
+      "source": "content/3-level-knowledge/Лабы и практические руководства.md",
+      "url": "https://security.maybeso.me/laby-i-prakticheskie-rukovodstva",
+      "slug": "laby-i-prakticheskie-rukovodstva",
+      "kind": "moc"
+    },
+    {
       "source": "content/4-level-knowledge/LAN (Local Area Network).md",
       "url": "https://security.maybeso.me/lan-local-area-network",
       "slug": "lan-local-area-network",
+      "kind": "article"
+    },
+    {
+      "source": "content/4-level-knowledge/Линейные вычисления.md",
+      "url": "https://security.maybeso.me/lineynye-vychisleniya",
+      "slug": "lineynye-vychisleniya",
+      "kind": "article"
+    },
+    {
+      "source": "content/2-level-knowledge/Linux.md",
+      "url": "https://security.maybeso.me/linux",
+      "slug": "linux",
+      "kind": "moc"
+    },
+    {
+      "source": "content/4-level-knowledge/Лог коллектор.md",
+      "url": "https://security.maybeso.me/log-kollektor",
+      "slug": "log-kollektor",
+      "kind": "article"
+    },
+    {
+      "source": "content/2-level-knowledge/Логирование, мониторинг и обнаружение угроз.md",
+      "url": "https://security.maybeso.me/logirovanie-monitoring-i-obnaruzhenie-ugroz",
+      "slug": "logirovanie-monitoring-i-obnaruzhenie-ugroz",
+      "kind": "moc"
+    },
+    {
+      "source": "content/4-level-knowledge/Маршрутизатор.md",
+      "url": "https://security.maybeso.me/marshrutizator",
+      "slug": "marshrutizator",
+      "kind": "article"
+    },
+    {
+      "source": "content/4-level-knowledge/Метки и переходы в Pascal.md",
+      "url": "https://security.maybeso.me/metki-i-perehody-v-pascal",
+      "slug": "metki-i-perehody-v-pascal",
+      "kind": "article"
+    },
+    {
+      "source": "content/4-level-knowledge/Микросхема компьютера.md",
+      "url": "https://security.maybeso.me/mikroshema-kompyutera",
+      "slug": "mikroshema-kompyutera",
       "kind": "article"
     },
     {
@@ -170,10 +259,76 @@
       "kind": "article"
     },
     {
+      "source": "content/4-level-knowledge/Module ngx_http_limit_req_module.md",
+      "url": "https://security.maybeso.me/module-ngx-http-limit-req-module",
+      "slug": "module-ngx-http-limit-req-module",
+      "kind": "article"
+    },
+    {
+      "source": "content/4-level-knowledge/Мультиконтейнерное приложение в Docker (docker network).md",
+      "url": "https://security.maybeso.me/multikonteynernoe-prilozhenie-v-docker-docker-network",
+      "slug": "multikonteynernoe-prilozhenie-v-docker-docker-network",
+      "kind": "article"
+    },
+    {
+      "source": "content/4-level-knowledge/Настройка forward proxy в Nginx c basic auth.md",
+      "url": "https://security.maybeso.me/nastroyka-forward-proxy-v-nginx-c-basic-auth",
+      "slug": "nastroyka-forward-proxy-v-nginx-c-basic-auth",
+      "kind": "article"
+    },
+    {
+      "source": "content/4-level-knowledge/nginx_worker_process.md",
+      "url": "https://security.maybeso.me/nginx-worker-process",
+      "slug": "nginx-worker-process",
+      "kind": "article"
+    },
+    {
+      "source": "content/4-level-knowledge/Non-repudiation.md",
+      "url": "https://security.maybeso.me/non-repudiation",
+      "slug": "non-repudiation",
+      "kind": "article"
+    },
+    {
+      "source": "content/4-level-knowledge/Общий вид программы в Pascal.md",
+      "url": "https://security.maybeso.me/obschiy-vid-programmy-v-pascal",
+      "slug": "obschiy-vid-programmy-v-pascal",
+      "kind": "article"
+    },
+    {
+      "source": "content/3-level-knowledge/Операционная безопасность и инструменты.md",
+      "url": "https://security.maybeso.me/operatsionnaya-bezopasnost-i-instrumenty",
+      "slug": "operatsionnaya-bezopasnost-i-instrumenty",
+      "kind": "moc"
+    },
+    {
       "source": "content/4-level-knowledge/OSI.md",
       "url": "https://security.maybeso.me/osi",
       "slug": "osi",
       "kind": "article"
+    },
+    {
+      "source": "content/1-level-knowledge/Основы архитектуры компьютера.md",
+      "url": "https://security.maybeso.me/osnovy-arhitektury-kompyutera",
+      "slug": "osnovy-arhitektury-kompyutera",
+      "kind": "moc"
+    },
+    {
+      "source": "content/1-level-knowledge/Основы физики.md",
+      "url": "https://security.maybeso.me/osnovy-fiziki",
+      "slug": "osnovy-fiziki",
+      "kind": "moc"
+    },
+    {
+      "source": "content/1-level-knowledge/Основы информационной безопасности.md",
+      "url": "https://security.maybeso.me/osnovy-informatsionnoy-bezopasnosti",
+      "slug": "osnovy-informatsionnoy-bezopasnosti",
+      "kind": "moc"
+    },
+    {
+      "source": "content/1-level-knowledge/Основы программирования.md",
+      "url": "https://security.maybeso.me/osnovy-programmirovaniya",
+      "slug": "osnovy-programmirovaniya",
+      "kind": "moc"
     },
     {
       "source": "content/4-level-knowledge/Out of memory (OOM).md",
@@ -185,6 +340,48 @@
       "source": "content/4-level-knowledge/PAN (Personal Area Network).md",
       "url": "https://security.maybeso.me/pan-personal-area-network",
       "slug": "pan-personal-area-network",
+      "kind": "article"
+    },
+    {
+      "source": "content/4-level-knowledge/Переменные и тип данных в Pascal.md",
+      "url": "https://security.maybeso.me/peremennye-i-tip-dannyh-v-pascal",
+      "slug": "peremennye-i-tip-dannyh-v-pascal",
+      "kind": "article"
+    },
+    {
+      "source": "content/php2shell.md",
+      "url": "https://security.maybeso.me/php2shell",
+      "slug": "php2shell",
+      "kind": "article"
+    },
+    {
+      "source": "content/4-level-knowledge/PKI (Public Key Infrastructure).md",
+      "url": "https://security.maybeso.me/pki-public-key-infrastructure",
+      "slug": "pki-public-key-infrastructure",
+      "kind": "article"
+    },
+    {
+      "source": "content/4-level-knowledge/Почему комьютер использует именно 0 и 1.md",
+      "url": "https://security.maybeso.me/pochemu-komyuter-ispolzuet-imenno-0-i-1",
+      "slug": "pochemu-komyuter-ispolzuet-imenno-0-i-1",
+      "kind": "article"
+    },
+    {
+      "source": "content/4-level-knowledge/Почтовый сервер.md",
+      "url": "https://security.maybeso.me/pochtovyy-server",
+      "slug": "pochtovyy-server",
+      "kind": "article"
+    },
+    {
+      "source": "content/4-level-knowledge/Подключаемые модули в Pascal.md",
+      "url": "https://security.maybeso.me/podklyuchaemye-moduli-v-pascal",
+      "slug": "podklyuchaemye-moduli-v-pascal",
+      "kind": "article"
+    },
+    {
+      "source": "content/4-level-knowledge/Процессы в Linux.md",
+      "url": "https://security.maybeso.me/protsessy-v-linux",
+      "slug": "protsessy-v-linux",
       "kind": "article"
     },
     {
@@ -206,6 +403,48 @@
       "kind": "article"
     },
     {
+      "source": "content/3-level-knowledge/Работа компьютера с информацией.md",
+      "url": "https://security.maybeso.me/rabota-kompyutera-s-informatsiey",
+      "slug": "rabota-kompyutera-s-informatsiey",
+      "kind": "moc"
+    },
+    {
+      "source": "content/4-level-knowledge/Развертывание Elastic Stack.md",
+      "url": "https://security.maybeso.me/razvertyvanie-elastic-stack",
+      "slug": "razvertyvanie-elastic-stack",
+      "kind": "article"
+    },
+    {
+      "source": "content/2-level-knowledge/Сетевая безопасность.md",
+      "url": "https://security.maybeso.me/setevaya-bezopasnost",
+      "slug": "setevaya-bezopasnost",
+      "kind": "moc"
+    },
+    {
+      "source": "content/3-level-knowledge/Сети и протоколы.md",
+      "url": "https://security.maybeso.me/seti-i-protokoly",
+      "slug": "seti-i-protokoly",
+      "kind": "moc"
+    },
+    {
+      "source": "content/3-level-knowledge/Система счисления.md",
+      "url": "https://security.maybeso.me/sistema-schisleniya",
+      "slug": "sistema-schisleniya",
+      "kind": "moc"
+    },
+    {
+      "source": "content/4-level-knowledge/Slow Attack.md",
+      "url": "https://security.maybeso.me/slow-attack",
+      "slug": "slow-attack",
+      "kind": "article"
+    },
+    {
+      "source": "content/4-level-knowledge/Службы в Linux.md",
+      "url": "https://security.maybeso.me/sluzhby-v-linux",
+      "slug": "sluzhby-v-linux",
+      "kind": "article"
+    },
+    {
       "source": "content/4-level-knowledge/SPOF.md",
       "url": "https://security.maybeso.me/spof",
       "slug": "spof",
@@ -215,12 +454,6 @@
       "source": "content/4-level-knowledge/SSL Upstream Injection.md",
       "url": "https://security.maybeso.me/ssl-upstream-injection",
       "slug": "ssl-upstream-injection",
-      "kind": "article"
-    },
-    {
-      "source": "content/4-level-knowledge/Slow Attack.md",
-      "url": "https://security.maybeso.me/slow-attack",
-      "slug": "slow-attack",
       "kind": "article"
     },
     {
@@ -236,87 +469,21 @@
       "kind": "article"
     },
     {
-      "source": "content/4-level-knowledge/balenaEtcher.md",
-      "url": "https://security.maybeso.me/balenaetcher",
-      "slug": "balenaetcher",
-      "kind": "article"
-    },
-    {
-      "source": "content/4-level-knowledge/nginx_worker_process.md",
-      "url": "https://security.maybeso.me/nginx-worker-process",
-      "slug": "nginx-worker-process",
-      "kind": "article"
-    },
-    {
-      "source": "content/4-level-knowledge/Гайд по использованию mysqldump.md",
-      "url": "https://security.maybeso.me/gayd-po-ispolzovaniyu-mysqldump",
-      "slug": "gayd-po-ispolzovaniyu-mysqldump",
-      "kind": "article"
-    },
-    {
-      "source": "content/4-level-knowledge/Коммутатор vs Маршрутизатор.md",
-      "url": "https://security.maybeso.me/kommutator-vs-marshrutizator",
-      "slug": "kommutator-vs-marshrutizator",
-      "kind": "article"
-    },
-    {
-      "source": "content/4-level-knowledge/Коммутатор.md",
-      "url": "https://security.maybeso.me/kommutator",
-      "slug": "kommutator",
-      "kind": "article"
-    },
-    {
-      "source": "content/4-level-knowledge/Компьютерные сети.md",
-      "url": "https://security.maybeso.me/kompyuternye-seti",
-      "slug": "kompyuternye-seti",
-      "kind": "article"
-    },
-    {
-      "source": "content/4-level-knowledge/Лог коллектор.md",
-      "url": "https://security.maybeso.me/log-kollektor",
-      "slug": "log-kollektor",
-      "kind": "article"
-    },
-    {
-      "source": "content/4-level-knowledge/Маршрутизатор.md",
-      "url": "https://security.maybeso.me/marshrutizator",
-      "slug": "marshrutizator",
-      "kind": "article"
-    },
-    {
-      "source": "content/4-level-knowledge/Мультиконтейнерное приложение в Docker (docker network).md",
-      "url": "https://security.maybeso.me/multikonteynernoe-prilozhenie-v-docker-docker-network",
-      "slug": "multikonteynernoe-prilozhenie-v-docker-docker-network",
-      "kind": "article"
-    },
-    {
-      "source": "content/4-level-knowledge/Настройка forward proxy в Nginx c basic auth.md",
-      "url": "https://security.maybeso.me/nastroyka-forward-proxy-v-nginx-c-basic-auth",
-      "slug": "nastroyka-forward-proxy-v-nginx-c-basic-auth",
-      "kind": "article"
-    },
-    {
-      "source": "content/4-level-knowledge/Процессы в Linux.md",
-      "url": "https://security.maybeso.me/protsessy-v-linux",
-      "slug": "protsessy-v-linux",
-      "kind": "article"
-    },
-    {
-      "source": "content/4-level-knowledge/Развертывание Elastic Stack.md",
-      "url": "https://security.maybeso.me/razvertyvanie-elastic-stack",
-      "slug": "razvertyvanie-elastic-stack",
-      "kind": "article"
-    },
-    {
       "source": "content/4-level-knowledge/Типы атак на информационные системы.md",
       "url": "https://security.maybeso.me/tipy-atak-na-informatsionnye-sistemy",
       "slug": "tipy-atak-na-informatsionnye-sistemy",
       "kind": "article"
     },
     {
-      "source": "content/4-level-knowledge/Физический уровень модели OSI.md",
-      "url": "https://security.maybeso.me/fizicheskiy-uroven-modeli-osi",
-      "slug": "fizicheskiy-uroven-modeli-osi",
+      "source": "content/4-level-knowledge/Типы, процедуры и функции в Pascal.md",
+      "url": "https://security.maybeso.me/tipy-protsedury-i-funktsii-v-pascal",
+      "slug": "tipy-protsedury-i-funktsii-v-pascal",
+      "kind": "article"
+    },
+    {
+      "source": "content/4-level-knowledge/Три «A» (AAA) — authentication, authorization и accounting.md",
+      "url": "https://security.maybeso.me/tri-a-aaa-authentication-authorization-i-accounting",
+      "slug": "tri-a-aaa-authentication-authorization-i-accounting",
       "kind": "article"
     },
     {
@@ -326,13 +493,34 @@
       "kind": "article"
     },
     {
-      "source": "content/index.md",
-      "url": "https://security.maybeso.me/",
-      "slug": "index",
+      "source": "content/4-level-knowledge/Цифровая подпись.md",
+      "url": "https://security.maybeso.me/tsifrovaya-podpis",
+      "slug": "tsifrovaya-podpis",
+      "kind": "article"
+    },
+    {
+      "source": "content/2-level-knowledge/Управление идентификацией и доступом — учётные записи, аутентификация, авторизация и права.md",
+      "url": "https://security.maybeso.me/upravlenie-identifikatsiey-i-dostupom-uchetnye-zapisi-autentifikatsiya-avtorizatsiya-i-prava",
+      "slug": "upravlenie-identifikatsiey-i-dostupom-uchetnye-zapisi-autentifikatsiya-avtorizatsiya-i-prava",
+      "kind": "moc"
+    },
+    {
+      "source": "content/3-level-knowledge/Управление последовательностью действий.md",
+      "url": "https://security.maybeso.me/upravlenie-posledovatelnostyu-deystviy",
+      "slug": "upravlenie-posledovatelnostyu-deystviy",
+      "kind": "moc"
+    },
+    {
+      "source": "content/4-level-knowledge/Утечка данных Equifax  (2017).md",
+      "url": "https://security.maybeso.me/utechka-dannyh-equifax-2017",
+      "slug": "utechka-dannyh-equifax-2017",
+      "kind": "article"
+    },
+    {
+      "source": "content/3-level-knowledge/Язык программирования Pascal.md",
+      "url": "https://security.maybeso.me/yazyk-programmirovaniya-pascal",
+      "slug": "yazyk-programmirovaniya-pascal",
       "kind": "moc"
     }
-  ],
-  "capturedAt": "2026-10-14",
-  "liveSitemapUrl": "https://security.maybeso.me/sitemap.xml",
-  "liveSitemapSha256": "18bcc44eb71d51b20b238542b6a62f481ab2afffda24b8c866c38125e1bbe914"
+  ]
 }

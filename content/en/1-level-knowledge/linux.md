@@ -1,18 +1,20 @@
 ---
 draft: false
-translationKey: linux
+version: '0.1'
 title: Linux
 moc: true
 tags:
 - area
 up:
-- '[[index|Information Security]]'
-modified: 2026-10-12 20:11:17+03:00
+- '[[index|Информационная безопасность]]'
+modified: 2026-10-22 18:16:27+03:00
 created: 2026-10-12 20:11:00+03:00
+translationKey: linux
 ---
 
-Linux architecture and operations, from operating system basics to secure configuration and troubleshooting.
+Linux architecture and operation: from core operating-system concepts to secure configuration and diagnostics.
 
 ## Key topics
 
-- [[linux-processes|Processes in Linux]]
+- [[linux-processes]]
+- [[linux-services]]

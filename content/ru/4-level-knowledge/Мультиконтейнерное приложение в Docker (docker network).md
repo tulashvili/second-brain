@@ -1,16 +1,17 @@
 ---
 draft: false
-translationKey: multikonteynernoe-prilozhenie-v-docker-docker-network
-title:
+version: '0.1'
+title: null
 tags:
-  - docker
+- docker
 up:
-  - "[[Инфраструктура и платформы]]"
-  - "[[Лабы и практические руководства]]"
+- '[[Инфраструктура и платформы|Инфраструктура и платформы]]'
+- '[[Лабы и практические руководства|Лабы и практические руководства]]'
 dg-publish: false
-dg-note-icon:
+dg-note-icon: null
 date: 2025-10-26T11:18
-updated: 2026-04-18T17:46:36+03:00
+updated: 2026-04-18 17:46:36+03:00
+translationKey: multikonteynernoe-prilozhenie-v-docker-docker-network
 ---
 - Каждый контейнер должен делать одно дело и делать это хорошо. Потому что
 	- вероятно, потребуется масштабировать фронтенд/бэкенд иначе, чем базу данных
@@ -30,7 +31,7 @@ docker run -d \
   mysql:8.0
 ```
 - `network-alias` мы указываем DNS-имя нашего хоста
-- Приложение подключается к MySQL **по имени `mysql`**, а не по IP —  
+- Приложение подключается к MySQL **по имени `mysql`**, а не по IP —\
 потому что они в одной сети.
 3) Запускаем контейнер с приложением, привязывая его к базе
 ```sh
@@ -66,8 +67,3 @@ docker network inspect todo-app
         },
 .......
 ```
-
-
-
-
-

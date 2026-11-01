@@ -1,25 +1,48 @@
 ---
 draft: false
-translationKey: fizicheskiy-uroven-modeli-osi
+version: '0.1'
 date: 2024-01-06T00:18
 updated: 2026-04-05 14:04:46+03:00
 tags: null
 up:
-- '[[networks-and-protocols]]'
-title: The Physical Layer of the OSI Model
+- '[[networks-and-protocols|Networks and protocols]]'
+title: OSI Physical Layer
+translationKey: fizicheskiy-uroven-modeli-osi
 ---
 
 > [!tldr] In brief
-> The physical layer carries bits as electrical, optical, or radio signals.
+> The physical layer transmits bits as electrical, optical, or radio signals.
 
-The physical layer of the [[osi-model|OSI model]] carries physical signals between devices. Its job is to generate electrical, optical, or radio signals, send them into a medium, and receive them.
+This layer is responsible for exchanging physical signals between physical devices—the hardware—in the OSI model.
+
+**Its task** is to generate an electrical, optical, or radio signal, transmit it through a medium, and receive it.
 
 ## Media and components
 
-Transmission media include twisted-pair cable, fiber optics, and wireless links.
+Transmission media:
+- Twisted pair
+- Optical fiber
+- Wireless technologies
 
-This layer includes physical components such as interfaces, cables, antennas, media converters, repeaters, and older hubs.
+As stated above, all physical components belong to this layer:
+- Interfaces
+- Cables
+- Antennas
+- Media converters
+- Repeaters
+- Older hubs
 
 ## Example: an image as bits
 
-**Physical-layer devices operate on bits.** Hardware does not understand what an image depicts; it handles the image as zeros and ones. Those bits can travel through cables, including optical fiber, or through wireless technologies such as Bluetooth, IrDA, Wi-Fi, GSM, and 4G.
+**Physical-layer devices work with bits.**
+- Computer hardware does not understand what an image is or what it depicts.
+- Hardware understands an image only as a set of zeros and ones—that is, bits.
+- Bits travel through cables, for example fiber optics, or wirelessly, for example through:
+	- Bluetooth
+	- IRDA
+	- Wi-Fi
+	- GSM
+	- 4G
+	- and so on
+-
+-

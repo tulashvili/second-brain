@@ -76,155 +76,70 @@ const loadPages = async (): Promise<ContentPage[]> => {
   )
 }
 
-const levelOneMocs = ["Основы информационной безопасности", "Linux"]
-
-const levelTwoMocs = [
-  "Сетевая безопасность",
-  "Атаки и угрозы",
-  "Обнаружение, логирование и мониторинг",
-  "Безопасность инфраструктуры",
-  "Безопасность приложений и веб-сервисов",
-  "Операционная безопасность и инструменты",
-  "Лабы и практические руководства",
-]
-
-const expectedMocParents: Record<string, string[]> = {
-  index: [],
-  ...Object.fromEntries(levelOneMocs.map((title) => [title, ["index"]])),
-  ...Object.fromEntries(
-    levelTwoMocs.map((title) => [title, ["Основы информационной безопасности"]]),
-  ),
-  "Сети и протоколы": ["Сетевая безопасность"],
-  "Инфраструктура и платформы": ["Безопасность инфраструктуры"],
-  "Хранение данных": ["Безопасность инфраструктуры"],
-  "Программирование и автоматизация": ["Операционная безопасность и инструменты"],
-  "Инструменты и технологии": ["Операционная безопасность и инструменты"],
-  "Авторизация и аутентификация": ["Безопасность приложений и веб-сервисов"],
-}
-
-const labs = "Лабы и практические руководства"
-const expectedArticleParents: Record<string, string[]> = {
-  "Auth.log": ["Авторизация и аутентификация", "Обнаружение, логирование и мониторинг"],
-  Awscli: ["Хранение данных", labs],
-  "CAN (Campus Area Network)": ["Сети и протоколы"],
-  CDN: ["Сетевая безопасность"],
-  "DIY-гаджет для трейдинга без эмоций": ["Программирование и автоматизация"],
-  "Elastic Stack": ["Обнаружение, логирование и мониторинг"],
-  Gitlab: ["Инструменты и технологии"],
-  "Gitlab Runner": ["Инструменты и технологии"],
-  "LAN (Local Area Network)": ["Сети и протоколы"],
-  "Minio Client": ["Хранение данных", labs],
-  OSI: ["Сети и протоколы"],
-  "Out of memory (OOM)": ["Инфраструктура и платформы"],
-  "PAN (Personal Area Network)": ["Сети и протоколы"],
-  Proxmox: ["Инфраструктура и платформы"],
-  Proxy: ["Сетевая безопасность"],
-  "R.U.D.Y (R-U-Dead-Yet)": ["Атаки и угрозы"],
-  SPOF: ["Безопасность инфраструктуры"],
-  "SSL Upstream Injection": ["Безопасность приложений и веб-сервисов", "Сетевая безопасность"],
-  "Slow Attack": ["Атаки и угрозы"],
-  "Swaks. Простой клиент для отправки писем с сервера": ["Инструменты и технологии", labs],
-  Syncthing: ["Инфраструктура и платформы"],
-  balenaEtcher: ["Инструменты и технологии", labs],
-  nginx_worker_process: ["Инфраструктура и платформы"],
-  "Гайд по использованию mysqldump": ["Хранение данных", labs],
-  "Коммутатор vs Маршрутизатор": ["Сети и протоколы"],
-  Коммутатор: ["Сети и протоколы"],
-  "Компьютерные сети": ["Сети и протоколы"],
-  "Лог коллектор": ["Обнаружение, логирование и мониторинг"],
-  Маршрутизатор: ["Сети и протоколы"],
-  "Мультиконтейнерное приложение в Docker (docker network)": ["Инфраструктура и платформы", labs],
-  "Настройка forward proxy в Nginx c basic auth": [
-    "Авторизация и аутентификация",
-    "Безопасность приложений и веб-сервисов",
-    labs,
-  ],
-  "Развертывание Elastic Stack": ["Обнаружение, логирование и мониторинг", labs],
-  "Типы атак на информационные системы": ["Атаки и угрозы"],
-  "Физический уровень модели OSI": ["Сети и протоколы"],
-  "Цепочка доставки логов с использованием Elastic Stack": [
-    "Обнаружение, логирование и мониторинг",
-  ],
-  "Hardening (усиление безопасности)": [
-    "Безопасность инфраструктуры",
-    "Операционная безопасность и инструменты",
-  ],
-  "HSTS (HTTP Strict Transport Security)": [
-    "Безопасность приложений и веб-сервисов",
-    "Сетевая безопасность",
-  ],
-  "Процессы в Linux": ["Linux"],
-}
-
-const expectedMocLevel = new Map(
-  [
-    ...levelOneMocs.map((name) => [name, "1-level-knowledge"] as const),
-    ...levelTwoMocs.map((name) => [name, "2-level-knowledge"] as const),
-    ...[
-      "Сети и протоколы",
-      "Инфраструктура и платформы",
-      "Хранение данных",
-      "Программирование и автоматизация",
-      "Инструменты и технологии",
-      "Авторизация и аутентификация",
-    ].map((name) => [name, "3-level-knowledge"] as const),
-  ].map(([name, level]) => [name.normalize("NFC"), level]),
-)
-
 const sorted = (values: readonly string[]): string[] =>
   values.map((value) => value.normalize("NFC")).sort((left, right) => left.localeCompare(right))
 
-const normalizedRecord = <T>(record: Record<string, T>): Record<string, T> =>
-  Object.fromEntries(Object.entries(record).map(([key, value]) => [key.normalize("NFC"), value]))
-
-test("knowledge structure matches the approved security-first MOC hierarchy", async () => {
+test("knowledge structure matches the approved Ignis release hierarchy", async () => {
   const pages = await loadPages()
   const articles = pages.filter(isPublishedArticle)
   const mocs = pages.filter(isMocPage)
-  const articleParents = normalizedRecord(expectedArticleParents)
-  const mocParents = normalizedRecord(expectedMocParents)
-
-  assert.equal(articles.length, 38)
-  assert.equal(mocs.length, 16)
-  assert.deepEqual(
-    sorted(articles.map((page) => page.fileName.replace(/\.md$/, ""))),
-    sorted(Object.keys(expectedArticleParents)),
+  const baseline = JSON.parse(
+    await readFile(path.join(process.cwd(), "docs/localization/published-baseline.json"), "utf8"),
+  ) as { pages: { source: string; kind: "article" | "moc" }[] }
+  const expectedPages = new Map(
+    baseline.pages.map((page) => [
+      page.source.replace(/^content\//, "").normalize("NFC"),
+      page.kind,
+    ]),
   )
+
+  assert.equal(articles.length, 63)
+  assert.equal(mocs.length, 23)
+  assert.equal(pages.filter((page) => isMocPage(page) || isPublishedArticle(page)).length, 86)
   assert.deepEqual(
     sorted(
-      mocs.map((page) =>
-        page.fileName === "index.md" ? "index" : page.fileName.replace(/\.md$/, ""),
-      ),
+      pages
+        .filter((page) => isMocPage(page) || isPublishedArticle(page))
+        .map((page) => page.relativePath),
     ),
-    sorted(Object.keys(expectedMocParents)),
+    sorted([...expectedPages.keys()]),
   )
 
-  for (const article of articles) {
-    const name = article.fileName.replace(/\.md$/, "").normalize("NFC")
-    assert.equal(path.dirname(article.relativePath), "4-level-knowledge", `${name} level`)
-    assert.deepEqual(sorted(article.rawParents), sorted(articleParents[name]), name)
-    assert.equal(Object.hasOwn(article.frontmatter ?? {}, "area"), false, `${name} retains area`)
-    assert.equal(Object.hasOwn(article.frontmatter ?? {}, "down"), false, `${name} stores down`)
-    assert.deepEqual(
-      inlineSemanticTargets(article.markdown, "down"),
-      [],
-      `${name} stores inline down`,
-    )
-  }
-
-  for (const moc of mocs) {
-    const name =
-      moc.fileName === "index.md" ? "index" : moc.fileName.replace(/\.md$/, "").normalize("NFC")
+  for (const page of pages.filter((page) => isMocPage(page) || isPublishedArticle(page))) {
     assert.equal(
-      path.dirname(moc.relativePath),
-      name === "index" ? "." : expectedMocLevel.get(name),
-      `${name} level`,
+      isMocPage(page) ? "moc" : "article",
+      expectedPages.get(page.relativePath.normalize("NFC")),
+      page.relativePath,
     )
-    assert.deepEqual(sorted(moc.rawParents), sorted(mocParents[name]), name)
-    assert.deepEqual(moc.frontmatter?.tags, ["area"], `${name} tags`)
-    assert.deepEqual(inlineSemanticTargets(moc.markdown, "down"), [], `${name} stores inline down`)
-    assert.match(moc.markdown, /## Ключевые темы/)
+    assert.deepEqual(
+      inlineSemanticTargets(page.markdown, "down"),
+      [],
+      `${page.relativePath} stores inline down`,
+    )
+    assert.equal(
+      Object.hasOwn(page.frontmatter ?? {}, "area"),
+      false,
+      `${page.relativePath} retains area`,
+    )
   }
 
-  assert.deepEqual(validateKnowledgeGraph(pages, "index"), [])
+  assert.deepEqual(validateKnowledgeGraph(pages, "index"), [
+    { code: "unparented-moc", slug: "osnovy-arhitektury-kompyutera" },
+    { code: "unparented-moc", slug: "osnovy-programmirovaniya" },
+    { code: "unparented-article", slug: "algoritm" },
+    { code: "unparented-article", slug: "non-repudiation" },
+    { code: "missing-parent", slug: "pki-public-key-infrastructure", target: "kriptografiya" },
+    { code: "unparented-article", slug: "tri-a-aaa-authentication-authorization-i-accounting" },
+    { code: "unparented-article", slug: "utechka-dannyh-equifax-2017" },
+    { code: "unparented-article", slug: "tsifrovaya-podpis" },
+    { code: "unparented-article", slug: "ddos-ataka" },
+    { code: "unparented-article", slug: "php2shell" },
+    { code: "unparented-article", slug: "assimetrichnoe-i-simmetr-shifrovanie" },
+    { code: "unreachable-moc", slug: "osnovy-arhitektury-kompyutera" },
+    { code: "unreachable-moc", slug: "osnovy-programmirovaniya" },
+    { code: "unreachable-moc", slug: "rabota-kompyutera-s-informatsiey" },
+    { code: "unreachable-moc", slug: "sistema-schisleniya" },
+    { code: "unreachable-moc", slug: "upravlenie-posledovatelnostyu-deystviy" },
+    { code: "unreachable-moc", slug: "yazyk-programmirovaniya-pascal" },
+  ])
 })

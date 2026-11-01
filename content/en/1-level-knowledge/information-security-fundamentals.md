@@ -1,22 +1,29 @@
 ---
 draft: false
-translationKey: osnovy-informatsionnoy-bezopasnosti
 title: Information Security Fundamentals
 moc: true
 tags:
 - area
 up:
-- '[[index|Information Security]]'
+- '[[index|Информационная безопасность]]'
+created: 2026-10-08 19:15:38+03:00
+modified: 2026-10-25 16:52:15+03:00
+version: '0.1'
+translationKey: osnovy-informatsionnoy-bezopasnosti
 ---
 
-The main area of this security knowledge base: threats, infrastructure, applications, networks, observability, and practical defenses.
+Information security begins with [[cia-three-fundamental-security-principles|CIA—the three fundamental principles of security]], which represents the main security objectives.
+
+We can divide information security into its components. To achieve them, people study several overlapping areas of information security:
 
 ## Key topics
 
-- [[attacks-and-threats|Attacks and Threats]]
-- [[infrastructure-security|Infrastructure Security]]
-- [[application-and-web-service-security|Application and Web Service Security]]
-- [[network-security|Network Security]]
-- [[detection-logging-and-monitoring|Detection, Logging, and Monitoring]]
-- [[security-operations-and-tools|Security Operations and Tools]]
-- [[labs-and-practical-guides|Labs and Practical Guides]]
+- [[infrastructure-and-platform-security|Infrastructure and Platform Security]];
+- [[network-security|Network Security]];
+- [[application-and-web-service-security|Application and Web Service Security]];
+- data security;
+- [[identity-and-access-management|Identity and Access Management]];
+- asset, configuration, and vulnerability management;
+- [[logging-monitoring-and-threat-detection|Logging, Monitoring, and Threat Detection]];
+- incident response and recovery;
+- risk, policy, and requirements management.

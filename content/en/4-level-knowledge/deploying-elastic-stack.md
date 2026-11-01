@@ -1,6 +1,5 @@
 ---
 draft: false
-translationKey: razvertyvanie-elastic-stack
 type: null
 state: null
 pattern: null
@@ -8,17 +7,19 @@ url: null
 updated: 2026-04-20 20:03:07+03:00
 tags: null
 up:
-- '[[detection-logging-and-monitoring]]'
-- '[[labs-and-practical-guides]]'
+- '[[logging-monitoring-and-threat-detection|Logging monitoring and threat detection]]'
+- '[[labs-and-practical-guides|Labs and practical guides]]'
 check_before_public: false
 date: 2026-04-16 18:45:06+03:00
 title: Deploying Elastic Stack
+version: '0.1'
+translationKey: razvertyvanie-elastic-stack
 ---
 
 > [!tldr] In brief
 > This note records two deployment failures: the Kibana account and the agent’s Elasticsearch address.
 
-I will not recount every step of the last two days; the path was too thorny. Instead, I want to record what worked, what failed, and what to check if I deploy [[elastic-stack|Elastic Stack]] again. This is from memory, so I hope I have not missed anything. 🫠
+I will not recount every step of the last two days; the path was too thorny. Instead, I want to record what worked, what failed, and what to check if I deploy Elastic Stack again. This is from memory, so I hope I have not missed anything. 🫠
 
 I used Docker Compose to deploy the Elastic Stack components. I also enjoyed working with Docker much more than I expected. 🤔
 
@@ -56,7 +57,14 @@ services:
 
 ### What I did
 
-After starting Elasticsearch, Kibana, and Fleet Server, I opened Discover in Kibana to inspect logs. I had already deployed Fleet Server, created an agent policy, installed Elastic Agent on remote hosts, and added the System, Nginx, and Auditd integrations.
+After starting Elastic Stack (Elasticsearch, Kibana, Fleet Server), I opened Kibana's Discover interface to inspect logs.
+
+Before that, I had:
+
+- deployed Fleet Server;
+- created an agent policy;
+- installed Elastic Agent on remote hosts;
+- added the System, Nginx, and Auditd integrations.
 
 ### What happened
 
@@ -64,14 +72,22 @@ After starting Elasticsearch, Kibana, and Fleet Server, I opened Discover in Kib
 
 ### What I checked
 
-I checked the Kibana integrations, saw `HEALTHY` from `elastic-agent status`, and looked for Filebeat processes:
+#### 1. Basic checks
+
+- Kibana integrations;
+- `elastic-agent status` → `HEALTHY`;
+- Filebeat processes, to see whether it had started:
 
 ```bash
 ps aux | grep filebeat
 lsof -p <filebeat_pid>
 ```
 
-I also restarted the agent with `systemctl restart elastic-agent`. Filebeat began reading the file, but the logs still did not appear in Kibana.
+I also tried restarting the agent:
+
+`systemctl restart elastic-agent` — after this, Filebeat began reading the file, but logs still did not appear in Kibana.
+
+#### 2. Checking the agent
 
 Finally, I inspected the agent configuration:
 
@@ -79,11 +95,35 @@ Finally, I inspected the agent configuration:
 elastic-agent inspect components --show-config
 ```
 
-It contained `hosts: http://localhost:9200`. That was the root cause.
+I found:
+
+```
+hosts: http://localhost:9200
+```
+
+That was the root cause.
 
 ### Why
 
-When I launched the Elasticsearch container, I had closed external access to port 9200 for security. The agent was configured to send data to `http://localhost:9200` instead of the actual Elasticsearch host at `http://<elastic_ip>:9200`. It was sending data to itself, not to Elasticsearch, and the logs were lost.
+When I started the Elasticsearch Docker container, I had closed external access to port 9200 for security. As it turned out, that became a problem later.
+
+Elastic Agent was configured to send data to:
+
+```
+http://localhost:9200
+```
+
+instead of the real Elasticsearch host:
+
+```
+http://<elastic_ip>:9200
+```
+
+As a result:
+
+- the agent sent data “to itself”;
+- Elasticsearch was unavailable;
+- data was lost.
 
 ### What helped
 
@@ -94,7 +134,13 @@ ports:
   - "9200:9200"
 ```
 
-Then I changed the Fleet output in `Kibana → Fleet → Settings → Outputs` to `http://<elastic_ip>:9200`.
+I fixed the output in Fleet:
+
+`Kibana → Fleet → Settings → Outputs`
+
+```
+http://<elastic_ip>:9200
+```
 
 ## In summary
 

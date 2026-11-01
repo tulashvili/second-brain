@@ -1,17 +1,18 @@
 ---
 draft: false
-translationKey: razvertyvanie-elastic-stack
-type:
-state:
-pattern:
-url:
-updated: 2026-04-20T20:03:07+03:00
-tags:
+version: '0.1'
+type: null
+state: null
+pattern: null
+url: null
+updated: 2026-04-20 20:03:07+03:00
+tags: null
 up:
-  - "[[Обнаружение, логирование и мониторинг]]"
-  - "[[Лабы и практические руководства]]"
+- '[[Логирование, мониторинг и обнаружение угроз|Логирование, мониторинг и обнаружение угроз]]'
+- '[[Лабы и практические руководства|Лабы и практические руководства]]'
 check_before_public: false
-date: 2026-04-16T18:45:06+03:00
+date: 2026-04-16 18:45:06+03:00
+translationKey: razvertyvanie-elastic-stack
 ---
 
 > [!tldr] Коротко
@@ -19,18 +20,18 @@ date: 2026-04-16T18:45:06+03:00
 
 Я не буду описывать здесь полный путь, что я проделал за прошедшие два дня - уж больно он был тернист.
 
-Но я хочу зафиксировать все, что мне удалось, с чем столкнулся и на что обратить внимание в будущем, если потребуется вновь разворачивать [[Elastic Stack]]. Пишу по памяти, постараюсь ничего не упустить 🫠
+Но я хочу зафиксировать все, что мне удалось, с чем столкнулся и на что обратить внимание в будущем, если потребуется вновь разворачивать Elastic Stack. Пишу по памяти, постараюсь ничего не упустить 🫠
 
-Прежде всего отмечу, что я использовал [[Docker Compose]] для развертывания компонентов [[Elastic Stack]]. 
+Прежде всего отмечу, что я использовал Docker Compose для развертывания компонентов Elastic Stack.
 
-*Мне, кстати, весьма [[Моральный оргазм от сборки приложений в контейнеры|понравилось]] использовать Docker - раньше я этому не придавал такое значение* 🤔
+*Мне, кстати, весьма понравилось использовать Docker - раньше я этому не придавал такое значение* 🤔
 
 ## Проблема 1. elastic user is forbidden
 ### **Что сделал?**
-Поднял [[Elasticsearch]] + [[Kibana]] через docker-compose
+Поднял Elasticsearch + Kibana через docker-compose
 
 ### **Что произошло?**
-[[Kibana]] упала с ошибкой:
+Kibana упала с ошибкой:
 ```sh
 elastic user is forbidden
 ```
@@ -54,18 +55,18 @@ services:
 После поднятия Elastic Stack (Elasticsearch, Kibana, Fleet Server) открыл интерфейс Kibana для проверки логов - Discover.
 
 Предварительно:
-- развернул Fleet Server  
-- создал agent policy  
-- установил Elastic Agent на удалённые хосты  
-- добавил integrations (System, Nginx, Auditd)  
+- развернул Fleet Server
+- создал agent policy
+- установил Elastic Agent на удалённые хосты
+- добавил integrations (System, Nginx, Auditd)
 ### **Что произошло?**
 - logs-* — пусто
 - metrics-* — есть
 Данные собираются, но не доставляются в Elasticsearch по какой-то причине.
 ### **Что проверил?**
 #### 1. Базовые проверки
-- integrations в Kibana  
-- `elastic-agent status` → `HEALTHY`  
+- integrations в Kibana
+- `elastic-agent status` → `HEALTHY`
 - наличие процессов filebeat для понимания, запустился ли он:
 ```bash
 ps aux | grep filebeat

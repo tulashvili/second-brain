@@ -1,17 +1,18 @@
 ---
 draft: false
-translationKey: elastic-stack
-type:
-state:
-pattern:
-url:
-updated: 2026-04-23T15:15:22+03:00
+version: '0.05'
+type: null
+state: null
+pattern: null
+url: null
+updated: 2026-04-23 15:15:22+03:00
 tags:
-  - monitoring
+- monitoring
 up:
-  - "[[Обнаружение, логирование и мониторинг]]"
-check_before_public:
-date: 2026-04-16T18:46:05+03:00
+- '[[Логирование, мониторинг и обнаружение угроз|Логирование, мониторинг и обнаружение угроз]]'
+check_before_public: null
+date: 2026-04-16 18:46:05+03:00
+translationKey: elastic-stack
 ---
 Elastic Stack - это набор компонентов для отслеживания, анализа и мониторинга логов.
 
@@ -20,7 +21,3 @@ Elastic Stack - это набор компонентов для отслежив
 - [[Logstach]]
 - [[Kibana]]
 - [[Beats]] (like [[Filebeat]])
-
-
-
-

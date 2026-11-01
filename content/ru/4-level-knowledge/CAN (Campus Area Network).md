@@ -1,14 +1,15 @@
 ---
 draft: false
-translationKey: can-campus-area-network
-type:
-state:
-pattern:
+version: '0.1'
+type: null
+state: null
+pattern: null
 date: 2026-03-18T16:38
-updated: 2026-04-05T13:50:07+03:00
-tags:
+updated: 2026-04-05 13:50:07+03:00
+tags: null
 up:
-  - "[[Сети и протоколы]]"
+- '[[Сети и протоколы|Сети и протоколы]]'
+translationKey: can-campus-area-network
 ---
 Это группа [[LAN (Local Area Network)|локальных сетей|]] - которая построена в рамках определенных учреждений
 - Образовательных
@@ -16,8 +17,3 @@ up:
 - Финансовых
 - и так далее
 Данная сеть используется для доступа во внутренние ресурсы компании/организации
-
-
-
-
-

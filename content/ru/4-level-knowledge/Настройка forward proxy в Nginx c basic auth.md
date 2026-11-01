@@ -1,22 +1,23 @@
 ---
-translationKey: nastroyka-forward-proxy-v-nginx-c-basic-auth
-title:
+version: '0.1'
+title: null
 draft: false
 tags:
-  - tutorials
+- tutorials
 up:
-  - "[[Безопасность приложений и веб-сервисов]]"
-  - "[[Лабы и практические руководства]]"
-  - "[[Авторизация и аутентификация]]"
+- '[[Безопасность приложений и веб-сервисов|Безопасность приложений и веб-сервисов]]'
+- '[[Лабы и практические руководства|Лабы и практические руководства]]'
+- '[[Управление идентификацией и доступом — учётные записи, аутентификация, авторизация и права|Управление идентификацией и доступом — учётные записи, аутентификация, авторизация и права]]'
 date: 2025-01-16
-updated: 2026-04-06T15:11:30+03:00
+updated: 2026-04-06 15:11:30+03:00
 url:
-  - https://www.baeldung.com/nginx-forward-proxy
-  - https://www.digitalocean.com/community/tutorials/how-to-set-up-password-authentication-with-nginx-on-ubuntu-20-04
+- https://www.baeldung.com/nginx-forward-proxy
+- https://www.digitalocean.com/community/tutorials/how-to-set-up-password-authentication-with-nginx-on-ubuntu-20-04
+translationKey: nastroyka-forward-proxy-v-nginx-c-basic-auth
 ---
-## [[Nginx]]
+## Nginx
 
-### Настройка [[Proxy]]
+### Настройка Proxy
 
 В `/etc/nginx.nginx.conf` или `/etc/nginx/sites-enabled/<name>` добавляем следующий конфиг:
 
@@ -49,7 +50,7 @@ sudo htpasswd -c /etc/nginx/.htpasswd <login>
 
 
 > [!NOTE] Title
-> Если требуется еще один юзер, то необходимо ввести ту же команду, но без `-c`:  
+> Если требуется еще один юзер, то необходимо ввести ту же команду, но без `-c`:\
 `sudo htpasswd /etc/nginx/.htpasswd <another_user>`
 
 
@@ -67,7 +68,7 @@ server {
 
     listen 8888;
     error_log /var/log/nginx/nginx_proxy_debug.log debug;
-    
+
     auth_basic "Restricted Content";
     auth_basic_user_file /etc/nginx/.htpasswd;
 
@@ -103,7 +104,7 @@ request({
     }
 })' >> test_proxy/proxytest.js
 
-node proxytest.js 
+node proxytest.js
 ```
 
 ## Проверка
