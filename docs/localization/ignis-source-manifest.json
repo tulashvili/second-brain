@@ -4,7 +4,6 @@
     "Ассиметричное и симметр шифрование.md": "cccf2478d3d63724a009ba39ac4a14186ea71fdce10fef9e2dcbe0e492abb7f5",
     "php2shell.md": "6e7b8850a4fff6f80ed3bcf9ed5878ed2415e542ece7a1a01a60767bfb891f1c",
     "index.md": "0551ed4c1e9529a248cf48ba16503cfc702578a59edfd969f3fa511dcee99a9e",
-    "DDoS-атака.md": "8daf67de438ae5b21a8efc0ac8bd4843419d6ca2d4a023faec942944c1cfd0a5",
     "1-level-knowledge/Основы архитектуры компьютера.md": "764e3c9dd1d622dfe5c94481012f196a67bb386a934d2765e319148fab43fee1",
     "1-level-knowledge/Основы информационной безопасности.md": "f7c1cd536f094ff93e07d4362b6e8d2b450b4447039f0aa96a027943cd18a6b6",
     "1-level-knowledge/Основы программирования.md": "9f7f1c82202c3602a176e1f5967f4e6f7140cf5314b6884441254d4141f737b8",
@@ -89,6 +88,6 @@
     "2-level-knowledge/Безопасность приложений и веб-сервисов.md": "c30b6a153b2e9dda1be48e90655ea415e486cda4961fc75ec7b222967fbde9d1"
   },
   "publicationTransforms": {
-    "DDoS-атака.md": "User approved anonymizing corporate dashboard links and internal escalation references in both public locales only; Ignis source unchanged."
+    "4-level-knowledge/CDN.md": "Render the link to the withdrawn draft DDoS note as its original label in both public locales; Ignis source unchanged."
   }
 }

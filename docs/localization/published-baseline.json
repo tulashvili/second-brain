@@ -2,7 +2,7 @@
   "source": "Ignis API vault content",
   "snapshot": "2026-11-01",
   "counts": {
-    "article": 63,
+    "article": 62,
     "moc": 23
   },
   "pages": [
@@ -70,12 +70,6 @@
       "source": "content/4-level-knowledge/CDN.md",
       "url": "https://security.maybeso.me/cdn",
       "slug": "cdn",
-      "kind": "article"
-    },
-    {
-      "source": "content/DDoS-атака.md",
-      "url": "https://security.maybeso.me/ddos-ataka",
-      "slug": "ddos-ataka",
       "kind": "article"
     },
     {

@@ -65,12 +65,6 @@
     "ruUrl": "https://security.maybeso.me/cdn",
     "enUrl": "https://security.maybeso.me/en/cdn"
   },
-  "ddos-ataka": {
-    "ruPath": "content/ru/DDoS-атака.md",
-    "enPath": "content/en/ddos-attack.md",
-    "ruUrl": "https://security.maybeso.me/ddos-ataka",
-    "enUrl": "https://security.maybeso.me/en/ddos-attack"
-  },
   "desyatichnaya-sistema-schisleniya": {
     "ruPath": "content/ru/4-level-knowledge/Десятичная система счисления.md",
     "enPath": "content/en/4-level-knowledge/decimal-number-system.md",

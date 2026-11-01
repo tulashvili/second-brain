@@ -129,8 +129,16 @@ test(
         env: { ...process.env, PATH: `/opt/homebrew/bin:${process.env.PATH ?? ""}` },
       })
 
+      for (const route of ["ddos-ataka", "en/ddos-attack"]) {
+        assert.equal(await exists(path.join(output, `${route}.html`)), false)
+      }
+      for (const route of ["cdn", "en/cdn"]) {
+        const html = await readFile(path.join(output, `${route}.html`), "utf8")
+        assert.doesNotMatch(html, /<span class="broken-link">DDoS/)
+      }
+
       const { articles, mocs } = await knowledgeSlugs()
-      assert.equal(articles.length, 63)
+      assert.equal(articles.length, 62)
       assert.equal(mocs.length, 23)
       const rootPage = await readFile(path.join(output, "index.html"), "utf8")
       assert.match(rootPage, /property="og:url" content="https:\/\/security\.maybeso\.me\/ru\/"/)

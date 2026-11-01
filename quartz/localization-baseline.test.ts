@@ -29,12 +29,16 @@ test("published baseline captures every original Russian note and its stable URL
     .map((source) => `content/${source}`.normalize("NFC"))
     .sort()
 
+  assert.ok(!baseline.pages.some((page) => page.slug === "ddos-ataka"))
+  assert.ok(!existsSync("content/ru/DDoS-атака.md"))
+  assert.ok(!existsSync("content/en/ddos-attack.md"))
+
   assert.equal(baseline.source, "Ignis API vault content")
   assert.equal(baseline.snapshot, "2026-11-01")
-  assert.equal(baseline.pages.length, 86)
+  assert.equal(baseline.pages.length, 85)
   assert.deepEqual(baseline.pages.map((page) => page.source.normalize("NFC")).sort(), manifestFiles)
-  assert.equal(new Set(baseline.pages.map((page) => page.url)).size, 86)
-  assert.deepEqual(baseline.counts, { article: 63, moc: 23 })
+  assert.equal(new Set(baseline.pages.map((page) => page.url)).size, 85)
+  assert.deepEqual(baseline.counts, { article: 62, moc: 23 })
 
   for (const page of baseline.pages) {
     assert.equal(page.slug, toFlatAsciiSlug(path.basename(page.source, ".md")))

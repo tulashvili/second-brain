@@ -93,9 +93,9 @@ test("knowledge structure matches the approved Ignis release hierarchy", async (
     ]),
   )
 
-  assert.equal(articles.length, 63)
+  assert.equal(articles.length, 62)
   assert.equal(mocs.length, 23)
-  assert.equal(pages.filter((page) => isMocPage(page) || isPublishedArticle(page)).length, 86)
+  assert.equal(pages.filter((page) => isMocPage(page) || isPublishedArticle(page)).length, 85)
   assert.deepEqual(
     sorted(
       pages
@@ -132,7 +132,6 @@ test("knowledge structure matches the approved Ignis release hierarchy", async (
     { code: "unparented-article", slug: "tri-a-aaa-authentication-authorization-i-accounting" },
     { code: "unparented-article", slug: "utechka-dannyh-equifax-2017" },
     { code: "unparented-article", slug: "tsifrovaya-podpis" },
-    { code: "unparented-article", slug: "ddos-ataka" },
     { code: "unparented-article", slug: "php2shell" },
     { code: "unparented-article", slug: "assimetrichnoe-i-simmetr-shifrovanie" },
     { code: "unreachable-moc", slug: "osnovy-arhitektury-kompyutera" },
