@@ -26,7 +26,10 @@ print(json.dumps({
 ' | curl -fsS -c "$IGNIS_COOKIE" \
   -H 'Content-Type: application/json' \
   --data-binary @- \
-  "$IGNIS_URL/api/auth/login" && printf '\nCookie-файл: %s\n' "$IGNIS_COOKIE"
+  "$IGNIS_URL/api/auth/login"
+
+# После успешного входа показать путь к cookie-файлу:
+printf '%s\n' "$IGNIS_COOKIE"
 ```
 
 ## Подготовка и публикация
