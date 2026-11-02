@@ -1,15 +1,15 @@
 {
+  "405-kod-otveta": {
+    "ruPath": "content/ru/4-level-knowledge/405 код ответа.md",
+    "enPath": "content/en/4-level-knowledge/http-405-method-not-allowed.md",
+    "ruUrl": "https://security.maybeso.me/405-kod-otveta",
+    "enUrl": "https://security.maybeso.me/en/http-405-method-not-allowed"
+  },
   "algoritm": {
     "ruPath": "content/ru/3-level-knowledge/Алгоритм.md",
     "enPath": "content/en/3-level-knowledge/algorithm.md",
     "ruUrl": "https://security.maybeso.me/algoritm",
     "enUrl": "https://security.maybeso.me/en/algorithm"
-  },
-  "assimetrichnoe-i-simmetr-shifrovanie": {
-    "ruPath": "content/ru/Ассиметричное и симметр шифрование.md",
-    "enPath": "content/en/symmetric-and-asymmetric-encryption.md",
-    "ruUrl": "https://security.maybeso.me/assimetrichnoe-i-simmetr-shifrovanie",
-    "enUrl": "https://security.maybeso.me/en/symmetric-and-asymmetric-encryption"
   },
   "ataki-i-ugrozy": {
     "ruPath": "content/ru/3-level-knowledge/Атаки и угрозы.md",
@@ -263,6 +263,12 @@
     "ruUrl": "https://security.maybeso.me/nastroyka-forward-proxy-v-nginx-c-basic-auth",
     "enUrl": "https://security.maybeso.me/en/nginx-forward-proxy-with-basic-auth"
   },
+  "nelineynye-vychisleniya": {
+    "ruPath": "content/ru/4-level-knowledge/Нелинейные вычисления.md",
+    "enPath": "content/en/4-level-knowledge/nonlinear-computations.md",
+    "ruUrl": "https://security.maybeso.me/nelineynye-vychisleniya",
+    "enUrl": "https://security.maybeso.me/en/nonlinear-computations"
+  },
   "nginx-worker-process": {
     "ruPath": "content/ru/4-level-knowledge/nginx_worker_process.md",
     "enPath": "content/en/4-level-knowledge/nginx-worker-process.md",
@@ -334,12 +340,6 @@
     "enPath": "content/en/4-level-knowledge/pascal-variables-and-data-types.md",
     "ruUrl": "https://security.maybeso.me/peremennye-i-tip-dannyh-v-pascal",
     "enUrl": "https://security.maybeso.me/en/pascal-variables-and-data-types"
-  },
-  "php2shell": {
-    "ruPath": "content/ru/php2shell.md",
-    "enPath": "content/en/php2shell.md",
-    "ruUrl": "https://security.maybeso.me/php2shell",
-    "enUrl": "https://security.maybeso.me/en/php2shell"
   },
   "pki-public-key-infrastructure": {
     "ruPath": "content/ru/4-level-knowledge/PKI (Public Key Infrastructure).md",

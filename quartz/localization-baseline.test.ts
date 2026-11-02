@@ -33,8 +33,16 @@ test("published baseline captures every original Russian note and its stable URL
   assert.ok(!existsSync("content/ru/DDoS-атака.md"))
   assert.ok(!existsSync("content/en/ddos-attack.md"))
 
+  assert.ok(baseline.pages.some((page) => page.slug === "405-kod-otveta"))
+  assert.ok(baseline.pages.some((page) => page.slug === "nelineynye-vychisleniya"))
+  assert.ok(
+    !baseline.pages.some((page) =>
+      ["php2shell", "assimetrichnoe-i-simmetr-shifrovanie"].includes(page.slug),
+    ),
+  )
+
   assert.equal(baseline.source, "Ignis API vault content")
-  assert.equal(baseline.snapshot, "2026-11-01")
+  assert.equal(baseline.snapshot, "2026-11-02")
   assert.equal(baseline.pages.length, 85)
   assert.deepEqual(baseline.pages.map((page) => page.source.normalize("NFC")).sort(), manifestFiles)
   assert.equal(new Set(baseline.pages.map((page) => page.url)).size, 85)

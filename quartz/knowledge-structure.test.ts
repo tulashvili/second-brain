@@ -132,8 +132,6 @@ test("knowledge structure matches the approved Ignis release hierarchy", async (
     { code: "unparented-article", slug: "tri-a-aaa-authentication-authorization-i-accounting" },
     { code: "unparented-article", slug: "utechka-dannyh-equifax-2017" },
     { code: "unparented-article", slug: "tsifrovaya-podpis" },
-    { code: "unparented-article", slug: "php2shell" },
-    { code: "unparented-article", slug: "assimetrichnoe-i-simmetr-shifrovanie" },
     { code: "unreachable-moc", slug: "osnovy-arhitektury-kompyutera" },
     { code: "unreachable-moc", slug: "osnovy-programmirovaniya" },
     { code: "unreachable-moc", slug: "rabota-kompyutera-s-informatsiey" },

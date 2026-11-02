@@ -1,21 +1,21 @@
 {
   "source": "Ignis API vault content",
-  "snapshot": "2026-11-01",
+  "snapshot": "2026-11-02",
   "counts": {
     "article": 62,
     "moc": 23
   },
   "pages": [
     {
-      "source": "content/3-level-knowledge/Алгоритм.md",
-      "url": "https://security.maybeso.me/algoritm",
-      "slug": "algoritm",
+      "source": "content/4-level-knowledge/405 код ответа.md",
+      "url": "https://security.maybeso.me/405-kod-otveta",
+      "slug": "405-kod-otveta",
       "kind": "article"
     },
     {
-      "source": "content/Ассиметричное и симметр шифрование.md",
-      "url": "https://security.maybeso.me/assimetrichnoe-i-simmetr-shifrovanie",
-      "slug": "assimetrichnoe-i-simmetr-shifrovanie",
+      "source": "content/3-level-knowledge/Алгоритм.md",
+      "url": "https://security.maybeso.me/algoritm",
+      "slug": "algoritm",
       "kind": "article"
     },
     {
@@ -271,6 +271,12 @@
       "kind": "article"
     },
     {
+      "source": "content/4-level-knowledge/Нелинейные вычисления.md",
+      "url": "https://security.maybeso.me/nelineynye-vychisleniya",
+      "slug": "nelineynye-vychisleniya",
+      "kind": "article"
+    },
+    {
       "source": "content/4-level-knowledge/nginx_worker_process.md",
       "url": "https://security.maybeso.me/nginx-worker-process",
       "slug": "nginx-worker-process",
@@ -340,12 +346,6 @@
       "source": "content/4-level-knowledge/Переменные и тип данных в Pascal.md",
       "url": "https://security.maybeso.me/peremennye-i-tip-dannyh-v-pascal",
       "slug": "peremennye-i-tip-dannyh-v-pascal",
-      "kind": "article"
-    },
-    {
-      "source": "content/php2shell.md",
-      "url": "https://security.maybeso.me/php2shell",
-      "slug": "php2shell",
       "kind": "article"
     },
     {

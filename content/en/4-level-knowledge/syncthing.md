@@ -8,11 +8,13 @@ updated: 2026-04-24 13:24:54+03:00
 tags:
 - self_hosted
 up:
-- '[[infrastructure-and-platforms|Infrastructure and platforms]]'
+- '[[tools-and-technologies]]'
 check_before_public: null
 date: 2026-04-22 08:10:27+03:00
 version: '0.1'
 translationKey: syncthing
+modified: 2026-11-02 15:24:56+03:00
+created: 2026-11-01 14:57:44+03:00
 ---
 
 [Official website](https://syncthing.net/)

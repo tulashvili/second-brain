@@ -129,7 +129,14 @@ test(
         env: { ...process.env, PATH: `/opt/homebrew/bin:${process.env.PATH ?? ""}` },
       })
 
-      for (const route of ["ddos-ataka", "en/ddos-attack"]) {
+      for (const route of [
+        "ddos-ataka",
+        "en/ddos-attack",
+        "php2shell",
+        "en/php2shell",
+        "assimetrichnoe-i-simmetr-shifrovanie",
+        "en/symmetric-and-asymmetric-encryption",
+      ]) {
         assert.equal(await exists(path.join(output, `${route}.html`)), false)
       }
       for (const route of ["cdn", "en/cdn"]) {

@@ -1,8 +1,6 @@
 {
   "vault": "content",
   "files": {
-    "Ассиметричное и симметр шифрование.md": "cccf2478d3d63724a009ba39ac4a14186ea71fdce10fef9e2dcbe0e492abb7f5",
-    "php2shell.md": "6e7b8850a4fff6f80ed3bcf9ed5878ed2415e542ece7a1a01a60767bfb891f1c",
     "index.md": "0551ed4c1e9529a248cf48ba16503cfc702578a59edfd969f3fa511dcee99a9e",
     "1-level-knowledge/Основы архитектуры компьютера.md": "764e3c9dd1d622dfe5c94481012f196a67bb386a934d2765e319148fab43fee1",
     "1-level-knowledge/Основы информационной безопасности.md": "f7c1cd536f094ff93e07d4362b6e8d2b450b4447039f0aa96a027943cd18a6b6",
@@ -14,9 +12,9 @@
     "3-level-knowledge/Система счисления.md": "aedf91c39659f0fb0633a8f983bfdad8e9a8122e667a199b2c0e832698c7aff3",
     "3-level-knowledge/Атаки и угрозы.md": "73a49ac3fc6a2c19349ab9f53df4a0a8612c49cad7150d14e35da304244f2d2f",
     "3-level-knowledge/Работа компьютера с информацией.md": "18e7d848058869905cd731f8f8cbe6c0e11d91f10c7303a565a4babfaca1921f",
-    "3-level-knowledge/Инструменты и технологии.md": "0cf39a4cc3383b8427e6cf7ed8152c07033ab760dfd0861a455619c1c1e14c4e",
+    "3-level-knowledge/Инструменты и технологии.md": "b2e0a3410dc747afbd04a74d43bf22d9b0ff3c3012a12ac95cf47d2ade510ea9",
     "3-level-knowledge/Хранение данных.md": "5c6aebb0017e8397fc4bd1b07e6ba7ab37206145ac71963908a6427601d7f48c",
-    "3-level-knowledge/Инфраструктура и платформы.md": "f90fc0d97989e5035fe34e0d33b358fb3678494d4092b103faf63d4aba41033c",
+    "3-level-knowledge/Инфраструктура и платформы.md": "fb7f073fcab363f0c99c13942cd5a74ba0ac3142bc79af71cdcc90300ac025ef",
     "3-level-knowledge/Язык программирования Pascal.md": "191a8bc2ac274b353ef486ae509e0cde033a9219778f52d4934f49f04b5bece7",
     "3-level-knowledge/Лабы и практические руководства.md": "80551ce5928e39fac9854d4ed4390404bf4aa1497343316c936f192597351f71",
     "3-level-knowledge/Сети и протоколы.md": "4750b044f98b4971a6e1f97cfd6ac9b180331945f740b1f661ae54c7053d9a4b",
@@ -60,7 +58,7 @@
     "4-level-knowledge/Minio Client.md": "a32062dd899f9f49e8dc11a90e39f5e9ac9daf4aee0afb41f56f1fa3c8cefb16",
     "4-level-knowledge/Линейные вычисления.md": "0d1e9664a22119f89ed93eddf1b834d297267d936fad7beb974f167e3a11e6dc",
     "4-level-knowledge/Маршрутизатор.md": "1a7c38b2947ba23c355a30b527e43fb2ec5b1cfb559ded0a20f56ad1e39ae004",
-    "4-level-knowledge/Syncthing.md": "fadfab7944450f0581f4a117720fd7f268cfaaf0c2bebf6c9580a2cd84401d60",
+    "4-level-knowledge/Syncthing.md": "0300a61fdf07c215cda7bac13a2ee7129566bdc4446097cb82820fd69d8ebcd6",
     "4-level-knowledge/Настройка forward proxy в Nginx c basic auth.md": "d5222717281b8c16e3f418577d1fac42dfe5cdea0227e9a4cdc03fb7b4947642",
     "4-level-knowledge/Цифровая подпись.md": "5daaceb9d4dbf53c106cfbbcaec6f1afee757bb9d6e0186428465838518ceb1b",
     "4-level-knowledge/Типы атак на информационные системы.md": "6c7590fc93931b23d7d50c62295d8f632f06142ebda77f83098bf8e2e0209e6e",
@@ -81,13 +79,16 @@
     "4-level-knowledge/Gitlab.md": "7d6c97a2e46ed1d28c0af9a13ad01019b9723c1b56ac1cc8ba30011ef709e35c",
     "4-level-knowledge/DIY-гаджет для трейдинга без эмоций.md": "35e4514a5fd5d93c256b089f28321ec54a8bfd885338fcc63f51f71c1a04c77a",
     "2-level-knowledge/Управление идентификацией и доступом — учётные записи, аутентификация, авторизация и права.md": "aa4ed808d3068eb0b02d74cfa3f37fecc8dfe204d76222a81a3a68a4352fba51",
-    "2-level-knowledge/Безопасность инфраструктуры и платформ.md": "7fcc0a113c463c81e0e1b2fb229bcd8fdf16f0c8dbbcf13cf35ac5b1e1d9a314",
+    "2-level-knowledge/Безопасность инфраструктуры и платформ.md": "0f0181f31382904d52d8b0e4ee437a8d509de71c6ba81aad3ab0a1f84dbc4c64",
     "2-level-knowledge/Linux.md": "65279d9bf659ca06e8bf8bfc5aec46cfef654119db53d4ff977af3e078626521",
     "2-level-knowledge/Сетевая безопасность.md": "86ebb6357eb24e90a16214c9acd52cfb614a7b01817175e7db2d52cf4f40a19a",
     "2-level-knowledge/Логирование, мониторинг и обнаружение угроз.md": "eb29a606e315cfe83df978734d8fc3f3c1988e07fa4dbaaea447585d24dc8237",
-    "2-level-knowledge/Безопасность приложений и веб-сервисов.md": "c30b6a153b2e9dda1be48e90655ea415e486cda4961fc75ec7b222967fbde9d1"
+    "2-level-knowledge/Безопасность приложений и веб-сервисов.md": "c30b6a153b2e9dda1be48e90655ea415e486cda4961fc75ec7b222967fbde9d1",
+    "4-level-knowledge/405 код ответа.md": "9600a3642d109be9726f124356da0fe44f94a65f0d149043d5caa3453eb1d511",
+    "4-level-knowledge/Нелинейные вычисления.md": "5c98ae9662fdff90bbe35ce9ae94199f92c5599d77647f4f30a97872b7339db1"
   },
   "publicationTransforms": {
-    "4-level-knowledge/CDN.md": "Render the link to the withdrawn draft DDoS note as its original label in both public locales; Ignis source unchanged."
+    "4-level-knowledge/CDN.md": "Render the link to the withdrawn draft DDoS note as its original label in both public locales; Ignis source unchanged.",
+    "3-level-knowledge/Инструменты и технологии.md": "Render the link to draft Tracecat as its label in both public locales; Ignis source unchanged."
   }
 }

@@ -5,7 +5,7 @@ moc: true
 tags:
 - area
 up:
-- '[[infrastructure-and-platform-security|Infrastructure and platform security]]'
+- '[[infrastructure-and-platform-security]]'
 created: 2026-10-08 19:15:38+03:00
 modified: 2026-10-18 23:02:23+03:00
 version: '0.1'
@@ -18,4 +18,3 @@ Operating systems, virtualization, containers, and services as the environment w
 
 - [[out-of-memory|Out of Memory (OOM)]]
 - [[multi-container-docker-application|A Multi-Container Docker Application]]
-- [[syncthing|Syncthing]]
