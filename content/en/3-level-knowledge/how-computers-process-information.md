@@ -19,7 +19,7 @@ A device represents zeros and ones using physical states. The exact method depen
 ## Binary representation of information
 For a computer to understand information, it has to be translated into the computer's language. This uses **encoding** and **decoding**.
 ### Encoding
-**Encoding** converts data into a [[binary-number-system|form a computer can understand]]. It translates information into a form that can be stored and processed.
+**Encoding** converts data into a form a computer can understand. It translates information into a form that can be stored and processed.
 
 **Text encoding.**
 For example, the letter `A` becomes `01000001` when encoded in ASCII.

@@ -23,7 +23,7 @@ translationKey: non-repudiation
         ↓
 [[S MIME (Secure Multipurpose Internet Mail Extensions)|S/MIME-сертификат]]связывает открытый ключ с заявленной сущностью
         ↓
-[[PKI (Public Key Infrastructure)|PKI]] позволяет оценить, доверяем ли этой связи
+PKI позволяет оценить, доверяем ли этой связи
 
 ```mermaid
 sequenceDiagram

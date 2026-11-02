@@ -93,9 +93,9 @@ test("knowledge structure matches the approved Ignis release hierarchy", async (
     ]),
   )
 
-  assert.equal(articles.length, 62)
-  assert.equal(mocs.length, 23)
-  assert.equal(pages.filter((page) => isMocPage(page) || isPublishedArticle(page)).length, 85)
+  assert.equal(articles.length, 45)
+  assert.equal(mocs.length, 22)
+  assert.equal(pages.filter((page) => isMocPage(page) || isPublishedArticle(page)).length, 67)
   assert.deepEqual(
     sorted(
       pages
@@ -128,14 +128,11 @@ test("knowledge structure matches the approved Ignis release hierarchy", async (
     { code: "unparented-moc", slug: "osnovy-programmirovaniya" },
     { code: "unparented-article", slug: "algoritm" },
     { code: "unparented-article", slug: "non-repudiation" },
-    { code: "missing-parent", slug: "pki-public-key-infrastructure", target: "kriptografiya" },
     { code: "unparented-article", slug: "tri-a-aaa-authentication-authorization-i-accounting" },
-    { code: "unparented-article", slug: "utechka-dannyh-equifax-2017" },
     { code: "unparented-article", slug: "tsifrovaya-podpis" },
     { code: "unreachable-moc", slug: "osnovy-arhitektury-kompyutera" },
     { code: "unreachable-moc", slug: "osnovy-programmirovaniya" },
     { code: "unreachable-moc", slug: "rabota-kompyutera-s-informatsiey" },
-    { code: "unreachable-moc", slug: "sistema-schisleniya" },
     { code: "unreachable-moc", slug: "upravlenie-posledovatelnostyu-deystviy" },
     { code: "unreachable-moc", slug: "yazyk-programmirovaniya-pascal" },
   ])

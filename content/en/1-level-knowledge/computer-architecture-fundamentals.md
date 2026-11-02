@@ -14,6 +14,6 @@ How a computer represents and processes information at the level of numbers and 
 
 ## Key topics
 
-- [[number-systems|Number Systems]]
+- Number Systems
 - [[how-computers-process-information|How Computers Process Information]]
 - [[computer-logic-circuit|Computer Logic Circuit]]

@@ -1,0 +1,116 @@
+{
+  "date": "2026-11-02",
+  "decision": "User approved withdrawing all 18 notes identified in the published-content editorial audit. Source bodies preserved in Ignis.",
+  "pairs": {
+    "dkim-selektor": {
+      "ruPath": "content/ru/4-level-knowledge/DKIM-селектор.md",
+      "enPath": "content/en/4-level-knowledge/dkim-selector.md",
+      "ruUrl": "https://security.maybeso.me/dkim-selektor",
+      "enUrl": "https://security.maybeso.me/en/dkim-selector"
+    },
+    "gitlab": {
+      "ruPath": "content/ru/4-level-knowledge/Gitlab.md",
+      "enPath": "content/en/4-level-knowledge/gitlab.md",
+      "ruUrl": "https://security.maybeso.me/gitlab",
+      "enUrl": "https://security.maybeso.me/en/gitlab"
+    },
+    "module-ngx-http-limit-req-module": {
+      "ruPath": "content/ru/4-level-knowledge/Module ngx_http_limit_req_module.md",
+      "enPath": "content/en/4-level-knowledge/nginx-request-rate-limiting.md",
+      "ruUrl": "https://security.maybeso.me/module-ngx-http-limit-req-module",
+      "enUrl": "https://security.maybeso.me/en/nginx-request-rate-limiting"
+    },
+    "gitlab-runner": {
+      "ruPath": "content/ru/4-level-knowledge/Gitlab Runner.md",
+      "enPath": "content/en/4-level-knowledge/gitlab-runner.md",
+      "ruUrl": "https://security.maybeso.me/gitlab-runner",
+      "enUrl": "https://security.maybeso.me/en/gitlab-runner"
+    },
+    "pochtovyy-server": {
+      "ruPath": "content/ru/4-level-knowledge/Почтовый сервер.md",
+      "enPath": "content/en/4-level-knowledge/mail-server.md",
+      "ruUrl": "https://security.maybeso.me/pochtovyy-server",
+      "enUrl": "https://security.maybeso.me/en/mail-server"
+    },
+    "sluzhby-v-linux": {
+      "ruPath": "content/ru/4-level-knowledge/Службы в Linux.md",
+      "enPath": "content/en/4-level-knowledge/linux-services.md",
+      "ruUrl": "https://security.maybeso.me/sluzhby-v-linux",
+      "enUrl": "https://security.maybeso.me/en/linux-services"
+    },
+    "nastroyka-forward-proxy-v-nginx-c-basic-auth": {
+      "ruPath": "content/ru/4-level-knowledge/Настройка forward proxy в Nginx c basic auth.md",
+      "enPath": "content/en/4-level-knowledge/nginx-forward-proxy-with-basic-auth.md",
+      "ruUrl": "https://security.maybeso.me/nastroyka-forward-proxy-v-nginx-c-basic-auth",
+      "enUrl": "https://security.maybeso.me/en/nginx-forward-proxy-with-basic-auth"
+    },
+    "nelineynye-vychisleniya": {
+      "ruPath": "content/ru/4-level-knowledge/Нелинейные вычисления.md",
+      "enPath": "content/en/4-level-knowledge/nonlinear-computations.md",
+      "ruUrl": "https://security.maybeso.me/nelineynye-vychisleniya",
+      "enUrl": "https://security.maybeso.me/en/nonlinear-computations"
+    },
+    "desyatichnaya-sistema-schisleniya": {
+      "ruPath": "content/ru/4-level-knowledge/Десятичная система счисления.md",
+      "enPath": "content/en/4-level-knowledge/decimal-number-system.md",
+      "ruUrl": "https://security.maybeso.me/desyatichnaya-sistema-schisleniya",
+      "enUrl": "https://security.maybeso.me/en/decimal-number-system"
+    },
+    "lineynye-vychisleniya": {
+      "ruPath": "content/ru/4-level-knowledge/Линейные вычисления.md",
+      "enPath": "content/en/4-level-knowledge/linear-computations.md",
+      "ruUrl": "https://security.maybeso.me/lineynye-vychisleniya",
+      "enUrl": "https://security.maybeso.me/en/linear-computations"
+    },
+    "obschiy-vid-programmy-v-pascal": {
+      "ruPath": "content/ru/4-level-knowledge/Общий вид программы в Pascal.md",
+      "enPath": "content/en/4-level-knowledge/pascal-program-structure.md",
+      "ruUrl": "https://security.maybeso.me/obschiy-vid-programmy-v-pascal",
+      "enUrl": "https://security.maybeso.me/en/pascal-program-structure"
+    },
+    "utechka-dannyh-equifax-2017": {
+      "ruPath": "content/ru/4-level-knowledge/Утечка данных Equifax  (2017).md",
+      "enPath": "content/en/4-level-knowledge/equifax-data-breach-2017.md",
+      "ruUrl": "https://security.maybeso.me/utechka-dannyh-equifax-2017",
+      "enUrl": "https://security.maybeso.me/en/equifax-data-breach-2017"
+    },
+    "tipy-protsedury-i-funktsii-v-pascal": {
+      "ruPath": "content/ru/4-level-knowledge/Типы, процедуры и функции в Pascal.md",
+      "enPath": "content/en/4-level-knowledge/types-procedures-and-functions-in-pascal.md",
+      "ruUrl": "https://security.maybeso.me/tipy-protsedury-i-funktsii-v-pascal",
+      "enUrl": "https://security.maybeso.me/en/types-procedures-and-functions-in-pascal"
+    },
+    "tipy-atak-na-informatsionnye-sistemy": {
+      "ruPath": "content/ru/4-level-knowledge/Типы атак на информационные системы.md",
+      "enPath": "content/en/4-level-knowledge/types-of-attacks-on-information-systems.md",
+      "ruUrl": "https://security.maybeso.me/tipy-atak-na-informatsionnye-sistemy",
+      "enUrl": "https://security.maybeso.me/en/types-of-attacks-on-information-systems"
+    },
+    "pki-public-key-infrastructure": {
+      "ruPath": "content/ru/4-level-knowledge/PKI (Public Key Infrastructure).md",
+      "enPath": "content/en/4-level-knowledge/public-key-infrastructure.md",
+      "ruUrl": "https://security.maybeso.me/pki-public-key-infrastructure",
+      "enUrl": "https://security.maybeso.me/en/public-key-infrastructure"
+    },
+    "proxy": {
+      "ruPath": "content/ru/4-level-knowledge/Proxy.md",
+      "enPath": "content/en/4-level-knowledge/proxy.md",
+      "ruUrl": "https://security.maybeso.me/proxy",
+      "enUrl": "https://security.maybeso.me/en/proxy"
+    },
+    "sistema-schisleniya": {
+      "ruPath": "content/ru/3-level-knowledge/Система счисления.md",
+      "enPath": "content/en/3-level-knowledge/number-systems.md",
+      "ruUrl": "https://security.maybeso.me/sistema-schisleniya",
+      "enUrl": "https://security.maybeso.me/en/number-systems"
+    },
+    "dvoichnaya-sistema-schisleniya": {
+      "ruPath": "content/ru/4-level-knowledge/Двоичная система счисления.md",
+      "enPath": "content/en/4-level-knowledge/binary-number-system.md",
+      "ruUrl": "https://security.maybeso.me/dvoichnaya-sistema-schisleniya",
+      "enUrl": "https://security.maybeso.me/en/binary-number-system"
+    }
+  },
+  "retiredTagRoutes": ["/tutorials", "/en/tutorials"],
+  "tagReason": "The tutorials tag belonged only to the withdrawn forward-proxy note; omit the now-empty tag pages."
+}

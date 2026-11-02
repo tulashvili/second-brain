@@ -24,7 +24,7 @@ The verification chain for a file or email looks like this:
         ↓
 [[S MIME (Secure Multipurpose Internet Mail Extensions)|S/MIME certificate]] binds the public key to the claimed entity
         ↓
-[[public-key-infrastructure|PKI]] makes it possible to assess whether we trust that binding
+PKI makes it possible to assess whether we trust that binding
 
 ```mermaid
 sequenceDiagram

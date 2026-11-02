@@ -31,11 +31,11 @@ To understand hardening, you first have to understand **the system and the proce
 
 For example, when I hardened GitLab Runners at work, I used the official documentation and the Runner best practices.
 
-You do not need to be a developer or an expert in every product. But you do need to understand a system before you can reduce its attack surface. These are questions I identified after working on [[gitlab-runner|GitLab Runner]] hardening:
+You do not need to be a developer or an expert in every product. But you do need to understand a system before you can reduce its attack surface. These are questions I identified after working on GitLab Runner hardening:
 
 **Who can start a job on a given Runner?** A job contains commands from `.gitlab-ci.yml`, so anyone who can trigger a pipeline may effectively run their own code. Check whether the Runner is scoped to a project, group, or whole instance, along with `run untagged` and protected-branch settings.
 
-**What privileges does that job get?** With the `shell` [[gitlab-runner#Executors|executor]], commands run as the Runner user on the host. With a Docker executor, check `privileged`, mounted directories, Docker socket access, and other isolation settings.
+**What privileges does that job get?** With the `shell` executor, commands run as the Runner user on the host. With a Docker executor, check `privileged`, mounted directories, Docker socket access, and other isolation settings.
 
 **Why were those privileges granted?** Image builds might depend on Docker-in-Docker. Simply turning off `privileged` could break them. The security specialist should work with the CI owner to find a build method with fewer privileges, or move those jobs to a separate isolated Runner.
 

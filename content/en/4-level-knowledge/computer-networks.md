@@ -51,5 +51,5 @@ Devices can be classified in several ways:
     - Bridges
     - And so on
   - [[Сетевой уровень модели OSI|Network layer]]
-    - [[маршрутизатор|routers]]
+    - [[router|routers]]
 -

@@ -26,8 +26,8 @@ An **identifier** is the name of an element in a program: a variable, constant, 
 You cannot use **reserved words** as variable names: they are also words in program text, but their meaning is already defined by Pascal. Such words include:
 ![[assets/Pasted image 20261018163830.png|537]]
 
-[[pascal-program-structure]]
+pascal-program-structure
 [[pascal-variables-and-data-types]]
 [[pascal-units]]
-[[types-procedures-and-functions-in-pascal]]
+types-procedures-and-functions-in-pascal
 [[labels-and-jumps-in-pascal]]

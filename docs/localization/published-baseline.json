@@ -2,8 +2,8 @@
   "source": "Ignis API vault content",
   "snapshot": "2026-11-02",
   "counts": {
-    "article": 62,
-    "moc": 23
+    "article": 45,
+    "moc": 22
   },
   "pages": [
     {
@@ -73,27 +73,9 @@
       "kind": "article"
     },
     {
-      "source": "content/4-level-knowledge/Десятичная система счисления.md",
-      "url": "https://security.maybeso.me/desyatichnaya-sistema-schisleniya",
-      "slug": "desyatichnaya-sistema-schisleniya",
-      "kind": "article"
-    },
-    {
       "source": "content/4-level-knowledge/DIY-гаджет для трейдинга без эмоций.md",
       "url": "https://security.maybeso.me/diy-gadzhet-dlya-treydinga-bez-emotsiy",
       "slug": "diy-gadzhet-dlya-treydinga-bez-emotsiy",
-      "kind": "article"
-    },
-    {
-      "source": "content/4-level-knowledge/DKIM-селектор.md",
-      "url": "https://security.maybeso.me/dkim-selektor",
-      "slug": "dkim-selektor",
-      "kind": "article"
-    },
-    {
-      "source": "content/4-level-knowledge/Двоичная система счисления.md",
-      "url": "https://security.maybeso.me/dvoichnaya-sistema-schisleniya",
-      "slug": "dvoichnaya-sistema-schisleniya",
       "kind": "article"
     },
     {
@@ -118,18 +100,6 @@
       "source": "content/4-level-knowledge/Гайд по использованию mysqldump.md",
       "url": "https://security.maybeso.me/gayd-po-ispolzovaniyu-mysqldump",
       "slug": "gayd-po-ispolzovaniyu-mysqldump",
-      "kind": "article"
-    },
-    {
-      "source": "content/4-level-knowledge/Gitlab.md",
-      "url": "https://security.maybeso.me/gitlab",
-      "slug": "gitlab",
-      "kind": "article"
-    },
-    {
-      "source": "content/4-level-knowledge/Gitlab Runner.md",
-      "url": "https://security.maybeso.me/gitlab-runner",
-      "slug": "gitlab-runner",
       "kind": "article"
     },
     {
@@ -205,12 +175,6 @@
       "kind": "article"
     },
     {
-      "source": "content/4-level-knowledge/Линейные вычисления.md",
-      "url": "https://security.maybeso.me/lineynye-vychisleniya",
-      "slug": "lineynye-vychisleniya",
-      "kind": "article"
-    },
-    {
       "source": "content/2-level-knowledge/Linux.md",
       "url": "https://security.maybeso.me/linux",
       "slug": "linux",
@@ -253,27 +217,9 @@
       "kind": "article"
     },
     {
-      "source": "content/4-level-knowledge/Module ngx_http_limit_req_module.md",
-      "url": "https://security.maybeso.me/module-ngx-http-limit-req-module",
-      "slug": "module-ngx-http-limit-req-module",
-      "kind": "article"
-    },
-    {
       "source": "content/4-level-knowledge/Мультиконтейнерное приложение в Docker (docker network).md",
       "url": "https://security.maybeso.me/multikonteynernoe-prilozhenie-v-docker-docker-network",
       "slug": "multikonteynernoe-prilozhenie-v-docker-docker-network",
-      "kind": "article"
-    },
-    {
-      "source": "content/4-level-knowledge/Настройка forward proxy в Nginx c basic auth.md",
-      "url": "https://security.maybeso.me/nastroyka-forward-proxy-v-nginx-c-basic-auth",
-      "slug": "nastroyka-forward-proxy-v-nginx-c-basic-auth",
-      "kind": "article"
-    },
-    {
-      "source": "content/4-level-knowledge/Нелинейные вычисления.md",
-      "url": "https://security.maybeso.me/nelineynye-vychisleniya",
-      "slug": "nelineynye-vychisleniya",
       "kind": "article"
     },
     {
@@ -286,12 +232,6 @@
       "source": "content/4-level-knowledge/Non-repudiation.md",
       "url": "https://security.maybeso.me/non-repudiation",
       "slug": "non-repudiation",
-      "kind": "article"
-    },
-    {
-      "source": "content/4-level-knowledge/Общий вид программы в Pascal.md",
-      "url": "https://security.maybeso.me/obschiy-vid-programmy-v-pascal",
-      "slug": "obschiy-vid-programmy-v-pascal",
       "kind": "article"
     },
     {
@@ -349,21 +289,9 @@
       "kind": "article"
     },
     {
-      "source": "content/4-level-knowledge/PKI (Public Key Infrastructure).md",
-      "url": "https://security.maybeso.me/pki-public-key-infrastructure",
-      "slug": "pki-public-key-infrastructure",
-      "kind": "article"
-    },
-    {
       "source": "content/4-level-knowledge/Почему комьютер использует именно 0 и 1.md",
       "url": "https://security.maybeso.me/pochemu-komyuter-ispolzuet-imenno-0-i-1",
       "slug": "pochemu-komyuter-ispolzuet-imenno-0-i-1",
-      "kind": "article"
-    },
-    {
-      "source": "content/4-level-knowledge/Почтовый сервер.md",
-      "url": "https://security.maybeso.me/pochtovyy-server",
-      "slug": "pochtovyy-server",
       "kind": "article"
     },
     {
@@ -382,12 +310,6 @@
       "source": "content/4-level-knowledge/Proxmox.md",
       "url": "https://security.maybeso.me/proxmox",
       "slug": "proxmox",
-      "kind": "article"
-    },
-    {
-      "source": "content/4-level-knowledge/Proxy.md",
-      "url": "https://security.maybeso.me/proxy",
-      "slug": "proxy",
       "kind": "article"
     },
     {
@@ -421,21 +343,9 @@
       "kind": "moc"
     },
     {
-      "source": "content/3-level-knowledge/Система счисления.md",
-      "url": "https://security.maybeso.me/sistema-schisleniya",
-      "slug": "sistema-schisleniya",
-      "kind": "moc"
-    },
-    {
       "source": "content/4-level-knowledge/Slow Attack.md",
       "url": "https://security.maybeso.me/slow-attack",
       "slug": "slow-attack",
-      "kind": "article"
-    },
-    {
-      "source": "content/4-level-knowledge/Службы в Linux.md",
-      "url": "https://security.maybeso.me/sluzhby-v-linux",
-      "slug": "sluzhby-v-linux",
       "kind": "article"
     },
     {
@@ -460,18 +370,6 @@
       "source": "content/4-level-knowledge/Syncthing.md",
       "url": "https://security.maybeso.me/syncthing",
       "slug": "syncthing",
-      "kind": "article"
-    },
-    {
-      "source": "content/4-level-knowledge/Типы атак на информационные системы.md",
-      "url": "https://security.maybeso.me/tipy-atak-na-informatsionnye-sistemy",
-      "slug": "tipy-atak-na-informatsionnye-sistemy",
-      "kind": "article"
-    },
-    {
-      "source": "content/4-level-knowledge/Типы, процедуры и функции в Pascal.md",
-      "url": "https://security.maybeso.me/tipy-protsedury-i-funktsii-v-pascal",
-      "slug": "tipy-protsedury-i-funktsii-v-pascal",
       "kind": "article"
     },
     {
@@ -503,12 +401,6 @@
       "url": "https://security.maybeso.me/upravlenie-posledovatelnostyu-deystviy",
       "slug": "upravlenie-posledovatelnostyu-deystviy",
       "kind": "moc"
-    },
-    {
-      "source": "content/4-level-knowledge/Утечка данных Equifax  (2017).md",
-      "url": "https://security.maybeso.me/utechka-dannyh-equifax-2017",
-      "slug": "utechka-dannyh-equifax-2017",
-      "kind": "article"
     },
     {
       "source": "content/3-level-knowledge/Язык программирования Pascal.md",

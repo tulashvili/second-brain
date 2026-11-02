@@ -17,4 +17,4 @@ translationKey: linux
 ## Ключевые темы
 
 - [[Процессы в Linux|Процессы в Linux]]
-- [[Службы в Linux|Службы в Linux]]
+- Службы в Linux

@@ -65,29 +65,11 @@
     "ruUrl": "https://security.maybeso.me/cdn",
     "enUrl": "https://security.maybeso.me/en/cdn"
   },
-  "desyatichnaya-sistema-schisleniya": {
-    "ruPath": "content/ru/4-level-knowledge/Десятичная система счисления.md",
-    "enPath": "content/en/4-level-knowledge/decimal-number-system.md",
-    "ruUrl": "https://security.maybeso.me/desyatichnaya-sistema-schisleniya",
-    "enUrl": "https://security.maybeso.me/en/decimal-number-system"
-  },
   "diy-gadzhet-dlya-treydinga-bez-emotsiy": {
     "ruPath": "content/ru/4-level-knowledge/DIY-гаджет для трейдинга без эмоций.md",
     "enPath": "content/en/4-level-knowledge/emotion-free-trading-gadget.md",
     "ruUrl": "https://security.maybeso.me/diy-gadzhet-dlya-treydinga-bez-emotsiy",
     "enUrl": "https://security.maybeso.me/en/emotion-free-trading-gadget"
-  },
-  "dkim-selektor": {
-    "ruPath": "content/ru/4-level-knowledge/DKIM-селектор.md",
-    "enPath": "content/en/4-level-knowledge/dkim-selector.md",
-    "ruUrl": "https://security.maybeso.me/dkim-selektor",
-    "enUrl": "https://security.maybeso.me/en/dkim-selector"
-  },
-  "dvoichnaya-sistema-schisleniya": {
-    "ruPath": "content/ru/4-level-knowledge/Двоичная система счисления.md",
-    "enPath": "content/en/4-level-knowledge/binary-number-system.md",
-    "ruUrl": "https://security.maybeso.me/dvoichnaya-sistema-schisleniya",
-    "enUrl": "https://security.maybeso.me/en/binary-number-system"
   },
   "elastic-stack": {
     "ruPath": "content/ru/4-level-knowledge/Elastic Stack.md",
@@ -112,18 +94,6 @@
     "enPath": "content/en/4-level-knowledge/mysqldump-guide.md",
     "ruUrl": "https://security.maybeso.me/gayd-po-ispolzovaniyu-mysqldump",
     "enUrl": "https://security.maybeso.me/en/mysqldump-guide"
-  },
-  "gitlab": {
-    "ruPath": "content/ru/4-level-knowledge/Gitlab.md",
-    "enPath": "content/en/4-level-knowledge/gitlab.md",
-    "ruUrl": "https://security.maybeso.me/gitlab",
-    "enUrl": "https://security.maybeso.me/en/gitlab"
-  },
-  "gitlab-runner": {
-    "ruPath": "content/ru/4-level-knowledge/Gitlab Runner.md",
-    "enPath": "content/en/4-level-knowledge/gitlab-runner.md",
-    "ruUrl": "https://security.maybeso.me/gitlab-runner",
-    "enUrl": "https://security.maybeso.me/en/gitlab-runner"
   },
   "hardening-usilenie-bezopasnosti": {
     "ruPath": "content/ru/4-level-knowledge/Hardening (усиление безопасности).md",
@@ -197,12 +167,6 @@
     "ruUrl": "https://security.maybeso.me/lan-local-area-network",
     "enUrl": "https://security.maybeso.me/en/local-area-network"
   },
-  "lineynye-vychisleniya": {
-    "ruPath": "content/ru/4-level-knowledge/Линейные вычисления.md",
-    "enPath": "content/en/4-level-knowledge/linear-computations.md",
-    "ruUrl": "https://security.maybeso.me/lineynye-vychisleniya",
-    "enUrl": "https://security.maybeso.me/en/linear-computations"
-  },
   "linux": {
     "ruPath": "content/ru/2-level-knowledge/Linux.md",
     "enPath": "content/en/1-level-knowledge/linux.md",
@@ -245,29 +209,11 @@
     "ruUrl": "https://security.maybeso.me/minio-client",
     "enUrl": "https://security.maybeso.me/en/minio-client"
   },
-  "module-ngx-http-limit-req-module": {
-    "ruPath": "content/ru/4-level-knowledge/Module ngx_http_limit_req_module.md",
-    "enPath": "content/en/4-level-knowledge/nginx-request-rate-limiting.md",
-    "ruUrl": "https://security.maybeso.me/module-ngx-http-limit-req-module",
-    "enUrl": "https://security.maybeso.me/en/nginx-request-rate-limiting"
-  },
   "multikonteynernoe-prilozhenie-v-docker-docker-network": {
     "ruPath": "content/ru/4-level-knowledge/Мультиконтейнерное приложение в Docker (docker network).md",
     "enPath": "content/en/4-level-knowledge/multi-container-docker-application.md",
     "ruUrl": "https://security.maybeso.me/multikonteynernoe-prilozhenie-v-docker-docker-network",
     "enUrl": "https://security.maybeso.me/en/multi-container-docker-application"
-  },
-  "nastroyka-forward-proxy-v-nginx-c-basic-auth": {
-    "ruPath": "content/ru/4-level-knowledge/Настройка forward proxy в Nginx c basic auth.md",
-    "enPath": "content/en/4-level-knowledge/nginx-forward-proxy-with-basic-auth.md",
-    "ruUrl": "https://security.maybeso.me/nastroyka-forward-proxy-v-nginx-c-basic-auth",
-    "enUrl": "https://security.maybeso.me/en/nginx-forward-proxy-with-basic-auth"
-  },
-  "nelineynye-vychisleniya": {
-    "ruPath": "content/ru/4-level-knowledge/Нелинейные вычисления.md",
-    "enPath": "content/en/4-level-knowledge/nonlinear-computations.md",
-    "ruUrl": "https://security.maybeso.me/nelineynye-vychisleniya",
-    "enUrl": "https://security.maybeso.me/en/nonlinear-computations"
   },
   "nginx-worker-process": {
     "ruPath": "content/ru/4-level-knowledge/nginx_worker_process.md",
@@ -280,12 +226,6 @@
     "enPath": "content/en/4-level-knowledge/non-repudiation.md",
     "ruUrl": "https://security.maybeso.me/non-repudiation",
     "enUrl": "https://security.maybeso.me/en/non-repudiation"
-  },
-  "obschiy-vid-programmy-v-pascal": {
-    "ruPath": "content/ru/4-level-knowledge/Общий вид программы в Pascal.md",
-    "enPath": "content/en/4-level-knowledge/pascal-program-structure.md",
-    "ruUrl": "https://security.maybeso.me/obschiy-vid-programmy-v-pascal",
-    "enUrl": "https://security.maybeso.me/en/pascal-program-structure"
   },
   "operatsionnaya-bezopasnost-i-instrumenty": {
     "ruPath": "content/ru/3-level-knowledge/Операционная безопасность и инструменты.md",
@@ -341,23 +281,11 @@
     "ruUrl": "https://security.maybeso.me/peremennye-i-tip-dannyh-v-pascal",
     "enUrl": "https://security.maybeso.me/en/pascal-variables-and-data-types"
   },
-  "pki-public-key-infrastructure": {
-    "ruPath": "content/ru/4-level-knowledge/PKI (Public Key Infrastructure).md",
-    "enPath": "content/en/4-level-knowledge/public-key-infrastructure.md",
-    "ruUrl": "https://security.maybeso.me/pki-public-key-infrastructure",
-    "enUrl": "https://security.maybeso.me/en/public-key-infrastructure"
-  },
   "pochemu-komyuter-ispolzuet-imenno-0-i-1": {
     "ruPath": "content/ru/4-level-knowledge/Почему комьютер использует именно 0 и 1.md",
     "enPath": "content/en/4-level-knowledge/why-computers-use-zero-and-one.md",
     "ruUrl": "https://security.maybeso.me/pochemu-komyuter-ispolzuet-imenno-0-i-1",
     "enUrl": "https://security.maybeso.me/en/why-computers-use-zero-and-one"
-  },
-  "pochtovyy-server": {
-    "ruPath": "content/ru/4-level-knowledge/Почтовый сервер.md",
-    "enPath": "content/en/4-level-knowledge/mail-server.md",
-    "ruUrl": "https://security.maybeso.me/pochtovyy-server",
-    "enUrl": "https://security.maybeso.me/en/mail-server"
   },
   "podklyuchaemye-moduli-v-pascal": {
     "ruPath": "content/ru/4-level-knowledge/Подключаемые модули в Pascal.md",
@@ -376,12 +304,6 @@
     "enPath": "content/en/4-level-knowledge/proxmox.md",
     "ruUrl": "https://security.maybeso.me/proxmox",
     "enUrl": "https://security.maybeso.me/en/proxmox"
-  },
-  "proxy": {
-    "ruPath": "content/ru/4-level-knowledge/Proxy.md",
-    "enPath": "content/en/4-level-knowledge/proxy.md",
-    "ruUrl": "https://security.maybeso.me/proxy",
-    "enUrl": "https://security.maybeso.me/en/proxy"
   },
   "r-u-d-y-r-u-dead-yet": {
     "ruPath": "content/ru/4-level-knowledge/R.U.D.Y (R-U-Dead-Yet).md",
@@ -413,23 +335,11 @@
     "ruUrl": "https://security.maybeso.me/seti-i-protokoly",
     "enUrl": "https://security.maybeso.me/en/networks-and-protocols"
   },
-  "sistema-schisleniya": {
-    "ruPath": "content/ru/3-level-knowledge/Система счисления.md",
-    "enPath": "content/en/3-level-knowledge/number-systems.md",
-    "ruUrl": "https://security.maybeso.me/sistema-schisleniya",
-    "enUrl": "https://security.maybeso.me/en/number-systems"
-  },
   "slow-attack": {
     "ruPath": "content/ru/4-level-knowledge/Slow Attack.md",
     "enPath": "content/en/4-level-knowledge/slow-attack.md",
     "ruUrl": "https://security.maybeso.me/slow-attack",
     "enUrl": "https://security.maybeso.me/en/slow-attack"
-  },
-  "sluzhby-v-linux": {
-    "ruPath": "content/ru/4-level-knowledge/Службы в Linux.md",
-    "enPath": "content/en/4-level-knowledge/linux-services.md",
-    "ruUrl": "https://security.maybeso.me/sluzhby-v-linux",
-    "enUrl": "https://security.maybeso.me/en/linux-services"
   },
   "spof": {
     "ruPath": "content/ru/4-level-knowledge/SPOF.md",
@@ -454,18 +364,6 @@
     "enPath": "content/en/4-level-knowledge/syncthing.md",
     "ruUrl": "https://security.maybeso.me/syncthing",
     "enUrl": "https://security.maybeso.me/en/syncthing"
-  },
-  "tipy-atak-na-informatsionnye-sistemy": {
-    "ruPath": "content/ru/4-level-knowledge/Типы атак на информационные системы.md",
-    "enPath": "content/en/4-level-knowledge/types-of-attacks-on-information-systems.md",
-    "ruUrl": "https://security.maybeso.me/tipy-atak-na-informatsionnye-sistemy",
-    "enUrl": "https://security.maybeso.me/en/types-of-attacks-on-information-systems"
-  },
-  "tipy-protsedury-i-funktsii-v-pascal": {
-    "ruPath": "content/ru/4-level-knowledge/Типы, процедуры и функции в Pascal.md",
-    "enPath": "content/en/4-level-knowledge/types-procedures-and-functions-in-pascal.md",
-    "ruUrl": "https://security.maybeso.me/tipy-protsedury-i-funktsii-v-pascal",
-    "enUrl": "https://security.maybeso.me/en/types-procedures-and-functions-in-pascal"
   },
   "tri-a-aaa-authentication-authorization-i-accounting": {
     "ruPath": "content/ru/4-level-knowledge/Три «A» (AAA) — authentication, authorization и accounting.md",
@@ -496,12 +394,6 @@
     "enPath": "content/en/3-level-knowledge/control-flow.md",
     "ruUrl": "https://security.maybeso.me/upravlenie-posledovatelnostyu-deystviy",
     "enUrl": "https://security.maybeso.me/en/control-flow"
-  },
-  "utechka-dannyh-equifax-2017": {
-    "ruPath": "content/ru/4-level-knowledge/Утечка данных Equifax  (2017).md",
-    "enPath": "content/en/4-level-knowledge/equifax-data-breach-2017.md",
-    "ruUrl": "https://security.maybeso.me/utechka-dannyh-equifax-2017",
-    "enUrl": "https://security.maybeso.me/en/equifax-data-breach-2017"
   },
   "yazyk-programmirovaniya-pascal": {
     "ruPath": "content/ru/3-level-knowledge/Язык программирования Pascal.md",

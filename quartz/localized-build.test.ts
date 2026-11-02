@@ -38,7 +38,7 @@ test(
         env: { ...process.env, PATH: `/opt/homebrew/bin:${process.env.PATH ?? ""}` },
         timeout: 120_000,
       })
-      assert.equal(Object.keys(pairs).length, 85)
+      assert.equal(Object.keys(pairs).length, 67)
       for (const [key, pair] of Object.entries(pairs)) {
         const ru = await readFile(outputPath(output, pair.ruUrl), "utf8")
         const en = await readFile(outputPath(output, pair.enUrl), "utf8")

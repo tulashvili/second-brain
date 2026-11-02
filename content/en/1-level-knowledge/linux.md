@@ -17,4 +17,4 @@ Linux architecture and operation: from core operating-system concepts to secure 
 ## Key topics
 
 - [[linux-processes]]
-- [[linux-services]]
+- linux-services

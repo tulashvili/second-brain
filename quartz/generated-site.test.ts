@@ -18,6 +18,17 @@ const previousPublicRoutes = JSON.parse(
   await readFile("docs/localization/previous-public-routes.json", "utf8"),
 ) as Record<"ru" | "en", string[]>
 
+const editorialWithdrawals = JSON.parse(
+  await readFile("docs/localization/editorial-withdrawals.json", "utf8"),
+) as { pairs: Record<string, { ruUrl: string; enUrl: string }>; retiredTagRoutes: string[] }
+const withdrawnRoutes = new Set([
+  ...editorialWithdrawals.retiredTagRoutes,
+  ...Object.values(editorialWithdrawals.pairs).flatMap((p) => [
+    new URL(p.ruUrl).pathname,
+    new URL(p.enUrl).pathname,
+  ]),
+])
+
 const frontmatter = (markdown: string): Record<string, unknown> => {
   const match = markdown.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/)
   return match ? (YAML.parse(match[1]) ?? {}) : {}
@@ -130,6 +141,7 @@ test(
       })
 
       for (const route of [
+        ...Array.from(withdrawnRoutes, (route) => route.slice(1)),
         "ddos-ataka",
         "en/ddos-attack",
         "php2shell",
@@ -139,14 +151,34 @@ test(
       ]) {
         assert.equal(await exists(path.join(output, `${route}.html`)), false)
       }
+      for (const locale of ["", "en/"]) {
+        const index = JSON.parse(
+          await readFile(path.join(output, locale, "static/contentIndex.json"), "utf8"),
+        )
+        const sitemap = await readFile(path.join(output, locale, "sitemap.xml"), "utf8")
+        const rss = await readFile(path.join(output, locale, "index.xml"), "utf8")
+        for (const route of withdrawnRoutes) {
+          const slug = route.replace(/^\/en\//, "").replace(/^\//, "")
+          assert.equal(Object.hasOwn(index, slug), false, `withdrawn index entry: ${slug}`)
+          assert.ok(!sitemap.includes(`https://security.maybeso.me${route}</loc>`))
+          assert.ok(!rss.includes(`https://security.maybeso.me${route}</link>`))
+          assert.equal(await exists(path.join(output, route.slice(1) + "-og-image.webp")), false)
+        }
+      }
       for (const route of ["cdn", "en/cdn"]) {
         const html = await readFile(path.join(output, `${route}.html`), "utf8")
         assert.doesNotMatch(html, /<span class="broken-link">DDoS/)
       }
 
+      const englishHome = await readFile(path.join(output, "en/index.html"), "utf8")
+      assert.doesNotMatch(englishHome, /class="broken-link"/)
+      assert.match(englishHome, /href="\.\/programming-fundamentals"/)
+      const englishNetworks = await readFile(path.join(output, "en/computer-networks.html"), "utf8")
+      assert.match(englishNetworks, /href="\.\/router"[^>]*>routers<\/a>/)
+
       const { articles, mocs } = await knowledgeSlugs()
-      assert.equal(articles.length, 62)
-      assert.equal(mocs.length, 23)
+      assert.equal(articles.length, 45)
+      assert.equal(mocs.length, 22)
       const rootPage = await readFile(path.join(output, "index.html"), "utf8")
       assert.match(rootPage, /property="og:url" content="https:\/\/security\.maybeso\.me\/ru\/"/)
       assert.match(rootPage, /rel="canonical" href="https:\/\/security\.maybeso\.me\/ru\/"/)
@@ -161,15 +193,6 @@ test(
         const route = routeFor(slug)
         await readFile(path.join(output, route ? `${route}.html` : "index.html"), "utf8")
       }
-
-      const attackTypes = await readFile(
-        path.join(output, "tipy-atak-na-informatsionnye-sistemy.html"),
-        "utf8",
-      )
-      assert.match(
-        attackTypes,
-        /<a[^>]+href="\.\/r-u-d-y-r-u-dead-yet"[^>]*>R\.U\.D\.Y \(R-U-Dead-Yet\)<\/a>/,
-      )
 
       const processes = await readFile(path.join(output, "protsessy-v-linux.html"), "utf8")
       assert.doesNotMatch(processes, /class="[^"]*broken-link[^"]*"/)
@@ -236,7 +259,7 @@ test(
         for (const route of routes) {
           assert.equal(
             await exists(outputPathForRoute(output, route)),
-            true,
+            !withdrawnRoutes.has(new URL(route, "https://security.maybeso.me").pathname),
             `${locale} previous public route is missing: ${route}`,
           )
         }
@@ -322,23 +345,23 @@ test(
         assert.doesNotMatch(recentArticles, new RegExp(`href="(?:\\./|/)?${slug}"`))
       }
 
-      const proxy = await readFile(path.join(output, "proxy.html"), "utf8")
+      const proxy = await readFile(path.join(output, "cdn.html"), "utf8")
       const proxyParents = section(proxy, "note-parents")
       assert.match(proxyParents, /Родительская тема:/)
       assert.match(proxyParents, /href="\/setevaya-bezopasnost"/)
       assert.doesNotMatch(proxy, /class="semantic-parents"/)
 
       const practical = await readFile(
-        path.join(output, "nastroyka-forward-proxy-v-nginx-c-basic-auth.html"),
+        path.join(output, "hsts-http-strict-transport-security.html"),
         "utf8",
       )
       const practicalParents = section(practical, "note-parents")
       assert.match(practicalParents, /href="\/bezopasnost-prilozheniy-i-veb-servisov"/)
-      assert.match(practicalParents, /href="\/laby-i-prakticheskie-rukovodstva"/)
+      assert.match(practicalParents, /href="\/setevaya-bezopasnost"/)
 
       const networkMoc = await readFile(path.join(output, "setevaya-bezopasnost.html"), "utf8")
       const networkChildren = section(networkMoc, "moc-children")
-      assert.match(networkChildren, /href="\/proxy"/)
+      assert.doesNotMatch(networkChildren, /href="\/proxy"/)
       assert.match(networkChildren, /href="\/cdn"/)
       assert.match(networkChildren, /href="\/seti-i-protokoly"/)
     } finally {

@@ -17,6 +17,6 @@ Utilities and technologies for administration, diagnostics, and reproducible pra
 ## Key topics
 
 - [[swaks-email-testing-tool]]
-- [[gitlab-runner]]
+- gitlab-runner
 - Tracecat
 - [[syncthing|Syncthing]]

@@ -23,7 +23,7 @@ writeln(sum);
 ```
 
 > [!seealso]
-> [[linear-computations|Linear Computations]]
+> Linear Computations
 
 ## Branching
 
@@ -37,7 +37,7 @@ else
 ```
 
 > [!seealso]
-> [[nonlinear-computations|Nonlinear Computations]]
+> Nonlinear Computations
 
 ## Loop
 
@@ -51,4 +51,4 @@ for i := 1 to 5 do
 A `while` loop tests its condition before every iteration, so its body may not run at all. A `repeat ... until` loop executes the body first and then tests the condition, so it runs at least once. A loop inside another loop is **nested**; for example, it can iterate over table rows and columns.
 
 > [!seealso]
-> [[nonlinear-computations|Nonlinear Computations]]
+> Nonlinear Computations

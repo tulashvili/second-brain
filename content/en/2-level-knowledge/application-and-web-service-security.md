@@ -18,7 +18,7 @@ Protecting applications and web services through secure exposure, authentication
 
 - [[identity-and-access-management|Identity and Access Management]]
 - [[http-strict-transport-security|HTTP Strict Transport Security (HSTS)]]
-- [[nginx-forward-proxy-with-basic-auth|Configuring an Nginx Forward Proxy with Basic Auth]]
+- Configuring an Nginx Forward Proxy with Basic Auth
 - [[network-security|Network Security]]
 - [[labs-and-practical-guides|Labs and Practical Guides]]
 - [[ssl-upstream-injection|SSL Upstream Injection]]

@@ -22,4 +22,4 @@ This is the entry point to my technical knowledge base. The material runs from b
 
 - [[information-security-fundamentals|Information Security Fundamentals]]
 - [[linux|Linux]]
-- [[programming-algorithms-and-computer-architecture|Programming, Algorithms, and Computer Architecture]]
+- [[programming-fundamentals|Programming, Algorithms, and Computer Architecture]]
